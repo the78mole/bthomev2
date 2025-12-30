@@ -1,5 +1,5 @@
 /**
- * @file ESP32_MultipleSensors.ino
+ * @file main.cpp
  * @brief Complete sensor station example with multiple sensor types
  * 
  * This example demonstrates how to use multiple sensor types together
@@ -8,6 +8,7 @@
  * Hardware: ESP32 with various sensors (or simulated values)
  */
 
+#include <Arduino.h>
 #include <BThomeV2.h>
 
 // Create BThome V2 device instance
@@ -25,6 +26,8 @@ bool doorOpen = false;
 // Update interval
 const unsigned long UPDATE_INTERVAL = 60000;  // 60 seconds
 unsigned long lastUpdate = 0;
+
+void updateSensors();
 
 void setup() {
   Serial.begin(115200);

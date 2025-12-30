@@ -1,5 +1,5 @@
 /**
- * @file ESP32_Button.ino
+ * @file main.cpp
  * @brief Button event example for ESP32 with BThome V2
  * 
  * This example demonstrates how to send button events using BThome V2.
@@ -12,6 +12,7 @@
  * - Button pulls GPIO to GND when pressed (with internal pull-up)
  */
 
+#include <Arduino.h>
 #include <BThomeV2.h>
 
 // Pin configuration
@@ -27,6 +28,8 @@ unsigned long lastReleaseTime = 0;
 int pressCount = 0;
 const unsigned long LONG_PRESS_TIME = 1000;  // 1 second for long press
 const unsigned long MULTI_CLICK_TIME = 500;  // 500ms window for multi-click
+
+void sendButtonEvent(uint8_t event);
 
 void setup() {
   Serial.begin(115200);

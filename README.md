@@ -52,9 +52,25 @@ lib_deps =
 
 ## Quick Start
 
-### ESP32 Example
+### PlatformIO Example (Recommended)
+
+All examples are provided as complete PlatformIO projects with `platformio.ini` and `src/main.cpp` files.
+
+```bash
+# Navigate to an example
+cd examples/ESP32_Basic
+
+# Build and upload
+pio run --target upload
+
+# Monitor serial output
+pio device monitor
+```
+
+### Code Example
 
 ```cpp
+#include <Arduino.h>
 #include <BThomeV2.h>
 
 BThomeV2Device bthome;
@@ -86,9 +102,9 @@ void loop() {
 }
 ```
 
-### nRF52 Example
+### Platform Compatibility
 
-The code is identical to the ESP32 example above! The library automatically uses the appropriate BLE stack for your platform.
+The code is identical for ESP32 and nRF52! The library automatically uses the appropriate BLE stack for your platform (NimBLE for ESP32, Bluefruit for nRF52).
 
 ## API Reference
 
@@ -252,10 +268,18 @@ For more information, visit [bthome.io](https://bthome.io/).
 
 ## Examples
 
-See the `examples/` directory for complete working examples:
+See the `examples/` directory for complete working PlatformIO examples:
 
-- `ESP32_Basic` - Basic temperature/humidity sensor for ESP32
-- `nRF52_Basic` - Basic temperature/humidity sensor for nRF52
+- **ESP32_Basic** - Basic temperature/humidity sensor for ESP32
+- **ESP32_Button** - Button event handling with single/double/triple/long press
+- **ESP32_MultipleSensors** - Multiple sensor types and binary sensors
+- **nRF52_Basic** - Basic temperature/humidity sensor for nRF52
+
+Each example includes:
+- Complete PlatformIO project structure
+- `platformio.ini` configuration file
+- `src/main.cpp` with fully documented code
+- Individual README with build instructions
 
 ## License
 

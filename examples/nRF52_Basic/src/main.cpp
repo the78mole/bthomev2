@@ -1,5 +1,5 @@
 /**
- * @file nRF52_Basic.ino
+ * @file main.cpp
  * @brief Basic example of BThome V2 library for nRF52
  * 
  * This example demonstrates how to use the BThome V2 library on nRF52
@@ -11,6 +11,7 @@
  * every 30 seconds.
  */
 
+#include <Arduino.h>
 #include <BThomeV2.h>
 
 // Create BThome V2 device instance
