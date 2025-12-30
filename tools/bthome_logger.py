@@ -108,6 +108,8 @@ BTHOME_OBJECTS = {
     0x2B: {"name": "Tamper", "factor": 1, "unit": "", "size": 1},
     0x2C: {"name": "Vibration", "factor": 1, "unit": "", "size": 1},
     0x2D: {"name": "Window", "factor": 1, "unit": "", "size": 1},
+    0x3A: {"name": "Button", "factor": 1, "unit": "", "size": 1},
+    0x3C: {"name": "Dimmer", "factor": 1, "unit": "", "size": 2},
 }
 
 # BThome Service UUID (16-bit UUID: 0xFCD2)

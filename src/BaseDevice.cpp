@@ -34,9 +34,11 @@ BaseDevice::BaseDevice(const char* shortName, const char* completeName,
 
   memcpy(bindKey, key, sizeof(uint8_t) * BIND_KEY_LEN);
   memcpy(_macAddress, macAddress, BLE_MAC_ADDRESS_LENGTH);
+#if BTHOME_ENCRYPTION_SUPPORTED
   mbedtls_ccm_init(&this->_encryptCTX);
   mbedtls_ccm_setkey(&this->_encryptCTX, MBEDTLS_CIPHER_ID_AES, bindKey,
                      ENCRYPTION_KEY_LENGTH * 8);
+#endif
 }
 
 void BaseDevice::resetMeasurement() {
@@ -170,9 +172,11 @@ size_t BaseDevice::getAdvertisementData(
     nonce[8] = FLAG_VERSION | FLAG_ENCRYPT;
     memcpy(&nonce[9], countPtr, MIC_LEN);
 
+#if BTHOME_ENCRYPTION_SUPPORTED
     mbedtls_ccm_encrypt_and_tag(&_encryptCTX, sortedBytesLength, nonce,
                                 NONCE_LEN, 0, 0, &sortedBytes[0],
                                 &ciphertext[0], encryptionTag, MIC_LEN);
+#endif
 
     for (uint8_t i = 0; i < _sensorDataIdx; i++) {
       serviceData[serviceDataIndex++] = ciphertext[i];

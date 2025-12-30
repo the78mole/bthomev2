@@ -13,7 +13,18 @@
 #include <data_types.h>
 
 #include "definitions.h"
+
+// Include mbedtls only on platforms that support it
+#if defined(ESP32) || defined(ESP8266)
 #include "mbedtls/ccm.h"
+#define BTHOME_ENCRYPTION_SUPPORTED 1
+#else
+// For platforms without mbedtls, define a dummy structure
+typedef struct {
+  unsigned char dummy;
+} mbedtls_ccm_context;
+#define BTHOME_ENCRYPTION_SUPPORTED 0
+#endif
 
 static const size_t MAX_ADVERTISEMENT_SIZE = 31;
 static const size_t HEADER_SIZE = 9;

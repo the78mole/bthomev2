@@ -269,6 +269,9 @@ class BThomeV2Device : public BThomeV2 {
 
 #include <bluefruit.h>
 
+// Forward declaration for integrated BTHomeV2 encoding library
+class BtHomeV2Device;
+
 /**
  * @brief Platform-specific implementation of BThome V2
  *
@@ -294,6 +297,8 @@ class BThomeV2Device : public BThomeV2 {
   bool updateAdvertising();
 
  private:
+  ::BtHomeV2Device*
+      btHomeDevice;  // Pointer to integrated BTHomeV2 device instance
   char deviceName[32] = "BThome";
   bool initialized = false;
   bool advertising = false;

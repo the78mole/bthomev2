@@ -55,3 +55,4 @@ Monitor button events in:
 - Serial output (as shown above)
 - Home Assistant (button entity)
 - BLE scanner apps (nRF Connect, LightBlue)
+- bthome-logger command-line tool (in this repository or on PyPi)

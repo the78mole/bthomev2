@@ -59,7 +59,7 @@ void setup() {
     Serial.println("  Single press = 0x01");
     Serial.println("  Double press = 0x02");
     Serial.println("  Triple press = 0x03");
-    Serial.println("  Long press   = 0x80");
+    Serial.println("  Long press   = 0x04");
   } else {
     Serial.println("Failed to start advertising");
   }
@@ -90,7 +90,7 @@ void loop() {
     // Determine if it was a long press
     if (pressDuration >= LONG_PRESS_TIME) {
       Serial.println("Long press detected!");
-      sendButtonEvent(0x80);  // Long press
+      sendButtonEvent(0x04);  // Long press
       pressCount = 0;         // Reset count after long press
     } else {
       Serial.printf("Short press #%d\n", pressCount);

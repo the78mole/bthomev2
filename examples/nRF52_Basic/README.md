@@ -66,6 +66,7 @@ You can verify the BLE advertisements using:
 - nRF Connect app (Android/iOS) - recommended for Nordic boards
 - LightBlue app (iOS)
 - Home Assistant with BThome V2 integration
+- bthome-logger command-line tool (in this repository or on PyPi)
 
 Look for a device named "BThome-nRF52" broadcasting on service UUID 0xFCD2.
 
