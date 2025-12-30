@@ -1,6 +1,6 @@
 {
   "name": "BThomeV2",
-  "version": "1.0.0",
+  "version": "0.0.12",
   "description": "BThome V2 BLE advertisement library for ESP32 and nRF52 platforms. Provides easy-to-use interface for advertising sensor data using the BThome V2 protocol standard. Integrated BTHomeV2-Arduino encoding library.",
   "keywords": [
     "bluetooth",
@@ -33,7 +33,7 @@
     {
       "owner": "arduino-libraries",
       "name": "ArduinoBLE",
-      "version": "^1.5.0",
+      "version": "0.0.12",
       "platforms": ["espressif32"]
     }
   ],
