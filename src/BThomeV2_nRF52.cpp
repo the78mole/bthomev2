@@ -56,11 +56,11 @@ bool BThomeV2_nRF52::startAdvertising() {
         return false;
     }
     
-    // Build service data
-    uint8_t serviceData[31]; // Max 31 bytes for BLE advertising
-    size_t dataSize = buildServiceData(serviceData, sizeof(serviceData));
+    // Build service data payload
+    uint8_t payload[31]; // Max 31 bytes for BLE advertising
+    size_t payloadSize = buildServiceData(payload, sizeof(payload));
     
-    if (dataSize == 0) {
+    if (payloadSize == 0) {
         return false;
     }
     
@@ -79,9 +79,15 @@ bool BThomeV2_nRF52::startAdvertising() {
     // Add service UUID
     Bluefruit.Advertising.addService(BTHOME_SVC_UUID);
     
-    // Add service data
+    // Build service data with UUID prefix (little endian)
+    uint8_t serviceData[33]; // UUID (2 bytes) + payload
+    serviceData[0] = BTHOME_SVC_UUID & 0xFF;
+    serviceData[1] = (BTHOME_SVC_UUID >> 8) & 0xFF;
+    memcpy(&serviceData[2], payload, payloadSize);
+    
+    // Add service data (UUID + data)
     Bluefruit.Advertising.addData(BLE_GAP_AD_TYPE_SERVICE_DATA_16BIT_UUID, 
-                                   serviceData, dataSize);
+                                   serviceData, payloadSize + 2);
     
     // Start advertising (0 = Don't stop advertising)
     if (Bluefruit.Advertising.start(0)) {
