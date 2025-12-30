@@ -264,6 +264,8 @@ BThome V2 is a format for broadcasting sensor data over Bluetooth Low Energy. It
 - **Flexible**: Supports many sensor types and custom data
 - **Secure**: Optional encryption support
 
+The library uses the official BThome V2 service UUID **0xFCD2** for BLE advertising.
+
 For more information, visit [bthome.io](https://bthome.io/).
 
 ## Examples

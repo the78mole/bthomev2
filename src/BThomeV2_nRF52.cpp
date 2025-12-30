@@ -7,8 +7,8 @@
 
 #include "BThomeV2_nRF52.h"
 
-// BThome V2 Service UUID: 0000181c-0000-1000-8000-00805f9b34fb
-const uint16_t BTHOME_SVC_UUID = 0x181C;
+// BThome V2 Service UUID: 0000fcd2-0000-1000-8000-00805f9b34fb
+const uint16_t BTHOME_SVC_UUID = 0xFCD2;
 
 BThomeV2_nRF52::BThomeV2_nRF52() {
 }

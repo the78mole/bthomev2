@@ -63,4 +63,4 @@ You can verify the BLE advertisements using:
 - LightBlue app (iOS)
 - Home Assistant with BThome V2 integration
 
-Look for a device named "BThome-ESP32" broadcasting on service UUID 0x181C.
+Look for a device named "BThome-ESP32" broadcasting on service UUID 0xFCD2.

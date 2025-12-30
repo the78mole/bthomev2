@@ -5,8 +5,8 @@
 
 #include "BThomeV2.h"
 
-// BThome V2 Service UUID: 0000181c-0000-1000-8000-00805f9b34fb
-const uint16_t BTHOME_SERVICE_UUID = 0x181C;
+// BThome V2 Service UUID: 0000fcd2-0000-1000-8000-00805f9b34fb
+const uint16_t BTHOME_SERVICE_UUID = 0xFCD2;
 
 void BThomeV2::clearMeasurements() {
     measurements.clear();
