@@ -1,0 +1,72 @@
+# Pre-commit Hooks für BThome Examples
+# Installation: pre-commit install
+# Manuell ausführen: pre-commit run --all-files
+
+repos:
+  # Allgemeine Hooks für alle Dateien
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        name: Entferne Trailing Whitespace
+      - id: end-of-file-fixer
+        name: Füge End-of-File Newline hinzu
+      - id: check-yaml
+        name: Prüfe YAML-Syntax
+      - id: check-json
+        name: Prüfe JSON-Syntax
+      - id: check-toml
+        name: Prüfe TOML-Syntax
+      - id: check-added-large-files
+        name: Prüfe auf große Dateien
+        args: ['--maxkb=1000']
+      - id: mixed-line-ending
+        name: Prüfe Mixed Line Endings
+        args: ['--fix=lf']
+      - id: check-merge-conflict
+        name: Prüfe auf Merge-Konflikte
+
+  # Python-Formatierung
+  - repo: https://github.com/psf/black
+    rev: 25.12.0
+    hooks:
+      - id: black
+        name: Formatiere Python-Code mit Black
+        language_version: python3
+        files: \.py$
+
+  # Python Import-Sortierung
+  - repo: https://github.com/pycqa/isort
+    rev: 7.0.0
+    hooks:
+      - id: isort
+        name: Sortiere Python-Imports
+        args: ["--profile", "black"]
+        files: \.py$
+
+  # Python Linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.3.0
+    hooks:
+      - id: flake8
+        name: Prüfe Python-Code mit Flake8
+        args: ['--max-line-length=100', '--extend-ignore=E203,W503']
+        files: \.py$
+
+  # Markdown Linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.47.0
+    hooks:
+      - id: markdownlint
+        name: Prüfe Markdown-Dateien
+        args: ['--fix']
+        files: \.md$
+
+  # C/C++ Formatierung (für PlatformIO-Projekte)
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v21.1.8
+    hooks:
+      - id: clang-format
+        name: Formatiere C/C++-Code
+        files: \.(c|cc|cpp|h|hpp)$
+        args: ['-i', '--style=Google']

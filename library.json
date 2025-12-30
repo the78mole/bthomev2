@@ -1,0 +1,49 @@
+{
+  "name": "BThomeV2",
+  "version": "1.0.0",
+  "description": "A library abstracting the BLE functions for supporting BThome V2 on different platforms (ESP32, nRF52)",
+  "keywords": [
+    "bluetooth",
+    "ble",
+    "bthome",
+    "bthomev2",
+    "sensor",
+    "esp32",
+    "nrf52",
+    "nimble",
+    "advertising"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the78mole/bthomev2.git"
+  },
+  "authors": [
+    {
+      "name": "the78mole",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/the78mole/bthomev2",
+  "frameworks": ["arduino", "espidf"],
+  "platforms": ["espressif32", "nordicnrf52"],
+  "dependencies": [
+    {
+      "name": "NimBLE-Arduino",
+      "version": "^1.4.1",
+      "platforms": ["espressif32"]
+    },
+    {
+      "name": "Adafruit nRF52",
+      "platforms": ["nordicnrf52"]
+    }
+  ],
+  "export": {
+    "include": [
+      "src/*",
+      "examples/*",
+      "README.md",
+      "LICENSE"
+    ]
+  }
+}
