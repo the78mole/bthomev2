@@ -49,12 +49,7 @@ jobs:
         git diff --staged --quiet || git commit -m "chore: bump version to ${{ inputs.version }}"
         git push
 
-    - name: Create Git Tag
-      run: |
-        git tag -a "${{ inputs.version_tag }}" -m "Release ${{ inputs.version_tag }}"
-        git push origin "${{ inputs.version_tag }}"
-
-        echo "Created and pushed tag ${{ inputs.version_tag }}"
+        echo "Version files updated and committed"
 
     - name: Publish to PlatformIO
       env:
