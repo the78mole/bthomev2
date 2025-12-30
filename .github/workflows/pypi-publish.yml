@@ -1,14 +1,22 @@
 name: Publish BThome Logger to PyPI
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'tools/**'
-      - '.github/workflows/publish-pypi.yml'
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: true
+        type: string
+      version_tag:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.0)'
+        required: true
+        type: string
       environment:
         description: 'Environment to deploy to'
         required: true
@@ -19,90 +27,9 @@ on:
           - pypi
 
 jobs:
-  version:
-    name: Calculate version
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.semver.outputs.version }}
-      version_tag: ${{ steps.semver.outputs.version_tag }}
-
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: Calculate semantic version
-      id: semver
-      uses: paulhatch/semantic-version@v5.4.0
-      with:
-        tag_prefix: "v"
-        major_pattern: "/(feat|fix|refactor)!:/"
-        minor_pattern: "/^feat:/"
-        version_format: "${major}.${minor}.${patch}"
-        bump_each_commit: true
-        search_commit_body: true
-
-    - name: Show version
-      run: |
-        echo "Version: ${{ steps.semver.outputs.version }}"
-        echo "Version Tag: ${{ steps.semver.outputs.version_tag }}"
-
-        # Add to GitHub Actions Summary
-        cat >> $GITHUB_STEP_SUMMARY <<EOF
-        ## 📦 Neue Version berechnet
-
-        **Version:** \`${{ steps.semver.outputs.version }}\`
-        **Git-Tag:** \`${{ steps.semver.outputs.version_tag }}\`
-
-        Diese Version wird für das Release und die PyPI-Veröffentlichung verwendet.
-        EOF
-
-  create-release:
-    name: Create GitHub Release
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [version]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Create Release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh release create ${{ needs.version.outputs.version_tag }} \
-          --title "BThome Logger ${{ needs.version.outputs.version }}" \
-          --notes "## BThome Logger ${{ needs.version.outputs.version }}
-
-        Automatisches Release durch Semantic Versioning.
-
-        ### Installation
-
-        \`\`\`bash
-        pip install bthome-logger==${{ needs.version.outputs.version }}
-        \`\`\`
-
-        ### Verwendung
-
-        \`\`\`bash
-        bthome-logger
-        \`\`\`" \
-          --latest
-
-        # Add to GitHub Actions Summary
-        cat >> $GITHUB_STEP_SUMMARY <<EOF
-        ## 🏷️ GitHub Release erstellt
-
-        **Release:** [${{ needs.version.outputs.version_tag }}](https://github.com/${{ github.repository }}/releases/tag/${{ needs.version.outputs.version_tag }})
-
-        Das Release wurde erfolgreich auf GitHub erstellt.
-        EOF
 
   build:
     name: Build distribution
-    needs: [version, create-release]
     runs-on: ubuntu-latest
 
     steps:
@@ -120,7 +47,7 @@ jobs:
 
     - name: Build package
       env:
-        SETUPTOOLS_SCM_PRETEND_VERSION: ${{ needs.version.outputs.version }}
+        SETUPTOOLS_SCM_PRETEND_VERSION: ${{ inputs.version }}
       run: |
         cd tools
         python -m build
@@ -134,7 +61,7 @@ jobs:
         cat >> $GITHUB_STEP_SUMMARY <<EOF
         ## 🔨 Package Build
 
-        **Version:** \`${{ needs.version.outputs.version }}\`
+        **Version:** \`${{ inputs.version }}\`
 
         Folgende Distributions wurden erstellt:
 
@@ -177,8 +104,8 @@ jobs:
 
   publish-to-pypi:
     name: Publish to PyPI
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [version, build, create-release]
+    if: github.event_name == 'workflow_call' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'pypi')
+    needs: [build]
     runs-on: ubuntu-latest
 
     environment:
@@ -204,14 +131,14 @@ jobs:
         ## 🚀 PyPI Veröffentlichung
 
         **Package:** [bthome-logger](https://pypi.org/project/bthome-logger/)
-        **Version:** \`${{ needs.version.outputs.version }}\`
+        **Version:** \`${{ inputs.version }}\`
 
         ### Installation
 
         \`\`\`bash
-        pip install bthome-logger==${{ needs.version.outputs.version }}
+        pip install bthome-logger==${{ inputs.version }}
         # oder
-        uv tool install bthome-logger==${{ needs.version.outputs.version }}
+        uv tool install bthome-logger==${{ inputs.version }}
         \`\`\`
 
         ### Verwendung

@@ -1,0 +1,85 @@
+name: Publish to PlatformIO Registry
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: true
+        type: string
+      version_tag:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  publish-to-platformio:
+    name: Publish to PlatformIO Registry
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install PlatformIO
+      run: |
+        pip install --upgrade platformio
+
+    - name: Update library.json version
+      run: |
+        # Update version in library.json
+        sed -i 's/"version": ".*"/"version": "${{ inputs.version }}"/' library.json
+
+        # Update version in library.properties
+        sed -i 's/version=.*/version=${{ inputs.version }}/' library.properties
+
+        echo "Updated library.json and library.properties to version ${{ inputs.version }}"
+
+    - name: Commit version updates
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add library.json library.properties
+        git diff --staged --quiet || git commit -m "chore: bump version to ${{ inputs.version }}"
+        git push
+
+    - name: Create Git Tag
+      run: |
+        git tag -a "${{ inputs.version_tag }}" -m "Release ${{ inputs.version_tag }}"
+        git push origin "${{ inputs.version_tag }}"
+
+        echo "Created and pushed tag ${{ inputs.version_tag }}"
+
+    - name: Publish to PlatformIO
+      env:
+        PLATFORMIO_AUTH_TOKEN: ${{ secrets.PLATFORMIO_AUTH_TOKEN }}
+      run: |
+        # PlatformIO automatically indexes public GitHub repos with tags
+        # Manual publish using the token
+        pio pkg publish --owner the78mole --non-interactive
+
+    - name: Add PlatformIO Summary
+      run: |
+        cat >> $GITHUB_STEP_SUMMARY <<EOF
+        ## 📦 PlatformIO Registry Veröffentlichung
+
+        **Package:** [BThomeV2](https://registry.platformio.org/libraries/the78mole/BThomeV2)
+        **Version:** \`${{ inputs.version }}\`
+        **Git Tag:** \`${{ inputs.version_tag }}\`
+
+        ### Installation
+
+        \`\`\`ini
+        [env:myenv]
+        lib_deps =
+            the78mole/BThomeV2@^${{ inputs.version }}
+        \`\`\`
+
+        Die Library wird innerhalb von 24 Stunden im PlatformIO Registry-Index verfügbar sein.
+        EOF

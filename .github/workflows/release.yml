@@ -1,0 +1,175 @@
+name: Create Release and Publish
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'tools/**'
+      - 'examples/**'
+      - 'library.json'
+      - 'library.properties'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+    inputs:
+      publish_target:
+        description: 'Publish target'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - pypi-only
+          - pio-only
+          - none
+
+jobs:
+  version:
+    name: Calculate Version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.semver.outputs.version }}
+      version_tag: ${{ steps.semver.outputs.version_tag }}
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Calculate semantic version
+      id: semver
+      uses: paulhatch/semantic-version@v5.4.0
+      with:
+        tag_prefix: "v"
+        major_pattern: "/(feat|fix|refactor)!:/"
+        minor_pattern: "/^feat:/"
+        version_format: "${major}.${minor}.${patch}"
+        bump_each_commit: true
+        search_commit_body: true
+
+    - name: Show version
+      run: |
+        echo "Version: ${{ steps.semver.outputs.version }}"
+        echo "Version Tag: ${{ steps.semver.outputs.version_tag }}"
+
+        cat >> $GITHUB_STEP_SUMMARY <<EOF
+        ## 📦 Neue Version berechnet
+
+        **Version:** \`${{ steps.semver.outputs.version }}\`
+        **Git-Tag:** \`${{ steps.semver.outputs.version_tag }}\`
+
+        Diese Version wird für alle Releases verwendet.
+        EOF
+
+  create-release:
+    name: Create GitHub Release
+    needs: [version]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Create Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release create ${{ needs.version.outputs.version_tag }} \
+          --title "BThomeV2 ${{ needs.version.outputs.version }}" \
+          --notes "## BThomeV2 Library ${{ needs.version.outputs.version }}
+
+        Automatisches Release durch Semantic Versioning.
+
+        ### PlatformIO Installation
+
+        \`\`\`ini
+        [env:myenv]
+        lib_deps =
+            the78mole/BThomeV2@^${{ needs.version.outputs.version }}
+        \`\`\`
+
+        ### BThome Logger (Python Tool)
+
+        \`\`\`bash
+        pip install bthome-logger==${{ needs.version.outputs.version }}
+        \`\`\`
+
+        ### Unterstützte Plattformen
+
+        - ✅ ESP32 (ArduinoBLE)
+        - ✅ nRF52 (Adafruit Bluefruit)
+
+        ### Beispiele
+
+        - ESP32_Basic
+        - ESP32_Button
+        - ESP32_MultipleSensors
+        - nRF52_Basic" \
+          --latest
+
+        cat >> $GITHUB_STEP_SUMMARY <<EOF
+        ## 🏷️ GitHub Release erstellt
+
+        **Release:** [${{ needs.version.outputs.version_tag }}](https://github.com/${{ github.repository }}/releases/tag/${{ needs.version.outputs.version_tag }})
+        EOF
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: [version, create-release]
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' &&
+       (github.event.inputs.publish_target == 'all' || github.event.inputs.publish_target == 'pypi-only'))
+    uses: ./.github/workflows/pypi-publish.yml
+    with:
+      version: ${{ needs.version.outputs.version }}
+      version_tag: ${{ needs.version.outputs.version_tag }}
+    secrets: inherit
+    permissions:
+      contents: write
+      id-token: write
+
+  publish-platformio:
+    name: Publish to PlatformIO
+    needs: [version, create-release]
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' &&
+       (github.event.inputs.publish_target == 'all' || github.event.inputs.publish_target == 'pio-only'))
+    uses: ./.github/workflows/pio-publish.yml
+    with:
+      version: ${{ needs.version.outputs.version }}
+      version_tag: ${{ needs.version.outputs.version_tag }}
+    secrets: inherit
+    permissions:
+      contents: write
+
+  summary:
+    name: Release Summary
+    needs: [version, create-release, publish-pypi, publish-platformio]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Summary
+      run: |
+        cat >> $GITHUB_STEP_SUMMARY <<EOF
+        ## 🎉 Release Workflow Abgeschlossen
+
+        **Version:** \`${{ needs.version.outputs.version }}\`
+        **Git Tag:** \`${{ needs.version.outputs.version_tag }}\`
+
+        ### Status
+
+        - GitHub Release: ${{ needs.create-release.result == 'success' && '✅' || '❌' }}
+        - PyPI Publish: ${{ needs.publish-pypi.result == 'success' && '✅' || needs.publish-pypi.result == 'skipped' && '⏭️' || '❌' }}
+        - PlatformIO Publish: ${{ needs.publish-platformio.result == 'success' && '✅' || needs.publish-platformio.result == 'skipped' && '⏭️' || '❌' }}
+
+        ### Links
+
+        - [GitHub Release](https://github.com/${{ github.repository }}/releases/tag/${{ needs.version.outputs.version_tag }})
+        - [PyPI Package](https://pypi.org/project/bthome-logger/)
+        - [PlatformIO Registry](https://registry.platformio.org/libraries/the78mole/BThomeV2)
+        EOF
