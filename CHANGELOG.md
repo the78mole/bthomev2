@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-12-30
 
 ### Added
+
 - Initial release of BThomeV2 library
 - Support for ESP32 platform using NimBLE-Arduino
 - Support for nRF52 platform using Adafruit Bluefruit
@@ -35,10 +36,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 
 ### Platform Support
+
 - ESP32 (all variants: ESP32, ESP32-S3, ESP32-C3, etc.)
 - nRF52 (nRF52840, nRF52832 via Adafruit boards)
 
 ### Dependencies
+
 - NimBLE-Arduino ^1.4.1 (for ESP32)
 - Adafruit nRF52 (for nRF52)
 

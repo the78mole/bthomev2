@@ -1,10 +1,12 @@
 # ESP32 Basic Example
 
-A basic example demonstrating temperature, humidity, and battery monitoring with BThome V2 on ESP32.
+A basic example demonstrating temperature, humidity, and battery monitoring
+with BThome V2 on ESP32.
 
 ## Description
 
-This example simulates sensor readings and broadcasts them via BLE using the BThome V2 protocol. The data updates every 30 seconds.
+This example simulates sensor readings and broadcasts them via BLE using the
+BThome V2 protocol. The data updates every 30 seconds.
 
 ## Hardware Requirements
 
@@ -38,7 +40,7 @@ pio device monitor
 
 ## Expected Output
 
-```
+```text
 BThome V2 ESP32 Example
 ========================
 BThome initialized successfully
@@ -59,6 +61,7 @@ Advertising updated
 ## Testing
 
 You can verify the BLE advertisements using:
+
 - nRF Connect app (Android/iOS)
 - LightBlue app (iOS)
 - Home Assistant with BThome V2 integration

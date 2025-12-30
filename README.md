@@ -1,10 +1,15 @@
 # BThome V2 Library
 
-A PlatformIO/Arduino library for implementing the BThome V2 protocol on ESP32 and nRF52 platforms.
+A PlatformIO/Arduino library for implementing the BThome V2 protocol on ESP32
+and nRF52 platforms.
 
 ## Overview
 
-This library provides a unified interface for BLE advertising using the [BThome V2 format](https://bthome.io/), which is designed for efficient transmission of sensor data over Bluetooth Low Energy. The library abstracts platform-specific BLE implementations, making it easy to create BThome V2 compatible devices on different hardware platforms.
+This library provides a unified interface for BLE advertising using the
+[BThome V2 format](https://bthome.io/), which is designed for efficient
+transmission of sensor data over Bluetooth Low Energy. The library abstracts
+platform-specific BLE implementations, making it easy to create BThome V2
+compatible devices on different hardware platforms.
 
 ### Supported Platforms
 
@@ -33,14 +38,14 @@ Add the library to your `platformio.ini`:
 platform = espressif32
 board = esp32dev
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 
 [env:nrf52]
 platform = nordicnrf52
 board = adafruit_feather_nrf52840
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 ```
 
@@ -54,7 +59,8 @@ lib_deps =
 
 ### PlatformIO Example (Recommended)
 
-All examples are provided as complete PlatformIO projects with `platformio.ini` and `src/main.cpp` files.
+All examples are provided as complete PlatformIO projects with `platformio.ini`
+and `src/main.cpp` files.
 
 ```bash
 # Navigate to an example
@@ -78,25 +84,25 @@ BThomeV2Device bthome;
 void setup() {
   // Initialize BThome
   bthome.begin("My-BThome-Device");
-  
+
   // Add sensor data
   bthome.addTemperature(22.5);    // °C
   bthome.addHumidity(65.0);       // %
   bthome.addBattery(95);          // %
-  
+
   // Start advertising
   bthome.startAdvertising();
 }
 
 void loop() {
   delay(60000); // Wait 1 minute
-  
+
   // Update sensor readings
   bthome.clearMeasurements();
   bthome.addTemperature(23.0);
   bthome.addHumidity(64.5);
   bthome.addBattery(94);
-  
+
   // Update advertisement
   bthome.updateAdvertising();
 }
@@ -104,13 +110,16 @@ void loop() {
 
 ### Platform Compatibility
 
-The code is identical for ESP32 and nRF52! The library automatically uses the appropriate BLE stack for your platform (NimBLE for ESP32, Bluefruit for nRF52).
+The code is identical for ESP32 and nRF52! The library automatically uses the
+appropriate BLE stack for your platform (NimBLE for ESP32, Bluefruit for
+nRF52).
 
 ## API Reference
 
 ### Initialization
 
 #### `bool begin(const char* deviceName)`
+
 Initialize the BLE stack with a device name.
 
 ```cpp
@@ -118,25 +127,31 @@ bthome.begin("My-Sensor");
 ```
 
 #### `void end()`
+
 Stop BLE advertising and deinitialize the stack.
 
 ### Advertising Control
 
 #### `bool startAdvertising()`
+
 Start BLE advertising with current measurements.
 
 #### `void stopAdvertising()`
+
 Stop BLE advertising.
 
 #### `bool updateAdvertising()`
+
 Update the advertising data with new measurements (stops and restarts advertising).
 
 ### Adding Measurements
 
 #### `void clearMeasurements()`
+
 Clear all measurements before adding new ones.
 
 #### `void addTemperature(float temperature)`
+
 Add temperature in Celsius (resolution: 0.01°C).
 
 ```cpp
@@ -144,6 +159,7 @@ bthome.addTemperature(22.5);  // 22.5°C
 ```
 
 #### `void addHumidity(float humidity)`
+
 Add humidity in percent (resolution: 0.01%).
 
 ```cpp
@@ -151,6 +167,7 @@ bthome.addHumidity(65.0);  // 65%
 ```
 
 #### `void addBattery(uint8_t battery)`
+
 Add battery level in percent (0-100).
 
 ```cpp
@@ -158,6 +175,7 @@ bthome.addBattery(85);  // 85%
 ```
 
 #### `void addPressure(float pressure)`
+
 Add atmospheric pressure in hPa (resolution: 0.01 hPa).
 
 ```cpp
@@ -165,6 +183,7 @@ bthome.addPressure(1013.25);  // 1013.25 hPa
 ```
 
 #### `void addIlluminance(float illuminance)`
+
 Add illuminance in lux (resolution: 0.01 lux).
 
 ```cpp
@@ -172,6 +191,7 @@ bthome.addIlluminance(500.0);  // 500 lux
 ```
 
 #### `void addCO2(uint16_t co2)`
+
 Add CO2 level in ppm.
 
 ```cpp
@@ -179,6 +199,7 @@ bthome.addCO2(450);  // 450 ppm
 ```
 
 #### `void addBinarySensor(BThomeObjectID objectId, bool state)`
+
 Add a binary sensor state (on/off, open/closed, etc.).
 
 ```cpp
@@ -188,6 +209,7 @@ bthome.addBinarySensor(WINDOW, true);      // Window open
 ```
 
 #### `void addButtonEvent(uint8_t event)`
+
 Add a button event.
 
 ```cpp
@@ -198,6 +220,7 @@ bthome.addButtonEvent(0x80);  // Long press
 ```
 
 #### `void addMeasurement(BThomeObjectID objectId, const std::vector<uint8_t>& data)`
+
 Add a custom measurement with raw data bytes.
 
 ### Supported Sensor Types
@@ -205,6 +228,7 @@ Add a custom measurement with raw data bytes.
 The library supports the following BThome V2 object IDs:
 
 **Sensors:**
+
 - `PACKET_ID` - Packet ID
 - `BATTERY` - Battery (%)
 - `TEMPERATURE` - Temperature (°C)
@@ -225,6 +249,7 @@ The library supports the following BThome V2 object IDs:
 - `MOISTURE` - Moisture (%)
 
 **Binary Sensors:**
+
 - `BATTERY_LOW`, `BATTERY_CHARGING`
 - `CO`, `COLD`, `CONNECTIVITY`
 - `DOOR`, `GARAGE_DOOR`, `GAS`
@@ -236,6 +261,7 @@ The library supports the following BThome V2 object IDs:
 - `SOUND`, `TAMPER`, `VIBRATION`, `WINDOW`
 
 **Events:**
+
 - `BUTTON` - Button press events
 - `DIMMER` - Dimmer events
 
@@ -257,7 +283,8 @@ The library supports the following BThome V2 object IDs:
 
 ## BThome V2 Protocol
 
-BThome V2 is a format for broadcasting sensor data over Bluetooth Low Energy. It's designed to be:
+BThome V2 is a format for broadcasting sensor data over Bluetooth Low Energy.
+It's designed to be:
 
 - **Efficient**: Compact binary format minimizes power consumption
 - **Standardized**: Compatible with Home Assistant and other home automation systems
@@ -278,6 +305,7 @@ See the `examples/` directory for complete working PlatformIO examples:
 - **nRF52_Basic** - Basic temperature/humidity sensor for nRF52
 
 Each example includes:
+
 - Complete PlatformIO project structure
 - `platformio.ini` configuration file
 - `src/main.cpp` with fully documented code

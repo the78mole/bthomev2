@@ -1,10 +1,13 @@
 # nRF52 Basic Example
 
-A basic example demonstrating temperature, humidity, and battery monitoring with BThome V2 on nRF52.
+A basic example demonstrating temperature, humidity, and battery monitoring
+with BThome V2 on nRF52.
 
 ## Description
 
-This example simulates sensor readings and broadcasts them via BLE using the BThome V2 protocol. The data updates every 30 seconds. This is identical to the ESP32_Basic example but configured for nRF52 boards.
+This example simulates sensor readings and broadcasts them via BLE using the
+BThome V2 protocol. The data updates every 30 seconds. This is identical to
+the ESP32_Basic example but configured for nRF52 boards.
 
 ## Hardware Requirements
 
@@ -38,7 +41,7 @@ pio device monitor
 
 ## Expected Output
 
-```
+```text
 BThome V2 nRF52 Example
 ========================
 BThome initialized successfully
@@ -59,6 +62,7 @@ Advertising updated
 ## Testing
 
 You can verify the BLE advertisements using:
+
 - nRF Connect app (Android/iOS) - recommended for Nordic boards
 - LightBlue app (iOS)
 - Home Assistant with BThome V2 integration
@@ -67,4 +71,5 @@ Look for a device named "BThome-nRF52" broadcasting on service UUID 0xFCD2.
 
 ## Platform Notes
 
-The nRF52 implementation uses the Adafruit Bluefruit library, which provides excellent power efficiency and BLE performance on Nordic hardware.
+The nRF52 implementation uses the Adafruit Bluefruit library, which provides
+excellent power efficiency and BLE performance on Nordic hardware.

@@ -1,12 +1,14 @@
 # Contributing to BThomeV2
 
-Thank you for your interest in contributing to the BThomeV2 library! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to the BThomeV2 library! This
+document provides guidelines for contributing to the project.
 
 ## How to Contribute
 
 ### Reporting Bugs
 
 If you find a bug, please create an issue with:
+
 - A clear, descriptive title
 - Steps to reproduce the issue
 - Expected behavior
@@ -17,6 +19,7 @@ If you find a bug, please create an issue with:
 ### Suggesting Enhancements
 
 Enhancement suggestions are welcome! Please create an issue with:
+
 - A clear description of the enhancement
 - Use cases for the enhancement
 - Any relevant examples or references
@@ -43,6 +46,7 @@ Enhancement suggestions are welcome! Please create an issue with:
 ### Platform Support
 
 When adding new features:
+
 - Ensure compatibility with both ESP32 and nRF52 platforms
 - Use platform-specific implementations in the respective files
 - Keep the base class platform-agnostic
@@ -65,6 +69,7 @@ When adding new features:
 ## BThome V2 Protocol
 
 When implementing new sensor types or features:
+
 - Follow the [BThome V2 specification](https://bthome.io/)
 - Use correct data types and byte ordering (little-endian)
 - Verify object IDs match the specification
@@ -72,7 +77,7 @@ When implementing new sensor types or features:
 
 ## Project Structure
 
-```
+```text
 bthomev2/
 ├── src/                      # Library source files
 │   ├── BThomeV2.h           # Base class header and unified device interface
@@ -96,6 +101,7 @@ To add a new sensor type:
 5. Add an example if appropriate
 
 Example:
+
 ```cpp
 // In BThomeV2.h
 void addVolume(float volume);  // Volume in m³
@@ -112,10 +118,12 @@ void BThomeV2::addVolume(float volume) {
 ## Questions?
 
 If you have questions about contributing, feel free to:
+
 - Open an issue for discussion
 - Check existing issues and pull requests
 - Review the [BThome V2 specification](https://bthome.io/)
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing, you agree that your contributions will be licensed under the
+MIT License.

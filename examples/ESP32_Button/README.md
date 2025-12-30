@@ -1,10 +1,12 @@
 # ESP32 Button Example
 
-Demonstrates button event handling with BThome V2, including single, double, triple, and long press detection.
+Demonstrates button event handling with BThome V2, including single, double,
+triple, and long press detection.
 
 ## Description
 
-This example shows how to send button events via BThome V2. It uses the built-in BOOT button (GPIO 0) on most ESP32 development boards.
+This example shows how to send button events via BThome V2. It uses the
+built-in BOOT button (GPIO 0) on most ESP32 development boards.
 
 ## Hardware Requirements
 
@@ -28,7 +30,7 @@ pio device monitor
 
 ## Expected Output
 
-```
+```text
 BThome V2 Button Example
 ========================
 BThome initialized successfully
@@ -49,6 +51,7 @@ Button event sent via BLE
 ## Testing
 
 Monitor button events in:
+
 - Serial output (as shown above)
 - Home Assistant (button entity)
 - BLE scanner apps (nRF Connect, LightBlue)

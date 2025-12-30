@@ -6,7 +6,7 @@
 platform = espressif32
 board = esp32dev
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 monitor_speed = 115200
 
@@ -15,7 +15,7 @@ monitor_speed = 115200
 platform = espressif32
 board = esp32-s3-devkitc-1
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 monitor_speed = 115200
 
@@ -24,7 +24,7 @@ monitor_speed = 115200
 platform = espressif32
 board = esp32-c3-devkitm-1
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 monitor_speed = 115200
 
@@ -33,7 +33,7 @@ monitor_speed = 115200
 platform = nordicnrf52
 board = adafruit_feather_nrf52840
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 monitor_speed = 115200
 
@@ -42,6 +42,6 @@ monitor_speed = 115200
 platform = nordicnrf52
 board = adafruit_feather_nrf52832
 framework = arduino
-lib_deps = 
+lib_deps =
     the78mole/BThomeV2
 monitor_speed = 115200

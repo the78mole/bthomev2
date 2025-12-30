@@ -1,10 +1,12 @@
 # ESP32 Multiple Sensors Example
 
-A comprehensive example showing how to use multiple sensor types and binary sensors together.
+A comprehensive example showing how to use multiple sensor types and binary
+sensors together.
 
 ## Description
 
 This example demonstrates a complete sensor station with:
+
 - Temperature sensor
 - Humidity sensor
 - Pressure sensor
@@ -13,7 +15,8 @@ This example demonstrates a complete sensor station with:
 - Motion sensor (binary)
 - Door sensor (binary)
 
-All values are simulated and update every 60 seconds, with random events for motion and door states.
+All values are simulated and update every 60 seconds, with random events for
+motion and door states.
 
 ## Hardware Requirements
 
@@ -37,7 +40,7 @@ pio device monitor
 
 ## Expected Output
 
-```
+```text
 BThome V2 Multiple Sensors Example
 ===================================
 BThome initialized successfully
@@ -68,6 +71,7 @@ Door:         CLOSED
 ## Testing
 
 In Home Assistant, this will create multiple entities:
+
 - `sensor.bthome_temperature`
 - `sensor.bthome_humidity`
 - `sensor.bthome_pressure`
