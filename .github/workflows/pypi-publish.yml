@@ -108,12 +108,8 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
 
-    environment:
-      name: pypi
-      url: https://pypi.org/p/bthome-logger
-
     permissions:
-      id-token: write
+      id-token: write  # Trusted Publishing via OIDC
 
     steps:
     - name: Download distributions
