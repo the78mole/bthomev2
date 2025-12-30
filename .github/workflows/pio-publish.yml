@@ -52,27 +52,16 @@ jobs:
             f.write(template.render(version=version))
 
         print(f"✅ Generated library.json and library.properties with version {version}")
+        print("Note: Files generated temporarily for publishing, not committed to repo")
         EOF
-
-    - name: Commit version updates
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add library.json library.properties
-        if git diff --staged --quiet; then
-          echo "ℹ️ No changes to commit"
-        else
-          git commit -m "chore: update library metadata to v${{ inputs.version }} [skip ci]"
-          git push
-          echo "✅ Version files updated and committed"
-        fi
 
     - name: Publish to PlatformIO
       env:
         PLATFORMIO_AUTH_TOKEN: ${{ secrets.PLATFORMIO_AUTH_TOKEN }}
       run: |
         # Publish to PlatformIO Registry
-        # The registry will index the repository and use the latest git tag
+        # The registry will index the repository and use the git tag
+        # Library metadata files are generated with correct version but not committed
         pio pkg publish --owner the78mole --non-interactive
 
         echo "✅ Published to PlatformIO Registry"
