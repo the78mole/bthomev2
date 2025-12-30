@@ -75,11 +75,9 @@ When implementing new sensor types or features:
 ```
 bthomev2/
 ├── src/                      # Library source files
-│   ├── BThomeV2.h           # Base class header
+│   ├── BThomeV2.h           # Base class header and unified device interface
 │   ├── BThomeV2.cpp         # Base class implementation
-│   ├── BThomeV2_ESP32.h     # ESP32-specific header
 │   ├── BThomeV2_ESP32.cpp   # ESP32-specific implementation
-│   ├── BThomeV2_nRF52.h     # nRF52-specific header
 │   └── BThomeV2_nRF52.cpp   # nRF52-specific implementation
 ├── examples/                 # Example sketches
 ├── library.json             # PlatformIO library manifest

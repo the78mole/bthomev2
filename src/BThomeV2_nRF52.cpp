@@ -5,19 +5,19 @@
 
 #if defined(NRF52) || defined(NRF52840_XXAA) || defined(ARDUINO_NRF52_ADAFRUIT)
 
-#include "BThomeV2_nRF52.h"
+#include "BThomeV2.h"
 
 // BThome V2 Service UUID: 0000fcd2-0000-1000-8000-00805f9b34fb
 const uint16_t BTHOME_SVC_UUID = 0xFCD2;
 
-BThomeV2_nRF52::BThomeV2_nRF52() {
+BThomeV2Device::BThomeV2Device() {
 }
 
-BThomeV2_nRF52::~BThomeV2_nRF52() {
+BThomeV2Device::~BThomeV2Device() {
     end();
 }
 
-bool BThomeV2_nRF52::begin(const char* devName) {
+bool BThomeV2Device::begin(const char* devName) {
     if (initialized) {
         return true;
     }
@@ -42,7 +42,7 @@ bool BThomeV2_nRF52::begin(const char* devName) {
     return true;
 }
 
-void BThomeV2_nRF52::end() {
+void BThomeV2Device::end() {
     if (!initialized) {
         return;
     }
@@ -51,7 +51,7 @@ void BThomeV2_nRF52::end() {
     initialized = false;
 }
 
-bool BThomeV2_nRF52::startAdvertising() {
+bool BThomeV2Device::startAdvertising() {
     if (!initialized) {
         return false;
     }
@@ -98,14 +98,14 @@ bool BThomeV2_nRF52::startAdvertising() {
     return false;
 }
 
-void BThomeV2_nRF52::stopAdvertising() {
+void BThomeV2Device::stopAdvertising() {
     if (initialized && advertising) {
         Bluefruit.Advertising.stop();
         advertising = false;
     }
 }
 
-bool BThomeV2_nRF52::setMAC(const uint8_t mac[6]) {
+bool BThomeV2Device::setMAC(const uint8_t mac[6]) {
     if (!initialized) {
         return false;
     }
@@ -123,7 +123,7 @@ bool BThomeV2_nRF52::setMAC(const uint8_t mac[6]) {
     return (Bluefruit.setAddr(reversedMAC) == 0);
 }
 
-bool BThomeV2_nRF52::updateAdvertising() {
+bool BThomeV2Device::updateAdvertising() {
     if (!initialized) {
         return false;
     }

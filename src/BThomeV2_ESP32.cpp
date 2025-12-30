@@ -5,19 +5,19 @@
 
 #if defined(ESP32)
 
-#include "BThomeV2_ESP32.h"
+#include "BThomeV2.h"
 
 // BThome V2 Service UUID: 0000fcd2-0000-1000-8000-00805f9b34fb
 const uint16_t BTHOME_SERVICE_UUID_16 = 0xFCD2;
 
-BThomeV2_ESP32::BThomeV2_ESP32() {
+BThomeV2Device::BThomeV2Device() {
 }
 
-BThomeV2_ESP32::~BThomeV2_ESP32() {
+BThomeV2Device::~BThomeV2Device() {
     end();
 }
 
-bool BThomeV2_ESP32::begin(const char* devName) {
+bool BThomeV2Device::begin(const char* devName) {
     if (initialized) {
         return true;
     }
@@ -43,7 +43,7 @@ bool BThomeV2_ESP32::begin(const char* devName) {
     return true;
 }
 
-void BThomeV2_ESP32::end() {
+void BThomeV2Device::end() {
     if (!initialized) {
         return;
     }
@@ -53,7 +53,7 @@ void BThomeV2_ESP32::end() {
     initialized = false;
 }
 
-bool BThomeV2_ESP32::startAdvertising() {
+bool BThomeV2Device::startAdvertising() {
     if (!initialized) {
         return false;
     }
@@ -87,13 +87,13 @@ bool BThomeV2_ESP32::startAdvertising() {
     return pAdvertising->start();
 }
 
-void BThomeV2_ESP32::stopAdvertising() {
+void BThomeV2Device::stopAdvertising() {
     if (initialized && pAdvertising) {
         pAdvertising->stop();
     }
 }
 
-bool BThomeV2_ESP32::setMAC(const uint8_t mac[6]) {
+bool BThomeV2Device::setMAC(const uint8_t mac[6]) {
     if (!initialized) {
         // Need to set MAC before initialization
         // NimBLE doesn't easily support custom MAC after init
@@ -106,7 +106,7 @@ bool BThomeV2_ESP32::setMAC(const uint8_t mac[6]) {
     return false;
 }
 
-bool BThomeV2_ESP32::updateAdvertising() {
+bool BThomeV2Device::updateAdvertising() {
     if (!initialized) {
         return false;
     }

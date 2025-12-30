@@ -220,11 +220,76 @@ private:
     void encodeUInt24(uint32_t value, std::vector<uint8_t>& data);
 };
 
-// Platform-specific includes
+// Platform-specific device class
 #if defined(ESP32)
-    #include "BThomeV2_ESP32.h"
+
+#include <NimBLEDevice.h>
+#include <NimBLEAdvertising.h>
+
+/**
+ * @brief Platform-specific implementation of BThome V2
+ * 
+ * This class provides the concrete implementation for the current platform.
+ * On ESP32, it uses NimBLE stack. On nRF52, it uses Adafruit Bluefruit.
+ */
+class BThomeV2Device : public BThomeV2 {
+public:
+    BThomeV2Device();
+    virtual ~BThomeV2Device();
+    
+    bool begin(const char* deviceName) override;
+    void end() override;
+    bool startAdvertising() override;
+    void stopAdvertising() override;
+    bool setMAC(const uint8_t mac[6]) override;
+    
+    /**
+     * @brief Update advertising data with current measurements
+     * Call this after adding/changing measurements to update the advertisement
+     * @return true if advertising data was updated successfully
+     */
+    bool updateAdvertising();
+    
+private:
+    NimBLEAdvertising* pAdvertising = nullptr;
+    char deviceName[32] = "BThome";
+    bool initialized = false;
+};
+
 #elif defined(NRF52) || defined(NRF52840_XXAA) || defined(ARDUINO_NRF52_ADAFRUIT)
-    #include "BThomeV2_nRF52.h"
+
+#include <bluefruit.h>
+
+/**
+ * @brief Platform-specific implementation of BThome V2
+ * 
+ * This class provides the concrete implementation for the current platform.
+ * On ESP32, it uses NimBLE stack. On nRF52, it uses Adafruit Bluefruit.
+ */
+class BThomeV2Device : public BThomeV2 {
+public:
+    BThomeV2Device();
+    virtual ~BThomeV2Device();
+    
+    bool begin(const char* deviceName) override;
+    void end() override;
+    bool startAdvertising() override;
+    void stopAdvertising() override;
+    bool setMAC(const uint8_t mac[6]) override;
+    
+    /**
+     * @brief Update advertising data with current measurements
+     * Call this after adding/changing measurements to update the advertisement
+     * @return true if advertising data was updated successfully
+     */
+    bool updateAdvertising();
+    
+private:
+    char deviceName[32] = "BThome";
+    bool initialized = false;
+    bool advertising = false;
+};
+
 #else
     #error "Unsupported platform. This library supports ESP32 and nRF52 only."
 #endif
