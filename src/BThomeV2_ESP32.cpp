@@ -35,9 +35,9 @@ bool BThomeV2Device::begin(const char* devName) {
     }
     
     // Configure advertising
-    pAdvertising->setScanResponse(false);
-    pAdvertising->setMinPreferred(0x06); // 7.5ms min interval
-    pAdvertising->setMaxPreferred(0x12); // 22.5ms max interval
+    // Note: setScanResponse, setMinPreferred, setMaxPreferred removed in NimBLE 2.x
+    pAdvertising->setMinInterval(0x06); // 7.5ms min interval
+    pAdvertising->setMaxInterval(0x12); // 22.5ms max interval
     
     initialized = true;
     return true;
@@ -69,12 +69,17 @@ bool BThomeV2Device::startAdvertising() {
     // Clear previous advertising data
     pAdvertising->reset();
     
-    // Set advertising flags
-    pAdvertising->setAdvertisementType(BLE_GAP_CONN_MODE_NON);
+    // Set advertising as non-connectable
+    // Note: setAdvertisementType removed in NimBLE 2.x
+    // Use setConnectableMode instead
+    pAdvertising->setConnectableMode(BLE_GAP_CONN_MODE_NON);
     
     // Add service UUID
     NimBLEAdvertisementData advData;
     advData.setCompleteServices(NimBLEUUID(BTHOME_SERVICE_UUID_16));
+    
+    // Add device name
+    advData.setName(deviceName);
     
     // Add service data
     std::string serviceDataStr((char*)serviceData, dataSize);

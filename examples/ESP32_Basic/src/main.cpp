@@ -24,40 +24,48 @@ uint8_t battery = 100;
 
 void setup() {
   Serial.begin(115200);
-  delay(1000);
+  delay(2000);
   
+  Serial.println("\n\n=================================");
   Serial.println("BThome V2 ESP32 Example");
-  Serial.println("========================");
+  Serial.println("=================================");
   
   // Initialize BThome V2
-  if (!bthome.begin("BThome-ESP32")) {
-    Serial.println("Failed to initialize BThome!");
+  Serial.println("Initializing BThome...");
+  if (!bthome.begin("MAKE-BThome-Basic")) {
+    Serial.println("ERROR: Failed to initialize BThome!");
     while (1) delay(100);
   }
   
-  Serial.println("BThome initialized successfully");
+  Serial.println("SUCCESS: BThome initialized");
   
   // Add initial sensor readings
+  Serial.println("Adding sensor measurements...");
   bthome.addTemperature(temperature);
   bthome.addHumidity(humidity);
   bthome.addBattery(battery);
+  Serial.println("Measurements added");
   
   // Start advertising
+  Serial.println("Starting BLE advertising...");
   if (bthome.startAdvertising()) {
-    Serial.println("Started advertising BThome V2 data");
+    Serial.println("SUCCESS: BLE advertising started!");
+    Serial.println("Device should now be visible in nRF Connect");
   } else {
-    Serial.println("Failed to start advertising");
+    Serial.println("ERROR: Failed to start advertising!");
+    while (1) delay(100);
   }
   
   Serial.println("\nAdvertising sensor data:");
   Serial.printf("  Temperature: %.1f °C\n", temperature);
   Serial.printf("  Humidity: %.1f %%\n", humidity);
   Serial.printf("  Battery: %d %%\n", battery);
+  Serial.println("=================================\n");
 }
 
 void loop() {
   // Wait 30 seconds
-  delay(30000);
+  delay(3000);
   
   // Simulate sensor value changes
   temperature += (random(-100, 100) / 100.0);
