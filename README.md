@@ -1,7 +1,26 @@
 # BThome V2 Library
 
+[![PlatformIO Registry](https://badges.registry.platformio.org/packages/the78mole/library/BThomeV2.svg)](https://registry.platformio.org/libraries/the78mole/BThomeV2)
+[![PyPI version](https://badge.fury.io/py/bthome-logger.svg)](https://badge.fury.io/py/bthome-logger)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/release/the78mole/bthomev2.svg)](https://github.com/the78mole/bthomev2/releases)
+[![GitHub issues](https://img.shields.io/github/issues/the78mole/bthomev2.svg)](https://github.com/the78mole/bthomev2/issues)
+
 A PlatformIO/Arduino library for implementing the BThome V2 protocol on ESP32
 and nRF52 platforms.
+
+> [!CAUTION]
+> **nRF52 Implementation Currently Broken**
+>
+> The nRF52 platform implementation is currently non-functional due to runtime
+> issues with Bluefruit initialization on the Seeed XIAO nRF52840. The code
+> compiles successfully but hangs during `Bluefruit.begin()` at runtime.
+>
+> **Status:** ✅ ESP32 fully working | ❌ nRF52 broken (runtime hang)
+>
+> We are actively investigating this issue. If you have experience with
+> Adafruit Bluefruit on Seeed XIAO boards, please check the
+> [open issues](https://github.com/the78mole/bthomev2/issues).
 
 ## Overview
 
@@ -13,8 +32,10 @@ compatible devices on different hardware platforms.
 
 ### Supported Platforms
 
-- **ESP32** - Uses ArduinoBLE library for reliable BLE operations
-- **nRF52** - Uses Adafruit Bluefruit library (Adafruit nRF52)
+- **ESP32** ✅ - Uses ArduinoBLE library for reliable
+  BLE operations (fully tested and working)
+- **nRF52** ❌ - Uses Adafruit Bluefruit library
+  (currently broken - runtime hang issue)
 
 ## Features
 

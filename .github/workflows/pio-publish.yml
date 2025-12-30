@@ -27,37 +27,55 @@ jobs:
       with:
         python-version: "3.11"
 
-    - name: Install PlatformIO
+    - name: Install PlatformIO and Jinja2
       run: |
-        pip install --upgrade platformio
+        pip install --upgrade platformio jinja2
 
-    - name: Update library.json version
+    - name: Generate library files from templates
       run: |
-        # Update version in library.json
-        sed -i 's/"version": ".*"/"version": "${{ inputs.version }}"/' library.json
+        python3 << 'EOF'
+        import jinja2
+        import sys
 
-        # Update version in library.properties
-        sed -i 's/version=.*/version=${{ inputs.version }}/' library.properties
+        version = "${{ inputs.version }}"
 
-        echo "Updated library.json and library.properties to version ${{ inputs.version }}"
+        # Render library.json
+        with open('library.json.j2', 'r') as f:
+            template = jinja2.Template(f.read())
+        with open('library.json', 'w') as f:
+            f.write(template.render(version=version))
+
+        # Render library.properties
+        with open('library.properties.j2', 'r') as f:
+            template = jinja2.Template(f.read())
+        with open('library.properties', 'w') as f:
+            f.write(template.render(version=version))
+
+        print(f"✅ Generated library.json and library.properties with version {version}")
+        EOF
 
     - name: Commit version updates
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add library.json library.properties
-        git diff --staged --quiet || git commit -m "chore: bump version to ${{ inputs.version }}"
-        git push
-
-        echo "Version files updated and committed"
+        if git diff --staged --quiet; then
+          echo "ℹ️ No changes to commit"
+        else
+          git commit -m "chore: update library metadata to v${{ inputs.version }} [skip ci]"
+          git push
+          echo "✅ Version files updated and committed"
+        fi
 
     - name: Publish to PlatformIO
       env:
         PLATFORMIO_AUTH_TOKEN: ${{ secrets.PLATFORMIO_AUTH_TOKEN }}
       run: |
-        # PlatformIO automatically indexes public GitHub repos with tags
-        # Manual publish using the token
+        # Publish to PlatformIO Registry
+        # The registry will index the repository and use the latest git tag
         pio pkg publish --owner the78mole --non-interactive
+
+        echo "✅ Published to PlatformIO Registry"
 
     - name: Add PlatformIO Summary
       run: |
