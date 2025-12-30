@@ -72,15 +72,19 @@ bool BThomeV2Device::startAdvertising() {
   // Use setConnectableMode instead
   pAdvertising->setConnectableMode(BLE_GAP_CONN_MODE_NON);
 
-  // Add service UUID
+  // Build service data string according to BThome V2 spec
+  // Format: UUID (16-bit, little endian) + device info + measurements
+  std::string serviceDataStr;
+  serviceDataStr.append((char*)serviceData, dataSize);
+
+  // Add service UUID and device name
   NimBLEAdvertisementData advData;
   advData.setCompleteServices(NimBLEUUID(BTHOME_SERVICE_UUID_16));
-
-  // Add device name
   advData.setName(deviceName);
 
-  // Add service data
-  std::string serviceDataStr((char*)serviceData, dataSize);
+  // Set service data according to BThome V2 specification
+  // The UUID is automatically prepended by NimBLE in little endian format (0xD2
+  // 0xFC)
   advData.setServiceData(NimBLEUUID(BTHOME_SERVICE_UUID_16), serviceDataStr);
 
   // Set the advertising data

@@ -85,8 +85,8 @@ BTHOME_OBJECTS = {
     0x14: {"name": "Moisture", "factor": 0.01, "unit": "%", "size": 2},
 }
 
-# BThome Company ID
-BTHOME_COMPANY_ID = 0xFCD2
+# BThome Service UUID (16-bit UUID: 0xFCD2)
+BTHOME_SERVICE_UUID = "0000fcd2-0000-1000-8000-00805f9b34fb"
 
 
 def parse_bthome_packet(data: bytes) -> dict:
@@ -199,27 +199,27 @@ def advertisement_callback(device: BLEDevice, advertisement_data: AdvertisementD
     if device.name and DEVICE_NAME_FILTER not in device.name:
         return
 
-    # Only show devices with manufacturer data
-    if not advertisement_data.manufacturer_data:
+    # Only show devices with service data
+    if not advertisement_data.service_data:
         return
 
-    # Check if it's BThome data (Company ID 0xFCD2 = 64722)
-    if BTHOME_COMPANY_ID not in advertisement_data.manufacturer_data:
-        # Show other manufacturer data only in verbose mode
+    # Check if it's BThome data (Service UUID 0xFCD2)
+    if BTHOME_SERVICE_UUID not in advertisement_data.service_data:
+        # Show other service data only in verbose mode
         if VERBOSE:
-            for company_id, data in advertisement_data.manufacturer_data.items():
+            for service_uuid, data in advertisement_data.service_data.items():
                 hex_data = " ".join(f"{b:02x}" for b in data)
                 print(
                     f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
                     f"{Colors.BLUE}{device.name}{Colors.RESET} "
                     f"({Colors.GRAY}{device.address}{Colors.RESET}) "
-                    f"| Company ID: 0x{company_id:04X} | Data: {hex_data} | "
+                    f"| Service UUID: {service_uuid} | Data: {hex_data} | "
                     f"RSSI: {advertisement_data.rssi} dBm"
                 )
         return
 
     # BThome data found!
-    raw_data = advertisement_data.manufacturer_data[BTHOME_COMPANY_ID]
+    raw_data = advertisement_data.service_data[BTHOME_SERVICE_UUID]
     hex_data = " ".join(f"{b:02x}" for b in raw_data)
 
     # Header with device name and timestamp
