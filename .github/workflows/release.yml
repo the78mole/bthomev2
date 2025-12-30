@@ -10,7 +10,7 @@ on:
       - 'examples/**'
       - 'library.json'
       - 'library.properties'
-      - '.github/workflows/release.yml'
+      - '.github/workflows/*.yml'
   workflow_dispatch:
     inputs:
       publish_target:
