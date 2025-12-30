@@ -45,16 +45,28 @@ Enhancement suggestions are welcome! Please create an issue with:
 
 ### Platform Support
 
+> **Note:** The nRF52 implementation is currently broken (runtime hang at
+> `Bluefruit.begin()`). Focus development efforts on ESP32 until the nRF52
+> issue is resolved.
+
 When adding new features:
 
-- Ensure compatibility with both ESP32 and nRF52 platforms
+- Ensure compatibility with ESP32 platform (nRF52 currently non-functional)
 - Use platform-specific implementations in the respective files
 - Keep the base class platform-agnostic
 - Test on actual hardware when possible
+- Help with nRF52 debugging is especially welcome!
 
 ### Testing
 
 - Test new features on real hardware
+- Use **bthome-logger** to verify BLE advertisements:
+
+  ```bash
+  uv tool install bthome-logger
+  bthome-logger -f "Your-Device-Name"
+  ```
+
 - Verify BLE advertising with a scanner app (nRF Connect, LightBlue, etc.)
 - Check compatibility with Home Assistant or other BThome V2 consumers
 - Include example sketches for new features
@@ -79,14 +91,22 @@ When implementing new sensor types or features:
 
 ```text
 bthomev2/
+├── .github/workflows/        # CI/CD workflows
+│   ├── release.yml          # Main release orchestration
+│   ├── pypi-publish.yml     # bthome-logger publishing
+│   └── pio-publish.yml      # PlatformIO library publishing
 ├── src/                      # Library source files
 │   ├── BThomeV2.h           # Base class header and unified device interface
 │   ├── BThomeV2.cpp         # Base class implementation
 │   ├── BThomeV2_ESP32.cpp   # ESP32-specific implementation
 │   └── BThomeV2_nRF52.cpp   # nRF52-specific implementation
+├── tools/                    # Supporting tools
+│   └── bthome_logger.py     # Python tool for testing BLE advertisements
 ├── examples/                 # Example sketches
-├── library.json             # PlatformIO library manifest
-├── library.properties       # Arduino library manifest
+├── library.json.j2          # PlatformIO library manifest template (Jinja2)
+├── library.properties.j2    # Arduino library manifest template (Jinja2)
+├── library.json             # Generated manifest (version 0.0.0-dev)
+├── library.properties       # Generated manifest (version 0.0.0-dev)
 └── README.md               # Main documentation
 ```
 
@@ -114,6 +134,32 @@ void BThomeV2::addVolume(float volume) {
     measurements.push_back(BThomeMeasurement(VOLUME, data));
 }
 ```
+
+## Release Process
+
+Releases are automated via GitHub Actions:
+
+1. **Semantic Versioning**: Commit messages determine version bumps
+   - `feat:` → minor version bump (0.x.0)
+   - `fix:` → patch version bump (0.0.x)
+   - `BREAKING CHANGE:` → major version bump (x.0.0)
+
+2. **Automatic Publishing**: On push to `main` (with changes in relevant paths):
+   - Version is calculated from commit history
+   - GitHub Release is created with tag
+   - bthome-logger is published to PyPI
+   - BThomeV2 library is published to PlatformIO Registry
+   - Both packages receive the same version number
+
+3. **Template System**:
+   - `library.json` and `library.properties` are generated from `.j2` templates
+   - Repository contains `0.0.0-dev` versions
+   - Workflows generate actual versions during release (not committed)
+
+4. **Manual Testing**: Before merging to `main`:
+   - Test changes on ESP32 hardware
+   - Verify with bthome-logger
+   - Update examples if API changes
 
 ## Questions?
 
