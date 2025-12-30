@@ -1,18 +1,28 @@
 /**
  * @file BThomeV2_ESP32.cpp
- * @brief ESP32 implementation of BThome V2 using NimBLE
+ * @brief ESP32 implementation of BThome V2 using ArduinoBLE and
+ * BTHomeV2-Arduino library
  */
 
 #if defined(ESP32)
 
-#include "BThomeV2.h"
+#include <ArduinoBLE.h>
 
-// BThome V2 Service UUID: 0000fcd2-0000-1000-8000-00805f9b34fb
+#include "BThomeV2.h"
+#include "BtHomeV2Device.h"
+
+// BThome V2 Service UUID
 const uint16_t BTHOME_SERVICE_UUID_16 = 0xFCD2;
 
-BThomeV2Device::BThomeV2Device() {}
+BThomeV2Device::BThomeV2Device() : btHomeDevice(nullptr) {}
 
-BThomeV2Device::~BThomeV2Device() { end(); }
+BThomeV2Device::~BThomeV2Device() {
+  end();
+  if (btHomeDevice) {
+    delete btHomeDevice;
+    btHomeDevice = nullptr;
+  }
+}
 
 bool BThomeV2Device::begin(const char* devName) {
   if (initialized) {
@@ -22,20 +32,20 @@ bool BThomeV2Device::begin(const char* devName) {
   strncpy(deviceName, devName, sizeof(deviceName) - 1);
   deviceName[sizeof(deviceName) - 1] = '\0';
 
-  // Initialize NimBLE
-  NimBLEDevice::init(deviceName);
-
-  // Get the advertising instance
-  pAdvertising = NimBLEDevice::getAdvertising();
-  if (!pAdvertising) {
+  // Initialize ArduinoBLE
+  if (!BLE.begin()) {
     return false;
   }
 
-  // Configure advertising
-  // Note: setScanResponse, setMinPreferred, setMaxPreferred removed in
-  // NimBLE 2.x
-  pAdvertising->setMinInterval(0x06);  // 7.5ms min interval
-  pAdvertising->setMaxInterval(0x12);  // 22.5ms max interval
+  // Set device name and local name
+  BLE.setDeviceName(deviceName);
+  BLE.setLocalName(deviceName);
+
+  // Create BTHomeV2-Arduino device instance
+  if (btHomeDevice) {
+    delete btHomeDevice;
+  }
+  btHomeDevice = new ::BtHomeV2Device(deviceName, deviceName, false);
 
   initialized = true;
   return true;
@@ -47,82 +57,165 @@ void BThomeV2Device::end() {
   }
 
   stopAdvertising();
-  NimBLEDevice::deinit(true);
+  BLE.end();
+
+  if (btHomeDevice) {
+    delete btHomeDevice;
+    btHomeDevice = nullptr;
+  }
+
   initialized = false;
 }
 
 bool BThomeV2Device::startAdvertising() {
-  if (!initialized) {
+  if (!initialized || !btHomeDevice) {
     return false;
   }
 
-  // Build service data
-  uint8_t serviceData[31];  // Max 31 bytes for BLE advertising
-  size_t dataSize = buildServiceData(serviceData, sizeof(serviceData));
-
-  if (dataSize == 0) {
-    return false;
-  }
-
-  // Clear previous advertising data
-  pAdvertising->reset();
-
-  // Set advertising as non-connectable
-  // Note: setAdvertisementType removed in NimBLE 2.x
-  // Use setConnectableMode instead
-  pAdvertising->setConnectableMode(BLE_GAP_CONN_MODE_NON);
-
-  // Build service data string according to BThome V2 spec
-  // Format: UUID (16-bit, little endian) + device info + measurements
-  std::string serviceDataStr;
-  serviceDataStr.append((char*)serviceData, dataSize);
-
-  // Add service UUID and device name
-  NimBLEAdvertisementData advData;
-  advData.setCompleteServices(NimBLEUUID(BTHOME_SERVICE_UUID_16));
-  advData.setName(deviceName);
-
-  // Set service data according to BThome V2 specification
-  // The UUID is automatically prepended by NimBLE in little endian format (0xD2
-  // 0xFC)
-  advData.setServiceData(NimBLEUUID(BTHOME_SERVICE_UUID_16), serviceDataStr);
-
-  // Set the advertising data
-  pAdvertising->setAdvertisementData(advData);
-
-  // Start advertising
-  return pAdvertising->start();
+  return updateAdvertising();
 }
 
 void BThomeV2Device::stopAdvertising() {
-  if (initialized && pAdvertising) {
-    pAdvertising->stop();
+  if (initialized) {
+    BLE.stopAdvertise();
   }
 }
 
 bool BThomeV2Device::setMAC(const uint8_t mac[6]) {
-  if (!initialized) {
-    // Need to set MAC before initialization
-    // NimBLE doesn't easily support custom MAC after init
-    return false;
-  }
-
-  // NimBLE uses the ESP32's hardware MAC by default
-  // Custom MAC setting is complex with NimBLE and may require
-  // setting it before NimBLEDevice::init()
+  // ArduinoBLE uses the ESP32's hardware MAC by default
+  // Custom MAC setting requires platform-specific implementation
   return false;
 }
 
 bool BThomeV2Device::updateAdvertising() {
-  if (!initialized) {
+  if (!initialized || !btHomeDevice) {
     return false;
   }
 
-  // Stop current advertising
-  stopAdvertising();
+  // Clear the BTHomeV2-Arduino device's measurement data
+  btHomeDevice->clearMeasurementData();
 
-  // Start with new data
-  return startAdvertising();
+  // Add all measurements from our base class to the BTHomeV2-Arduino device
+  for (const auto& measurement : measurements) {
+    switch (measurement.objectId) {
+      case TEMPERATURE:
+        if (measurement.data.size() == 2) {
+          // Decode int16 temperature (0.01 °C resolution)
+          int16_t temp =
+              (int16_t)(measurement.data[0] | (measurement.data[1] << 8));
+          btHomeDevice->addTemperature_neg327_to_327_Resolution_0_01(temp /
+                                                                     100.0f);
+        }
+        break;
+
+      case HUMIDITY:
+        if (measurement.data.size() == 2) {
+          // Decode uint16 humidity (0.01 % resolution)
+          uint16_t hum =
+              (uint16_t)(measurement.data[0] | (measurement.data[1] << 8));
+          btHomeDevice->addHumidityPercent_Resolution_0_01(hum / 100.0f);
+        }
+        break;
+
+      case BATTERY:
+        if (measurement.data.size() == 1) {
+          btHomeDevice->addBatteryPercentage(measurement.data[0]);
+        }
+        break;
+
+      case PRESSURE:
+        if (measurement.data.size() == 3) {
+          // Decode uint24 pressure (0.01 hPa resolution)
+          uint32_t pressure =
+              (uint32_t)(measurement.data[0] | (measurement.data[1] << 8) |
+                         (measurement.data[2] << 16));
+          btHomeDevice->addPressureHpa(pressure / 100.0f);
+        }
+        break;
+
+      case ILLUMINANCE:
+        if (measurement.data.size() == 3) {
+          // Decode uint24 illuminance (0.01 lux resolution)
+          uint32_t lux =
+              (uint32_t)(measurement.data[0] | (measurement.data[1] << 8) |
+                         (measurement.data[2] << 16));
+          btHomeDevice->addIlluminanceLux(lux / 100.0f);
+        }
+        break;
+
+      case CO2:
+        if (measurement.data.size() == 2) {
+          uint16_t co2 =
+              (uint16_t)(measurement.data[0] | (measurement.data[1] << 8));
+          btHomeDevice->addCo2Ppm(co2);
+        }
+        break;
+
+      // Binary sensors
+      case BATTERY_LOW:
+        if (measurement.data.size() == 1) {
+          btHomeDevice->setBatteryState(
+              measurement.data[0] ? BATTERY_STATE_LOW : BATTERY_STATE_NORMAL);
+        }
+        break;
+
+      case MOTION:
+        if (measurement.data.size() == 1) {
+          btHomeDevice->setMotionState(measurement.data[0]
+                                           ? Motion_Sensor_Status_Detected
+                                           : Motion_Sensor_Status_Clear);
+        }
+        break;
+
+      case DOOR:
+        if (measurement.data.size() == 1) {
+          btHomeDevice->setDoorState(measurement.data[0]
+                                         ? Door_Sensor_Status_Open
+                                         : Door_Sensor_Status_Closed);
+        }
+        break;
+
+      case WINDOW:
+        if (measurement.data.size() == 1) {
+          btHomeDevice->setWindowState(measurement.data[0]
+                                           ? Window_Sensor_Status_Open
+                                           : Window_Sensor_Status_Closed);
+        }
+        break;
+
+      case BUTTON:
+        if (measurement.data.size() == 1) {
+          btHomeDevice->setButtonEvent(
+              (Button_Event_Status)measurement.data[0]);
+        }
+        break;
+
+      default:
+        // Unsupported sensor type - skip
+        break;
+    }
+  }
+
+  // Get the advertisement data from BTHomeV2-Arduino
+  uint8_t advertisementData[MAX_ADVERTISEMENT_SIZE];
+  size_t size = btHomeDevice->getAdvertisementData(advertisementData);
+
+  if (size == 0 || size > MAX_ADVERTISEMENT_SIZE) {
+    return false;
+  }
+
+  // Stop any existing advertising
+  BLE.stopAdvertise();
+
+  // Set raw advertising data
+  BLEAdvertisingData advData;
+  advData.setRawData(advertisementData, size);
+  BLE.setAdvertisingData(advData);
+
+  // Start advertising
+  BLE.advertise();
+
+  return true;
 }
 
 #endif  // ESP32

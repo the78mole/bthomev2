@@ -13,7 +13,7 @@ compatible devices on different hardware platforms.
 
 ### Supported Platforms
 
-- **ESP32** - Uses NimBLE-Arduino stack for efficient BLE operations
+- **ESP32** - Uses ArduinoBLE library for reliable BLE operations
 - **nRF52** - Uses Adafruit Bluefruit library (Adafruit nRF52)
 
 ## Features
@@ -111,7 +111,7 @@ void loop() {
 ### Platform Compatibility
 
 The code is identical for ESP32 and nRF52! The library automatically uses the
-appropriate BLE stack for your platform (NimBLE for ESP32, Bluefruit for
+appropriate BLE stack for your platform (ArduinoBLE for ESP32, Bluefruit for
 nRF52).
 
 ## API Reference
@@ -269,10 +269,10 @@ The library supports the following BThome V2 object IDs:
 
 ### ESP32
 
-- Uses NimBLE-Arduino for BLE operations
+- Uses ArduinoBLE for BLE operations
 - Supports all ESP32 variants (ESP32, ESP32-S3, ESP32-C3, etc.)
-- Custom MAC address setting is limited due to NimBLE constraints
-- Very efficient memory usage
+- Integrates BTHomeV2-Arduino library for complete BThome V2 encoding
+- Reliable BLE advertising with ArduinoBLE stack
 
 ### nRF52
 
@@ -322,6 +322,5 @@ Contributions are welcome! Please feel free to submit issues or pull requests.
 ## Credits
 
 - BThome V2 protocol: [bthome.io](https://bthome.io/)
-- ESP32 implementation inspired by: [BTHomeV2-ESP32-example](https://github.com/Chreece/BTHomeV2-ESP32-example)
-- NimBLE-Arduino: [h2zero/NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino)
+- ArduinoBLE: [arduino-libraries/ArduinoBLE](https://github.com/arduino-libraries/ArduinoBLE)
 - Adafruit nRF52: [adafruit/Adafruit_nRF52_Arduino](https://github.com/adafruit/Adafruit_nRF52_Arduino)

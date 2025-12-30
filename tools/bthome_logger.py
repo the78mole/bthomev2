@@ -83,6 +83,31 @@ BTHOME_OBJECTS = {
     0x12: {"name": "CO2", "factor": 1, "unit": "ppm", "size": 2},
     0x13: {"name": "TVOC", "factor": 1, "unit": "µg/m³", "size": 2},
     0x14: {"name": "Moisture", "factor": 0.01, "unit": "%", "size": 2},
+    0x15: {"name": "Battery Low", "factor": 1, "unit": "", "size": 1},
+    0x16: {"name": "Battery Charging", "factor": 1, "unit": "", "size": 1},
+    0x17: {"name": "CO", "factor": 1, "unit": "", "size": 1},
+    0x18: {"name": "Cold", "factor": 1, "unit": "", "size": 1},
+    0x19: {"name": "Connectivity", "factor": 1, "unit": "", "size": 1},
+    0x1A: {"name": "Door", "factor": 1, "unit": "", "size": 1},
+    0x1B: {"name": "Garage Door", "factor": 1, "unit": "", "size": 1},
+    0x1C: {"name": "Gas", "factor": 1, "unit": "", "size": 1},
+    0x1D: {"name": "Heat", "factor": 1, "unit": "", "size": 1},
+    0x1E: {"name": "Light", "factor": 1, "unit": "", "size": 1},
+    0x1F: {"name": "Lock", "factor": 1, "unit": "", "size": 1},
+    0x20: {"name": "Moisture (Binary)", "factor": 1, "unit": "", "size": 1},
+    0x21: {"name": "Motion", "factor": 1, "unit": "", "size": 1},
+    0x22: {"name": "Moving", "factor": 1, "unit": "", "size": 1},
+    0x23: {"name": "Occupancy", "factor": 1, "unit": "", "size": 1},
+    0x24: {"name": "Plug", "factor": 1, "unit": "", "size": 1},
+    0x25: {"name": "Presence", "factor": 1, "unit": "", "size": 1},
+    0x26: {"name": "Problem", "factor": 1, "unit": "", "size": 1},
+    0x27: {"name": "Running", "factor": 1, "unit": "", "size": 1},
+    0x28: {"name": "Safety", "factor": 1, "unit": "", "size": 1},
+    0x29: {"name": "Smoke", "factor": 1, "unit": "", "size": 1},
+    0x2A: {"name": "Sound", "factor": 1, "unit": "", "size": 1},
+    0x2B: {"name": "Tamper", "factor": 1, "unit": "", "size": 1},
+    0x2C: {"name": "Vibration", "factor": 1, "unit": "", "size": 1},
+    0x2D: {"name": "Window", "factor": 1, "unit": "", "size": 1},
 }
 
 # BThome Service UUID (16-bit UUID: 0xFCD2)
@@ -121,6 +146,8 @@ def parse_bthome_packet(data: bytes) -> dict:
             result["values"].append(
                 {
                     "name": f"Unbekannt (0x{object_id:02X})",
+                    "object_id": object_id,
+                    "raw_bytes": bytes(),
                     "raw_value": None,
                     "value": None,
                     "unit": "",
@@ -161,6 +188,8 @@ def parse_bthome_packet(data: bytes) -> dict:
         result["values"].append(
             {
                 "name": obj_def["name"],
+                "object_id": object_id,
+                "raw_bytes": raw_bytes,
                 "raw_value": raw_value,
                 "value": value,
                 "unit": obj_def["unit"],
@@ -262,14 +291,19 @@ def advertisement_callback(device: BLEDevice, advertisement_data: AdvertisementD
         if parsed["values"]:
             print(f"  {Colors.GRAY}Values:{Colors.RESET}")
             for val in parsed["values"]:
+                # Format raw bytes as hex
+                raw_hex = " ".join(f"{b:02x}" for b in val["raw_bytes"])
+
                 if val["unit"]:
                     value_str = f"{val['value']:.2f} {val['unit']}"
                 else:
                     value_str = f"{val['value']}"
 
                 print(
-                    f"    {Colors.BOLD}{Colors.MAGENTA}• {val['name']}{Colors.RESET}: "
-                    f"{Colors.YELLOW}{value_str}{Colors.RESET}"
+                    f"    {Colors.BOLD}{Colors.MAGENTA}• {val['name']}{Colors.RESET} "
+                    f"{Colors.GRAY}(0x{val['object_id']:02x}){Colors.RESET}: "
+                    f"{Colors.YELLOW}{value_str}{Colors.RESET} "
+                    f"{Colors.GRAY}[{raw_hex}]{Colors.RESET}"
                 )
         else:
             print(f"    {Colors.GRAY}(No decoded values){Colors.RESET}")

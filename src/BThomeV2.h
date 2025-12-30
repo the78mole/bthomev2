@@ -228,14 +228,16 @@ class BThomeV2 {
 // Platform-specific device class
 #if defined(ESP32)
 
-#include <NimBLEAdvertising.h>
-#include <NimBLEDevice.h>
+#include <ArduinoBLE.h>
+
+// Forward declaration for integrated BTHomeV2 encoding library
+class BtHomeV2Device;
 
 /**
  * @brief Platform-specific implementation of BThome V2
  *
- * This class provides the concrete implementation for the current platform.
- * On ESP32, it uses NimBLE stack. On nRF52, it uses Adafruit Bluefruit.
+ * This class provides the concrete implementation for ESP32 using ArduinoBLE
+ * and the integrated BTHomeV2 encoding library.
  */
 class BThomeV2Device : public BThomeV2 {
  public:
@@ -256,7 +258,8 @@ class BThomeV2Device : public BThomeV2 {
   bool updateAdvertising();
 
  private:
-  NimBLEAdvertising* pAdvertising = nullptr;
+  ::BtHomeV2Device*
+      btHomeDevice;  // Pointer to integrated BTHomeV2 device instance
   char deviceName[32] = "BThome";
   bool initialized = false;
 };

@@ -87,7 +87,7 @@ void updateSensors() {
   humidity += (random(-100, 100) / 100.0);
   pressure += (random(-50, 50) / 100.0);
   co2 += random(-10, 10);
-  battery = max(0, battery - (random(0, 2)));  // Slow battery drain
+  battery = max(0, (int)(battery - random(0, 2)));  // Slow battery drain
 
   // Keep values in reasonable ranges
   temperature = constrain(temperature, -20.0, 40.0);
@@ -104,17 +104,14 @@ void updateSensors() {
   Serial.printf("Motion:       %s\n", motionDetected ? "YES" : "NO");
   Serial.printf("Door:         %s\n", doorOpen ? "OPEN" : "CLOSED");
 
-  // Clear old measurements
+  // Clear old measurements and add new ones
   bthome.clearMeasurements();
 
-  // Add all measurements
   bthome.addTemperature(temperature);
   bthome.addHumidity(humidity);
   bthome.addPressure(pressure);
   bthome.addCO2(co2);
   bthome.addBattery(battery);
-
-  // Add binary sensors
   bthome.addBinarySensor(MOTION, motionDetected);
   bthome.addBinarySensor(DOOR, doorOpen);
 
