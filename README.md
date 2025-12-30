@@ -30,6 +30,26 @@ transmission of sensor data over Bluetooth Low Energy. The library abstracts
 platform-specific BLE implementations, making it easy to create BThome V2
 compatible devices on different hardware platforms.
 
+### Testing Tools
+
+For testing and debugging BThome V2 advertisements, we provide the
+**[bthome-logger](https://pypi.org/project/bthome-logger/)** Python tool. It
+can be used to monitor and decode BLE advertisements from your BThomeV2 devices:
+
+```bash
+# Install via uv (recommended)
+uv tool install bthome-logger
+
+# Monitor BLE advertisements
+bthome-logger
+
+# Filter by device name
+bthome-logger -f "My-BThome-Device"
+```
+
+The bthome-logger and BThomeV2 library are versioned together to ensure
+compatibility between the library and testing tool.
+
 ### Supported Platforms
 
 - **ESP32** ✅ - Uses ArduinoBLE library for reliable
@@ -237,7 +257,7 @@ Add a button event.
 bthome.addButtonEvent(0x01);  // Single press
 bthome.addButtonEvent(0x02);  // Double press
 bthome.addButtonEvent(0x03);  // Triple press
-bthome.addButtonEvent(0x80);  // Long press
+bthome.addButtonEvent(0x04);  // Long press
 ```
 
 #### `void addMeasurement(BThomeObjectID objectId, const std::vector<uint8_t>& data)`
@@ -320,6 +340,27 @@ The library uses the official BThome V2 service UUID **0xFCD2** for BLE advertis
 
 For more information, visit [bthome.io](https://bthome.io/).
 
+## Testing Your Device
+
+Use the **bthome-logger** tool to verify your BThome V2 device is working correctly:
+
+```bash
+# Install the tool (same version as the library)
+uv tool install bthome-logger
+
+# Start monitoring
+bthome-logger
+
+# Example output:
+# My-BThome-Device (AA:BB:CC:DD:EE:FF) RSSI: -65 dBm
+#   Temperature (0x02): 22.50 °C
+#   Humidity (0x03): 65.00 %
+#   Battery (0x01): 95 %
+```
+
+The tool decodes all BThome V2 object IDs and displays human-readable sensor
+values, making it easy to verify that your device is advertising correctly.
+
 ## Examples
 
 See the `examples/` directory for complete working PlatformIO examples:
@@ -335,6 +376,7 @@ Each example includes:
 - `platformio.ini` configuration file
 - `src/main.cpp` with fully documented code
 - Individual README with build instructions
+- Usage instructions with bthome-logger for testing
 
 ## License
 
