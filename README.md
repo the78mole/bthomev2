@@ -276,6 +276,10 @@ The library supports the following BThome V2 object IDs:
 
 ### nRF52
 
+**NOTE**
+The nRF52 implementation is not working yet due to library issues with the
+Seeed nRF52840 board.
+
 - Uses Adafruit Bluefruit library
 - Tested on Adafruit Feather nRF52840
 - Supports custom MAC address
