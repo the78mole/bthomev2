@@ -11,6 +11,11 @@ on:
         description: 'Version tag (e.g., v1.0.0)'
         required: true
         type: string
+      environment:
+        description: 'Environment to deploy to'
+        required: false
+        type: string
+        default: 'pypi'
   workflow_dispatch:
     inputs:
       version:
@@ -78,7 +83,7 @@ jobs:
 
   publish-to-testpypi:
     name: Publish to TestPyPI
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'testpypi'
+    if: inputs.environment == 'testpypi'
     needs: build
     runs-on: ubuntu-latest
 
@@ -104,9 +109,13 @@ jobs:
 
   publish-to-pypi:
     name: Publish to PyPI
-    if: github.event_name == 'workflow_call' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'pypi')
+    if: inputs.environment == 'pypi'
     needs: [build]
     runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/bthome-logger
 
     permissions:
       id-token: write  # Trusted Publishing via OIDC
