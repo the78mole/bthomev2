@@ -77,6 +77,59 @@ When adding new features:
 - Add inline documentation for new public methods
 - Update examples if the API changes
 - Include usage examples in your PR description
+- **Update Sphinx documentation** when changing API or adding features
+
+#### Sphinx Documentation
+
+The project uses Sphinx for comprehensive documentation in `docs/`:
+
+**Building Documentation Locally:**
+
+```bash
+cd docs
+
+# Build English version (default)
+./build.sh
+
+# Build German version
+./build.sh --language de
+
+# Build both languages
+./build-all.sh
+
+# Clean build
+./build.sh --clean
+```
+
+**When to Update Documentation:**
+
+- **API Changes**: Update [docs/library/api.rst](docs/library/api.rst)
+- **New Sensors**: Update [docs/library/sensors.rst](docs/library/sensors.rst)
+- **New Examples**: Update [docs/library/examples.rst](docs/library/examples.rst)
+- **Tool Changes**: Update [docs/tools/bthome-logger.rst](docs/tools/bthome-logger.rst)
+- **Workflow Changes**: Update [docs/development/workflow.rst](docs/development/workflow.rst)
+
+**Contributing Translations:**
+
+German translations are managed via `.po` files:
+
+```bash
+cd docs
+
+# Update translation templates
+uv run --with sphinx --with sphinx-intl sphinx-build -b gettext . _build/gettext
+uv run --with sphinx --with sphinx-intl sphinx-intl update -l de
+
+# Edit translation files
+# locale/de/LC_MESSAGES/*.po
+
+# Build and test
+./build.sh --language de
+```
+
+See [docs/I18N.md](docs/I18N.md) for detailed translation guidelines.
+
+**Documentation is automatically built on ReadTheDocs** for each push to `main`.
 
 ## BThome V2 Protocol
 
@@ -95,6 +148,15 @@ bthomev2/
 │   ├── release.yml          # Main release orchestration
 │   ├── pypi-publish.yml     # bthome-logger publishing
 │   └── pio-publish.yml      # PlatformIO library publishing
+├── docs/                     # Sphinx documentation
+│   ├── conf.py              # Sphinx configuration
+│   ├── index.rst            # Documentation entry point
+│   ├── library/             # Library API documentation
+│   ├── tools/               # bthome-logger documentation
+│   ├── development/         # Development workflow docs
+│   ├── locale/              # Translation files (i18n)
+│   ├── build.sh             # Build script (uses uv)
+│   └── build-all.sh         # Build all language versions
 ├── src/                      # Library source files
 │   ├── BThomeV2.h           # Base class header and unified device interface
 │   ├── BThomeV2.cpp         # Base class implementation

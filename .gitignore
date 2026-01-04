@@ -19,6 +19,7 @@ dist/
 
 # Sphinx documentation
 docs/_build/
+docs/_tmp/
 docs/_autosummary/
 docs/locale/**/*.mo
 

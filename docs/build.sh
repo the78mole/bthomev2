@@ -44,19 +44,21 @@ done
 
 # Clean if requested
 if [ "$CLEAN" = true ]; then
-    echo -e "${BLUE}Cleaning build directory...${NC}"
-    rm -rf _build/
+    echo -e "${BLUE}Cleaning build directories...${NC}"
+    rm -rf _build/ _tmp/
 fi
 
 # Build documentation
 echo -e "${BLUE}Building documentation (language: $LANGUAGE)...${NC}"
 
 if [ "$LANGUAGE" = "de" ]; then
-    uv run --with sphinx --with sphinx-rtd-theme --with myst-parser --with sphinx-intl sphinx-build -b html -D language=de . _build/html/de
+    uv run --with sphinx --with sphinx-rtd-theme --with myst-parser --with sphinx-intl sphinx-build -b html -d _tmp/.doctrees -D language=de . _build/html/de
+    echo ""
     echo -e "${GREEN}✓ German documentation built successfully${NC}"
     echo -e "Open: file://$(pwd)/_build/html/de/index.html"
 else
-    uv run --with sphinx --with sphinx-rtd-theme --with myst-parser --with sphinx-intl sphinx-build -b html . _build/html
+    uv run --with sphinx --with sphinx-rtd-theme --with myst-parser --with sphinx-intl sphinx-build -b html -d _tmp/.doctrees . _build/html
+    echo ""
     echo -e "${GREEN}✓ English documentation built successfully${NC}"
     echo -e "Open: file://$(pwd)/_build/html/index.html"
 fi

@@ -32,8 +32,8 @@ done
 
 # Clean if requested
 if [ "$CLEAN" = true ]; then
-    echo -e "${YELLOW}Cleaning build directory...${NC}"
-    rm -rf _build
+    echo -e "${YELLOW}Cleaning build directories...${NC}"
+    rm -rf _build _tmp
     echo ""
 fi
 
