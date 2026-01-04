@@ -4,6 +4,7 @@
 [![PyPI version](https://badge.fury.io/py/bthome-logger.svg)](https://badge.fury.io/py/bthome-logger)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/the78mole/bthomev2.svg)](https://github.com/the78mole/bthomev2/releases)
+[![Documentation Status](https://readthedocs.org/projects/bthomev2/badge/?version=latest)](https://bthomev2.readthedocs.io/en/latest/?badge=latest)
 [![GitHub issues](https://img.shields.io/github/issues/the78mole/bthomev2.svg)](https://github.com/the78mole/bthomev2/issues)
 
 A PlatformIO/Arduino library for implementing the BThome V2 protocol on ESP32
