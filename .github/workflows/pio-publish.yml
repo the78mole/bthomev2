@@ -17,6 +17,10 @@ jobs:
     name: Publish to PlatformIO Registry
     runs-on: ubuntu-latest
 
+    environment:
+      name: platformio
+      url: https://registry.platformio.org/libraries/the78mole/BThomeV2
+
     steps:
     - uses: actions/checkout@v4
       with:
