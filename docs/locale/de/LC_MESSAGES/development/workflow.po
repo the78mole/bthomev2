@@ -1,0 +1,830 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 53141812572548bc9d44b090c58ceaf0
+msgid "Development Workflow"
+msgstr ""
+
+#: f2f1374ef3b347cd9c1716944d43b0ec
+msgid ""
+"This document describes the complete development workflow for the "
+"BThomeV2 project, including repository structure, testing, versioning, "
+"and automated releases."
+msgstr ""
+
+#: b8c0621fe83d4710b057d6b0a1daab22
+msgid "Repository Structure"
+msgstr ""
+
+#: 4570680f6c5d497b9c414b827c610ff9
+msgid ""
+"The project is organized as a monorepo containing both the C++ library "
+"and Python testing tool:"
+msgstr ""
+
+#: 2c0b2c8ae3784d89ba9cd2c7524fb57c
+msgid "Development Setup"
+msgstr ""
+
+#: 78610f4ec93348e48ffcdee801754e35
+msgid "Prerequisites"
+msgstr ""
+
+#: 30d67391e550438c85bd00c9a96381b1
+msgid "**For C++ Library:**"
+msgstr ""
+
+#: 8e8321894bf4406a9f6401f5e2183033
+msgid "PlatformIO Core"
+msgstr ""
+
+#: 9daf17730347458c881d1028a59dc460
+msgid "ESP32 board (for testing)"
+msgstr ""
+
+#: 0a5e7c2e39cd41d4b71fc5b0e5769db1
+msgid "Serial monitor tool"
+msgstr ""
+
+#: bdd09839ae4143f18e9b55c08e988f43
+msgid "**For Python Tool:**"
+msgstr ""
+
+#: 637b043881334a418d25f180b1a644c2 9f3aa088cfd24974b4be03710984f995
+msgid "Python 3.8+"
+msgstr ""
+
+#: dd44574ea9e94640846d8cb1013a5775
+msgid "uv or pip"
+msgstr ""
+
+#: 0a46d794d6b143b59ee87aef87d4f84a
+msgid "Bluetooth LE adapter"
+msgstr ""
+
+#: c83abc98d6b845c1b51fef82c684478b
+msgid "**For Documentation:**"
+msgstr ""
+
+#: e936dc993ae248efbf3789eb1b4ee9b2
+msgid "Sphinx and dependencies"
+msgstr ""
+
+#: 42b6c7036f914184979ae770f04918bb
+msgid "Clone and Install"
+msgstr ""
+
+#: 4530f26ff3154b588eac2ff401da2d6d
+msgid "Testing Workflow"
+msgstr ""
+
+#: dabde662b1ad4404bec25397eb995bfd
+msgid ""
+"The project uses a unique testing approach where the C++ library and "
+"Python tool work together."
+msgstr ""
+
+#: 74de4f214edd4feb818dd93ef404a133
+msgid "Local Testing Process"
+msgstr ""
+
+#: 00c6e7c2539f47af94fe14c0fb486935
+msgid "**Develop C++ code:**"
+msgstr ""
+
+#: acc5b59dfe8e45e8aa20bb1e06928aa3
+msgid "**Compile and upload:**"
+msgstr ""
+
+#: 040205d79d764114a44a90878043ca99
+msgid "**Monitor serial output:**"
+msgstr ""
+
+#: 9247043ef4aa4d4ba22d4fa61ba9de9b
+msgid "**Test with Python tool:**"
+msgstr ""
+
+#: 69bb4b230170405785acf81360aa1a4a
+msgid "**Verify functionality:**"
+msgstr ""
+
+#: 9b424f86adcc4b799a163eb30f75187c
+msgid "Check sensor values appear correctly"
+msgstr ""
+
+#: 2e024decf4b347d0942a420c220f136e
+msgid "Verify RSSI signal strength"
+msgstr ""
+
+#: aebabe481e5e4449b78d2bbcabfd07e2
+msgid "Confirm update intervals work"
+msgstr ""
+
+#: ba7aa70c20104e31a9ad08ea0f2f2a51
+msgid "Example Test Session"
+msgstr ""
+
+#: 9a12d81040dd4640b3d5dcdda6e803fd
+msgid "Semantic Versioning"
+msgstr ""
+
+#: 962dbef4e9e246be99fa377c8d239f5a
+msgid ""
+"The project uses **Semantic Versioning** (SemVer) with **Conventional "
+"Commits**."
+msgstr ""
+
+#: 0eadc808665245cba4f7e79732abecca
+msgid "Version Format"
+msgstr ""
+
+#: 0dd6228e7ae54f688814c71531bb7f70
+msgid "``MAJOR.MINOR.PATCH``"
+msgstr ""
+
+#: 649ae09e9dc14a9ebea4f2810c40d678
+msgid "**MAJOR:** Breaking changes (e.g., API changes)"
+msgstr ""
+
+#: fef699f17e9a4f99947af89ffe703b6b
+msgid "**MINOR:** New features (backward compatible)"
+msgstr ""
+
+#: fe203146e3aa40158b529dfeff538043
+msgid "**PATCH:** Bug fixes (backward compatible)"
+msgstr ""
+
+#: c033146e07874920abf8da205876f62f
+msgid "Commit Message Format"
+msgstr ""
+
+#: f71c3f1ea33a4ff4bf520440dbc180c0
+msgid "**Types:**"
+msgstr ""
+
+#: 477069451b6a4e8caee09c701836aeb2
+msgid "``feat:`` - New feature → **MINOR version bump**"
+msgstr ""
+
+#: 082c1c79e4c84d96b7819fa113dc2dcf
+msgid "``fix:`` - Bug fix → **PATCH version bump**"
+msgstr ""
+
+#: 4ad26fa7b74547ca87b0c6a1e5aad199
+msgid "``feat!:`` or ``fix!:`` - Breaking change → **MAJOR version bump**"
+msgstr ""
+
+#: 7c03b1e097d94b3793301f82021fc50e
+msgid "``docs:`` - Documentation only → **No version bump**"
+msgstr ""
+
+#: acaca67c828e437db27dedbc355b09e8
+msgid "``chore:`` - Maintenance → **No version bump**"
+msgstr ""
+
+#: 9596707353324ebe84223bb38909a3c8
+msgid "``refactor:`` - Code restructuring → **No version bump**"
+msgstr ""
+
+#: 314859eac5b748b4bea37fdb9ab7ee0e
+msgid "``test:`` - Tests → **No version bump**"
+msgstr ""
+
+#: d899cdcbb0814f988d33de0c75aaeec4
+msgid "Examples"
+msgstr ""
+
+#: 413ec5ee49fb47118e7c3e0877dd4664
+msgid "**New feature (minor):**"
+msgstr ""
+
+#: 17d9c0b744834f26855e61b895dea9d9
+msgid "**Bug fix (patch):**"
+msgstr ""
+
+#: 17b10d4baa3748f5a20cc1ebac45af51
+msgid "**Breaking change (major):**"
+msgstr ""
+
+#: c8e687fb3930417db1c6d9a8d6875867
+msgid "Automated Release Process"
+msgstr ""
+
+#: b8c9f172679041a897b912358b8578bd
+msgid "The project uses GitHub Actions for automated releases."
+msgstr ""
+
+#: c15216642a9f4a4985a8d39835abe4e3
+msgid "Workflow Overview"
+msgstr ""
+
+#: 6719baca73d347ffaf1a66fbbe8e1d23
+msgid "Workflow Files"
+msgstr ""
+
+#: 46c36d505e604accb7a6609643d1c9ed
+msgid "**release.yml** - Main orchestration"
+msgstr ""
+
+#: 25bb32b3c6654764a4e7d169d125ba33
+msgid "Calculates semantic version"
+msgstr ""
+
+#: af73668ed4a34b0e8617d54674512819
+msgid "Creates GitHub release"
+msgstr ""
+
+#: 3bba3e374e7d4beaa0d250b65f762d8b
+msgid "Updates library files"
+msgstr ""
+
+#: 34b2727894e241bdbaf4ebd0a0c3d945
+msgid "Triggers publishing workflows"
+msgstr ""
+
+#: cecbd73171c344f087c0e4d57f8d6a40
+msgid "**pio-publish.yml** - PlatformIO publishing"
+msgstr ""
+
+#: e1172e564c3640ef886faf1f90b7dc4f
+msgid "Publishes to PlatformIO Registry"
+msgstr ""
+
+#: a22dc13a8b244488a30aac0c4dfe5cdc
+msgid "Uses ``PLATFORMIO_AUTH_TOKEN`` secret"
+msgstr ""
+
+#: e7c2c9c5bb6f4a89b6a582056c9dd059
+msgid "Tracks deployment in ``platformio`` environment"
+msgstr ""
+
+#: f7238580d5034d319be958cb3b5c0c9b
+msgid "**pypi-publish.yml** - Python package publishing"
+msgstr ""
+
+#: f55f85be1d4548149c3e904610d53ee6
+msgid "Publishes to Test PyPI (optional)"
+msgstr ""
+
+#: b4f4942b407f4230a42680d09b1f69c8
+msgid "Publishes to PyPI"
+msgstr ""
+
+#: 5c9d53805c624793bccda74d694743a9
+msgid "Uses ``PYPI_API_TOKEN`` secret"
+msgstr ""
+
+#: 0fc849962dff432dac9b6059ab9d201d
+msgid "Tracks deployment in ``pypi`` environment"
+msgstr ""
+
+#: 8743110f4f21444ea5377b8b95781e5a
+msgid "Version Template System"
+msgstr ""
+
+#: 79aaee6d1c19485ca5b0bc24858926c0
+msgid "Library files use templates to automatically update versions."
+msgstr ""
+
+#: 4bb622b9e6ae4ee5aa27d65ae622b4a7
+msgid "Templates"
+msgstr ""
+
+#: 149722f530c6438bb9c6f0a30c18feea
+msgid "**library.json.template:**"
+msgstr ""
+
+#: 1c8faffad0f54706b47d4a636f4dd934
+msgid "**library.properties.template:**"
+msgstr ""
+
+#: 8312aef4f5b447ddb7fb96f004d805f9
+msgid "Update Process"
+msgstr ""
+
+#: f025de3bf61342168e46a225d3e2ae95
+msgid "During release, the workflow:"
+msgstr ""
+
+#: 7112182e9744420cbf8935f2cc1047f8
+msgid "Reads template files"
+msgstr ""
+
+#: 587d9d59276d46138d2ab18404a5f702
+#, python-format
+msgid "Replaces ``%%VERSION%%`` with calculated version"
+msgstr ""
+
+#: f506d66b32ab4b17a8b8b219b1cb1985
+msgid "Creates ``library.json`` and ``library.properties``"
+msgstr ""
+
+#: b53700c4902b4804ae86d29c449bf301
+msgid "Commits these files"
+msgstr ""
+
+#: 698707eafeb342c1a1959edf48905fa6
+msgid "Creates release with updated files"
+msgstr ""
+
+#: b974554cfcd2402d8f14833f7f69646a
+msgid "Branch Strategy"
+msgstr ""
+
+#: 0ec1a67e358c42f9a05767a525cc4b75
+msgid "The project uses a simple branching model:"
+msgstr ""
+
+#: 1d4deec881974d33a6492c602af33a53
+msgid "Main Branch"
+msgstr ""
+
+#: b006bcd6f63c4c629e8dad48142de55e
+msgid "**Branch:** ``main``"
+msgstr ""
+
+#: 1bcb78ef2153468597df1d6ab154cdc1
+msgid "**Purpose:** Stable, released code"
+msgstr ""
+
+#: 2cf1a22558894213ba43f276702a100e
+msgid "**Protection:**"
+msgstr ""
+
+#: 29cef9a3d53d4c67976af1cf945e92c2
+msgid "Requires pull request reviews"
+msgstr ""
+
+#: 0d5a65b8e1134d0eb179aac4d8071d21
+msgid "CI checks must pass"
+msgstr ""
+
+#: 76130e3a30a34956b147d0b15b52a9b4
+msgid "No force pushes"
+msgstr ""
+
+#: ced73ec948204c4d9066200d1ff4e0f1
+msgid "**Auto-releases:** Every push to ``main`` triggers release workflow"
+msgstr ""
+
+#: 07fe919049d847d28397546ec0fd727a
+msgid "Feature Branches"
+msgstr ""
+
+#: 07fb947bf24542a5894916c61032fcc0
+msgid "**Naming:** ``feature/<description>`` or ``fix/<description>``"
+msgstr ""
+
+#: 39c12b8f5b404e708e48f178718d2323
+msgid "**Purpose:** Development of new features or fixes"
+msgstr ""
+
+#: 27521371b0ee4d1485371eb862691352
+msgid "**Merge:** Via pull request to ``main``"
+msgstr ""
+
+#: 8d52307aa8b540ffaca1a8d8c68ac3e8
+msgid "Development Branches"
+msgstr ""
+
+#: 5cefaeed81434fcd815b294fdfe665ce
+msgid "**Naming:** ``dev/<description>``"
+msgstr ""
+
+#: 2e63a126f8b045efbab94c7e458dde1e
+msgid "**Purpose:** Experimental features, major refactorings"
+msgstr ""
+
+#: 4d69c4e939154a728118970103b2f920
+msgid "**Merge:** Via pull request after thorough testing"
+msgstr ""
+
+#: 89a822a3fe2e4652991ba25f5fb37e6f
+msgid "Making Changes"
+msgstr ""
+
+#: a4cce86298044598a4f5d5328d115fab
+msgid "Step-by-Step Guide"
+msgstr ""
+
+#: d32ddf253d244f88a55ef9ba09c56cbc
+msgid "**Create feature branch:**"
+msgstr ""
+
+#: 084427a61ffb4a639c7b92045842d567
+msgid "**Make changes:**"
+msgstr ""
+
+#: 479daf30e33b41b7bb710ed6ebe8e299
+msgid "**Commit with conventional commit:**"
+msgstr ""
+
+#: 89607d1946144cf4bb08cd88ab930ba3
+msgid "**Push and create PR:**"
+msgstr ""
+
+#: 7a0a02d6c4144398952c719fe26b8642
+msgid "**Merge to main:**"
+msgstr ""
+
+#: 47d2422108934560a9702afd54c4ed32
+msgid "After review and CI passes, merge PR. This automatically:"
+msgstr ""
+
+#: dd902fdf143d49ad8221064dcbebc6c1
+msgid "Calculates new version (e.g., 0.2.0 → 0.3.0)"
+msgstr ""
+
+#: fde9eb4f56d64cb19660c7718912d8fc
+msgid "Creates release"
+msgstr ""
+
+#: 23243e4f6d1a4eddbe9ec508eabe7dda
+msgid "Publishes to PlatformIO and PyPI"
+msgstr ""
+
+#: aa8eef099e234d4292586165abee7e5e
+msgid "GitHub Secrets"
+msgstr ""
+
+#: bb32d27c4c55497cbe0f4630c6b0046d
+msgid "The workflows require these secrets:"
+msgstr ""
+
+#: 36d14cc9eb464bba9be40b931c40d773
+msgid "Required Secrets"
+msgstr ""
+
+#: 8400bb42e49343a8bb9b7124d7f7c69c
+msgid "Secret Name"
+msgstr ""
+
+#: a5d34dd523a541789d546ff1e2680af9
+msgid "Purpose"
+msgstr ""
+
+#: 572cc784e492473998d9d2c4db4d015d
+msgid "``PLATFORMIO_AUTH_TOKEN``"
+msgstr ""
+
+#: bc678d167b0a4531905595a5ccac2225
+msgid "PlatformIO Registry authentication"
+msgstr ""
+
+#: d3c238f564ed4a69b56af927f805055e
+msgid "``PYPI_API_TOKEN``"
+msgstr ""
+
+#: 752afba34b6243ebb3c98dac9ec333cb
+msgid "PyPI publishing (production)"
+msgstr ""
+
+#: 869abb495514407a92734ce4c49fc882
+msgid "``TEST_PYPI_API_TOKEN``"
+msgstr ""
+
+#: 375998934fc84bc3bb2a55ddbca14b71
+msgid "Test PyPI publishing (optional)"
+msgstr ""
+
+#: 8a7312f6eb7a48629b2d5077b38c90ce
+msgid "Setup Instructions"
+msgstr ""
+
+#: ad55706825f74b03890a1233ac742cbe
+msgid "**PlatformIO Token:**"
+msgstr ""
+
+#: f751f2a410994bcfa2d2470fb6e16c22
+msgid "**PyPI Token:**"
+msgstr ""
+
+#: ffe2394c95914699b7b86d9502ff3ff8
+msgid "Go to https://pypi.org/manage/account/token/"
+msgstr ""
+
+#: 75ab2818c6354ae2a084f6493bc4aa05
+msgid "Create token with scope: \"Entire account\""
+msgstr ""
+
+#: f04a9ea116c547ceb262e1bbe74a24b9
+msgid "Copy token (starts with ``pypi-``)"
+msgstr ""
+
+#: 505ad4c455ba4b7f9143eeee1f52f157
+msgid "Add to GitHub secrets as ``PYPI_API_TOKEN``"
+msgstr ""
+
+#: 49d63e8efa144d80b6a7abebdb00ebaa
+msgid "GitHub Environments"
+msgstr ""
+
+#: 0c4780dc2eab4afd9eff5567fbbb3023
+msgid "Deployment tracking uses environments:"
+msgstr ""
+
+#: 3bf31bb881be497c9ddc12795f066633
+msgid "``pypi`` - Tracks PyPI deployments"
+msgstr ""
+
+#: e0e2dcf91e6346839dbd7508d279a355
+msgid "``testpypi`` - Tracks Test PyPI deployments"
+msgstr ""
+
+#: 9857bc6e519a4d5d99a3cf66bab476a9
+msgid "``platformio`` - Tracks PlatformIO deployments"
+msgstr ""
+
+#: 1733e4e2fb7b49a29116341200b9e9f5
+msgid "These show up in the GitHub Actions UI with deployment history."
+msgstr ""
+
+#: 3cfea9b5b3864156b453af2bc023a615
+msgid "Local Testing Before Release"
+msgstr ""
+
+#: 8958274ac57147ca96faf6568fc6b971
+msgid "Test Library Locally"
+msgstr ""
+
+#: ea707a5fa92a47d4b5cc9d65f46810a2
+msgid "Test Python Tool Locally"
+msgstr ""
+
+#: 41fe47c31bc349a6b949f2cac6be18ae
+msgid "Test Documentation Build"
+msgstr ""
+
+#: 9a2469ceace548efa69535905eb8cc71
+msgid "Troubleshooting"
+msgstr ""
+
+#: 017a9890d636438283c2bb83873fe506
+msgid "Release Workflow Fails"
+msgstr ""
+
+#: 2529c94ff0954a8e95ee03e707945056
+msgid "**Problem:** Workflow fails at version calculation"
+msgstr ""
+
+#: 214ae84242224f18851db40df4e4757d 52f880e58f344155bf2aa9a258053afe
+#: 6b022449230f43fc917eb58a51572705 922a66dc3dd54f4da0386dc3c45be0f4
+#: e7b8aeb9fca346549902cff56815b2e8
+msgid "**Solution:**"
+msgstr ""
+
+#: 8c67dfd933c145fa8952156b76742b2f
+msgid "Check commit messages follow conventional commit format"
+msgstr ""
+
+#: e6c92d1a6b8f459a9a78710ba1aadb11
+msgid "Ensure ``paulhatch/semantic-version`` action is up to date"
+msgstr ""
+
+#: 570e84d7bd0e4c9bb63bedcb6e63b1e1
+msgid "Check workflow logs for specific errors"
+msgstr ""
+
+#: 4ac429afd1904aab967041f01c1007ef
+msgid "**Problem:** PlatformIO publish fails"
+msgstr ""
+
+#: be368935c29c48f1aff464b59946a8cc
+msgid "Verify ``PLATFORMIO_AUTH_TOKEN`` secret is set correctly"
+msgstr ""
+
+#: 78a051be8f834d638f191d73ab73cd73
+msgid "Check token hasn't expired: ``pio account token --list``"
+msgstr ""
+
+#: d647a2a3fe5440a488858843b91538ec
+msgid "Verify ``library.json`` is valid JSON"
+msgstr ""
+
+#: cc75999c1a304f249b31e2d7433e1fbe
+msgid "**Problem:** PyPI publish fails"
+msgstr ""
+
+#: 2c0964f574744324a3be41ecf431ebf6
+msgid "Check ``PYPI_API_TOKEN`` is valid"
+msgstr ""
+
+#: 22b9f59e471f404a84ad4f8a2042e972
+msgid "Verify package name ``bthome-logger`` is available"
+msgstr ""
+
+#: a60ed07595e24b1b9789cae2d3485a23
+msgid "Check ``pyproject.toml`` version matches"
+msgstr ""
+
+#: 66813dbaff0c4ef295140ec845e3e194
+msgid "Version Not Bumping"
+msgstr ""
+
+#: b586af69405c46b1baff8bde9f160b9c
+msgid "**Problem:** Push to main doesn't create new version"
+msgstr ""
+
+#: 362b6cf946a6426cbdfb951d148b5a1f
+msgid "Verify commits use conventional commit format"
+msgstr ""
+
+#: d7ffcc591ddd411099044e48adb53112
+msgid ""
+"Check commits actually change relevant files (listed in ``paths:`` in "
+"workflow)"
+msgstr ""
+
+#: 96605e88eb4d468185bbc6dc1c71e8eb
+msgid "Use ``feat:`` or ``fix:`` prefixes"
+msgstr ""
+
+#: 81d904c556204c8982021abe7beba545
+msgid "Check workflow run logs for version calculation step"
+msgstr ""
+
+#: d2e0876a647947dcab5066a4f9ce2718
+msgid "Local Testing Doesn't Match CI"
+msgstr ""
+
+#: 81120718216c4aee837afe9b560b9772
+msgid "**Problem:** Works locally but fails in CI"
+msgstr ""
+
+#: d2cf612b52b5474999579dc00ac6d775
+msgid "Ensure PlatformIO dependencies are defined in ``platformio.ini``"
+msgstr ""
+
+#: 77aa5e204e56413897659c0a5694865e
+msgid "Check Python dependencies are in ``pyproject.toml``"
+msgstr ""
+
+#: 98f1eb2dea1a45fdbbaf5748647f6887
+msgid "Verify Arduino/PlatformIO versions match CI"
+msgstr ""
+
+#: dbb222447f8746338a6e28e966ab5c8b
+msgid "Best Practices"
+msgstr ""
+
+#: 775ecc2a390440e39f717a67f2ae1f1b
+msgid "Commit Messages"
+msgstr ""
+
+#: 3f3c2552322d4fbb829f67b77a0459a8
+msgid "✅ Use conventional commit format"
+msgstr ""
+
+#: 5d0b6d84683b4f2ea0514899fa652c81
+msgid "✅ Write descriptive commit bodies"
+msgstr ""
+
+#: 467342e69f2f4459b711fc286ea2ca1e
+msgid "✅ Reference issues when fixing bugs"
+msgstr ""
+
+#: b12287cf96854c66bf4c17230694f6b7
+msgid "❌ Don't use vague messages like \"fix stuff\""
+msgstr ""
+
+#: 6b5066b64dd5449191ec2c269a782eb7
+msgid "❌ Don't mix unrelated changes in one commit"
+msgstr ""
+
+#: 91884e5641a84dfe8477574b1cec23c9
+msgid "Code Changes"
+msgstr ""
+
+#: 2775ebfb21264e108f76dee9349cc58a
+msgid "✅ Test on real hardware before committing"
+msgstr ""
+
+#: bd9f782f8dc3412d97552439179318c7
+msgid "✅ Update examples if API changes"
+msgstr ""
+
+#: 5d58dcd2cdd94b659e60c6b56e8071e3
+msgid "✅ Update documentation with new features"
+msgstr ""
+
+#: fb76b53d0e6a49b8b68482dd33ef2611
+msgid "✅ Keep commits atomic and focused"
+msgstr ""
+
+#: b25a29dfd13a438ba3b88af27a3f4909
+msgid "❌ Don't commit broken code to main"
+msgstr ""
+
+#: f18a6a23ce0f4842b50830b6c7256cd3
+msgid "❌ Don't skip testing steps"
+msgstr ""
+
+#: 22ea7abc95bb4f9db4514f708bf4cad6
+msgid "Documentation"
+msgstr ""
+
+#: ce77cfdf7a4c408d9cd4568b2e2b11e7
+msgid "✅ Update docs/ when adding features"
+msgstr ""
+
+#: da488d84c89b40338086904e7ed1fde1
+msgid "✅ Include code examples in docs"
+msgstr ""
+
+#: bc4c534341e34f6187b8faf0d7e48eec
+msgid "✅ Keep README.md synchronized"
+msgstr ""
+
+#: 8ee7d7e81f764c958f1a08258173f301
+msgid "✅ Test documentation builds locally"
+msgstr ""
+
+#: 64a9e2b7c96a4657a59ff9d31bb1a038
+msgid "❌ Don't document features that don't exist yet"
+msgstr ""
+
+#: 63e3f5386edd479da5caf82f0fa11355
+msgid "Versioning"
+msgstr ""
+
+#: 04eb3dfd010d4f3ba8bd2803d38c791b
+msgid "✅ Use semantic versioning principles"
+msgstr ""
+
+#: 571243c1602947f287bce41da26d30f4
+msgid "✅ Mark breaking changes clearly"
+msgstr ""
+
+#: f94e828bead843c6b7dd81f32fc80a74
+msgid "✅ Keep CHANGELOG.md updated"
+msgstr ""
+
+#: 8daafb74ebd44b4dbfb23909f0cb1927
+msgid "❌ Don't manually edit version numbers"
+msgstr ""
+
+#: bd361aeec6654a709d6599ad117929ac
+msgid "❌ Don't skip version bumps"
+msgstr ""
+
+#: b430c0872cb140fba05d9eafa17444d0
+msgid "Resources"
+msgstr ""
+
+#: f8f9bf1ef9be4804ad72ab150d4639b3
+msgid "`Conventional Commits <https://www.conventionalcommits.org/>`_"
+msgstr ""
+
+#: fcef8cd237df4bf79ebc9568830347a8
+msgid "`Semantic Versioning <https://semver.org/>`_"
+msgstr ""
+
+#: 8b48ab038a284a158b4cee0c1b693ad9
+msgid "`PlatformIO Registry <https://registry.platformio.org/>`_"
+msgstr ""
+
+#: b1396b382e5d4901a6c7893f8a636430
+msgid "`GitHub Actions Documentation <https://docs.github.com/actions>`_"
+msgstr ""
+
+#: cbaee70f407f487cbc74fd955108616f
+msgid "`Sphinx Documentation <https://www.sphinx-doc.org/>`_"
+msgstr ""
+
+#: 490f260b678f446daff8dccd330f90fc
+msgid "See Also"
+msgstr ""
+
+#: df18330b201f45bfafaa42626a22b7e6
+msgid ":doc:`contributing` - Contribution guidelines"
+msgstr ""
+
+#: 85815945ef7748088b509fb7ef47f483
+msgid ":doc:`release-process` - Detailed release process"
+msgstr ""
+
+#: f3e8324eda914a64b1e86e4ba5c561d0
+msgid ":doc:`../library/api` - Library API reference"
+msgstr ""
+
+#: 094ad0a948c145eba8b9e7ca033a3517
+msgid ":doc:`../tools/bthome-logger` - Python tool documentation"
+msgstr ""

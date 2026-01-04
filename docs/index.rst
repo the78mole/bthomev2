@@ -17,69 +17,68 @@ BThomeV2 - BLE Sensor Library & Testing Tool
    :target: https://bthomev2.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
-**BThomeV2** ist eine umfassende Lösung für die Entwicklung von BLE-Sensoren nach dem
-`BThome V2 <https://bthome.io/>`_ Standard. Das Projekt besteht aus zwei eng verzahnten
-Komponenten:
+**BThomeV2** is a comprehensive solution for developing BLE sensors following the
+`BThome V2 <https://bthome.io/>`_ standard. The project consists of two tightly
+integrated components:
 
-1. **BThomeV2 Arduino Library** - PlatformIO/Arduino Library für ESP32 und nRF52
-2. **bthome-logger** - Python-basiertes Testing- und Monitoring-Tool
+1. **BThomeV2 Arduino Library** - PlatformIO/Arduino library for ESP32 and nRF52
+2. **bthome-logger** - Python-based testing and monitoring tool
 
 .. warning::
    **nRF52 Implementation Currently Broken**
 
-   Die nRF52-Plattform ist derzeit nicht funktionsfähig aufgrund von Runtime-Problemen
-   mit der Bluefruit-Initialisierung. ESP32 funktioniert vollständig.
+   The nRF52 platform is currently non-functional due to runtime issues with
+   Bluefruit initialization. ESP32 works fully.
 
-   **Status:** ✅ ESP32 voll funktionsfähig | ❌ nRF52 defekt (Runtime-Hang)
+   **Status:** ✅ ESP32 fully functional | ❌ nRF52 broken (runtime hang)
 
-Überblick
----------
+Overview
+--------
 
-Die BThomeV2 Library bietet eine einheitliche Schnittstelle für BLE-Advertising im
-BThome V2-Format, das für effiziente Übertragung von Sensordaten über Bluetooth Low
-Energy konzipiert ist. Die Library abstrahiert plattformspezifische BLE-Implementierungen
-und erleichtert die Entwicklung von BThome V2-kompatiblen Geräten auf verschiedenen
-Hardware-Plattformen.
+The BThomeV2 library provides a unified interface for BLE advertising using the
+BThome V2 format, designed for efficient transmission of sensor data over Bluetooth
+Low Energy. The library abstracts platform-specific BLE implementations, making it
+easy to develop BThome V2-compatible devices on different hardware platforms.
 
-Das **bthome-logger** Tool ergänzt die Library perfekt, indem es die empfangenen
-BLE-Advertisements dekodiert und in menschenlesbarer Form anzeigt. Beide Komponenten
-werden synchron versioniert, um Kompatibilität zu gewährleisten.
+The **bthome-logger** tool complements the library perfectly by decoding received
+BLE advertisements and displaying them in human-readable format. Both components are
+versioned synchronously to ensure compatibility.
 
-Hauptmerkmale
+Main Features
 -------------
 
 Arduino Library
 ~~~~~~~~~~~~~~~
 
-* ✅ BThome V2 Protokoll-Unterstützung
-* ✅ Mehrere Sensortypen (Temperatur, Luftfeuchtigkeit, Druck, CO2, etc.)
-* ✅ Binärsensor-Unterstützung (Bewegung, Tür, Fenster, etc.)
-* ✅ Event-Unterstützung (Button-Aktionen)
-* ✅ Plattform-Abstraktion (ESP32 und nRF52)
-* ✅ Einfach zu verwendende API
-* ✅ Verschlüsselungs-Unterstützung (Framework vorhanden)
-* ✅ Stromsparendes BLE-Advertising
+* ✅ BThome V2 protocol support
+* ✅ Multiple sensor types (temperature, humidity, pressure, CO2, etc.)
+* ✅ Binary sensor support (motion, door, window, etc.)
+* ✅ Event support (button actions)
+* ✅ Platform abstraction (ESP32 and nRF52)
+* ✅ Easy-to-use API
+* ✅ Encryption support (framework in place)
+* ✅ Low-power BLE advertising
 
 Python Testing Tool
 ~~~~~~~~~~~~~~~~~~~~
 
-* ✅ BLE-Advertisement Monitoring
-* ✅ BThome V2 Dekodierung
-* ✅ Gerätefilterung
-* ✅ RSSI-Anzeige
-* ✅ Menschenlesbare Ausgabe
-* ✅ Live-Monitoring
+* ✅ BLE advertisement monitoring
+* ✅ BThome V2 decoding
+* ✅ Device filtering
+* ✅ RSSI display
+* ✅ Human-readable output
+* ✅ Live monitoring
 
-Unterstützte Plattformen
-------------------------
+Supported Platforms
+-------------------
 
-* **ESP32** ✅ - Nutzt ArduinoBLE Library (vollständig getestet und funktionsfähig)
-* **nRF52** ❌ - Nutzt Adafruit Bluefruit Library (derzeit defekt - Runtime-Hang)
+* **ESP32** ✅ - Uses ArduinoBLE library (fully tested and functional)
+* **nRF52** ❌ - Uses Adafruit Bluefruit library (currently broken - runtime hang)
 
 Quick Start
 -----------
 
-**Installation der Library:**
+**Library Installation:**
 
 .. code-block:: ini
 
@@ -90,13 +89,13 @@ Quick Start
    lib_deps =
        the78mole/BThomeV2
 
-**Installation des Testing Tools:**
+**Testing Tool Installation:**
 
 .. code-block:: bash
 
    uv tool install bthome-logger
 
-**Einfaches Beispiel:**
+**Simple Example:**
 
 .. code-block:: cpp
 
@@ -125,19 +124,19 @@ Quick Start
 
    bthome-logger -f "My-BThome-Device"
 
-Dokumentation
+Documentation
 -------------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Erste Schritte
+   :caption: Getting Started
 
    installation
    quickstart
 
 .. toctree::
    :maxdepth: 2
-   :caption: Library Dokumentation
+   :caption: Library Documentation
 
    library/api
    library/sensors
@@ -153,7 +152,7 @@ Dokumentation
 
 .. toctree::
    :maxdepth: 2
-   :caption: Entwicklung
+   :caption: Development
 
    development/workflow
    development/contributing
@@ -161,13 +160,13 @@ Dokumentation
 
 .. toctree::
    :maxdepth: 1
-   :caption: Zusätzliche Informationen
+   :caption: Additional Information
 
    changelog
    license
 
-Indices und Tabellen
-====================
+Indices and Tables
+==================
 
 * :ref:`genindex`
 * :ref:`search`

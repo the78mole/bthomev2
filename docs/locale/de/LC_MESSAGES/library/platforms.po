@@ -1,0 +1,693 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 1c9065798b8342a5a512fa82df6de4bd
+msgid "Supported Platforms"
+msgstr ""
+
+#: 602e259ef47c4c3a9e7f108ae89f973c
+msgid ""
+"The BThomeV2 library is designed to support multiple microcontroller "
+"platforms through a unified API. However, platform support varies."
+msgstr ""
+
+#: de8092c64f31471b8b752c0e870b2870
+msgid "Platform Status Overview"
+msgstr ""
+
+#: 7f3d0392ba244b3180d3c02a011c642c
+msgid "Platform"
+msgstr ""
+
+#: cda6492197054c998d1f3970bd340a69 e9adbef164d141a9a2b0f97a8d21a61c
+msgid "Status"
+msgstr ""
+
+#: e626edd3e3224d4f9de2c3e973da3f18
+msgid "Tested"
+msgstr ""
+
+#: 7533bc25c4f64ea391ebbcd83984b915 c62eefc0a7d340bab2361218623ef709
+msgid "Notes"
+msgstr ""
+
+#: 4ecbcd7fb8964559b38569d171bb5ecf c47e215a75ed4a9e8115251342a681bb
+msgid "ESP32"
+msgstr ""
+
+#: 0997e0a4d9d245a9acb6c86d27ac53b7 09eaaa034c264e638d16d67a758648c7
+#: a3f8b7d731bc443aaaebaac35ee35761 a6c734a053294dfc949fce994366bdee
+#: ea57b3f2240a4b8fb9509d3449ea5f25
+msgid "✅ Working"
+msgstr ""
+
+#: 0c7344227e8d4ffebd4c9be8200688a8 b700453e90174eda8effc334d3aa9415
+msgid "Yes"
+msgstr ""
+
+#: bd9aed954449477085b4f1b3046e715d
+msgid "Fully functional, recommended"
+msgstr ""
+
+#: 52a14a51c73d4b079b268baf92ab9d4d b0ff57de58064e72a39d3172c9b846f4
+msgid "nRF52"
+msgstr ""
+
+#: 0b6621c8c79349f397e4b472422d5820 769f0b601b0244cabb5917ed3c6fa209
+msgid "❌ Broken"
+msgstr ""
+
+#: 4cb47540368943dfba88f671dce748c4
+msgid "Runtime issues, not functional"
+msgstr ""
+
+#: 2562cbf763094ddbb84eeaa967c958a9
+msgid "ESP32 Platform"
+msgstr ""
+
+#: 36fc7de6b6684c7f8daaf2cee48df58b
+msgid "Status: ✅ **Fully Functional**"
+msgstr ""
+
+#: f169925c1b8547bcb913a8e665dad352
+msgid "The ESP32 platform is fully supported and recommended for production use."
+msgstr ""
+
+#: 3d8c9557cc384b2bb27d51dbac2197cf
+msgid "Supported Boards"
+msgstr ""
+
+#: ce3a8af3fa8f411e9e8ece1e2c3a899e
+msgid "ESP32 (original)"
+msgstr ""
+
+#: 345eff9c48e04af6adb4c8aecbf35086 ee2519aff1324467a0501de074cba435
+msgid "ESP32-S2"
+msgstr ""
+
+#: 0ea7e495f71440dc95f5c0da86677270 c171a85b37bc4b12aaab8a46210d4509
+msgid "ESP32-S3"
+msgstr ""
+
+#: 41f25eee08bc4c73890150a93330ae67 449fa082dcaf4c89989603f051f25e93
+msgid "ESP32-C3"
+msgstr ""
+
+#: 073c121f984c447497080d153e57dd76
+msgid "ESP32-C6"
+msgstr ""
+
+#: 33ffff07abb641518ab3d2cf6cf0c159
+msgid "Any ESP32-based board with Bluetooth LE support"
+msgstr ""
+
+#: 4934573324964b9081ec93dfc0bfdab8 7e9d0fd24d8e4b82a2eec5b4f86c4156
+msgid "Requirements"
+msgstr ""
+
+#: 5d74dca12f614f6bbd2acfc11531e7ab
+msgid "**PlatformIO:**"
+msgstr ""
+
+#: 1d5365bf04a344b2933ac8ec0da3a14d
+msgid "**Arduino IDE:**"
+msgstr ""
+
+#: a4842c3ce20d42a5bf14afc207b4f320
+msgid "ESP32 Board Support via Board Manager"
+msgstr ""
+
+#: 606742198f2b4b81af21bce80b4fb6b6
+msgid "Install \"BThomeV2\" library from Library Manager"
+msgstr ""
+
+#: f24850732f2845ea8bad0c85be51adec
+msgid "Dependencies"
+msgstr ""
+
+#: 5f89946409694c34abf6e7634a61c609
+msgid "ArduinoBLE (^1.5.0) - automatically installed"
+msgstr ""
+
+#: eda50babec9940b5819cd5c80ccc739d
+msgid "Features"
+msgstr ""
+
+#: dd7a14c6c67a48c5a9967434194a3b52
+msgid "✅ BLE advertising"
+msgstr ""
+
+#: 48559fe7bc7e4e49888fe848b3208faf
+msgid "✅ All sensor types supported"
+msgstr ""
+
+#: cba5ca381b5c4cccbd42b95cfdefc5fe
+msgid "✅ Custom MAC address support"
+msgstr ""
+
+#: 51e7d1ab9c884975a5465ef3ecd51985
+msgid "✅ Stable BLE stack (ArduinoBLE)"
+msgstr ""
+
+#: dec3ff90a2f84d4c81b03999e5b637c0
+msgid "✅ Low power modes (with additional configuration)"
+msgstr ""
+
+#: 52f98012fa5b4d17a35f0e7228702fc6
+msgid "✅ OTA updates supported"
+msgstr ""
+
+#: afd8caea51d246f9bbaffc5738f1f507
+msgid "✅ Serial debugging"
+msgstr ""
+
+#: a525402bd24c49eaaaff5328a9099d48
+msgid "Tested Boards"
+msgstr ""
+
+#: 430e56aac83e445097f10ef965acec4b
+msgid "Board"
+msgstr ""
+
+#: 002d63f6561f414cb305f995c54d5083
+msgid "ESP32 DevKit V1"
+msgstr ""
+
+#: a4e2cf1ce9844ae6a2546a1ca2d332c0
+msgid "Reference board, fully tested"
+msgstr ""
+
+#: cdec6b72414441ac80dc57e62ee69eeb
+msgid "Good performance"
+msgstr ""
+
+#: f50c4e13f6684563b5ef0426755ad100
+msgid "Compact, BLE only (no classic BT)"
+msgstr ""
+
+#: 2de8cc25444c4b258a8ebf45f0f9110a
+msgid "NodeMCU-32S"
+msgstr ""
+
+#: 797a68be484a4325842c4710e976423d
+msgid "Popular development board"
+msgstr ""
+
+#: 4e693379baec48b1a9dce00ca2c74575
+msgid "Example Configuration"
+msgstr ""
+
+#: 73d31354d2754ffb82ffe7b34103e4e7
+msgid "**platformio.ini:**"
+msgstr ""
+
+#: 524dcb076827404a8a6818da2884cc6b
+msgid "Performance"
+msgstr ""
+
+#: 201fbe004ff64554896e1a7d7a819717
+msgid "**Advertising interval:** Configurable, default ~100ms"
+msgstr ""
+
+#: f2468910e8e741c9a2f02a4063153af9
+msgid "**Power consumption:** ~80mA active, <1mA deep sleep"
+msgstr ""
+
+#: 1d342a16c0e3428d98cfada2db3603e7
+msgid "**Range:** 10-50 meters (depending on environment)"
+msgstr ""
+
+#: f556959663d9419b8c33fdc68fb70784
+msgid "**Update rate:** Limited by BLE, recommend 30-300 second intervals"
+msgstr ""
+
+#: 704bf808fd954388a8e91058c0e013b1
+msgid "Best Practices"
+msgstr ""
+
+#: aa4599a67c9f4c1a9c66a8b484d3821f
+msgid "**Use deep sleep for battery operation:**"
+msgstr ""
+
+#: ecd39e41bff745a78ea504ab7a8a3791
+msgid "**Monitor RSSI for range testing:**"
+msgstr ""
+
+#: bd616797615b40afa384560ed00db89c
+msgid "Use ``bthome-logger`` to check signal strength"
+msgstr ""
+
+#: 524018df1ef943bb96f10b47d2bccfbd
+msgid "**Use unique device names:**"
+msgstr ""
+
+#: 06718f88563b4341b75d7325c4c64750
+msgid "Known Issues"
+msgstr ""
+
+#: c250c6ce5b1b4557a054e28796a94486
+msgid "None currently"
+msgstr ""
+
+#: e7bf7948c92e4857aa3d35e0045ab6fa
+msgid "nRF52 Platform"
+msgstr ""
+
+#: a40db0a2f777481bbd49c2e0ab26cbb0
+msgid "Status: ❌ **Not Functional**"
+msgstr ""
+
+#: a449b957eda1454c803af769717bf037
+msgid "**Do not use nRF52 platform in production!**"
+msgstr ""
+
+#: 47310e9f607a4d7eae0c7b75f819795e
+msgid ""
+"The nRF52 implementation has critical runtime issues and is not "
+"functional. Examples will not work. Use ESP32 instead."
+msgstr ""
+
+#: bd7f4367c6044ceba09bee2ddce861be
+msgid "Affected Boards"
+msgstr ""
+
+#: d3b281511f904436864a7c6c1b0d7ba1
+msgid "Adafruit Feather nRF52840"
+msgstr ""
+
+#: 6676ee96586541fd9e20f65cd149e6c7
+msgid "Seeed XIAO nRF52840"
+msgstr ""
+
+#: ebb065cd648747ac8e0d13f5c85ab404
+msgid "Nordic nRF52832/nRF52840 based boards"
+msgstr ""
+
+#: c739ebce7e90491285a3b9304b2c27c8
+msgid "Any nRF52-based development board"
+msgstr ""
+
+#: 82d880d2ac0b4db7a58464e03eff71f5
+msgid "Issues"
+msgstr ""
+
+#: 3c0cc118425a40a69561ff69289efb38
+msgid "**Runtime hang during advertising:**"
+msgstr ""
+
+#: bff941feaab94caf9bd0e8ae41a08ee4
+msgid "Device freezes when calling ``startAdvertising()``"
+msgstr ""
+
+#: 7911db831ff64ef58fdf2a41244e72c3
+msgid "**BLE stack initialization problems:**"
+msgstr ""
+
+#: 5f0e17b8ee32468192ce5c888de73287
+msgid "Bluefruit library integration issues"
+msgstr ""
+
+#: 951edae6b22d47e8b81987fe4d58fa38
+msgid "**Memory corruption:**"
+msgstr ""
+
+#: 6bca46158801444f970a87645bd5d9f7
+msgid "Possible memory issues with service data"
+msgstr ""
+
+#: e30c876ebbd24526b335028cec70bcfd
+msgid "Current Status"
+msgstr ""
+
+#: 47d8861550e44fe288e7b1fd894d8c65
+msgid "❌ BLE advertising not working"
+msgstr ""
+
+#: 895b07c60bb2421daa04308fcf9f0d5f
+msgid "❌ Examples fail to run"
+msgstr ""
+
+#: 7573f0c8ff494addbd3e7710ca82aa92
+msgid "❌ Platform disabled in build"
+msgstr ""
+
+#: 83241a395a3e4993a97c97bea6759f6e
+msgid "❌ Not recommended for any use"
+msgstr ""
+
+#: 4db76c495262430cbc6ccb74a8f35d24
+msgid "What Doesn't Work"
+msgstr ""
+
+#: 22b7dffbeb3b4cf6b95c58d518589e1e
+msgid "Everything - the entire platform is broken"
+msgstr ""
+
+#: 92540be7805d4527b81c6c66b06e9e71
+msgid "Workaround"
+msgstr ""
+
+#: 67b0b149506044788f5295724d31ad71
+msgid ""
+"**Use ESP32 instead.** The ESP32 platform is fully functional and "
+"recommended."
+msgstr ""
+
+#: 11bea3fd388748b5a0bb63436af4278e
+msgid "If you need nRF52 specifically, consider:"
+msgstr ""
+
+#: acd3c45da764449a91fc5767b2234283
+msgid "Wait for platform fixes (check GitHub issues)"
+msgstr ""
+
+#: b617ba6a3f9c403d89a54e5b9ac1e040
+msgid "Use native Bluefruit library directly (without BThomeV2)"
+msgstr ""
+
+#: 464c86a2772d46b6ac326bf414dc1f83
+msgid "Contribute fixes to the project"
+msgstr ""
+
+#: 001f8253d14a4d129ab71baca4d2f116
+msgid "Future Plans"
+msgstr ""
+
+#: 1d2b26bb471440e59858f28147ef2f73
+msgid ""
+"The nRF52 platform may be fixed in future releases, but there is no "
+"timeline currently."
+msgstr ""
+
+#: 42ea7bbcee4c48d286ed2d209e289d9a
+msgid "Platform Comparison"
+msgstr ""
+
+#: 2f7cf08208784d08a138bd4238c5db4b
+msgid "Feature"
+msgstr ""
+
+#: 008548f4a4564bd9bc23dd1cfc3a4453
+msgid "BLE Advertising"
+msgstr ""
+
+#: 04662260892a47589ab1512253a5cc0e 0c94ea1576604a6d99164a5f212fbc39
+#: 2d0e23b4ec4f4b50a080867140502ff1 34140004d19d429db67f6c6ef4e4e625
+#: 4410d01dd25d4c069e1509326b0a5a3e 8e019f1d66934130808293c796fce8a2
+#: a3c9a3f561814ed5b5b2343c07e1537d e4c8fb5ad8274fe7b72f53c07b699e11
+msgid "✅ Yes"
+msgstr ""
+
+#: 21ebc31ec2ea444483cbf86b6cfcb899
+msgid "BLE + WiFi"
+msgstr ""
+
+#: e128dbf9728b4075823fad4df654fdf1
+msgid "❌ N/A"
+msgstr ""
+
+#: 54365fb2f5fc457ea5c9b4e9e4e2389e
+msgid "Deep Sleep"
+msgstr ""
+
+#: 681f7cc7732549859b25f99ee76b1074 91bf086a3b7342e99077b2e4c42211d7
+msgid "⚠️ Not tested"
+msgstr ""
+
+#: c8f0f0cfc1e24bc59f389d112df6342b
+msgid "OTA Updates"
+msgstr ""
+
+#: f3d23b143f2b47aab8ecc017a9c2b38f
+msgid "Cost"
+msgstr ""
+
+#: 9db5c344a8c04e169d26fc4bdeeaca7f c98f5b49df9d42549b9ecb04e3b3707d
+msgid "Low"
+msgstr ""
+
+#: c021c0f4eeef4d13bee6e293bf232e4f
+msgid "Medium"
+msgstr ""
+
+#: 73aa577f004246aaa30453b63b97369d
+msgid "Power (active)"
+msgstr ""
+
+#: cea64b5fb02f4bf9ab70a4023a580705
+msgid "~80mA"
+msgstr ""
+
+#: 1ddc742df6db475ba04268994cc05f08
+msgid "~70mA"
+msgstr ""
+
+#: 1b4a532b7da2492ab2d89b1f5d744763
+msgid "~15mA"
+msgstr ""
+
+#: 7f1a5def5cfb456d8d4cd5a25c212778
+msgid "**Recommendation**"
+msgstr ""
+
+#: 1db59a2ef6964ad4ad1b82d107c1191a b987f8abda154205aacb60d7137ae0ee
+msgid "✅ **Use**"
+msgstr ""
+
+#: 922b8f4f5810418dae10103b2522171c
+msgid "❌ **Avoid**"
+msgstr ""
+
+#: 77616e43140d47d88b837c4651951287
+msgid "Platform Abstraction"
+msgstr ""
+
+#: 72ff97140f5e49068c3b1b34ff063d4f
+msgid "The library uses platform abstraction to provide a unified API:"
+msgstr ""
+
+#: f29c82d1614645cf82c3384d815582f4
+msgid "Architecture"
+msgstr ""
+
+#: 031c6339be7d45568915c1759d7d9f0a
+msgid "Platform-Specific Code"
+msgstr ""
+
+#: a83aa66ea6914b4385143d337d0e04ed
+msgid "**ESP32 (src/BThomeV2_ESP32.cpp):**"
+msgstr ""
+
+#: 7337c9971e074f7486d320c7c6c46eec
+msgid "Uses ArduinoBLE library"
+msgstr ""
+
+#: c7276aa8e03040fc8f153d7f6636f4b4
+msgid "NimBLE stack underneath"
+msgstr ""
+
+#: 8ad7c2e2ae5848a8b0279b61b00b8ecd
+msgid "Stable and well-tested"
+msgstr ""
+
+#: 301c9ed6ae934d6bb80260d1f9a5c0e7
+msgid "**nRF52 (src/BThomeV2_nRF52.cpp):**"
+msgstr ""
+
+#: 6dcf560bec4446f19696421366e050eb
+msgid "Uses Adafruit Bluefruit library"
+msgstr ""
+
+#: d1fc678f3363465984ae184def278a18
+msgid "SoftDevice BLE stack"
+msgstr ""
+
+#: d3c506d26e434033afa50004734d89a3
+msgid "Currently broken"
+msgstr ""
+
+#: a19c9dabafc34277b77ae74c43873f76
+msgid "Compile-Time Selection"
+msgstr ""
+
+#: 341d4728fd1546c8bcf2ff161b346ebe
+msgid "Platform is selected automatically based on ``#define``:"
+msgstr ""
+
+#: 084a3c8c8fca4ed09402dc0b938e1393
+msgid "Adding New Platforms"
+msgstr ""
+
+#: 7c67c79716f54f668474ecd5ef202ff7
+msgid "To add support for a new platform:"
+msgstr ""
+
+#: 371713b3d074418ab2078b0accf86c6f
+msgid "Bluetooth LE stack"
+msgstr ""
+
+#: a4f7c55b46bf45f5be26131702ba19e3
+msgid "BLE advertising support"
+msgstr ""
+
+#: a16c73de57af4fde8f6fa943662d6d7b
+msgid "Service data capability"
+msgstr ""
+
+#: cae52f0b59fa49f685248a1a2a0af836
+msgid "Arduino framework compatibility"
+msgstr ""
+
+#: 82c6502e9592499388e9c297da7b13eb
+msgid "Steps"
+msgstr ""
+
+#: a47a7002794447bcaa081aa2136d3fb9
+msgid "**Create platform file:**"
+msgstr ""
+
+#: 2a29834fc7f44a39bdbaf96d7998230d
+msgid "``src/BThomeV2_NEWPLATFORM.cpp``"
+msgstr ""
+
+#: ecefb5f02d034bde87e477efc488b20f
+msgid "**Implement abstract interface:**"
+msgstr ""
+
+#: dd18e4377baf4f57918605864df6876d
+msgid "**Add platform detection:**"
+msgstr ""
+
+#: 9457c7fe8fce45c4b3cb38883dcbefbf
+msgid "In ``BThomeV2.h``:"
+msgstr ""
+
+#: d124b5b22b694b9eb7cdc67cb9804b2a
+msgid "**Test thoroughly:**"
+msgstr ""
+
+#: a227563d92204f96836877ae5fbda281
+msgid "Basic advertising"
+msgstr ""
+
+#: ea6d4d3fa6bc4fc4be2109ecf6f4f93f
+msgid "All sensor types"
+msgstr ""
+
+#: a6c4b5a183f14be69dce5570752931b6
+msgid "Memory usage"
+msgstr ""
+
+#: bd98eb5f4ee14eed87de88d5a724dca2
+msgid "Stability"
+msgstr ""
+
+#: 31903a392d6e48249142569088e322b2
+msgid "**Submit pull request:**"
+msgstr ""
+
+#: 93bb1be7777c4381a75b432b0094b44c
+msgid "See :doc:`../development/contributing`"
+msgstr ""
+
+#: b17fd15697334e208b98efe00bdb967b
+msgid "Recommendations"
+msgstr ""
+
+#: 14bec87a737b4aa981d30682b7698feb
+msgid "For New Projects"
+msgstr ""
+
+#: 98ccbd7c96444500a8e6c30b10d9677f
+msgid "**Use ESP32.** It's the only fully functional platform."
+msgstr ""
+
+#: e7128f6fcbb84598a19278a3d85a7008
+msgid "Recommended boards:"
+msgstr ""
+
+#: f4b25f7413d64927b11b47d75323a210
+msgid "**ESP32 DevKit V1** - Cheap, reliable"
+msgstr ""
+
+#: 39c677fc30c74ad0b689129e2fceb9e3
+msgid "**ESP32-S3** - More powerful, newer"
+msgstr ""
+
+#: 441ffdc1991d43308d22cade511ea6a9
+msgid "**ESP32-C3** - Compact, cost-effective"
+msgstr ""
+
+#: 48e50047577f4cd398822c22596f35a6
+msgid "For Existing nRF52 Projects"
+msgstr ""
+
+#: 7cfc8271f79d422e8cdac7963aa436af
+msgid "**Migrate to ESP32** or wait for fixes."
+msgstr ""
+
+#: 269fb4e44f464f38b5980c967d45525a
+msgid "For Battery-Powered Sensors"
+msgstr ""
+
+#: a30f489d05864e83bfc1be9b932214d0
+msgid "**ESP32 with deep sleep:**"
+msgstr ""
+
+#: 42c8fb7e95934444a75dd4c41c187171
+msgid "Long battery life achievable"
+msgstr ""
+
+#: e45df32e666647f69f1c35a3fa89aa42
+msgid "Wake up, measure, advertise, sleep"
+msgstr ""
+
+#: 5c956495ff94415aa247da6941a711bc
+msgid "Can run months on coin cell"
+msgstr ""
+
+#: 47afe1ca3924427f81bf2a633f69be10
+msgid "For Production"
+msgstr ""
+
+#: 1bfa3c4cd70e469abb8bb926a596e10c
+msgid "**ESP32 only.** Do not use nRF52 in production until platform is fixed."
+msgstr ""
+
+#: 5a571c395c934ec9a722223de35e99e9
+msgid "See Also"
+msgstr ""
+
+#: 245275abed64409d880c1d169f88299e
+msgid ":doc:`api` - Complete API reference"
+msgstr ""
+
+#: f7be2b06bb11462e83ec029910368fa4
+msgid ":doc:`examples` - Platform-specific examples"
+msgstr ""
+
+#: fe66dcb2b03544ae9b78a45d8cb2c65e
+msgid ":doc:`../installation` - Platform installation guides"
+msgstr ""
+
+#: b156b444084643638fd55c4d2763cf12
+msgid ":doc:`../development/workflow` - Contributing platform fixes"
+msgstr ""

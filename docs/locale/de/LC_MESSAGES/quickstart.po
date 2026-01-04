@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 077e3f475fab4a0eb84ce09fda3a81df
+msgid "Quick Start Guide"
+msgstr ""
+
+#: 1f799612362a49539c529c942ab3e8ca
+msgid ""
+"This guide walks you through creating your first BThome V2 sensor and "
+"shows you how to test it with the bthome-logger tool."
+msgstr ""
+
+#: cd74dad6674f4f829ed640ad3da9758d
+msgid "Prerequisites"
+msgstr ""
+
+#: 934fe7a2e0bc4ef88d81436193e7db52
+msgid "ESP32 board (e.g., ESP32 DevKit)"
+msgstr ""
+
+#: 97ae2ed9f1df4a288d2d98dfc68527aa
+msgid "PlatformIO installed"
+msgstr ""
+
+#: def61ce1c6b4429e8a36b75ebc47d926
+msgid "Python 3.8+ with uv or pip"
+msgstr ""
+
+#: dc965990e3384cf99e90ba7ebba3eaa3
+msgid "bthome-logger installed (see :doc:`installation`)"
+msgstr ""
+
+#: c123b8a81bec476ca365ebc3b467c376
+msgid "Step 1: Create Project"
+msgstr ""
+
+#: 75ee06c263d248dc8ccc9c846181e33c
+msgid "Create a new PlatformIO project:"
+msgstr ""
+
+#: 0819fcc55b154301a90aaafa92dfc7ae
+msgid "Step 2: Add Library"
+msgstr ""
+
+#: b4aaa3e03bb84eb382466e91f49985d9
+msgid "Edit ``platformio.ini``:"
+msgstr ""
+
+#: cd99b66dd02b482f97174d10f8b2da0e
+msgid "Step 3: Write Your First Sensor Code"
+msgstr ""
+
+#: 9d85aad55e19430fac4c6017f8010d7a
+msgid "Create ``src/main.cpp``:"
+msgstr ""
+
+#: 34d9684f83f14e1d9c2f319eb35d8bb2
+msgid "Step 4: Compile and Upload"
+msgstr ""
+
+#: 56c67ed79879425ea37fbadcc9b79d6b
+msgid "Compile the project:"
+msgstr ""
+
+#: 7d2dc11a7f344b8d87487199e6f11d38
+msgid "Upload to your ESP32:"
+msgstr ""
+
+#: 738fc1f5c4194373ac35c583b05304a8
+msgid "Monitor the serial output:"
+msgstr ""
+
+#: 1ba2aff6336e4af7bed6b206ea6f9b24
+msgid "You should see:"
+msgstr ""
+
+#: 89ef00e6c0f541aeb895cc0c931d5026
+msgid "Step 5: Test with bthome-logger"
+msgstr ""
+
+#: 8141057d7c3243268739fd61bad1fed5
+msgid "Open a new terminal and start the logger:"
+msgstr ""
+
+#: a13572425da14ee1bf44b526b2ce587c
+msgid "You should see your sensor's data:"
+msgstr ""
+
+#: 3b63f4baf2d34e10b0a5dcf25dad71d5
+msgid "Filter for your specific device:"
+msgstr ""
+
+#: cab0424ec2d94bf581e70fa562f8cfac
+msgid "Understanding the Code"
+msgstr ""
+
+#: 7ebb42ec9c454591ad48ebb0836d2f5f
+msgid "Basic Structure"
+msgstr ""
+
+#: 594e64309694417cb34861a4977295ed
+msgid "Every BThome V2 sensor program follows this pattern:"
+msgstr ""
+
+#: 29cbe4767376465c9c10981538bc21c9
+msgid "**Include the library:** ``#include <BThomeV2.h>``"
+msgstr ""
+
+#: e5bbec723b2c42adb26e7aaa7ccd531c
+msgid "**Create device object:** ``BThomeV2Device bthome;``"
+msgstr ""
+
+#: c7c30331293f4052bbc02d7b6c775d8c
+msgid "**Initialize in setup():** ``bthome.begin(\"Device-Name\")``"
+msgstr ""
+
+#: a5a7e77ba9e546e29472e1fdd80da5b0
+msgid "**Add measurements:** ``bthome.addTemperature(value)``"
+msgstr ""
+
+#: a2aea03114234116a81d0fa5e47cb050
+msgid "**Start advertising:** ``bthome.startAdvertising()``"
+msgstr ""
+
+#: 86b0eb47e07642f685411e2bcd248904
+msgid "**Update in loop():** Clear, add new values, update"
+msgstr ""
+
+#: 6f71b8f5895942b08202ff2c859bd6f0
+msgid "Measurement Updates"
+msgstr ""
+
+#: 3239956f3e32415384be594ed5ecbf90
+msgid "To update measurements:"
+msgstr ""
+
+#: e44bd116f903400e9fe161fa2258f50d
+msgid "Device Names"
+msgstr ""
+
+#: 3be19dcd99fd4353ab7f35b9f65ff6f7
+msgid "The device name appears in:"
+msgstr ""
+
+#: d211c8b4de4645bba9fca393ea3fc4d7
+msgid "Bluetooth scan results"
+msgstr ""
+
+#: da30dbb4cb444b65a9c8a7b310d23761
+msgid "bthome-logger output"
+msgstr ""
+
+#: dae255b7fdae43508961305f116d52a1
+msgid "Home Assistant device list"
+msgstr ""
+
+#: 65af405ef6f949baa8b9c3e30d1c70ff
+msgid "Choose descriptive names like:"
+msgstr ""
+
+#: fe774e8ff6fd488ea872ec530fb6dde9
+msgid "``Living-Room-Temp``"
+msgstr ""
+
+#: 2804f9bab21549aa9fbbdf9366640a07
+msgid "``Garden-Sensor``"
+msgstr ""
+
+#: b09ed994eaf54e5c98cec4f44d4a7ccf
+msgid "``Basement-Climate``"
+msgstr ""
+
+#: 221a448e73c74742acf429a77bd3701b
+msgid "Next Steps"
+msgstr ""
+
+#: 605ae239e55a4f5da546151e6e43a031
+msgid "Now that you have a working sensor:"
+msgstr ""
+
+#: d8eeb02c820849caad534de91feccb3d
+msgid ""
+"**Explore more sensors** - See :doc:`library/sensors` for all available "
+"sensor types"
+msgstr ""
+
+#: 800d87387e01471fa1c6068163f44cf7
+msgid ""
+"**Study examples** - Check out :doc:`library/examples` for more complex "
+"scenarios"
+msgstr ""
+
+#: 027114cae227458a97dcecdc44a15c94
+msgid "**Read the API** - Review the full :doc:`library/api` reference"
+msgstr ""
+
+#: 7de4f80716854e658ad5de91e0ff4beb
+msgid ""
+"**Advanced testing** - Learn more about :doc:`tools/bthome-logger` "
+"features"
+msgstr ""
+
+#: 33214cb949c8406f824c7e57eebcc2bd
+msgid ""
+"**Add multiple sensors** - Combine temperature, humidity, pressure, and "
+"more"
+msgstr ""
+
+#: 8b7ee644829c49b69a2f6718acf08ebe
+msgid "Example: Multiple Sensors"
+msgstr ""
+
+#: 79bca50ddd554f919474c299ced53ccd
+msgid "Here's a quick example with multiple sensors:"
+msgstr ""
+
+#: 762c0c6e58b842ffa942d12ba5ed885a
+msgid "Troubleshooting"
+msgstr ""
+
+#: f9f425e4597a4ae6b71aa65486168b06
+msgid "BLE initialization fails"
+msgstr ""
+
+#: 36f0492a6d9c4ac597b74d2852526f19
+msgid "**Symptoms:** ``begin()`` returns ``false``"
+msgstr ""
+
+#: 0a1428a07c4540aca69c85119c833380 16268ddb9e0a44aba961143fb5483664
+#: 907a97ef620b4891bec623fb64745e02
+msgid "**Solutions:**"
+msgstr ""
+
+#: 94e89b04376b4add901dd7129fb18564
+msgid "Check that your board supports Bluetooth LE"
+msgstr ""
+
+#: a684bdff6bc04c8488fa981338c969ed
+msgid "Ensure no other BLE code is running"
+msgstr ""
+
+#: 6679c6f873eb4f72a5f4fd78770fe9d2
+msgid "Verify device name is not too long (max 29 characters)"
+msgstr ""
+
+#: 3197bbb2862b464090c60c6da0e6e2f2
+msgid "Try a simple device name without special characters"
+msgstr ""
+
+#: 491a153b2b81445c8c78432b5b0a85a1
+msgid "Sensor not visible in bthome-logger"
+msgstr ""
+
+#: e1a8fed90a074c8c8c92ab0fc1ba8cb9
+msgid "**Symptoms:** Logger runs but doesn't show your device"
+msgstr ""
+
+#: 1ac3eb62580748a08cded8dad0ed66d4
+msgid ""
+"Verify advertising started: check serial output for \"Advertising "
+"started!\""
+msgstr ""
+
+#: 392d29257df049c6867a8b1714cd2282
+msgid "Check Bluetooth is enabled on your computer"
+msgstr ""
+
+#: 2bd0d782fd294f0dad5c7941324e4b35
+msgid "Move the ESP32 closer to your computer"
+msgstr ""
+
+#: 5195a0e51b724436af7ef030b8b7a4ca
+msgid "Run logger with ``-v`` for verbose output: ``bthome-logger -v``"
+msgstr ""
+
+#: 915487b52a46430aa0dce9a70667a1d2
+msgid "Verify the device name: ``bthome-logger -f \"Your-Device-Name\"``"
+msgstr ""
+
+#: 2049e4617b4c48a3818ac088586e8ffc
+msgid "Values not updating"
+msgstr ""
+
+#: 22eae3e744014f5bb1fa0d1868e67fcb
+msgid "**Symptoms:** Old values keep appearing"
+msgstr ""
+
+#: 1225a400e07f482581209cd6d47020e0
+msgid "Ensure you call ``clearMeasurements()`` before adding new values"
+msgstr ""
+
+#: 1c8feba304e147f2804f207be1fbeb14
+msgid "Verify ``updateAdvertising()`` is called after adding measurements"
+msgstr ""
+
+#: b4ded10d0ee149cd9218b2c4dde663b9
+msgid "Check for errors in serial monitor"
+msgstr ""
+
+#: 0ae8929342fa4dce88b4681eb6c9bfc3
+msgid "Increase update interval if updates happen too fast"
+msgstr ""
+
+#: 93f9854733fc4e09be4855a2e5b2a05c
+msgid "Further Reading"
+msgstr ""
+
+#: 9250526ebb3c49b1a3b7c02d4ea348d9
+msgid ":doc:`library/api` - Complete API reference"
+msgstr ""
+
+#: 1a0c729bda184832a0ef32b14f5d20da
+msgid ":doc:`library/sensors` - All supported sensor types"
+msgstr ""
+
+#: 958d4ac0ad1f41018697460c241300cb
+msgid ":doc:`library/examples` - Real-world examples"
+msgstr ""
+
+#: c042676a69ec42618f645d29d5e5835e
+msgid ":doc:`library/platforms` - Platform-specific details"
+msgstr ""
+
+#: 59cddc7d386e4ac587b8f4587c93f190
+msgid ":doc:`tools/bthome-logger` - Testing tool documentation"
+msgstr ""

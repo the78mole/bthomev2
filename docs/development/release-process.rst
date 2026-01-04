@@ -1,18 +1,18 @@
-Release-Prozess
+Release Process
 ===============
 
-Detaillierte Beschreibung des automatisierten Release-Prozesses.
+Detailed description of the automated release process.
 
-Siehe :doc:`workflow` für die vollständige Beschreibung des Release-Workflows.
+See :doc:`workflow` for the complete description of the release workflow.
 
-Übersicht
----------
+Overview
+--------
 
-1. Code-Änderungen pushen nach ``main``
-2. GitHub Actions berechnet neue Version
-3. Release wird erstellt
-4. PyPI und PlatformIO werden aktualisiert
-5. Beide haben identische Version
+1. Push code changes to ``main``
+2. GitHub Actions calculates new version
+3. Release is created
+4. PyPI and PlatformIO are updated
+5. Both have identical version
 
 Semantic Versioning
 -------------------
@@ -21,7 +21,7 @@ Semantic Versioning
 * ``fix:`` → Patch Bump (0.0.X)
 * ``BREAKING CHANGE:`` → Major Bump (X.0.0)
 
-Siehe auch
-----------
+See Also
+--------
 
-* :doc:`workflow` - Entwicklungs-Workflow
+* :doc:`workflow` - Development workflow

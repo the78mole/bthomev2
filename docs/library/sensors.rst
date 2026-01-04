@@ -1,248 +1,170 @@
-Unterstützte Sensoren
-=====================
+Supported Sensors
+=================
 
-BThome V2 unterstützt eine Vielzahl von Sensortypen. Diese Seite bietet eine
-vollständige Übersicht über alle verfügbaren Sensoren und deren Verwendung.
+BThome V2 supports a wide variety of sensors and measurements. This page lists all supported sensor types with their object IDs, units, and resolutions.
 
-Messwertsensoren
-----------------
+Measurement Sensors
+-------------------
 
-Temperatur (0x02)
-~~~~~~~~~~~~~~~~~
+These sensors report numerical values like temperature, humidity, etc.
 
-**Object ID:** ``TEMPERATURE`` (0x02)
-
-**Einheit:** °C (Celsius)
-
-**Auflösung:** 0.01°C
-
-**Datentyp:** Signed 16-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   bthome.addTemperature(22.5);  // 22.5°C
-   bthome.addTemperature(-5.3);  // -5.3°C
-
-Luftfeuchtigkeit (0x03)
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Object ID:** ``HUMIDITY`` (0x03)
-
-**Einheit:** % (Prozent)
-
-**Auflösung:** 0.01%
-
-**Bereich:** 0-100%
-
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   bthome.addHumidity(65.0);  // 65%
-   bthome.addHumidity(45.5);  // 45.5%
-
-Luftdruck (0x04)
-~~~~~~~~~~~~~~~~
-
-**Object ID:** ``PRESSURE`` (0x04)
-
-**Einheit:** hPa (Hektopascal)
-
-**Auflösung:** 0.01 hPa
-
-**Datentyp:** Unsigned 24-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   bthome.addPressure(1013.25);  // 1013.25 hPa
-   bthome.addPressure(950.0);    // 950.0 hPa
-
-Beleuchtungsstärke (0x05)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Object ID:** ``ILLUMINANCE`` (0x05)
-
-**Einheit:** lux
-
-**Auflösung:** 0.01 lux
-
-**Datentyp:** Unsigned 24-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   bthome.addIlluminance(500.0);   // 500 lux
-   bthome.addIlluminance(1200.5);  // 1200.5 lux
-
-CO2 (0x12)
-~~~~~~~~~~
-
-**Object ID:** ``CO2`` (0x12)
-
-**Einheit:** ppm (parts per million)
-
-**Auflösung:** 1 ppm
-
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   bthome.addCO2(450);   // 450 ppm
-   bthome.addCO2(1200);  // 1200 ppm
-
-Batterie (0x01)
-~~~~~~~~~~~~~~~
-
-**Object ID:** ``BATTERY`` (0x01)
-
-**Einheit:** % (Prozent)
-
-**Auflösung:** 1%
-
-**Bereich:** 0-100%
-
-**Datentyp:** Unsigned 8-bit Integer
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   bthome.addBattery(95);  // 95%
-   bthome.addBattery(50);  // 50%
-
-Taupunkt (0x08)
-~~~~~~~~~~~~~~~
-
-**Object ID:** ``DEW_POINT`` (0x08)
-
-**Einheit:** °C
-
-**Auflösung:** 0.01°C
-
-**Datentyp:** Signed 16-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   std::vector<uint8_t> dewData = encodeSInt16(1250);  // 12.50°C
-   bthome.addMeasurement(DEW_POINT, dewData);
-
-Zähler (0x09)
-~~~~~~~~~~~~~
-
-**Object ID:** ``COUNT`` (0x09)
-
-**Einheit:** dimensionslos
-
-**Datentyp:** Unsigned 32-bit Integer (little-endian)
-
-**Beispiel:**
-
-.. code-block:: cpp
-
-   std::vector<uint8_t> countData = encodeUInt32(12345);
-   bthome.addMeasurement(COUNT, countData);
-
-Energie (0x0A)
-~~~~~~~~~~~~~~
-
-**Object ID:** ``ENERGY`` (0x0A)
-
-**Einheit:** kWh
-
-**Auflösung:** 0.001 kWh
-
-**Datentyp:** Unsigned 24-bit Integer (little-endian)
-
-Leistung (0x0B)
-~~~~~~~~~~~~~~~
-
-**Object ID:** ``POWER`` (0x0B)
-
-**Einheit:** W (Watt)
-
-**Auflösung:** 0.01 W
-
-**Datentyp:** Unsigned 24-bit Integer (little-endian)
-
-Spannung (0x0C)
-~~~~~~~~~~~~~~~
-
-**Object ID:** ``VOLTAGE`` (0x0C)
-
-**Einheit:** V (Volt)
-
-**Auflösung:** 0.001 V
-
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
-
-Feinstaub PM2.5 (0x0D)
-~~~~~~~~~~~~~~~~~~~~~~
-
-**Object ID:** ``PM2_5`` (0x0D)
-
-**Einheit:** µg/m³
-
-**Auflösung:** 1 µg/m³
-
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
-
-Feinstaub PM10 (0x0E)
+Environmental Sensors
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Object ID:** ``PM10`` (0x0E)
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 15 15 30
 
-**Einheit:** µg/m³
+   * - Sensor
+     - Object ID
+     - Unit
+     - Resolution
+     - API Function
+   * - Temperature
+     - 0x02
+     - °C
+     - 0.01
+     - ``addTemperature(float)``
+   * - Humidity
+     - 0x03
+     - %
+     - 0.01
+     - ``addHumidity(float)``
+   * - Pressure
+     - 0x04
+     - hPa
+     - 0.01
+     - ``addPressure(float)``
+   * - Dew Point
+     - 0x08
+     - °C
+     - 0.01
+     - ``addMeasurement()``
+   * - Moisture
+     - 0x14
+     - %
+     - 0.01
+     - ``addMeasurement()``
 
-**Auflösung:** 1 µg/m³
+Light Sensors
+~~~~~~~~~~~~~
 
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 15 15 30
 
-TVOC (0x13)
-~~~~~~~~~~~
+   * - Sensor
+     - Object ID
+     - Unit
+     - Resolution
+     - API Function
+   * - Illuminance
+     - 0x05
+     - lux
+     - 0.01
+     - ``addIlluminance(float)``
 
-**Object ID:** ``TVOC`` (0x13)
-
-**Einheit:** µg/m³
-
-**Auflösung:** 1 µg/m³
-
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
-
-Feuchtigkeit (0x14)
+Air Quality Sensors
 ~~~~~~~~~~~~~~~~~~~
 
-**Object ID:** ``MOISTURE`` (0x14)
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 15 15 30
 
-**Einheit:** % (Prozent)
+   * - Sensor
+     - Object ID
+     - Unit
+     - Resolution
+     - API Function
+   * - CO2
+     - 0x12
+     - ppm
+     - 1
+     - ``addCO2(uint16_t)``
+   * - TVOC
+     - 0x13
+     - ppb
+     - 1
+     - ``addMeasurement()``
+   * - PM2.5
+     - 0x0D
+     - µg/m³
+     - 1
+     - ``addMeasurement()``
+   * - PM10
+     - 0x0E
+     - µg/m³
+     - 1
+     - ``addMeasurement()``
 
-**Auflösung:** 0.01%
+Power Sensors
+~~~~~~~~~~~~~
 
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 15 15 30
 
-Binärsensoren
--------------
+   * - Sensor
+     - Object ID
+     - Unit
+     - Resolution
+     - API Function
+   * - Battery
+     - 0x01
+     - %
+     - 1
+     - ``addBattery(uint8_t)``
+   * - Voltage
+     - 0x0C
+     - V
+     - 0.001
+     - ``addMeasurement()``
+   * - Power
+     - 0x0B
+     - W
+     - 0.01
+     - ``addMeasurement()``
+   * - Energy
+     - 0x0A
+     - kWh
+     - 0.001
+     - ``addMeasurement()``
 
-Alle Binärsensoren verwenden die gleiche API:
+Other Sensors
+~~~~~~~~~~~~~
 
-.. code-block:: cpp
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 15 15 30
 
-   bthome.addBinarySensor(SENSOR_ID, state);
+   * - Sensor
+     - Object ID
+     - Unit
+     - Resolution
+     - API Function
+   * - Mass (kg)
+     - 0x06
+     - kg
+     - 0.01
+     - ``addMeasurement()``
+   * - Mass (lb)
+     - 0x07
+     - lb
+     - 0.01
+     - ``addMeasurement()``
+   * - Count
+     - 0x09
+     - -
+     - 1
+     - ``addMeasurement()``
 
-``state`` ist ``true`` (aktiv/offen) oder ``false`` (inaktiv/geschlossen).
+Binary Sensors
+--------------
 
-Verfügbare Binärsensoren
-~~~~~~~~~~~~~~~~~~~~~~~~
+Binary sensors report on/off or detected/not detected states.
+
+Safety & Security
+~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :header-rows: 1
@@ -250,192 +172,376 @@ Verfügbare Binärsensoren
 
    * - Sensor
      - Object ID
-     - Beschreibung
-   * - ``BATTERY_LOW``
-     - 0x15
-     - Batterie niedrig
-   * - ``BATTERY_CHARGING``
-     - 0x16
-     - Batterie lädt
-   * - ``CO``
-     - 0x17
-     - Kohlenmonoxid erkannt
-   * - ``COLD``
-     - 0x18
-     - Kälte erkannt
-   * - ``CONNECTIVITY``
-     - 0x19
-     - Verbindungsstatus
-   * - ``DOOR``
+     - States (false/true)
+   * - Door
      - 0x1A
-     - Türstatus (offen/geschlossen)
-   * - ``GARAGE_DOOR``
+     - Closed / Open
+   * - Garage Door
      - 0x1B
-     - Garagentorstatus
-   * - ``GAS``
-     - 0x1C
-     - Gas erkannt
-   * - ``HEAT``
-     - 0x1D
-     - Hitze erkannt
-   * - ``LIGHT``
-     - 0x1E
-     - Lichtstatus
-   * - ``LOCK``
-     - 0x1F
-     - Schlossstatus
-   * - ``MOISTURE_BINARY``
-     - 0x20
-     - Feuchtigkeit erkannt
-   * - ``MOTION``
-     - 0x21
-     - Bewegung erkannt
-   * - ``MOVING``
-     - 0x22
-     - Gerät bewegt sich
-   * - ``OCCUPANCY``
-     - 0x23
-     - Raum belegt
-   * - ``OPENING``
-     - 0x24
-     - Öffnung erkannt
-   * - ``PLUG``
-     - 0x25
-     - Steckerstatus
-   * - ``POWER_BINARY``
-     - 0x26
-     - Stromstatus
-   * - ``PRESENCE``
-     - 0x27
-     - Anwesenheit erkannt
-   * - ``PROBLEM``
-     - 0x28
-     - Problem erkannt
-   * - ``RUNNING``
-     - 0x29
-     - Gerät läuft
-   * - ``SAFETY``
-     - 0x2A
-     - Sicherheitsstatus
-   * - ``SMOKE``
-     - 0x2B
-     - Rauch erkannt
-   * - ``SOUND``
-     - 0x2C
-     - Ton erkannt
-   * - ``TAMPER``
-     - 0x2D
-     - Manipulation erkannt
-   * - ``VIBRATION``
-     - 0x2E
-     - Vibration erkannt
-   * - ``WINDOW``
+     - Closed / Open
+   * - Window
      - 0x2F
-     - Fensterstatus
+     - Closed / Open
+   * - Lock
+     - 0x1F
+     - Locked / Unlocked
+   * - Opening
+     - 0x24
+     - Closed / Open
+   * - Tamper
+     - 0x2D
+     - Off / On
+   * - Safety
+     - 0x2A
+     - Unsafe / Safe
 
-Beispiele für Binärsensoren
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Detection Sensors
+~~~~~~~~~~~~~~~~~
 
-.. code-block:: cpp
+.. list-table::
+   :header-rows: 1
+   :widths: 30 15 55
 
-   // Bewegungsmelder
-   bthome.addBinarySensor(MOTION, true);   // Bewegung erkannt
-   bthome.addBinarySensor(MOTION, false);  // Keine Bewegung
+   * - Sensor
+     - Object ID
+     - States (false/true)
+   * - Motion
+     - 0x21
+     - Clear / Detected
+   * - Occupancy
+     - 0x23
+     - Clear / Detected
+   * - Presence
+     - 0x27
+     - Away / Home
+   * - Moving
+     - 0x22
+     - Not Moving / Moving
+   * - Vibration
+     - 0x2E
+     - Clear / Detected
+   * - Sound
+     - 0x2C
+     - Clear / Detected
 
-   // Türsensor
-   bthome.addBinarySensor(DOOR, true);   // Tür offen
-   bthome.addBinarySensor(DOOR, false);  // Tür geschlossen
+Hazard Sensors
+~~~~~~~~~~~~~~
 
-   // Fenstersensor
-   bthome.addBinarySensor(WINDOW, true);   // Fenster offen
-   bthome.addBinarySensor(WINDOW, false);  // Fenster geschlossen
+.. list-table::
+   :header-rows: 1
+   :widths: 30 15 55
 
-   // Rauchmelder
-   bthome.addBinarySensor(SMOKE, true);   // Rauch erkannt
-   bthome.addBinarySensor(SMOKE, false);  // Kein Rauch
+   * - Sensor
+     - Object ID
+     - States (false/true)
+   * - Smoke
+     - 0x2B
+     - Clear / Detected
+   * - CO (Carbon Monoxide)
+     - 0x17
+     - Clear / Detected
+   * - Gas
+     - 0x1C
+     - Clear / Detected
+   * - Problem
+     - 0x28
+     - OK / Problem
+   * - Moisture (Binary)
+     - 0x20
+     - Dry / Wet
 
-   // Batterie-Status
-   bthome.addBinarySensor(BATTERY_LOW, true);  // Batterie niedrig
+Power & Connectivity
+~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 15 55
+
+   * - Sensor
+     - Object ID
+     - States (false/true)
+   * - Battery Low
+     - 0x15
+     - Normal / Low
+   * - Battery Charging
+     - 0x16
+     - Not Charging / Charging
+   * - Plug
+     - 0x25
+     - Unplugged / Plugged
+   * - Power
+     - 0x26
+     - Off / On
+   * - Running
+     - 0x29
+     - Not Running / Running
+   * - Connectivity
+     - 0x19
+     - Disconnected / Connected
+
+Environment
+~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 15 55
+
+   * - Sensor
+     - Object ID
+     - States (false/true)
+   * - Cold
+     - 0x18
+     - Normal / Cold
+   * - Heat
+     - 0x1D
+     - Normal / Hot
+   * - Light
+     - 0x1E
+     - Off / On
 
 Events
 ------
 
-Button Events (0x3A)
-~~~~~~~~~~~~~~~~~~~~
+Events represent user interactions or state changes.
 
-**Object ID:** ``BUTTON`` (0x3A)
+Button Events
+~~~~~~~~~~~~~
 
-**Datentyp:** Unsigned 8-bit Integer
-
-Button-Events werden verwendet, um Tastenbetätigungen zu übertragen.
-
-**Event-Codes:**
+Object ID: 0x3A
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 80
+   :widths: 20 15 65
 
-   * - Code
-     - Beschreibung
-   * - 0x01
-     - Einzelner Tastendruck
-   * - 0x02
-     - Doppelklick
-   * - 0x03
-     - Dreifachklick
-   * - 0x04
-     - Langer Druck
+   * - Event
+     - Value
+     - Description
+   * - None
+     - 0x00
+     - No event (used to clear previous event)
+   * - Press
+     - 0x01
+     - Single button press
+   * - Double Press
+     - 0x02
+     - Button pressed twice quickly
+   * - Triple Press
+     - 0x03
+     - Button pressed three times quickly
+   * - Long Press
+     - 0x04
+     - Button held for extended time
 
-**Beispiel:**
+**API Function:** ``addButtonEvent(uint8_t event)``
+
+**Example:**
 
 .. code-block:: cpp
 
-   // Einzelner Tastendruck
+   // Single press
    bthome.addButtonEvent(0x01);
 
-   // Doppelklick
-   bthome.addButtonEvent(0x02);
-
-   // Langer Druck
+   // Long press
    bthome.addButtonEvent(0x04);
 
-Dimmer Events (0x3C)
-~~~~~~~~~~~~~~~~~~~~
+Dimmer Events
+~~~~~~~~~~~~~
 
-**Object ID:** ``DIMMER`` (0x3C)
+Object ID: 0x3C
 
-**Datentyp:** Unsigned 16-bit Integer (little-endian)
+.. list-table::
+   :header-rows: 1
+   :widths: 20 15 65
 
-Dimmer-Events übertragen Rotations- oder Dimmer-Informationen.
+   * - Event
+     - Value
+     - Description
+   * - Rotate Left (1 step)
+     - 0x01
+     - Dimmer rotated counter-clockwise
+   * - Rotate Right (1 step)
+     - 0x02
+     - Dimmer rotated clockwise
 
-Mehrere Sensoren kombinieren
------------------------------
-
-Du kannst mehrere Sensoren in einem Advertisement kombinieren:
+**Example:**
 
 .. code-block:: cpp
 
-   bthome.clearMeasurements();
+   // Rotate right
+   std::vector<uint8_t> data = {0x02};
+   bthome.addMeasurement(DIMMER, data);
 
-   // Umweltsensoren
+Usage Examples
+--------------
+
+Combining Multiple Sensors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can combine multiple measurements in a single advertisement:
+
+.. code-block:: cpp
+
+   BThomeV2Device bthome;
+   bthome.begin("Multi-Sensor");
+
+   // Environmental monitoring
    bthome.addTemperature(22.5);
    bthome.addHumidity(65.0);
    bthome.addPressure(1013.25);
-   bthome.addCO2(450);
+   bthome.addIlluminance(450.0);
 
-   // Status-Informationen
+   // Air quality
+   bthome.addCO2(420);
+
+   // Power
    bthome.addBattery(95);
-   bthome.addBinarySensor(MOTION, false);
 
+   bthome.startAdvertising();
+
+Binary Sensor Example
+~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+   // Door/window sensor
+   bool doorOpen = digitalRead(DOOR_PIN);
+   bthome.clearMeasurements();
+   bthome.addBinarySensor(DOOR, doorOpen);
+   bthome.addBattery(batteryLevel);
    bthome.updateAdvertising();
 
-.. note::
-   Die maximale Größe eines BLE-Advertisements ist begrenzt (ca. 31 Bytes Payload).
-   Bei zu vielen Sensoren kann das Advertisement nicht vollständig übertragen werden.
+Motion Sensor Example
+~~~~~~~~~~~~~~~~~~~~~
 
-Siehe auch
-----------
+.. code-block:: cpp
 
-* :doc:`api` - API-Referenz
-* :doc:`examples` - Vollständige Beispiele
-* `BThome V2 Spezifikation <https://bthome.io/>`_ - Offizielle Dokumentation
+   // PIR motion sensor
+   bool motionDetected = digitalRead(PIR_PIN);
+   bthome.clearMeasurements();
+   bthome.addBinarySensor(MOTION, motionDetected);
+   bthome.addBattery(batteryLevel);
+   bthome.updateAdvertising();
+
+Button Example
+~~~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+   // Detect button press type
+   if (shortPress) {
+     bthome.clearMeasurements();
+     bthome.addButtonEvent(0x01);  // Single press
+     bthome.updateAdvertising();
+   } else if (longPress) {
+     bthome.clearMeasurements();
+     bthome.addButtonEvent(0x04);  // Long press
+     bthome.updateAdvertising();
+   }
+
+Payload Size Considerations
+----------------------------
+
+BLE advertising packets have a maximum payload of 31 bytes. The BThome V2 format uses some bytes for headers and device information, leaving approximately 20-25 bytes for sensor data.
+
+Typical Sensor Sizes
+~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 20 40
+
+   * - Sensor Type
+     - Bytes
+     - Example Combination
+   * - Temperature
+     - 3 bytes
+     - ~7 temperature sensors max
+   * - Humidity
+     - 3 bytes
+     - Temp + Humidity + Pressure + Battery (12 bytes)
+   * - Pressure
+     - 4 bytes
+     - Full climate station (15 bytes)
+   * - Battery
+     - 2 bytes
+     - Most combinations include this
+   * - CO2
+     - 3 bytes
+     - Air quality + climate (18 bytes)
+   * - Binary Sensor
+     - 2 bytes
+     - Multiple binary sensors fit easily
+   * - Button Event
+     - 2 bytes
+     - Event + battery
+
+Recommendations
+~~~~~~~~~~~~~~~
+
+* **Keep it simple**: 3-5 measurements per advertisement
+* **Essential first**: Always include battery level
+* **Test payload size**: Use bthome-logger to verify all data transmits
+* **Split if needed**: Create multiple devices for many sensors
+
+Sensor Categories
+-----------------
+
+Quick Reference by Use Case
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Climate Monitoring:**
+
+* Temperature
+* Humidity
+* Pressure
+* Dew Point
+
+**Air Quality:**
+
+* CO2
+* TVOC
+* PM2.5
+* PM10
+
+**Security:**
+
+* Door
+* Window
+* Motion
+* Tamper
+* Smoke
+* Gas
+
+**Energy:**
+
+* Battery
+* Power
+* Energy
+* Voltage
+
+**User Input:**
+
+* Button (events)
+* Dimmer (events)
+
+Home Assistant Integration
+---------------------------
+
+All these sensors are automatically recognized by Home Assistant when using the BTHome integration. The sensors will appear with appropriate units and icons.
+
+**Auto-discovered as:**
+
+* Temperature → Temperature entity (°C)
+* Humidity → Humidity entity (%)
+* Motion → Binary sensor (motion)
+* Door → Binary sensor (door)
+* Button → Event entity
+* Battery → Battery entity (%)
+
+See Also
+--------
+
+* :doc:`api` - Complete API reference
+* :doc:`examples` - Real-world examples
+* :doc:`../tools/bthome-logger` - Testing tool
+* `BThome V2 Specification <https://bthome.io/format/>`_ - Official specification

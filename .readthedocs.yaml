@@ -36,3 +36,6 @@ build:
 python:
   install:
     - requirements: docs/requirements.txt
+
+# Language and translation settings
+# Main language is English, German translation available via Sphinx i18n

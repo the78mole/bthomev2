@@ -1,0 +1,974 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 4e976dc7fb274e70a84d0f8f8ae17fd4
+msgid "Supported Sensors"
+msgstr ""
+
+#: 99429de7269a4ab3af79cdb363d56237
+msgid ""
+"BThome V2 supports a wide variety of sensors and measurements. This page "
+"lists all supported sensor types with their object IDs, units, and "
+"resolutions."
+msgstr ""
+
+#: 1340aeda8af34101b8412de888960121
+msgid "Measurement Sensors"
+msgstr ""
+
+#: cb99d949e4b64ef794ecdcd9bb8db333
+msgid "These sensors report numerical values like temperature, humidity, etc."
+msgstr ""
+
+#: 230b5a081ee44234b891247d4feb04af
+msgid "Environmental Sensors"
+msgstr ""
+
+#: 0c52924c9be74c4db1cc83bda5971025 10ee8b28393b4176ab862db64dd72d46
+#: 4899768005f44b2ca7d10f083178f6fd 5fd71f2529174e3c808cdcffabd09483
+#: 63af2a5db82c4feb935fd36cda821ebe 88966b907ded403d939e819b6e98a8ed
+#: 8e9cdc435e4a4b3e864899a9bd01a61d 8f42f302bcf741ddbd8f76fbb3993393
+#: a62680242d774d6abc6133f77f96e720 c382bbb8af3147b2956d4c7fee388651
+msgid "Sensor"
+msgstr ""
+
+#: 12fbadbab2bd4f508c884483a9d8c59e 396e879f8be14223a402c59e3a9f18a2
+#: 4119ea39913f471285cb86823ef3f744 5ba75564a6f14ae596157d9155fe3b5f
+#: 60d5ecd027f8439bbc81123a59d89041 6c4b307a77874eedaae86781294ab69d
+#: 7af80f4d47534a028978ca8e8b3b8c9e 98a078fbb3b2469c8c2788eb6120867c
+#: 9c9d7aa2b49748f9bb2d6a128dc82f3c b7acfba91b724b77a1efe13d607b58f6
+msgid "Object ID"
+msgstr ""
+
+#: 0c981bed3c4f49acb31996f22eded4ad 1c709d4c82154059aee70eccb54ca8de
+#: a4c97dc75d1246c29ea4a5d6fa3a56a7 eca04dadffe444498df2f224b0c941f2
+#: ff3a27829ddd41489d1a6f0ca5d53074
+msgid "Unit"
+msgstr ""
+
+#: 369db1adf21c49c68ef90e360e4c3bab 4b52b91e5b82497e9f605f2a7476eea6
+#: 4cf1216b37894c85819edb4d3ceb2c1f 5098a994862740548027ed5183e06930
+#: b33a6851cf3842cc9a13955c35d4855f
+msgid "Resolution"
+msgstr ""
+
+#: 3aa014da32ba45a8bfc66730de482b49 3cfb4c8bc9b844eca05be53bad632f33
+#: 693dfb9dbeac41c3a601a4b309af0b7a fbfb5b65c4c744f3a1933f6ddd597bee
+#: fe6ff6f19c42442fb4d692bc137812e0
+msgid "API Function"
+msgstr ""
+
+#: 0fd05ff2a42a4c8eaac9053b6187b72e 3aa834035f014fcca8fb5f18c623c8bf
+#: e3789f9b03f042b1924ba920d393e685
+msgid "Temperature"
+msgstr ""
+
+#: a27fbdc5b87a4183831852990c5d8ba8 a5b30697b4a7452b8bc0c60c1cc09e38
+#: ac7d39abc6554ad889d7d807baf75a64
+msgid "0x02"
+msgstr ""
+
+#: 2c6904ed3ccf4df0acfaeda31f958738 94825eb2952b4389b3df41b6d7962faa
+msgid "°C"
+msgstr ""
+
+#: 24360d16ccb64c47abc2af1775c0a5de 31761ba957a443faafc5c8240429acb6
+#: 3ed2bdf951e44b6eac85a4cb8a914522 4fd129b993494f669783e13813a16d17
+#: 7b76c80d01c94ad4979a8f825901da14 9c7474b7dcdb4804b61114ce27cc68fa
+#: a03e7881c3df43f7b37bd8cfc42922b8 d4d09b5f8c6b43fdb6134f890dc33453
+#: f8ae970dc33347f5823c8cdcf4bce20b
+msgid "0.01"
+msgstr ""
+
+#: 3f46f0c10b1c4a42ba8d044928c1599f
+msgid "``addTemperature(float)``"
+msgstr ""
+
+#: 22f6b57cd29c44af8c9364f09191123e 8e53c826a5a341cd8acec24530289409
+#: 92c968496ab640c784f0ad10bd4c2f80
+msgid "Humidity"
+msgstr ""
+
+#: 372670454d38480687a12f647a449b4f 76878518a4b64c3e8caad7699eb9abe0
+msgid "0x03"
+msgstr ""
+
+#: 6168fae1118941e8bef1902c158f1c5c c4187c0cf26548cf8bf5b0e07f3cfa5d
+#: deb6377345ca4c0b9e9f3e981611bbc2
+msgid "%"
+msgstr ""
+
+#: dc06f4f454eb454ebee8e936c53aa78f
+msgid "``addHumidity(float)``"
+msgstr ""
+
+#: 2b46162d630348d689617b6782c605eb c53bf57733604283a88fe838d1dffa48
+#: e07fd64960d440268b0068197051b28f
+msgid "Pressure"
+msgstr ""
+
+#: 3b1ed9bc10f744d28ec333ccacab9bd8 cfd8d5f95c8a4d0d8b3ddc5b233341d9
+msgid "0x04"
+msgstr ""
+
+#: 07c8a3d99f524ee1921520644d0b6d83
+msgid "hPa"
+msgstr ""
+
+#: cd16658257024741985827780839de60
+msgid "``addPressure(float)``"
+msgstr ""
+
+#: 41d8c5cf4a0f4fddb69b58ca6bf0c4a0 99100d1343db4a31b59e53f40dcdf27f
+msgid "Dew Point"
+msgstr ""
+
+#: 60a6a1acaa4645e8a173f5e92f67de96
+msgid "0x08"
+msgstr ""
+
+#: 0aefa7f695e04bda9fa8df429e5ca7fb 4007e5362c97432d9c0ae64944cd8629
+#: 414a5d4930104b52811bdca7e599566c 49a79f52b5634d909218bd797e84fed8
+#: 7b5dc4861a104469b18daafc3da51d89 a0ce2d17eb3342818d1cd4a26cc628fa
+#: bfca8de69f7349338a077e1c79a8ba10 d447717b473f4b269f03f51d644dc3ec
+#: dff1889510944d4ca35c5e40bbb7f531 e387c72fd16541f8a7959da8eebba6a6
+#: f6ebfb7334cc46948a42926b9b57a23b
+msgid "``addMeasurement()``"
+msgstr ""
+
+#: 8528882f13704e9f8f83c92242b97f32
+msgid "Moisture"
+msgstr ""
+
+#: b5427a830c564a4da79c9eefb2b08f7d
+msgid "0x14"
+msgstr ""
+
+#: 1cdbffed6b234063872f2b3eede265e4
+msgid "Light Sensors"
+msgstr ""
+
+#: cbcd322d98f04a67b2d5e62d81abbc88
+msgid "Illuminance"
+msgstr ""
+
+#: 6996ca8894fe4262a87b4e2542f8ac8b
+msgid "0x05"
+msgstr ""
+
+#: 555de4b95aa8414e9ea811241c3d0f6e
+msgid "lux"
+msgstr ""
+
+#: 7a1c82f96243425492d3edcfdd814b12
+msgid "``addIlluminance(float)``"
+msgstr ""
+
+#: 1a97ca0f5f124f4e8e705decfb51ac6f
+msgid "Air Quality Sensors"
+msgstr ""
+
+#: 3e8d3bc085e145f68ae82224cc84efa6 41a3166638634627bb3af7612979868c
+#: 5cffb848255e47edbcc907ce4dce35a5
+msgid "CO2"
+msgstr ""
+
+#: 73d2d1e4952f44fc85242831e41c65fa
+msgid "0x12"
+msgstr ""
+
+#: b4ff5e9a3c9e4db2bdce0d6462820cda
+msgid "ppm"
+msgstr ""
+
+#: 142b77051f7c4db4a199c1576d58bb71 3b604e0a3e46409598108d3512797655
+#: 41a8db55f17a43baa626677e7e5dc7a2 8eac928311674fafabd2946b9cab69a2
+#: c77e7d1770224ac88f8aeea0045bbf11 db784ab4bb0e4fceae7e31253532b4e7
+msgid "1"
+msgstr ""
+
+#: 54240524a05c4e4dad3cf9facfe8a49e
+msgid "``addCO2(uint16_t)``"
+msgstr ""
+
+#: 2ea0d333739c45618d874be92c322ae6 47fac65c3be1447ab071398afccb7219
+msgid "TVOC"
+msgstr ""
+
+#: 0dc379a01df14391b49058bcfda98428
+msgid "0x13"
+msgstr ""
+
+#: c6d627a218d24798bb6d8c5012abdf4a
+msgid "ppb"
+msgstr ""
+
+#: 036cf9db93144585b2f9a10ca275ec6f a5cff4b2f172494cba1d9c6bee9d9032
+msgid "PM2.5"
+msgstr ""
+
+#: a46c3268e7064b0c81743e9388b275da
+msgid "0x0D"
+msgstr ""
+
+#: 570518566d7b4be2be6524d1c61a8d3d 75bc09c7f73c4630aa7861b0324e5de3
+msgid "µg/m³"
+msgstr ""
+
+#: 5625c7377e904e52891ce6b58dacd0a3 ae284b382995463b934a448ecbfd6152
+msgid "PM10"
+msgstr ""
+
+#: c20ee5e9f8dd4f8cac42f77d4df44966
+msgid "0x0E"
+msgstr ""
+
+#: d738af41c46a455e88f341d2f4bcf92c
+msgid "Power Sensors"
+msgstr ""
+
+#: 1c510828d9264b47a419bfb32618657b 2115d18298894a449926cc7ad4b2bcf9
+#: c30bb742274f4e3d8c85d5b3b410d07e
+msgid "Battery"
+msgstr ""
+
+#: 1d5d00c1a06e4d6fa6f2221b602be559 30273f6931854ed5b8788863f961569e
+#: bb2ff759b50e46128ffc0d32bab259da
+msgid "0x01"
+msgstr ""
+
+#: 55d7757b6ed84f22a61a791cd2eaf684
+msgid "``addBattery(uint8_t)``"
+msgstr ""
+
+#: 22c025e0f8904a7a8e70d16a3b21c039 acfe7b12eba249399e885c69ce62702a
+msgid "Voltage"
+msgstr ""
+
+#: 3f403981712f4705b47d1ca763172dec
+msgid "0x0C"
+msgstr ""
+
+#: 33d9312cd01f4b7fa787ea973b27953e
+msgid "V"
+msgstr ""
+
+#: d60a688a458f4c4b81b7425a9972a67a f25562ed4a5748d3b247f688b0ea9b5f
+msgid "0.001"
+msgstr ""
+
+#: 1430a10f694a4d7cb0edb2b68d65c33c 7dd3fcd11ef34cfcaaa5db447bcd4f01
+#: bb426f14bccd4c21805cf8033f9e8303
+msgid "Power"
+msgstr ""
+
+#: f40e44d1aa7f46e88f0a2ef41f8351a8
+msgid "0x0B"
+msgstr ""
+
+#: de9d05ca5f374cbf9ffcccf041d1e66d
+msgid "W"
+msgstr ""
+
+#: 0f50b5692a2c45cb8ec34e084ca67caf 2467698ce2e74cefa28864d39b3f3d2d
+msgid "Energy"
+msgstr ""
+
+#: 7e9fdd749a874f3fb072ee958f03cee5
+msgid "0x0A"
+msgstr ""
+
+#: e63e57f00d6d4d83bb3abd7f92cae14a
+msgid "kWh"
+msgstr ""
+
+#: aba1a6db5e0a4a1c9e8f7e76b0c87839
+msgid "Other Sensors"
+msgstr ""
+
+#: 503ea68d44fa4a69b5049ab83d139344
+msgid "Mass (kg)"
+msgstr ""
+
+#: 537010a6f8dc405281622bf0a59cdf72
+msgid "0x06"
+msgstr ""
+
+#: 7de5fee1c7d64e6da7e833878425061a
+msgid "kg"
+msgstr ""
+
+#: a20968fd7a8746d293d34673cae8bc5e
+msgid "Mass (lb)"
+msgstr ""
+
+#: f6a914c717394e9daf06a5928f05b138
+msgid "0x07"
+msgstr ""
+
+#: 8862f4ecaa634ceab5a9059a103f9fbe
+msgid "lb"
+msgstr ""
+
+#: 78e7b8187aa746b6930c4c85c952e453
+msgid "Count"
+msgstr ""
+
+#: f117eeaaeb1542e1b80a3d75691f0dbd
+msgid "0x09"
+msgstr ""
+
+#: 2113f5eeef9c47d9bbe2ecf9907f26f7
+msgid "Binary Sensors"
+msgstr ""
+
+#: 1ccbd97fcdb5487b863fe7053419f5d7
+msgid "Binary sensors report on/off or detected/not detected states."
+msgstr ""
+
+#: eda200ff0b0540a1ab5c73e01defb7b6
+msgid "Safety & Security"
+msgstr ""
+
+#: 74c0484d6aa5496d80bb5306abec182f 7cd0284e8af24291a50310bdbf3e87db
+#: b794d93cbfc24552b4a76bdc605b3396 be65224ced224d438315f3c07ff651af
+#: e1569fc9938a46579cdcdeefb5ba35d7
+msgid "States (false/true)"
+msgstr ""
+
+#: 05ad9c9f6aec483187f6edcf4ec5656c 47ca27c0607c4ebbb0e796628f3d2f5d
+msgid "Door"
+msgstr ""
+
+#: d9c4c3c577df4275a034223d81d297b7
+msgid "0x1A"
+msgstr ""
+
+#: 017983da862844f2a45dafd8bd640978 066e4c52b5ac477da4f7be38bc71231b
+#: 56cceba37d904d0ebc2963439fffa063 cbb57c95a7324fe29548ae9ef056ef8e
+msgid "Closed / Open"
+msgstr ""
+
+#: d354f57f55224c739660fe1008b8444d
+msgid "Garage Door"
+msgstr ""
+
+#: e90fb0db4e9b4d21bfb44660653d9430
+msgid "0x1B"
+msgstr ""
+
+#: 8a7149ab97034a4480f1a7c66a994143 dd60a0207dd54c8f8084e17a2b06e197
+msgid "Window"
+msgstr ""
+
+#: 3dfe41f79fb04f958705ed15c1e1fe68
+msgid "0x2F"
+msgstr ""
+
+#: 2cc5b14838a04bbba2a5a20ec7d1b628
+msgid "Lock"
+msgstr ""
+
+#: 2e703c465dfa4f4c9b825f4986720a80
+msgid "0x1F"
+msgstr ""
+
+#: 5692ee32feb14dfaa80e4cbc96cb4374
+msgid "Locked / Unlocked"
+msgstr ""
+
+#: 921707fa307c4795bd3e2aed4e129496
+msgid "Opening"
+msgstr ""
+
+#: dbef35abb7984c0f9c0a364859fb3f75
+msgid "0x24"
+msgstr ""
+
+#: 740cfc1d8b244edf89d66344fbb928b7 c8bc907883714d24a28eebac17585287
+msgid "Tamper"
+msgstr ""
+
+#: 475f6fec471f46b487cb985030d3cf55
+msgid "0x2D"
+msgstr ""
+
+#: 2a8bb301a96a4fc2a18c44ed9c169241 513e09375eef4f34b99a9c1a7480fcdd
+#: acfb4abd3534445fb4850bdad837ba56
+msgid "Off / On"
+msgstr ""
+
+#: c19e507922aa416d9e28708ca72b3ca1
+msgid "Safety"
+msgstr ""
+
+#: 1c87250dd9174cda8067fd64ad876905
+msgid "0x2A"
+msgstr ""
+
+#: 229242abedf94d6d897ed1142b212c0c
+msgid "Unsafe / Safe"
+msgstr ""
+
+#: 5b306718255f40e5a7e7bce71523489d
+msgid "Detection Sensors"
+msgstr ""
+
+#: 850d8f7d87a94ca38febb3073967ba14 db3dd8be9fe243a3a8867689a5af77fe
+msgid "Motion"
+msgstr ""
+
+#: 8acfe2dceca6414783a34e13c696a3a2
+msgid "0x21"
+msgstr ""
+
+#: 00db7c68c7a44c6b9d110fe3dcdbc9b8 8cc842bca4634b9aac9f7ba5ea560c57
+#: 9962a19c4ba14379bcb28bf677db1a96 a90873633e9643ca8529452b50b46ded
+#: ef2204cb5aa84ca8abcae7d60574a31a fbdf4b06e17f461cb4606dbf29981c76
+#: feaa4d6601364d7ea78c876317cce122
+msgid "Clear / Detected"
+msgstr ""
+
+#: e298bbceb4704cdfbd725d3a35dad974
+msgid "Occupancy"
+msgstr ""
+
+#: d7e4f00819114277abfd6c0acb0886db
+msgid "0x23"
+msgstr ""
+
+#: fa716d8836e8458b89aa97795fc000ff
+msgid "Presence"
+msgstr ""
+
+#: 37cbfba930be4c21ae4b21fb3ed9366e
+msgid "0x27"
+msgstr ""
+
+#: ca150e13904d407c963a4d3765c9448d
+msgid "Away / Home"
+msgstr ""
+
+#: bca82fbfa77746cf9d4e8312a94874d9
+msgid "Moving"
+msgstr ""
+
+#: af5d34ffd5434da6b7ed4c185a796d36
+msgid "0x22"
+msgstr ""
+
+#: 473833ef9e434020aa4d61d7b03c97f2
+msgid "Not Moving / Moving"
+msgstr ""
+
+#: 9aab6a8bf1e5442fa1c578d11b9c9e3f
+msgid "Vibration"
+msgstr ""
+
+#: 1365f372f1574ed5952c132e5ec39b14
+msgid "0x2E"
+msgstr ""
+
+#: 8c73651407434859bf6e9678e17e47e5
+msgid "Sound"
+msgstr ""
+
+#: 8827db186da142329941a6811123a65a
+msgid "0x2C"
+msgstr ""
+
+#: b35024dfd1a74031b0828d20e6542b9f
+msgid "Hazard Sensors"
+msgstr ""
+
+#: 270f4d96e0414dc085d846b48b6bd594 7772723a1454439a989bd8c3f3e87145
+msgid "Smoke"
+msgstr ""
+
+#: 419b26693a574d9ba9f83c4083656f83
+msgid "0x2B"
+msgstr ""
+
+#: fc7e048407834699aba0cadefdfac7b2
+msgid "CO (Carbon Monoxide)"
+msgstr ""
+
+#: aef36af60ab247a1b3d6a846ea980ebf
+msgid "0x17"
+msgstr ""
+
+#: 9d405cb97a5246e1ae3ebd080c2f241c e7c84b021eb14432ae2841d21713e50f
+msgid "Gas"
+msgstr ""
+
+#: 57ee52355fe142e9b1747320692ea62b
+msgid "0x1C"
+msgstr ""
+
+#: 2466901f1b5d4b9694f02f92a353312b
+msgid "Problem"
+msgstr ""
+
+#: 583e273e8efc4c5fb0bfd00b91086fcd
+msgid "0x28"
+msgstr ""
+
+#: ee88d25108ba481c8438bded7ff129cf
+msgid "OK / Problem"
+msgstr ""
+
+#: a3026ead2508474dbbb3577899917be8
+msgid "Moisture (Binary)"
+msgstr ""
+
+#: b446487ae5c84225ae119e4bb52a3f04
+msgid "0x20"
+msgstr ""
+
+#: 5afa340e60844beb9fc958c81eb38eaf
+msgid "Dry / Wet"
+msgstr ""
+
+#: 68149086c80243f5baa96644075d7c7b
+msgid "Power & Connectivity"
+msgstr ""
+
+#: 89304b997d41414b82139b962537b716
+msgid "Battery Low"
+msgstr ""
+
+#: 346ef2ccaf754b5cbee7cb61327f88a1
+msgid "0x15"
+msgstr ""
+
+#: 50df0a08973148b59cb54aab92fb48e5
+msgid "Normal / Low"
+msgstr ""
+
+#: 46318eb75cee4d4692b44a740e33da90
+msgid "Battery Charging"
+msgstr ""
+
+#: 73fe32c492cf41fabfbfbc1d6dc87110
+msgid "0x16"
+msgstr ""
+
+#: 389667f97fdc41aaae5a2ca7924adef0
+msgid "Not Charging / Charging"
+msgstr ""
+
+#: 0a6e90e4ce1a478cbba3acb58c0af1ac
+msgid "Plug"
+msgstr ""
+
+#: 702dc91c40ca4e7e80cbcc88d47d44ab
+msgid "0x25"
+msgstr ""
+
+#: 60d6bb37d7cd4f62964e6e319fb02f70
+msgid "Unplugged / Plugged"
+msgstr ""
+
+#: e2fec7c8a5394ec2a0fa83417a2a13f8
+msgid "0x26"
+msgstr ""
+
+#: 1a2418c3d0c649d599ed7c93f4a7ed25
+msgid "Running"
+msgstr ""
+
+#: 35f52d7a3df04cbcaae612f3e5eff1cf
+msgid "0x29"
+msgstr ""
+
+#: 565c8f999e384e07a515ac73e2313d95
+msgid "Not Running / Running"
+msgstr ""
+
+#: 866fa9a03baf4bf8847b3578304fa75a
+msgid "Connectivity"
+msgstr ""
+
+#: 4a3e34f9cc8e4090a161212e79e6cea2
+msgid "0x19"
+msgstr ""
+
+#: 058c6073f3124a539b5d29a57e8848a1
+msgid "Disconnected / Connected"
+msgstr ""
+
+#: 2c7984e4e5dd402da136d14547beadce
+msgid "Environment"
+msgstr ""
+
+#: db1f51a7756644959ebf757efdbf9dfd
+msgid "Cold"
+msgstr ""
+
+#: ae5988944e85481b8fdf39e369bbd31d
+msgid "0x18"
+msgstr ""
+
+#: d5756663b2ed4386aef0d2dc2b1b7e23
+msgid "Normal / Cold"
+msgstr ""
+
+#: e0c2f51e15d94219979c6785342d1308
+msgid "Heat"
+msgstr ""
+
+#: 79dfe874dfd1473795f23331ed8d41f6
+msgid "0x1D"
+msgstr ""
+
+#: 91f4d149fb1644009502d86e3330ab75
+msgid "Normal / Hot"
+msgstr ""
+
+#: 792cf025a9784f1680b05694874a54ef
+msgid "Light"
+msgstr ""
+
+#: 1b47d5d2b37e45a5b3e454fdf576c363
+msgid "0x1E"
+msgstr ""
+
+#: fa618b5b60f147749d192eec29d3832c
+msgid "Events"
+msgstr ""
+
+#: e7a8f4afa2d04535aede2e95987a455b
+msgid "Events represent user interactions or state changes."
+msgstr ""
+
+#: 6151b10e4a71422592896c9e6f1661a3
+msgid "Button Events"
+msgstr ""
+
+#: b80b0272a3024fa5b45fb711d25a8e0f
+msgid "Object ID: 0x3A"
+msgstr ""
+
+#: 4972e1d2b81647d69dca1dae83ed9268 971350ca505d428891821d26d019e39a
+msgid "Event"
+msgstr ""
+
+#: 4350efe8226c4f0eb01e70990f01963f acb7b7923d064dbbb38e011733bdd91e
+msgid "Value"
+msgstr ""
+
+#: 294f113cfef84d6f9acf44fd6bcccf62 4837336f82d24e768d0729b8ca8cafac
+msgid "Description"
+msgstr ""
+
+#: 3489bac656ed48d99a33da98299c0e9b
+msgid "None"
+msgstr ""
+
+#: 611d6f34810943ef81c8e1581ec78e71
+msgid "0x00"
+msgstr ""
+
+#: bebc67d2ad7f48d2bb4d072751ccb71e
+msgid "No event (used to clear previous event)"
+msgstr ""
+
+#: c148160a306b44c7bb73b2aad509828d
+msgid "Press"
+msgstr ""
+
+#: 1cbcde8cf8fb4b1d96421be1b836c5c5
+msgid "Single button press"
+msgstr ""
+
+#: 2c3fa9b8df65439ba10da99174a51ff1
+msgid "Double Press"
+msgstr ""
+
+#: c8500aa902114cabb097f7f616b3cd9d
+msgid "Button pressed twice quickly"
+msgstr ""
+
+#: c2e7d89f8f7b4c749ad7f8f4730092f0
+msgid "Triple Press"
+msgstr ""
+
+#: 0b9a9d278a684d6898a8f597ef67f422
+msgid "Button pressed three times quickly"
+msgstr ""
+
+#: 16a6546148bf462993ccb6ec2aa7a63d
+msgid "Long Press"
+msgstr ""
+
+#: 0cffbc51660c4f5a867fbd97b4521bb1
+msgid "Button held for extended time"
+msgstr ""
+
+#: ecb32fec0736439696ef0175da7bbbd8
+msgid "**API Function:** ``addButtonEvent(uint8_t event)``"
+msgstr ""
+
+#: b69e40de3db44820abf267c852e360b1 c998558f0fd34f05a1482e3aad793461
+msgid "**Example:**"
+msgstr ""
+
+#: c48f894cd4aa47a9b9755ed8e7e2e273
+msgid "Dimmer Events"
+msgstr ""
+
+#: 45b05662bff94edc9ed3c2b9149d9e0c
+msgid "Object ID: 0x3C"
+msgstr ""
+
+#: 72da0946862f4e17a8c93c543f57b2b7
+msgid "Rotate Left (1 step)"
+msgstr ""
+
+#: 4fb15a1bf43e4c7895419e67a4433e66
+msgid "Dimmer rotated counter-clockwise"
+msgstr ""
+
+#: b22e097bd4f0420eafc380d64f543c69
+msgid "Rotate Right (1 step)"
+msgstr ""
+
+#: 1d796d0dc8fe41c59ecb1dcdc5c90557
+msgid "Dimmer rotated clockwise"
+msgstr ""
+
+#: 043ae49c4924460a8bbc0d3acdf35333
+msgid "Usage Examples"
+msgstr ""
+
+#: ecf1d92e24414cdab57731ffbbfb93a7
+msgid "Combining Multiple Sensors"
+msgstr ""
+
+#: 1539d673f9df4a988f14ead1f4d06493
+msgid "You can combine multiple measurements in a single advertisement:"
+msgstr ""
+
+#: 3af59387bf8c4061a6a48d8cfdfa65f8
+msgid "Binary Sensor Example"
+msgstr ""
+
+#: 10600881c8224815b417d19670c7840f
+msgid "Motion Sensor Example"
+msgstr ""
+
+#: ecee5a0af19549d38f6e7070f552722e
+msgid "Button Example"
+msgstr ""
+
+#: 0437da0085174ce2be95e486d4db40fe
+msgid "Payload Size Considerations"
+msgstr ""
+
+#: 6d1a9f3c32f545f5886e9c054ba0cebc
+msgid ""
+"BLE advertising packets have a maximum payload of 31 bytes. The BThome V2"
+" format uses some bytes for headers and device information, leaving "
+"approximately 20-25 bytes for sensor data."
+msgstr ""
+
+#: 5a7acce5c0c448c7802e44e4c4e762d0
+msgid "Typical Sensor Sizes"
+msgstr ""
+
+#: 1132a22a418c487cb9b83f49ddb38685
+msgid "Sensor Type"
+msgstr ""
+
+#: e793d260b3884310895f40d4c7c8a239
+msgid "Bytes"
+msgstr ""
+
+#: f293279846e842f7a317d9a7bf51e6fa
+msgid "Example Combination"
+msgstr ""
+
+#: 0a6cef4f7b274052890b14922f9519a9 a5db6ec016c943f6b684c2428a9b08a4
+#: f5171d833954488db834b0ad621dc965
+msgid "3 bytes"
+msgstr ""
+
+#: e2b356edb49047f9ae5fd6772a2bc560
+msgid "~7 temperature sensors max"
+msgstr ""
+
+#: d5626901b53d4ac881c9f7d21e7e63bd
+msgid "Temp + Humidity + Pressure + Battery (12 bytes)"
+msgstr ""
+
+#: 4ecd8e0c465f4cc18cbfb0c4d010cbe9
+msgid "4 bytes"
+msgstr ""
+
+#: 6409623248bc4bbcaad398bbbb184477
+msgid "Full climate station (15 bytes)"
+msgstr ""
+
+#: 7510c84b7b6841bc8e6ca78a7696d554 8a642b1a39304d1499a199c822876d1f
+#: fe179d0ea6af43bf8b7e02d9d644bf5b
+msgid "2 bytes"
+msgstr ""
+
+#: f337daf50040410488a4d03f81449e24
+msgid "Most combinations include this"
+msgstr ""
+
+#: 194f605b78a24128b6684b55e6cebae4
+msgid "Air quality + climate (18 bytes)"
+msgstr ""
+
+#: 02dcb7cc2d6f4e328f25f7cf0f8f4370
+msgid "Binary Sensor"
+msgstr ""
+
+#: c4e9945dbf3240d5b15498cc3dbde7bf
+msgid "Multiple binary sensors fit easily"
+msgstr ""
+
+#: 93b3963779344c30a2ce19f58e2370cc
+msgid "Button Event"
+msgstr ""
+
+#: 88129756875b408d97dafd0ba43f7a7a
+msgid "Event + battery"
+msgstr ""
+
+#: d6e6d0501a2a4b538cf2a5324a813208
+msgid "Recommendations"
+msgstr ""
+
+#: b112b48b8eda4b4993184b28ea19fae2
+msgid "**Keep it simple**: 3-5 measurements per advertisement"
+msgstr ""
+
+#: c123429be441424699f893de5be867ed
+msgid "**Essential first**: Always include battery level"
+msgstr ""
+
+#: 16c32f64c698471fa1a85c8db3dd35e9
+msgid "**Test payload size**: Use bthome-logger to verify all data transmits"
+msgstr ""
+
+#: 23d94d7794584e919ae498c9c8295762
+msgid "**Split if needed**: Create multiple devices for many sensors"
+msgstr ""
+
+#: 08b5789c74ec426c938cd8aab9fda0d1
+msgid "Sensor Categories"
+msgstr ""
+
+#: 8e029d0b5e0346d3a0255c375e0ed03a
+msgid "Quick Reference by Use Case"
+msgstr ""
+
+#: b8ca363ff3c244078b004b7e8f2627b4
+msgid "**Climate Monitoring:**"
+msgstr ""
+
+#: c7002e6ac0f841a582197396334f158a
+msgid "**Air Quality:**"
+msgstr ""
+
+#: 184a49182b954d05bd95b7796203ad3b
+msgid "**Security:**"
+msgstr ""
+
+#: 069794234d264771bae4bac124153def
+msgid "**Energy:**"
+msgstr ""
+
+#: 4dd672c895d64ad9a4ca1137e4da6aea
+msgid "**User Input:**"
+msgstr ""
+
+#: f2302fcb32054c2290b4ae1082989e7b
+msgid "Button (events)"
+msgstr ""
+
+#: d2c8c948f2c6441c9a8024d97d60a62f
+msgid "Dimmer (events)"
+msgstr ""
+
+#: af961675db6447b8929ea44fade4ddc7
+msgid "Home Assistant Integration"
+msgstr ""
+
+#: 46da0fc260f546a8bf632fe300e377e1
+msgid ""
+"All these sensors are automatically recognized by Home Assistant when "
+"using the BTHome integration. The sensors will appear with appropriate "
+"units and icons."
+msgstr ""
+
+#: b679c7b8e3e14b3c87a42fee38ed0e31
+msgid "**Auto-discovered as:**"
+msgstr ""
+
+#: 1ce79783fcda4a44bdb2c61d7dcba408
+msgid "Temperature → Temperature entity (°C)"
+msgstr ""
+
+#: dcda7ff4cc3b4bbba1185aa4e1d502d3
+msgid "Humidity → Humidity entity (%)"
+msgstr ""
+
+#: a991de96626e48c6ae045b96f38af7da
+msgid "Motion → Binary sensor (motion)"
+msgstr ""
+
+#: 24bd21df5f664cb0b0e683f4eede1bde
+msgid "Door → Binary sensor (door)"
+msgstr ""
+
+#: 695f6ef5f4ca4840a0d34d809888b94e
+msgid "Button → Event entity"
+msgstr ""
+
+#: 1c9e5ffac48b454f9d5014318e405eda
+msgid "Battery → Battery entity (%)"
+msgstr ""
+
+#: bf258544875043d883bb92d9ead30e1b
+msgid "See Also"
+msgstr ""
+
+#: b0943765330d45628836cae022f80437
+msgid ":doc:`api` - Complete API reference"
+msgstr ""
+
+#: 716b82a0f4fe4a81b6fc8f8ae8f9c5ad
+msgid ":doc:`examples` - Real-world examples"
+msgstr ""
+
+#: d1b473f6b8ed430f8ef10968bd6a580d
+msgid ":doc:`../tools/bthome-logger` - Testing tool"
+msgstr ""
+
+#: b5238148faaf45aca5d56bfdc62bacf5
+msgid ""
+"`BThome V2 Specification <https://bthome.io/format/>`_ - Official "
+"specification"
+msgstr ""

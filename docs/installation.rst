@@ -1,16 +1,15 @@
 Installation
 ============
 
-Die BThomeV2-Lösung besteht aus zwei Komponenten, die je nach Anwendungsfall
-installiert werden können.
+The BThomeV2 solution consists of two components that can be installed depending on your use case.
 
 Arduino/PlatformIO Library
 ---------------------------
 
-PlatformIO (Empfohlen)
-~~~~~~~~~~~~~~~~~~~~~~
+PlatformIO (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Füge die Library zu deiner ``platformio.ini`` hinzu:
+Add the library to your ``platformio.ini``:
 
 .. code-block:: ini
 
@@ -21,7 +20,7 @@ Füge die Library zu deiner ``platformio.ini`` hinzu:
    lib_deps =
        the78mole/BThomeV2
 
-Für spezifische Versionen:
+For specific versions:
 
 .. code-block:: ini
 
@@ -31,24 +30,24 @@ Für spezifische Versionen:
 Arduino IDE
 ~~~~~~~~~~~
 
-1. Lade die Library von der `GitHub Releases Seite <https://github.com/the78mole/bthomev2/releases>`_ herunter
+1. Download the library from the `GitHub Releases page <https://github.com/the78mole/bthomev2/releases>`_
 2. In Arduino IDE: **Sketch** → **Include Library** → **Add .ZIP Library**
-3. Wähle die heruntergeladene ZIP-Datei aus
+3. Select the downloaded ZIP file
 
 Arduino Library Manager
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Die Library ist auch über den Arduino Library Manager verfügbar:
+The library is also available through the Arduino Library Manager:
 
-1. Öffne Arduino IDE
-2. Gehe zu **Tools** → **Manage Libraries**
-3. Suche nach "BThomeV2"
-4. Klicke auf **Install**
+1. Open Arduino IDE
+2. Go to **Tools** → **Manage Libraries**
+3. Search for "BThomeV2"
+4. Click **Install**
 
 Dependencies
 ~~~~~~~~~~~~
 
-Die BThomeV2 Library hat folgende Abhängigkeiten, die automatisch installiert werden:
+The BThomeV2 library has the following dependencies that are automatically installed:
 
 **ESP32:**
 
@@ -56,21 +55,21 @@ Die BThomeV2 Library hat folgende Abhängigkeiten, die automatisch installiert w
 
 **nRF52:**
 
-* Adafruit nRF52 Libraries (über PlatformIO)
+* Adafruit nRF52 Libraries (via PlatformIO)
 
 Python Testing Tool (bthome-logger)
 ------------------------------------
 
-uv (Empfohlen)
-~~~~~~~~~~~~~~
+uv (Recommended)
+~~~~~~~~~~~~~~~~
 
-Die Installation mit `uv <https://docs.astral.sh/uv/>`_ ist der empfohlene Weg:
+Installation with `uv <https://docs.astral.sh/uv/>`_ is the recommended method:
 
 .. code-block:: bash
 
    uv tool install bthome-logger
 
-Das Tool ist dann global verfügbar:
+The tool is then globally available:
 
 .. code-block:: bash
 
@@ -79,7 +78,7 @@ Das Tool ist dann global verfügbar:
 pip
 ~~~
 
-Alternativ kann die Installation mit pip erfolgen:
+Alternatively, you can install with pip:
 
 .. code-block:: bash
 
@@ -88,16 +87,16 @@ Alternativ kann die Installation mit pip erfolgen:
 pipx
 ~~~~
 
-Für isolierte Installation:
+For isolated installation:
 
 .. code-block:: bash
 
    pipx install bthome-logger
 
-Von GitHub
-~~~~~~~~~~
+From GitHub
+~~~~~~~~~~~
 
-Für Entwicklungsversionen:
+For development versions:
 
 .. code-block:: bash
 
@@ -105,44 +104,43 @@ Für Entwicklungsversionen:
    cd bthomev2/tools
    uv tool install .
 
-System-Anforderungen
---------------------
+System Requirements
+-------------------
 
 Hardware
 ~~~~~~~~
 
-**Für Library-Entwicklung:**
+**For Library Development:**
 
-* ESP32-basiertes Board (ESP32, ESP32-S3, ESP32-C3, etc.)
-* nRF52-basiertes Board (Adafruit Feather nRF52840, Seeed XIAO nRF52840)
+* ESP32-based boards (ESP32, ESP32-S3, ESP32-C3, etc.)
+* nRF52-based boards (Adafruit Feather nRF52840, Seeed XIAO nRF52840)
 
   .. warning::
-     nRF52 ist derzeit nicht funktionsfähig!
+     nRF52 is currently not functional!
 
-**Für Testing mit bthome-logger:**
+**For Testing with bthome-logger:**
 
-* Bluetooth LE-fähiger Computer (integriert oder USB-Adapter)
-* Linux, macOS oder Windows
+* Bluetooth LE capable computer (built-in or USB adapter)
+* Linux, macOS or Windows
 
 Software
 ~~~~~~~~
 
-**Library-Entwicklung:**
+**Library Development:**
 
-* PlatformIO Core oder Arduino IDE
-* ESP32 Board Support (via Arduino Board Manager oder PlatformIO)
-* nRF52 Board Support (via Adafruit Board Manager oder PlatformIO)
+* PlatformIO Core or Arduino IDE
+* ESP32 Board Support (via Arduino Board Manager or PlatformIO)
+* nRF52 Board Support (via Adafruit Board Manager or PlatformIO)
 
 **Testing Tool:**
 
-* Python 3.8 oder höher
-* Bluetooth-Treiber des Betriebssystems
+* Python 3.8 or higher
+* Operating system Bluetooth drivers
 
-Versionskompatibilität
-----------------------
+Version Compatibility
+---------------------
 
-Die Library und das Testing Tool werden synchron versioniert. Es wird empfohlen,
-passende Versionen zu verwenden:
+The library and testing tool are versioned synchronously. It is recommended to use matching versions:
 
 .. list-table::
    :header-rows: 1
@@ -158,13 +156,13 @@ passende Versionen zu verwenden:
      - Git Repository
      - Git Repository
 
-Verifizierung der Installation
--------------------------------
+Installation Verification
+-------------------------
 
 Arduino Library
 ~~~~~~~~~~~~~~~
 
-Erstelle ein neues Projekt und teste den Import:
+Create a new project and test the import:
 
 .. code-block:: cpp
 
@@ -184,24 +182,24 @@ Erstelle ein neues Projekt und teste den Import:
 Python Tool
 ~~~~~~~~~~~
 
-Überprüfe die Installation:
+Verify the installation:
 
 .. code-block:: bash
 
    bthome-logger --version
 
-Starte einen Test-Scan:
+Start a test scan:
 
 .. code-block:: bash
 
    bthome-logger
 
-Nächste Schritte
-----------------
+Next Steps
+----------
 
-Nach der Installation:
+After installation:
 
-1. Lies den :doc:`quickstart` Guide für ein erstes Beispiel
-2. Erkunde die :doc:`library/examples` für fortgeschrittene Anwendungsfälle
-3. Lerne das :doc:`tools/bthome-logger` Tool kennen
-4. Betrachte den :doc:`development/workflow` für Entwicklungsbeiträge
+1. Read the :doc:`quickstart` guide for a first example
+2. Explore :doc:`library/examples` for advanced use cases
+3. Learn about the :doc:`tools/bthome-logger` tool
+4. Review the :doc:`development/workflow` for development contributions

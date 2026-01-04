@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 9a8e6270126f4c8f9504df871cc8f53c
+msgid "Contributing Guidelines"
+msgstr ""
+
+#: 3fee608dae494ebf9d79008d35874c9e
+msgid "Thank you for your interest in contributing to the BThomeV2 project!"
+msgstr ""
+
+#: d6c97d4aeae6431f820133dedb1cdad9
+msgid "Contributing to BThomeV2"
+msgstr ""
+
+#: ca2beb2393404e7797ac2251a3ed9eac
+msgid ""
+"Thank you for your interest in contributing to the BThomeV2 library! This"
+" document provides guidelines for contributing to the project."
+msgstr ""
+
+#: 093470dff31d49259f67306c010aa179
+msgid "How to Contribute"
+msgstr ""
+
+#: dfa06f8e8e1841a3ba8c16b42fddf9ac
+msgid "Reporting Bugs"
+msgstr ""
+
+#: 943f7f4e48054fe1bb7662400e52ab29
+msgid "If you find a bug, please create an issue with:"
+msgstr ""
+
+#: dff2d4bc49d04ebb8283ec3a81bd27bf
+msgid "A clear, descriptive title"
+msgstr ""
+
+#: fad6e938482a42b1a48eeda80260ceb2
+msgid "Steps to reproduce the issue"
+msgstr ""
+
+#: 8f28a65dae4b45ed98eab087362d9287
+msgid "Expected behavior"
+msgstr ""
+
+#: 4e9edd345b274e03b1772784e8da9626
+msgid "Actual behavior"
+msgstr ""
+
+#: 2c1f140f576a4bea86a3a73685859778
+msgid "Your platform (ESP32 variant, nRF52 board, etc.)"
+msgstr ""
+
+#: 0521484f33524ecb8b3ab3913d9d210a
+msgid "Library version"
+msgstr ""
+
+#: abe3ce8a08414ebe93cd9399d6a03631
+msgid "Suggesting Enhancements"
+msgstr ""
+
+#: f15a937afc194879a8ba70efddbff00f
+msgid "Enhancement suggestions are welcome! Please create an issue with:"
+msgstr ""
+
+#: 0fde17ad1b26442fa59016e4b96ce04d
+msgid "A clear description of the enhancement"
+msgstr ""
+
+#: 0208e63c49844cac80d6faaf7df91ffd
+msgid "Use cases for the enhancement"
+msgstr ""
+
+#: 705b46090e734a6c9b8197ccef723404
+msgid "Any relevant examples or references"
+msgstr ""
+
+#: ae38f8b65dd34d5ea3d464c1012831e3
+msgid "Pull Requests"
+msgstr ""
+
+#: 85f32d1917b14a0095e6c82c71ae9575
+msgid "Fork the repository"
+msgstr ""
+
+#: b5a22197734643f5b18375b5ca78209c
+msgid "Create a new branch (`git checkout -b feature/your-feature-name`)"
+msgstr ""
+
+#: 81b8778d8690409d98698cf85c470235
+msgid "Make your changes"
+msgstr ""
+
+#: fe5d185642a8472f83f8f739025ea592
+msgid "Test your changes on both ESP32 and nRF52 if possible"
+msgstr ""
+
+#: 23b19f83152f4ae48c3b9ee0a90e81ef
+msgid "Commit your changes (`git commit -am 'Add some feature'`)"
+msgstr ""
+
+#: 8fa11f66afff49ce93ade0270d3d05d2
+msgid "Push to the branch (`git push origin feature/your-feature-name`)"
+msgstr ""
+
+#: eedd584557584a58bbfcce8fee79c17c
+msgid "Create a Pull Request"
+msgstr ""
+
+#: 6fbf5fdff0b04b4e904696026d0afaa1
+msgid "Development Guidelines"
+msgstr ""
+
+#: c3a09319675e453d8f8076d53885b46e
+msgid "Code Style"
+msgstr ""
+
+#: c1b61346c02e43f081822141022ace77
+msgid "Follow the existing code style"
+msgstr ""
+
+#: 266243e261e44b16afab1b08dc7f4803
+msgid "Use descriptive variable and function names"
+msgstr ""
+
+#: 48b39fc06ce541c0bb4f247e42f40c1b
+msgid "Add comments for complex logic"
+msgstr ""
+
+#: 14e26a62ea1146c78c7ebd0e4c5f057c
+msgid "Include Doxygen-style comments for public APIs"
+msgstr ""
+
+#: 445a056a51e9495f8b843fcab2de1415
+msgid "Platform Support"
+msgstr ""
+
+#: e2d8d8fc4e0c45818239d519b08e908b
+msgid ""
+"**Note:** The nRF52 implementation is currently broken (runtime hang at "
+"`Bluefruit.begin()`). Focus development efforts on ESP32 until the nRF52 "
+"issue is resolved."
+msgstr ""
+
+#: 3313877968a04faeb40b40fcc3e37714
+msgid "When adding new features:"
+msgstr ""
+
+#: c2ba75ca4e564a31a3c360dc388bdbe5
+msgid "Ensure compatibility with ESP32 platform (nRF52 currently non-functional)"
+msgstr ""
+
+#: 3588cca6f24643f3896608de460af6d4
+msgid "Use platform-specific implementations in the respective files"
+msgstr ""
+
+#: 41f565bf34754f7ab6170a418fd70392
+msgid "Keep the base class platform-agnostic"
+msgstr ""
+
+#: ed669c8d1f7d40bc8994af531a6973c9
+msgid "Test on actual hardware when possible"
+msgstr ""
+
+#: 88cd59b54f6e4753b5d420cf8bbf9903
+msgid "Help with nRF52 debugging is especially welcome!"
+msgstr ""
+
+#: ace264111fbc4563bbdc8f9b9e4c98e3
+msgid "Testing"
+msgstr ""
+
+#: 9a9bdde99bf64f14ba1beac057581eab
+msgid "Test new features on real hardware"
+msgstr ""
+
+#: af93bef34de04a0c90a7a99b8a7afe8e
+msgid "Use **bthome-logger** to verify BLE advertisements:"
+msgstr ""
+
+#: 98df75c5a89d44c1b7a6d36f15257eee
+msgid "Verify BLE advertising with a scanner app (nRF Connect, LightBlue, etc.)"
+msgstr ""
+
+#: 6f463b82d220436f8cb9694f4d1c5041
+msgid "Check compatibility with Home Assistant or other BThome V2 consumers"
+msgstr ""
+
+#: 3028ae89e0804c1388efe9268dfee730
+msgid "Include example sketches for new features"
+msgstr ""
+
+#: 11f99473b5014f4380c3df312deda13b
+msgid "Documentation"
+msgstr ""
+
+#: ebbd8a97c4bd4635a9c4d05f450f4b36
+msgid "Update README.md for new features"
+msgstr ""
+
+#: 3e3cd9dcd04747d4ba8f9842d4efc20e
+msgid "Add inline documentation for new public methods"
+msgstr ""
+
+#: 706c951f940844e2af083b65e51f98fd
+msgid "Update examples if the API changes"
+msgstr ""
+
+#: 14fc070675b74f45a71128ee669596dc
+msgid "Include usage examples in your PR description"
+msgstr ""
+
+#: f588fe37091c490daab6cf9e684c25c8
+msgid "BThome V2 Protocol"
+msgstr ""
+
+#: 11e669c2976842c49decff9e109ba15a
+msgid "When implementing new sensor types or features:"
+msgstr ""
+
+#: 22ae51dfc2e8489ebb654ebe513b617c
+msgid "Follow the [BThome V2 specification](https://bthome.io/)"
+msgstr ""
+
+#: 7edf7ffe36d5486e94ac0df5248ee306
+msgid "Use correct data types and byte ordering (little-endian)"
+msgstr ""
+
+#: b02ac5c041a747b29ebe7d190553af1d
+msgid "Verify object IDs match the specification"
+msgstr ""
+
+#: 0b6c29158dbe43a3a2ec3aa6bf179097
+msgid "Test with Home Assistant or other BThome V2 receivers"
+msgstr ""
+
+#: bc09754f62f843e4901ee7abaef11f1c
+msgid "Project Structure"
+msgstr ""
+
+#: 552d85fdaecb4b38bd4628e4bc98b42f
+msgid "Adding New Sensor Types"
+msgstr ""
+
+#: abeff64b762842beb2346bb22b162deb
+msgid "To add a new sensor type:"
+msgstr ""
+
+#: d7d401cabcdb4c0bb035e30a114618f8
+msgid "Add the object ID to the `BThomeObjectID` enum in `BThomeV2.h`"
+msgstr ""
+
+#: b30e0a7dc6b94023934d6d54f649a226
+msgid "Add a public method in the `BThomeV2` class (e.g., `addMySensor()`)"
+msgstr ""
+
+#: 65a177aaa951475e8a4b457196451a8b
+msgid "Implement the method in `BThomeV2.cpp` using existing encoding functions"
+msgstr ""
+
+#: 36d7e3884d244b39a97ae16c129afbfc
+msgid "Update the README.md with the new sensor type"
+msgstr ""
+
+#: 8eb1c0e138904761b55cf6dd41725dc9
+msgid "Add an example if appropriate"
+msgstr ""
+
+#: 6961c2fb657d4bb29d2bbe3e1b1bc183
+msgid "Example:"
+msgstr ""
+
+#: 770b9b37fec34f6e91a03c5874610494
+msgid "Release Process"
+msgstr ""
+
+#: 2f5e89730e4a4e1c8424290d07f7765e
+msgid "Releases are automated via GitHub Actions:"
+msgstr ""
+
+#: 2e7bca81bbf5479d9fb762bc4f882a5d
+msgid "**Semantic Versioning**: Commit messages determine version bumps"
+msgstr ""
+
+#: 54a1a0af500943c3bb640b36377fa9db
+msgid "`feat:` → minor version bump (0.x.0)"
+msgstr ""
+
+#: f54d5a74d650457cbad8658a597950ba
+msgid "`fix:` → patch version bump (0.0.x)"
+msgstr ""
+
+#: c494265ec46d40a9a01ee7d98fefea64
+msgid "`BREAKING CHANGE:` → major version bump (x.0.0)"
+msgstr ""
+
+#: be3ed8f4a12945b39d1d7f8db421d14b
+msgid ""
+"**Automatic Publishing**: On push to `main` (with changes in relevant "
+"paths):"
+msgstr ""
+
+#: c14c75e93a444adb9a6bc4b4aa1399de
+msgid "Version is calculated from commit history"
+msgstr ""
+
+#: aee15238e7484d12a63570e98f525fed
+msgid "GitHub Release is created with tag"
+msgstr ""
+
+#: b772681101fe46119419ef1bbd8d0a93
+msgid "bthome-logger is published to PyPI"
+msgstr ""
+
+#: 48039b1ecfc342faa390f70387cc97e1
+msgid "BThomeV2 library is published to PlatformIO Registry"
+msgstr ""
+
+#: 18508ac4eff9413b8b1b700a3794f426
+msgid "Both packages receive the same version number"
+msgstr ""
+
+#: 700b984f688d46ba9aafc00bbe8f5b4a
+msgid "**Template System**:"
+msgstr ""
+
+#: 3163a223985148b9bfa8c88c1113442f
+msgid "`library.json` and `library.properties` are generated from `.j2` templates"
+msgstr ""
+
+#: 53de0feb156d40c983d29fe860fb09ce
+msgid "Repository contains `0.0.0-dev` versions"
+msgstr ""
+
+#: 23f5f1a8864546b4bd9e59d0bbb1cd3b
+msgid "Workflows generate actual versions during release (not committed)"
+msgstr ""
+
+#: 9fa9ae393d8d448ea9022718a5442284
+msgid "**Manual Testing**: Before merging to `main`:"
+msgstr ""
+
+#: 7681e3d27ad947cb820305c179b5beb2
+msgid "Test changes on ESP32 hardware"
+msgstr ""
+
+#: dd83fe1e0e5a4f21a176cb0ff77ac866
+msgid "Verify with bthome-logger"
+msgstr ""
+
+#: 01812e341303489cb6ef6a71828901f9
+msgid "Update examples if API changes"
+msgstr ""
+
+#: dd4c8f0507474d2b9aa2bc3c8df15165
+msgid "Questions?"
+msgstr ""
+
+#: b35800cf70ca47b08e32141a6f9708ec
+msgid "If you have questions about contributing, feel free to:"
+msgstr ""
+
+#: 5d33283b1ead4ce6be8a681f0a0a67ae
+msgid "Open an issue for discussion"
+msgstr ""
+
+#: 9ddb4808d86240e6bf70e695c674c508
+msgid "Check existing issues and pull requests"
+msgstr ""
+
+#: a6ebc7e30ef04b4cad859e12e3598218
+msgid "Review the [BThome V2 specification](https://bthome.io/)"
+msgstr ""
+
+#: c119f6dcd6bc4e0f8da4e8ec1d680f3a
+msgid "License"
+msgstr ""
+
+#: 2bd2acf8d80c4c4088a01fd9c95e3df6
+msgid ""
+"By contributing, you agree that your contributions will be licensed under"
+" the MIT License."
+msgstr ""

@@ -1,0 +1,641 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: aa72d9c425fd409f91ea349ac257f36c
+msgid "API Reference"
+msgstr ""
+
+#: 4174b009889f41feae90ccb6400c8387
+msgid ""
+"The BThomeV2 library provides a simple and unified API for creating "
+"BThome V2-compatible BLE sensors."
+msgstr ""
+
+#: a8858f559fc949e89d7f67ca296393f7
+msgid "BThomeV2Device Class"
+msgstr ""
+
+#: 411d8eb6750f4fc08d485ad3af58fbce
+msgid "The central class for working with BThome V2 sensors."
+msgstr ""
+
+#: b9e493954edd432ab4c9a78db6cc433d
+msgid "Initialization"
+msgstr ""
+
+#: 57790b004a1349509e922e996c6eaf56
+msgid "Initializes the BLE stack with a device name."
+msgstr ""
+
+#: 23d3b2c2c271481ca97855f1f72495bd 28eb42268627416ca829bdc26ad634d3
+#: 4ec6808afac54cc8b41901c4deb54f01 5978a111cf934b9f89af6a1f0f5b8b74
+#: 5c4045d13cbf488ba2c5653db7e14c71 677ecce511344fd591d1d1d6524109e9
+#: 6923b42266334689b91329f6bfc8f193 6aedd160d1a34f7aabc78698b1c7abe9
+#: 920c772415ac4a4ba1ba795e06531164 a773fd2d2aa1451d9cd34de1dd81ebe5
+#: affae930045049dd9327e783691b9c81 b6379322c7d84b5c828b4ebd9055cacd
+#: bc76b81a40824b588bafc32c583b21da
+msgid "Parameters"
+msgstr ""
+
+#: 57e5796e2b684a56a8aa61f26954420b
+msgid "Name of the BLE device (max 29 characters)"
+msgstr ""
+
+#: 1626d7a4016f428c949003409af2ea99 29a37f432e9b4df480e084b0301123ea
+#: 546f91a772ba4960b4a75ca00c925f9c b9fe2c9694dd4188843899e6f46318ac
+#: bbece1ad0bd3472e9628458048a315c3 f02e86b088494ba0b2d8c067817694db
+msgid "Returns"
+msgstr ""
+
+#: 447c94a2af4141198c5d57e441db788d 961fad889d7a410ca4756de4e7323f32
+#: e7a9f7fad70145b3b0c372e64aa2be9a
+msgid "``true`` on success, ``false`` on error"
+msgstr ""
+
+#: 316673a1a620413ab32cf69af74d8ee2 3a5e2fd8f27c421f9ceabe5b464da960
+#: a107585e3264420ab8fc34cff4577986 a2b6d5c0358e496b91f3b3197c58cafe
+#: afa0148c93e24de0943f8b18529eac88 d2319820758f4579af8d91bd3a9dd2e2
+msgid "rtype"
+msgstr ""
+
+#: 03d6dadba1394983abb091e642c7db9e 25f74840b73244f4ac08c4c1a91ddaf9
+#: 4110c4803a5d491d8de8bff0c9c3c327 5f93dc8cde104cf88510095596b85840
+#: 7ea4b75d5669422b82a9b0bde7926458 8d44bb31f3184ed69cbbca75b7912590
+#: b55f8e48a79f41fa8d206886e98d3915 fb1c877e28394999ad1c3f61504d2502
+msgid "bool"
+msgstr ""
+
+#: 0113fa615222474dbfe540a467a65766 128fc7d1cda549b599d8b6a9c2ca1c10
+#: 1375670e2c374f67b2a9c6d3eea73d28 467ccc7a9ea3445baa65e01d7de28aed
+#: 496294847aed4c9fb0e76015b5e7e744 4976a2020442438698794a8b3d3601bf
+#: 4d3a14c8019949e9aecf73e18b791690 68510d5752634bed8ea5229c63811364
+#: 8c9fbab872474abda800283aea6d4de6 a06bf3e6c56a457391fd101903e486a5
+#: c0475ec11b734e449a4a30e0988160ee c13a9ac8bec44ed699efa48eb4f19d6a
+#: cfe43b71b45f423a999ff514110f3e1c d6281152b21346aba03e21997d17ee0f
+#: d75d5a2f10ff4adeb49897c3a3b254f4 db99b3c577ad41989b0e0d7e7c05eb37
+#: f3ae549615b1468fa277ff8c25f15c70
+msgid "**Example:**"
+msgstr ""
+
+#: 1eced365c09846949d3aba4697ed4d28
+msgid "Stops BLE advertising and deinitializes the stack."
+msgstr ""
+
+#: 63dfad69475a484db3e5825cb7d6f0fb
+msgid "Advertising Control"
+msgstr ""
+
+#: d9a4eadedc1c44f69a7912839403bf2f
+msgid "Starts BLE advertising with current measurements."
+msgstr ""
+
+#: e5af8e8c4d28495295678e4c59f42f0e
+msgid "Stops BLE advertising."
+msgstr ""
+
+#: b33cb6df6a0049a494bc23df98933f7b
+msgid ""
+"Updates advertising data with new measurements. Automatically stops and "
+"restarts advertising."
+msgstr ""
+
+#: 0bc2033dc9e34817b4ab32d8559fb375
+msgid "Measurement Management"
+msgstr ""
+
+#: 61e1ad8ffd9c4e398453ebf758b5c99f
+msgid "Clears all measurements before adding new values."
+msgstr ""
+
+#: 9cc3031415ce40fc9c5c838748a73965
+msgid "Adding Sensors"
+msgstr ""
+
+#: 4b41a8c6743543ad8f5dd6564c82d743
+msgid "Temperature"
+msgstr ""
+
+#: 03e3510c5d614e3ba4bf63d24659df51
+msgid "Adds a temperature measurement."
+msgstr ""
+
+#: 373358ebf4934e42a72479d80aa81e4f
+msgid "Temperature in °C (resolution: 0.01°C)"
+msgstr ""
+
+#: a7bdf0c5987b4fcca600612234dffd8c
+msgid "type temperature"
+msgstr ""
+
+#: 0dd7441a080546269ad0b97b17703b93 2876859341914ef9af316c5c3f1bfc93
+#: bda52603b8a64dd79610263a23f152e4 c5f14d551fb6445c9fb6b45155b161d8
+msgid "float"
+msgstr ""
+
+#: 0cec4e6d7bea47e39e10654c487f7999
+msgid "Humidity"
+msgstr ""
+
+#: 40296bc267be43258b9b082e75c980db
+msgid "Adds a humidity measurement."
+msgstr ""
+
+#: c4d370d414584a2ca3d972d41347cb52
+msgid "Humidity in % (resolution: 0.01%, range: 0-100)"
+msgstr ""
+
+#: 2d0255a1f8314754b098b1b3c97761a0
+msgid "type humidity"
+msgstr ""
+
+#: d17ab2c0c9f24ba29046e218775d24d9
+msgid "Battery"
+msgstr ""
+
+#: d4193035097a4fdda1885d02a7065bd7
+msgid "Adds a battery level measurement."
+msgstr ""
+
+#: efd764f694a04373bff2f451bcfe664b
+msgid "Battery level in % (range: 0-100)"
+msgstr ""
+
+#: 3890db13985a40c9afc27626acc3433c
+msgid "type battery"
+msgstr ""
+
+#: 6643de08f3de4c74bbab7845e8ae7ccf b32669ebd4f94651b9f65234359cd339
+msgid "uint8_t"
+msgstr ""
+
+#: 060a1c7ec80443f685638eafa2c983c1
+msgid "Pressure"
+msgstr ""
+
+#: 685aaad69510473a8bc3b5124772a70b
+msgid "Adds an air pressure measurement."
+msgstr ""
+
+#: a578ee690d0847fc88701917dfbf06c4
+msgid "Pressure in hPa (resolution: 0.01 hPa)"
+msgstr ""
+
+#: 87bf51c8cc4a49a49a267d0d6b83f162
+msgid "type pressure"
+msgstr ""
+
+#: bc9651c7b8574b169104711f1831b59d
+msgid "Illuminance"
+msgstr ""
+
+#: f922f37d2c5048029d4bc5b2f502e526
+msgid "Adds an illuminance measurement."
+msgstr ""
+
+#: 51d045706adc4386a7c59ea7aa6d4048
+msgid "Illuminance in lux (resolution: 0.01 lux)"
+msgstr ""
+
+#: 8c519c0053f346a4ab1f06237f541a78
+msgid "type illuminance"
+msgstr ""
+
+#: 3bc47bd5bfec41eb88f284371416159d
+msgid "CO2"
+msgstr ""
+
+#: bdfd649a6f7b4e9b9f1911a57dafe812
+msgid "Adds a CO2 concentration measurement."
+msgstr ""
+
+#: c39f9aed09904c1abccf5d541ac6ff80
+msgid "CO2 concentration in ppm (parts per million)"
+msgstr ""
+
+#: cdc3ce25cc9847e0852d0769a936b536
+msgid "type co2"
+msgstr ""
+
+#: 85590954696040e4a83a73f12d6e6c2e
+msgid "uint16_t"
+msgstr ""
+
+#: c31bd696a68242ca96b8ca82789107ab
+msgid "Binary Sensors"
+msgstr ""
+
+#: de9774772ccd476981614ffc93963ae6
+msgid "Adds a binary sensor state."
+msgstr ""
+
+#: cf6a96f0f4cf40e3ae57a6f115164e7e
+msgid "Binary sensor object ID (see :doc:`sensors`)"
+msgstr ""
+
+#: 46994abd5d5c4716bade0e7eb37dd576
+msgid "Sensor state (true = on/detected, false = off/not detected)"
+msgstr ""
+
+#: 2c83213e305c4bae85f46d4be6ce6edd e5ba6e12dcb048b2bdbe0f433def75db
+msgid "type objectId"
+msgstr ""
+
+#: a6757a576b0a4885955a17344f261860 d9b619c84af344899e914111851545d4
+msgid "BThomeObjectID"
+msgstr ""
+
+#: 0d1e65e20bc44376817bc1789f541d4b
+msgid "type state"
+msgstr ""
+
+#: 190909c202fa4bf99170149993adb450
+msgid "Available Binary Sensors"
+msgstr ""
+
+#: c117a574d0c84c26872bfdc500f35b85
+msgid "``BATTERY_LOW`` - Low battery indicator"
+msgstr ""
+
+#: ff6061aa55ae472a94b1d17a63d33f6a
+msgid "``BATTERY_CHARGING`` - Charging indicator"
+msgstr ""
+
+#: 241468398c9a4093a0138cd34b2c7e20
+msgid "``CO`` - Carbon monoxide detected"
+msgstr ""
+
+#: d2e475d134024ffab318f1adb70e76ca
+msgid "``COLD`` - Cold temperature detected"
+msgstr ""
+
+#: a29a795a1989437ca445efa9c1935caf
+msgid "``CONNECTIVITY`` - Network connectivity"
+msgstr ""
+
+#: b7492365a8d64b1f9e0c7b644bb836e8
+msgid "``DOOR`` - Door open/closed"
+msgstr ""
+
+#: be2c38d58b214c80936d14397e9ee344
+msgid "``GARAGE_DOOR`` - Garage door open/closed"
+msgstr ""
+
+#: 05a96870c4af429394872feb53b736ed
+msgid "``GAS`` - Gas detected"
+msgstr ""
+
+#: da36d1cee28548f2a85b364c9700ed41
+msgid "``HEAT`` - Heat detected"
+msgstr ""
+
+#: f56129f4409246d5a9dfed4df14ebb8f
+msgid "``LIGHT`` - Light on/off"
+msgstr ""
+
+#: a2ac137543ef4a208923dda37c489d54
+msgid "``LOCK`` - Lock locked/unlocked"
+msgstr ""
+
+#: c32ae06e5e2849e48f3d30550be5f490
+msgid "``MOISTURE_BINARY`` - Moisture detected"
+msgstr ""
+
+#: a96168e039d849ceb580f668809088f1
+msgid "``MOTION`` - Motion detected"
+msgstr ""
+
+#: 9157a5306ed042eea8c10709fa03c704
+msgid "``MOVING`` - Movement detected"
+msgstr ""
+
+#: 6e5c1b0cc3c540e4891eb34b62a87f87
+msgid "``OCCUPANCY`` - Room occupied"
+msgstr ""
+
+#: 960973e2d2ad439c8a78da6ff7baa8d1
+msgid "``OPENING`` - Opening detected"
+msgstr ""
+
+#: 33cbcb56ea6c409584121f8f066da2b8
+msgid "``PLUG`` - Plug on/off"
+msgstr ""
+
+#: d8e2c0387c8646cea29effb922362172
+msgid "``POWER_BINARY`` - Power on/off"
+msgstr ""
+
+#: bf3e43f4b2b94192af8b7c6214c60810
+msgid "``PRESENCE`` - Presence detected"
+msgstr ""
+
+#: 932ed68cb0094b70a689682a113e79c1
+msgid "``PROBLEM`` - Problem detected"
+msgstr ""
+
+#: d514a1868c9e4db1a6a5976211ebe9b9
+msgid "``RUNNING`` - Running state"
+msgstr ""
+
+#: bdcee2d61c524418859648dae4d8844b
+msgid "``SAFETY`` - Safety state"
+msgstr ""
+
+#: 11ade29f1a9a461583fc36598341b74c
+msgid "``SMOKE`` - Smoke detected"
+msgstr ""
+
+#: 6aba6d2f8a2f46318cc332852e6bfc17
+msgid "``SOUND`` - Sound detected"
+msgstr ""
+
+#: 674e832ed1b246f392d54c6d40aae0cf
+msgid "``TAMPER`` - Tamper detected"
+msgstr ""
+
+#: c63654b852774ea28aed656640511c15
+msgid "``VIBRATION`` - Vibration detected"
+msgstr ""
+
+#: 421bd773779942b485f9756ac9851a8c
+msgid "``WINDOW`` - Window open/closed"
+msgstr ""
+
+#: 99af86dc1d294721b795b5380b8ac905
+msgid "Events"
+msgstr ""
+
+#: 1cb22d0321b941a4a2c91f44cf053c44
+msgid "Button Events"
+msgstr ""
+
+#: 4cde674f8f4241dc8914bead0ecaf284
+msgid "Adds a button press event."
+msgstr ""
+
+#: 1b2c4ca1990549098ae857c912b423f7
+msgid "Event type"
+msgstr ""
+
+#: 2681757e9b1341c591c1d1fd6a16abd3
+msgid "type event"
+msgstr ""
+
+#: b8b07e4ecbe541caa16acd2fd44da23e
+msgid "**Event Types:**"
+msgstr ""
+
+#: a958b095967d41f0867b5bb07ca6af7c
+msgid "``0x00`` - None (no event)"
+msgstr ""
+
+#: f968a21e47824a1aa0d6ad08e8c479f4
+msgid "``0x01`` - Press (single press)"
+msgstr ""
+
+#: 33162ed605674048a972839b32e1bbd1
+msgid "``0x02`` - Double press"
+msgstr ""
+
+#: 84b6402b49a0480785129ad620a7d3ce
+msgid "``0x03`` - Triple press"
+msgstr ""
+
+#: 69ff9459c1894ec295c554fec1219ce6
+msgid "``0x04`` - Long press"
+msgstr ""
+
+#: ef15e04fb87f41edb490b068d93cf92f
+msgid "Advanced Functions"
+msgstr ""
+
+#: 8092a08cbb3340c181efa538a619c13c
+msgid "Custom Measurements"
+msgstr ""
+
+#: 5452387d45914ddabe91a5ae71bb2d61
+msgid "Adds a custom measurement with raw data."
+msgstr ""
+
+#: 8c3433e06e7b4476a23e3628177353a3
+msgid "Object ID from BThome specification"
+msgstr ""
+
+#: 98040d1c7e59436da89c81eccf59e98f
+msgid "Raw data bytes for the measurement"
+msgstr ""
+
+#: dbd51a820372409f87496d4a1d042881
+msgid "type data"
+msgstr ""
+
+#: e2942d99e6414468a1e7132acbaa24c9
+msgid "const std::vector<uint8_t>&"
+msgstr ""
+
+#: 8c33205caab14e769b97da110048edcc
+msgid "Encryption (Optional)"
+msgstr ""
+
+#: 6f877f201624488f955429d8621ffb59
+msgid "Sets the encryption key for encrypted advertising."
+msgstr ""
+
+#: 72311f38904b49f09697b86e382ace53
+msgid "16-byte encryption key"
+msgstr ""
+
+#: dc5a9e5696064c779d3b5dea800bc471
+msgid "``true`` if key was set, ``false`` otherwise"
+msgstr ""
+
+#: 85b673a1365141ee82433a5aab839f6e
+msgid "Enables or disables encryption."
+msgstr ""
+
+#: 50fc199d049d4a30856f22487ad0c4ee
+msgid "true to enable, false to disable"
+msgstr ""
+
+#: 7a8d48558e644ed3a94dd2b9d5ef2a21
+msgid "type enabled"
+msgstr ""
+
+#: 2df3bf7fa0824de5aaae42c8a70a2921
+msgid "Checks if encryption is enabled."
+msgstr ""
+
+#: 2038973981a0493fa5bf2979a8f698a4
+msgid "``true`` if encryption is enabled"
+msgstr ""
+
+#: d1df39c7c5964f50b4df96ed1ff3f65b
+msgid "MAC Address (Platform-Specific)"
+msgstr ""
+
+#: d34e7cb14d8a464e879ce1842f674cfa
+msgid "Sets a custom MAC address for the device (if supported by platform)."
+msgstr ""
+
+#: a78b847d747b4fc18b01e5104792a9aa
+msgid "6-byte MAC address"
+msgstr ""
+
+#: 4a53ef341e36426a92986f45bc6926af
+msgid "``true`` if MAC was set, ``false`` if not supported"
+msgstr ""
+
+#: 60eb5751217f4c75b23f81b5da943b3a
+msgid "Complete Example"
+msgstr ""
+
+#: c1043e1f79e549b5a71a252d379cd8a7
+msgid "Here's a complete example using multiple API functions:"
+msgstr ""
+
+#: 1d83546ba88646ed8ef5a67fb8db139e
+msgid "Best Practices"
+msgstr ""
+
+#: 93145eea81b045f794b2a8406e43679e
+msgid "Update Frequency"
+msgstr ""
+
+#: a3e756e8f6794db38c4ebadbb19aebe0
+msgid "**Don't update too frequently**: BLE advertising can drain battery"
+msgstr ""
+
+#: 100f9d536c464015a5f4f80dde17c3e7
+msgid "**Recommended intervals**: 30-300 seconds for most sensors"
+msgstr ""
+
+#: fb81e34c6f3d4d4da12c7c1096e13cee
+msgid "**Consider battery impact**: Longer intervals save power"
+msgstr ""
+
+#: 52a1ab676e4041ac924deb079e702211
+msgid "Memory Management"
+msgstr ""
+
+#: 482692c7f62348c899c2439a2e20fd12
+msgid ""
+"**Clear before updating**: Always call ``clearMeasurements()`` before "
+"adding new values"
+msgstr ""
+
+#: 1f47edff26814c379880c90b3d7b1443
+msgid "**Limit measurements**: BLE payload is limited to 31 bytes"
+msgstr ""
+
+#: 0783a39bf5de43bc96bc2933945e7b50
+msgid "**Combine wisely**: Too many sensors in one advertisement may not fit"
+msgstr ""
+
+#: 6dd254fb44714c6084378c2b60ed790c
+msgid "Error Handling"
+msgstr ""
+
+#: 6237b07c3570498e9388aa671bc63ed1
+msgid "Device Naming"
+msgstr ""
+
+#: 16ad0331075446748bda13a379424afd
+msgid "**Use descriptive names**: \"Living-Room-Temp\" not \"Sensor1\""
+msgstr ""
+
+#: 011da1dbbca34cc097590b3e58379540
+msgid "**Keep it short**: Max 29 characters"
+msgstr ""
+
+#: 2cb0e807edb44800a177d1d8a85e0449
+msgid "**Avoid special characters**: Stick to alphanumeric and hyphens"
+msgstr ""
+
+#: 98513e6e045f4432b78cda6491db7dc1
+msgid "**Be consistent**: Use same naming scheme across devices"
+msgstr ""
+
+#: 3555d8b7d1a7420e8be928fce7df0e02
+msgid "Platform Differences"
+msgstr ""
+
+#: 44cd7185e4564da7b21db765c2d4e43e
+msgid "The API is unified across platforms, but there are some differences:"
+msgstr ""
+
+#: face9d9c5edd4de2b18a87103fafd021
+msgid "ESP32"
+msgstr ""
+
+#: 4a34a3e916074eadb6d04aebb4f9567f
+msgid "✅ Fully functional"
+msgstr ""
+
+#: c4d22a85860f46949d70f170f4bf7670
+msgid "✅ All features supported"
+msgstr ""
+
+#: a9b1fee572b8422098414b19c39a7809
+msgid "✅ Stable BLE stack (ArduinoBLE)"
+msgstr ""
+
+#: 2121b3a243be4a63a28bddfc3b300bf6
+msgid "✅ Custom MAC address supported"
+msgstr ""
+
+#: fa0b4f99b62d4dc097b6f553f12d6bbb
+msgid "nRF52"
+msgstr ""
+
+#: 683b3eea5aa44cdbacbae254850555d7
+msgid "⚠️ Currently not functional"
+msgstr ""
+
+#: 891bfc7a280b4144b603bce669bbb557
+msgid "❌ Runtime issues with advertising"
+msgstr ""
+
+#: 501bf0ab11a24cdd997c1ab5ea26edf3
+msgid "❌ Not recommended for production"
+msgstr ""
+
+#: 7432396f90da4085a4bbf5836527bc15
+msgid "See :doc:`platforms` for detailed platform information."
+msgstr ""
+
+#: dc18ce68b3364b19b3b394b7d5de1908
+msgid "See Also"
+msgstr ""
+
+#: c02e6fa864e4493d9193a99987096d4d
+msgid ":doc:`sensors` - Complete list of all supported sensors"
+msgstr ""
+
+#: 01b5d6fc99114049bca8dd9ca58e6f0a
+msgid ":doc:`examples` - Real-world code examples"
+msgstr ""
+
+#: e33acd59e5a249b188680f92d024fffd
+msgid ":doc:`platforms` - Platform-specific information"
+msgstr ""
+
+#: 5a95f54ae70c4ed4b25eb5a85353a69b
+msgid ":doc:`../tools/bthome-logger` - Testing tool documentation"
+msgstr ""

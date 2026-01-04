@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 52b59b0054e34e9da5041593fa36244d cf6b38caff51439184eb6c2d8baca64c
+msgid "Changelog"
+msgstr ""
+
+#: 1103ffb908c24c7fa78a2171dc473a9b
+msgid "All notable changes to this project are documented in this file."
+msgstr ""
+
+#: 7c2a94ced94842b0b0d12e1fac41c0a5
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: 5777d1daf8454c94b62b18d56ee42feb
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/), and this project "
+"adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: 588b95f56c054bdbb54c66a9f2de8876
+msgid "[1.0.0] - 2025-12-30"
+msgstr ""
+
+#: 966007f73a034c1ab90074f298c8ef9b
+msgid "Added"
+msgstr ""
+
+#: 2f741c7837a447e183876d36f0f78185
+msgid "Initial release of BThomeV2 library"
+msgstr ""
+
+#: fa9f2e1e2aa94017a8ace9a60e5627eb
+msgid "Support for ESP32 platform using NimBLE-Arduino"
+msgstr ""
+
+#: 6753b11efa6e4ee7a7a1717ce3b90a29
+msgid "Support for nRF52 platform using Adafruit Bluefruit"
+msgstr ""
+
+#: 72644997c4514a2bad0de30b50cc0cb4
+msgid "Base class with common BThome V2 protocol implementation"
+msgstr ""
+
+#: b7e8743d1f844cf3854aa2e376efdc86
+msgid "Platform-specific implementations for ESP32 and nRF52"
+msgstr ""
+
+#: 320d23ed911b4356b3c5abb93ec36655
+msgid "Support for multiple sensor types:"
+msgstr ""
+
+#: 895fceb116ab4421821535602d1b1761
+msgid "Temperature (°C)"
+msgstr ""
+
+#: 220ed15ecfc946ceb22a2a4a49290bcc
+msgid "Humidity (%)"
+msgstr ""
+
+#: ac844fc2204948f2aed2f28db6ac863c
+msgid "Battery (%)"
+msgstr ""
+
+#: 9a70dcc2254740a99a611555f57373a6
+msgid "Pressure (hPa)"
+msgstr ""
+
+#: cfb21467b4844c39931c29ccac9798ac
+msgid "Illuminance (lux)"
+msgstr ""
+
+#: 7f916406ece04aa4a97f3826e8d3aa8c
+msgid "CO2 (ppm)"
+msgstr ""
+
+#: 1ac8642ac87f4199acc6412b8ec43596
+msgid "And more according to BThome V2 specification"
+msgstr ""
+
+#: 825602501baf449f873462975cc3fd60
+msgid "Support for binary sensors (motion, door, window, etc.)"
+msgstr ""
+
+#: 5445880f7c33407bae8ac4100301e59e
+msgid "Support for button events (single, double, triple press, long press)"
+msgstr ""
+
+#: 601aaa77933c401587c5f85fc0d42150
+msgid "Four example sketches:"
+msgstr ""
+
+#: de647f7c18fa4aed8a429232374e68ad
+msgid "ESP32_Basic: Basic temperature/humidity sensor"
+msgstr ""
+
+#: 436f3f2976e54ede8c071ea4568685b4
+msgid "nRF52_Basic: Basic temperature/humidity sensor for nRF52"
+msgstr ""
+
+#: 59c9a9feb47a4389b285d0269c620d55
+msgid "ESP32_Button: Button event handling"
+msgstr ""
+
+#: 7a9d4634ac4c4698aa0cace362cb2367
+msgid "ESP32_MultipleSensors: Multiple sensor types example"
+msgstr ""
+
+#: a410f0bae8e1474598f7f53770eff9c0
+msgid "Comprehensive README with API documentation"
+msgstr ""
+
+#: 313d237ce31f419b850269bd89f58166
+msgid "Keywords file for Arduino IDE syntax highlighting"
+msgstr ""
+
+#: b2642f71c1d447938ec8941752f6b36f
+msgid "Example PlatformIO configuration"
+msgstr ""
+
+#: 10288f9bdf2c42cca8cd87ed511a5dff
+msgid "Contributing guidelines"
+msgstr ""
+
+#: dec708ca10e7467abf34c818973795c5
+msgid "MIT License"
+msgstr ""
+
+#: cd8c4edbede7427a8197418ca4d01d4c
+msgid "Platform Support"
+msgstr ""
+
+#: 9a9f5334eee5443dafa16ef178e74a76
+msgid "ESP32 (all variants: ESP32, ESP32-S3, ESP32-C3, etc.)"
+msgstr ""
+
+#: 91d2b5ba74e847d7aa5fc1c9cc1053e9
+msgid "nRF52 (nRF52840, nRF52832 via Adafruit boards)"
+msgstr ""
+
+#: 09b9a0b5f22e40e3961b951c4f3c7445
+msgid "Dependencies"
+msgstr ""
+
+#: 79706db38cf04752b73386b70f754fa8
+msgid "NimBLE-Arduino ^1.4.1 (for ESP32)"
+msgstr ""
+
+#: c3a4113142604346b16f19e660549623
+msgid "Adafruit nRF52 (for nRF52)"
+msgstr ""

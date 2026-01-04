@@ -1,0 +1,39 @@
+# Hauptübersetzungen für index.po hinzufügen
+msgid "BThomeV2 - BLE Sensor Library & Testing Tool"
+msgstr "BThomeV2 - BLE Sensor Library & Test-Tool"
+
+msgid "PlatformIO Registry"
+msgstr "PlatformIO Registry"
+
+msgid "PyPI version"
+msgstr "PyPI Version"
+
+msgid "License: MIT"
+msgstr "Lizenz: MIT"
+
+msgid "Documentation Status"
+msgstr "Dokumentationsstatus"
+
+msgid "**BThomeV2** is a comprehensive solution for developing BLE sensors following the `BThome V2 <https://bthome.io/>`_ standard. The project consists of two tightly integrated components:"
+msgstr "**BThomeV2** ist eine umfassende Lösung für die Entwicklung von BLE-Sensoren nach dem `BThome V2 <https://bthome.io/>`_ Standard. Das Projekt besteht aus zwei eng integrierten Komponenten:"
+
+msgid "**BThomeV2 Arduino Library** - PlatformIO/Arduino library for ESP32 and nRF52"
+msgstr "**BThomeV2 Arduino Library** - PlatformIO/Arduino Library für ESP32 und nRF52"
+
+msgid "**bthome-logger** - Python-based testing and monitoring tool"
+msgstr "**bthome-logger** - Python-basiertes Test- und Monitoring-Tool"
+
+msgid "**nRF52 Implementation Currently Broken**"
+msgstr "**nRF52-Implementierung derzeit defekt**"
+
+msgid "The nRF52 platform is currently non-functional due to runtime issues with Bluefruit initialization. ESP32 works fully."
+msgstr "Die nRF52-Plattform ist derzeit aufgrund von Laufzeitproblemen mit der Bluefruit-Initialisierung nicht funktionsfähig. ESP32 funktioniert vollständig."
+
+msgid "**Status:** ✅ ESP32 fully functional | ❌ nRF52 broken (runtime hang)"
+msgstr "**Status:** ✅ ESP32 voll funktionsfähig | ❌ nRF52 defekt (Laufzeit-Hänger)"
+
+msgid "Overview"
+msgstr "Übersicht"
+
+msgid "The BThomeV2 library provides a unified interface for BLE advertising using the BThome V2 format, designed for efficient transmission of sensor data over Bluetooth Low Energy. The library abstracts platform-specific BLE implementations, making it easy to develop BThome V2-compatible devices on different hardware platforms."
+msgstr "Die BThomeV2-Library bietet eine einheitliche Schnittstelle für BLE-Advertising im BThome V2 Format, entwickelt für die effiziente Übertragung von Sensordaten über Bluetooth Low Energy. Die Library abstrahiert plattformspezifische BLE-Implementierungen und macht es einfach, BThome V2-kompatible Geräte auf verschiedenen Hardware-Plattformen zu entwickeln."

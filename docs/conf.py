@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "BThomeV2"
-copyright = "2026, The78Mole"
-author = "The78Mole"
+copyright = "2026, the78mole"
+author = "the78mole"
 release = "0.0.0-dev"
 
 # -- General configuration ---------------------------------------------------
@@ -26,6 +26,31 @@ extensions = [
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+
+# -- Internationalization ----------------------------------------------------
+language = "en"
+locale_dirs = ["locale/"]
+gettext_compact = False
+gettext_uuid = True
+gettext_location = False
+
+# Supported languages
+# To build: ./build.sh --language de
+languages = ["en", "de"]
+
+# Language context for templates
+html_context = {
+    "languages": [
+        ("en", "English"),
+        ("de", "Deutsch"),
+    ],
+    "current_language": language,
+    "display_github": True,
+    "github_user": "the78mole",
+    "github_repo": "bthomev2",
+    "github_version": "main",
+    "conf_py_path": "/docs/",
+}
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -51,7 +76,7 @@ todo_include_todos = True
 # -- HTML theme options ------------------------------------------------------
 html_theme_options = {
     "logo_only": False,
-    "display_version": True,
+    # "display_version": True,  # Not supported by sphinx_rtd_theme anymore
     "prev_next_buttons_location": "bottom",
     "style_external_links": False,
     "style_nav_header_background": "#2980B9",

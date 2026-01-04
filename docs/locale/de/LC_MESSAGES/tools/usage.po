@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 6d34645e844b4f708a2ad95aa5e43015
+msgid "Advanced Usage Examples"
+msgstr ""
+
+#: dd1178a1f79944ec912b9c96115a065b
+msgid ""
+"This page provides advanced usage examples for the bthome-logger tool "
+"beyond basic scanning."
+msgstr ""
+
+#: d211fe5878f84e749e5f05402b7c91a6
+msgid "Production Monitoring"
+msgstr ""
+
+#: 18e0f0212f2343689f0a5b6da0375e1e
+msgid "Long-Running Monitoring"
+msgstr ""
+
+#: a64b1f53c3054abcbf4777ef8fad51b3
+msgid "Monitor sensors continuously:"
+msgstr ""
+
+#: 975e8ba95dbc4180a6aebf178adcb582
+msgid "Automated Testing"
+msgstr ""
+
+#: 970cbfd3a0d24bde8032888bf9ea1499
+msgid "Use in test scripts:"
+msgstr ""
+
+#: 72e5442802af413b92b8be2436f2ceb5
+msgid "Multi-Device Scenarios"
+msgstr ""
+
+#: a76adead1f5345ac8923fc6c5d9a5651
+msgid "Home Monitoring Setup"
+msgstr ""
+
+#: 11f58531387b4f1fa88dff7252422b2b
+msgid "Monitor multiple rooms:"
+msgstr ""
+
+#: 16c289458b194df4af6cc688a2dc8946
+msgid "Filter by Name Pattern"
+msgstr ""
+
+#: a55149c54a794ae1b81f817205195281
+msgid "Monitor related devices:"
+msgstr ""
+
+#: ce2f712b5b744159a00aa40ed6e60d24
+msgid "Data Analysis"
+msgstr ""
+
+#: 65a49d3742574b3692e1e674b0087ef0
+msgid "Log and Parse Data"
+msgstr ""
+
+#: 163d14e993c047df88dd35bebfa2fb38
+msgid "Capture data for analysis:"
+msgstr ""
+
+#: 891a7c605f6e4e3cabb3b9b4c5d6c50b
+msgid "Extract Specific Measurements"
+msgstr ""
+
+#: 1e182e60f2a14fb597aba31728cdbfa4
+msgid "Time-Series Data Collection"
+msgstr ""
+
+#: d8bcb88f7b184fd1aef4c6f2c8f98a19
+msgid "Development Workflows"
+msgstr ""
+
+#: df5a0970d5e641aa9558971a0d0a4d70
+msgid "Rapid Prototyping"
+msgstr ""
+
+#: 70853064093f477aa7a540457d72d24d
+msgid "Test changes quickly:"
+msgstr ""
+
+#: fe2105f23ee34898b5a5d3e62e1d0e5b
+msgid "Debugging Advertisement Issues"
+msgstr ""
+
+#: b35d8f87ce40484abb02314e7ad2a7c6
+msgid "Range and Signal Testing"
+msgstr ""
+
+#: 03378c520fe54f45815c612e8bfeb75e
+msgid "Integration Examples"
+msgstr ""
+
+#: 62466ed5cdae4cb5ad77ab1f8a72858c
+msgid "Home Assistant MQTT Bridge"
+msgstr ""
+
+#: bb8e7983ef674d3da181b09079ce604b
+msgid "Forward sensor data to Home Assistant:"
+msgstr ""
+
+#: 8a051fa95937460db4fd29b5619c5700
+msgid "Prometheus Exporter"
+msgstr ""
+
+#: 857bc729ccff4c29b2b780692ca48a26
+msgid "Export metrics for Prometheus:"
+msgstr ""
+
+#: 902c82d69ab34b58af1d35f211f93443
+msgid "Alert System"
+msgstr ""
+
+#: afaf409ace3942fa900cecd50148d8af
+msgid "Send alerts based on sensor values:"
+msgstr ""
+
+#: 62f9920415eb41749dc203891a9ee50d
+msgid "Advanced Filtering"
+msgstr ""
+
+#: eff8f57c330c4d169d6fd6bb34eef150
+msgid "Multiple Device Patterns"
+msgstr ""
+
+#: 7966fef5da9a4acabe2b88fd9bd635c1
+msgid "Device Discovery"
+msgstr ""
+
+#: eb13725b46ae433aa1b7428060774c4a
+msgid "Find all BThome devices:"
+msgstr ""
+
+#: c89f435c8d9c4db7b16383e3d8392106
+msgid "Tips and Tricks"
+msgstr ""
+
+#: b543ab7b292443ff98ea936f445fce02
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: 84fd1bdffff0444e9e9bf7a48bd0666d
+msgid "**Ctrl+C** - Stop scanner"
+msgstr ""
+
+#: d5524c24ce374f02ad1be60d7669a619
+msgid "**Ctrl+Z** - Suspend (use ``fg`` to resume)"
+msgstr ""
+
+#: 17b59eab28a04c4d8414c078136cb3ed
+msgid "**Ctrl+L** - Clear screen (most terminals)"
+msgstr ""
+
+#: 8da7a5ca50a44d70971e486bfd1f1a93
+msgid "Output Redirection"
+msgstr ""
+
+#: 525e8dcca77d445ca7f500c2e8be706e
+msgid "Performance"
+msgstr ""
+
+#: bcbb655a3c924aacb6467ee608c93947
+msgid "See Also"
+msgstr ""
+
+#: 7d853cba7287479ca6b50ff7d14a435b
+msgid ":doc:`bthome-logger` - Tool documentation"
+msgstr ""
+
+#: ba8478b92cb843baa0e4201b83429304
+msgid ":doc:`../library/api` - Library API"
+msgstr ""
+
+#: f9995152b4d143afba32015ed474d4c4
+msgid ":doc:`../development/workflow` - Development workflow"
+msgstr ""

@@ -1,0 +1,240 @@
+# German translation for BThomeV2 documentation
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# the78mole <daniel@make-it.software>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: 2026-01-04 18:50+0100\n"
+"Last-Translator: the78mole <daniel@make-it.software>\n"
+"Language: de\n"
+"Language-Team: German\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "Getting Started"
+msgstr "Erste Schritte"
+
+msgid "Library Documentation"
+msgstr "Library-Dokumentation"
+
+msgid "Testing Tool"
+msgstr "Test-Tool"
+
+msgid "Development"
+msgstr "Entwicklung"
+
+msgid "Additional Information"
+msgstr "Zusätzliche Informationen"
+
+#: 52afee8bcdd34d47998f84457056519e
+msgid "BThomeV2 - BLE Sensor Library & Testing Tool"
+msgstr "BThomeV2 - BLE Sensor Library & Test-Tool"
+
+#: 946d5e23bff9403a959a9ac30d2ca3ce
+msgid "PlatformIO Registry"
+msgstr "PlatformIO Registry"
+
+#: 6745b7e560ae448a9071f08bdefafa99
+msgid "PyPI version"
+msgstr "PyPI Version"
+
+#: ec2f0cf396e74c86b4b5cc4e59cf78c7
+msgid "License: MIT"
+msgstr "Lizenz: MIT"
+
+#: b08f240b2646425980300f2c2fd7043b
+msgid "Documentation Status"
+msgstr "Dokumentationsstatus"
+
+#: d82fa514ce514a34bdf567580629e1c9
+msgid ""
+"**BThomeV2** is a comprehensive solution for developing BLE sensors "
+"following the `BThome V2 <https://bthome.io/>`_ standard. The project "
+"consists of two tightly integrated components:"
+msgstr ""
+"**BThomeV2** ist eine umfassende Lösung für die Entwicklung von BLE-Sensoren "
+"nach dem `BThome V2 <https://bthome.io/>`_ Standard. Das Projekt besteht "
+"aus zwei eng integrierten Komponenten:"
+
+#: 39f910b1fd404a7d88d8827443103420
+msgid ""
+"**BThomeV2 Arduino Library** - PlatformIO/Arduino library for ESP32 and "
+"nRF52"
+msgstr ""
+"**BThomeV2 Arduino Library** - PlatformIO/Arduino Library für ESP32 und "
+"nRF52"
+
+#: 9bf74b42c1a54d19b594e0feb63b7a74
+msgid "**bthome-logger** - Python-based testing and monitoring tool"
+msgstr "**bthome-logger** - Python-basiertes Test- und Monitoring-Tool"
+
+#: c8b5980bd0b1493e961f538252293f80
+msgid "**nRF52 Implementation Currently Broken**"
+msgstr "**nRF52-Implementierung derzeit defekt**"
+
+#: 71469ddf58464414a08f8926f8857338
+msgid ""
+"The nRF52 platform is currently non-functional due to runtime issues with"
+" Bluefruit initialization. ESP32 works fully."
+msgstr ""
+"Die nRF52-Plattform ist derzeit aufgrund von Laufzeitproblemen mit der "
+"Bluefruit-Initialisierung nicht funktionsfähig. ESP32 funktioniert vollständig."
+
+#: 9d334e3403f34f21940e22a796ab13ad
+msgid "**Status:** ✅ ESP32 fully functional | ❌ nRF52 broken (runtime hang)"
+msgstr "**Status:** ✅ ESP32 voll funktionsfähig | ❌ nRF52 defekt (Laufzeit-Hänger)"
+
+#: 11be468460a94ea19bdd40baa8c3a429
+msgid "Overview"
+msgstr "Übersicht"
+
+#: 76327eab547a41d98f76a422e8a8c2f1
+msgid ""
+"The BThomeV2 library provides a unified interface for BLE advertising "
+"using the BThome V2 format, designed for efficient transmission of sensor"
+" data over Bluetooth Low Energy. The library abstracts platform-specific "
+"BLE implementations, making it easy to develop BThome V2-compatible "
+"devices on different hardware platforms."
+msgstr ""
+"Die BThomeV2-Library bietet eine einheitliche Schnittstelle für BLE-Advertising "
+"im BThome V2 Format, entwickelt für die effiziente Übertragung von Sensordaten "
+"über Bluetooth Low Energy. Die Library abstrahiert plattformspezifische "
+"BLE-Implementierungen und macht es einfach, BThome V2-kompatible Geräte auf "
+"verschiedenen Hardware-Plattformen zu entwickeln."
+
+#: e1d2ead5f84946709de3ae88212940af
+msgid ""
+"The **bthome-logger** tool complements the library perfectly by decoding "
+"received BLE advertisements and displaying them in human-readable format."
+" Both components are versioned synchronously to ensure compatibility."
+msgstr ""
+"Das **bthome-logger** Tool ergänzt die Library perfekt, indem es empfangene "
+"BLE-Advertisements dekodiert und in einem für Menschen lesbaren Format anzeigt. "
+"Beide Komponenten werden synchron versioniert, um Kompatibilität sicherzustellen."
+
+#: a7ee1d8106e84dd4b73950e2fb183b30
+msgid "Main Features"
+msgstr "Hauptfunktionen"
+
+#: fefc75d5f79c46e8ae4eaa8286ff08ed
+msgid "Arduino Library"
+msgstr "Arduino Library"
+
+#: 7e72923d2ae14e64921d400a97f6b6c6
+msgid "✅ BThome V2 protocol support"
+msgstr "✅ BThome V2 Protokoll-Unterstützung"
+
+#: 3b14f44cff7e4454a2e598768b003e09
+msgid "✅ Multiple sensor types (temperature, humidity, pressure, CO2, etc.)"
+msgstr "✅ Mehrere Sensortypen (Temperatur, Luftfeuchtigkeit, Druck, CO2, etc.)"
+
+#: 3f9f039568ad4cceb0b2fe1ff05d4a1c
+msgid "✅ Binary sensor support (motion, door, window, etc.)"
+msgstr "✅ Binärsensor-Unterstützung (Bewegung, Tür, Fenster, etc.)"
+
+#: 34f0668957674e4abc8d4f2175154282
+msgid "✅ Event support (button actions)"
+msgstr "✅ Event-Unterstützung (Button-Aktionen)"
+
+#: f1094444ab3143ffaf266bb075076d5e
+msgid "✅ Platform abstraction (ESP32 and nRF52)"
+msgstr "✅ Plattform-Abstraktion (ESP32 und nRF52)"
+
+#: 6a831357a5494014bd0f0742c65ee506
+msgid "✅ Easy-to-use API"
+msgstr "✅ Einfach zu verwendende API"
+
+#: 0a2fd66dcb6f4c4b9a1daf84cafc3c64
+msgid "✅ Encryption support (framework in place)"
+msgstr "✅ Verschlüsselungs-Unterstützung (Framework vorhanden)"
+
+#: b253ca8565ac444daf88f9336278c41d
+msgid "✅ Low-power BLE advertising"
+msgstr "✅ Stromsparendes BLE-Advertising"
+
+#: 9a7c67f2cc2746138878f5de3175ecce
+msgid "Python Testing Tool"
+msgstr "Python Test-Tool"
+
+#: 6ee0361b00fe4941b8cbf0897852f594
+msgid "✅ BLE advertisement monitoring"
+msgstr "✅ BLE-Advertisement-Überwachung"
+
+#: 35197acf80b9474998f6960dde40e6fd
+msgid "✅ BThome V2 decoding"
+msgstr "✅ BThome V2 Dekodierung"
+
+#: f16e779e6c1d480791460f3434a990a7
+msgid "✅ Device filtering"
+msgstr "✅ Geräte-Filterung"
+
+#: 2bc12b616d844bd4b87605f8725e6fa8
+msgid "✅ RSSI display"
+msgstr "✅ RSSI-Anzeige"
+
+#: 6730421fb6044ece8c8c3f1d63dae3ed
+msgid "✅ Human-readable output"
+msgstr "✅ Menschenlesbare Ausgabe"
+
+#: 223cfc44c6d7431f9719f38b5aa4d830
+msgid "✅ Live monitoring"
+msgstr "✅ Live-Überwachung"
+
+#: e2479e42f5524296b97b9104dfa3c9ae
+msgid "Supported Platforms"
+msgstr "Unterstützte Plattformen"
+
+#: db1ab93701d845e28194c3e5a9f4b5ce
+msgid "**ESP32** ✅ - Uses ArduinoBLE library (fully tested and functional)"
+msgstr "**ESP32** ✅ - Verwendet ArduinoBLE Library (vollständig getestet und funktionsfähig)"
+
+#: 22927ae78bd74f3d88453bf42a8f5e54
+msgid ""
+"**nRF52** ❌ - Uses Adafruit Bluefruit library (currently broken - runtime"
+" hang)"
+msgstr ""
+"**nRF52** ❌ - Verwendet Adafruit Bluefruit Library (derzeit defekt - "
+"Laufzeit-Hänger)"
+
+#: 0735574886ef4e74971664e46b1fca07
+msgid "Quick Start"
+msgstr "Schnellstart"
+
+#: 777c4d1a3b1f4c85ad608b582e300535
+msgid "**Library Installation:**"
+msgstr "**Library Installation:**"
+
+#: 59a2ba9bea5449fa92d925e0e223b5d4
+msgid "**Testing Tool Installation:**"
+msgstr "**Test-Tool Installation:**"
+
+#: ac073b5a719346caa9bfe9805b1679aa
+msgid "**Simple Example:**"
+msgstr ""
+
+#: 2b7d3aed4ec24a1391ff85a1512c7401
+msgid "**Testing:**"
+msgstr ""
+
+#: 62cdb15ab687404580b4a7e7862d62d2
+msgid "Documentation"
+msgstr ""
+
+#: d484d20b5e8945ffa4112b16bae31120
+msgid "Indices and Tables"
+msgstr ""
+
+#: 86ac1ef43f41453f95aee097e84ac8b4
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: 16d8b34c801047da9fa20c09bfe87b93
+msgid ":ref:`search`"
+msgstr ""

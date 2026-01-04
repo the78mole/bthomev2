@@ -1,0 +1,682 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: d6b8631639084b218b33613184b08c66
+msgid "bthome-logger Tool"
+msgstr ""
+
+#: 6ffd4ec677304c058aa2af479851770b
+msgid ""
+"The **bthome-logger** is a Python command-line tool for testing and "
+"debugging BThome V2 devices. It scans for BLE advertisements and displays"
+" decoded sensor data in real-time."
+msgstr ""
+
+#: 984e6ec97f514b2c9ae66dadd84e822e
+msgid "Overview"
+msgstr ""
+
+#: bc77f732808841009335e65d68e06f22
+msgid "The tool helps you:"
+msgstr ""
+
+#: 5bd635debf234b9495f14fc7d127f5a7
+msgid "Verify your BThome V2 sensor is advertising correctly"
+msgstr ""
+
+#: 5e1da11d72994b4d95e36e44f055d742
+msgid "Debug sensor data and advertisements"
+msgstr ""
+
+#: 5a093e2dff794f02a86c01790e10e541
+msgid "Monitor multiple sensors simultaneously"
+msgstr ""
+
+#: 363f185619ce4be9a3da0024f3c3e067
+msgid "Check signal strength (RSSI)"
+msgstr ""
+
+#: 3ec1a9fdfe25407e850336b7d8e3ba14
+msgid "View raw advertisement data"
+msgstr ""
+
+#: 0fb82d419e4f4d52ad2fbfff7cef4d5d
+msgid "Installation"
+msgstr ""
+
+#: e169b705e7ec4063aaeac8ecf94eaee8
+msgid "Recommended: uv"
+msgstr ""
+
+#: 0996977e525346ff938638ae06de2548
+msgid "The fastest and most reliable installation method:"
+msgstr ""
+
+#: b5820984999840b6b2e20c8ce501ba04
+msgid "The tool is then globally available:"
+msgstr ""
+
+#: beef0dca36cc4403a4882c6cdc3cf5ea
+msgid "Alternative: pipx"
+msgstr ""
+
+#: 655a77ee0e9e43a09ff624caaa93ce06
+msgid "For isolated tool installation:"
+msgstr ""
+
+#: b23843c813b8458aaba1b71703ac68ba
+msgid "Alternative: pip"
+msgstr ""
+
+#: 9fcbbac945ff4656985d13b533df3c11
+msgid "System-wide installation:"
+msgstr ""
+
+#: 04e414b52f5949edba7e41ad930aae4b
+msgid "From Source"
+msgstr ""
+
+#: cc5530d8d1384a2f9ea098e93c2dddfc
+msgid "For development or latest changes:"
+msgstr ""
+
+#: 9a8d5d58dee143179393adb5fcf9ae72
+msgid "Usage"
+msgstr ""
+
+#: cfb72e853bd147ae8bf4f58b04afc80a
+msgid "Basic Usage"
+msgstr ""
+
+#: 535d7f38bc7443bfba4991dd55883d16
+msgid "Start scanning with default filter:"
+msgstr ""
+
+#: 7db2b87805014f2d811a8512cccff52d
+msgid "This filters for devices with \"MAKE\" in their name (default)."
+msgstr ""
+
+#: 4fcf3eec26784311be45e55034ebd4e3
+msgid "Filter by Device Name"
+msgstr ""
+
+#: 7023272f20934781becd865ee3b03d91
+msgid "Show only specific devices:"
+msgstr ""
+
+#: 3b21c45d192247ef98b3f6a2be6b0cce
+msgid "Verbose Mode"
+msgstr ""
+
+#: 1d110ca396b04f41b0221e68d4e7fe92
+msgid "Show all BLE advertisements, not just BThome devices:"
+msgstr ""
+
+#: f90db2a7af2c4e2ca065d138f0cab4a3
+msgid "Version Information"
+msgstr ""
+
+#: 0855c2f5a40e41b08dc70bdf90dca021
+msgid "Check installed version:"
+msgstr ""
+
+#: e56edc050a8045bba93a4a893712780d
+msgid "Help"
+msgstr ""
+
+#: 296b6eed60474cc188df13b90c528727
+msgid "Show all options:"
+msgstr ""
+
+#: df908821717145c1a617a27a0ff8d43e
+msgid "Command-Line Options"
+msgstr ""
+
+#: 0bd33bc3f3d649b0872149776cbc7534
+msgid "Option"
+msgstr ""
+
+#: b1830ed53a9f41349fd688c5106361f1
+msgid "Short"
+msgstr ""
+
+#: bd17974919d342c79ec0d7641ef83a18
+msgid "Description"
+msgstr ""
+
+#: 7cd8c265edb549f1b328a8485d5b003d
+msgid "``--filter <name>``"
+msgstr ""
+
+#: fea75443a62947b4ad009d77f8ac26ea
+msgid "``-f``"
+msgstr ""
+
+#: 58d356b1844a40f7af224f7afa3b458c
+msgid "Filter devices by name (partial match)"
+msgstr ""
+
+#: 62bae3d50003436ea58b332b26173fed
+msgid "``--verbose``"
+msgstr ""
+
+#: d07fa14741764b4cb1461c068685c12a
+msgid "``-v``"
+msgstr ""
+
+#: 3c1e7f786e91486b9dfaf7a57b3f0e40
+msgid "Show all BLE advertisements"
+msgstr ""
+
+#: 429ec39d0fe24b33abd26123fceeb4bc
+msgid "``--version``"
+msgstr ""
+
+#: 021151561f714c6794fbed6ee6cb253e
+msgid "Show version and exit"
+msgstr ""
+
+#: 510c00e0fa1441889330bb208b627081
+msgid "``--help``"
+msgstr ""
+
+#: b670e36531e64a96b0ba6be8ebf3c82e
+msgid "``-h``"
+msgstr ""
+
+#: 16a32f4b2c5e434497c6b3169aed9fb9
+msgid "Show help message and exit"
+msgstr ""
+
+#: 1be2c546705746939d4283fe68c556e9
+msgid "Output Format"
+msgstr ""
+
+#: ecf5f138341e4fe0b6786e63fbbc56a5
+msgid "The tool displays advertisements in this format:"
+msgstr ""
+
+#: 3f383f4428624d7aa154bdae92c173a5
+msgid "Header"
+msgstr ""
+
+#: 8f410d2ac2004caea9b66de4db5a2ace
+msgid "Advertisement Display"
+msgstr ""
+
+#: 46427f3035eb490ebbba7b260f9b30bd
+msgid "RSSI Color Coding"
+msgstr ""
+
+#: ef2a24a0f5c64b379f5fafad1fe012a6
+msgid "Signal strength is color-coded:"
+msgstr ""
+
+#: 2c6128636be142058ec69c32d5a42e6c
+msgid "**Green** (> -60 dBm): Excellent signal"
+msgstr ""
+
+#: 11852c4536ae48209a9f383d78d375f6
+msgid "**Yellow** (-60 to -75 dBm): Good signal"
+msgstr ""
+
+#: b3404398029546139366afd2c7e8cf53
+msgid "**Red** (< -75 dBm): Weak signal"
+msgstr ""
+
+#: bf2fbc785b734972b0257cc0d86d50da
+msgid "Supported Sensor Types"
+msgstr ""
+
+#: d6216cbbb0c24dc0ae9d3e092487d6c8
+msgid "The tool automatically decodes all BThome V2 sensor types:"
+msgstr ""
+
+#: 1226a31d49de48f7a2fe55ebea12b145
+msgid "Environmental Sensors"
+msgstr ""
+
+#: d70161a77840471ea92fc852aef7b597
+msgid "Temperature (°C)"
+msgstr ""
+
+#: 960e1830f2e14fa28746eaaf82d94dd2
+msgid "Humidity (%)"
+msgstr ""
+
+#: 2d31f8038a62478ab243c5e65854213c
+msgid "Pressure (hPa)"
+msgstr ""
+
+#: 53e5032c343447e68644fdcd7af5fc29
+msgid "Dew Point (°C)"
+msgstr ""
+
+#: ac0277ac1a7843918ac0c0bc97e8f170
+msgid "Moisture (%)"
+msgstr ""
+
+#: 562dc7b266ff43cd83dcd5f2f8aa9d1f
+msgid "Air Quality"
+msgstr ""
+
+#: c84055c8aa27424f8d39567f4c98a8a1
+msgid "CO2 (ppm)"
+msgstr ""
+
+#: 74c0671e402c41ae8030d2427577863a
+msgid "TVOC (ppb)"
+msgstr ""
+
+#: 764c80a50dc74fa7b5b87d0fa86ce6e0
+msgid "PM2.5 (µg/m³)"
+msgstr ""
+
+#: 960679dd4d714ea4b285b71f51ab0403
+msgid "PM10 (µg/m³)"
+msgstr ""
+
+#: d7c0aa8e62d04b16b4b254c6567c5b54
+msgid "Light & Power"
+msgstr ""
+
+#: 5dc8f79bc4a34fe3b588af7c6d61513b
+msgid "Illuminance (lux)"
+msgstr ""
+
+#: c28dde90cc3d482cab12e87d399fa584
+msgid "Battery (%)"
+msgstr ""
+
+#: 7461074b97a540cea863654c099b133d
+msgid "Voltage (V)"
+msgstr ""
+
+#: a761cb353ed74a60805d877ba23d0480
+msgid "Power (W)"
+msgstr ""
+
+#: a952081b75d743de995e2bf1d23b76da
+msgid "Energy (kWh)"
+msgstr ""
+
+#: eaf7402f9d3049da825166f416b96937
+msgid "Binary Sensors"
+msgstr ""
+
+#: 12ed851fd7ba4a6c9793af1c1785b448
+msgid "All binary sensors are decoded with appropriate labels:"
+msgstr ""
+
+#: d326f5fbbb3742918fb1f6582d346441
+msgid "Motion, Occupancy, Presence"
+msgstr ""
+
+#: 3e906a7c75ab4973a288748c09f943a2
+msgid "Door, Window, Opening"
+msgstr ""
+
+#: 7b52bfb237ab4fe298702e5d15235b1e
+msgid "Smoke, Gas, CO"
+msgstr ""
+
+#: ae8ec1df31d2492f922e3783e42d0e46
+msgid "And many more (see :doc:`../library/sensors`)"
+msgstr ""
+
+#: 46a4bd6c383f46af9d5f39f91a945244
+msgid "Events"
+msgstr ""
+
+#: feb08e1800884248b610378669816692
+msgid "Button events (press, double press, triple press, long press)"
+msgstr ""
+
+#: 1d2401dc7f2d40b79e93b60ee13a8ac0
+msgid "Dimmer events (rotate left/right)"
+msgstr ""
+
+#: ce5fd0875f8e4f7ba35dc07c787209b9
+msgid "Practical Use Cases"
+msgstr ""
+
+#: dd15b5aa7f5c4b788da5d2e90d99adae
+msgid "Development Testing"
+msgstr ""
+
+#: 8a43ebd661ed46948114abb89f133082
+msgid "Test your sensor during development:"
+msgstr ""
+
+#: b92862d528b84047aac06facd6f93fb4
+msgid "Verify Sensor Updates"
+msgstr ""
+
+#: 7e2e5f6b0eef4a7a9382cc6233d3435c
+msgid "Check that measurements update correctly:"
+msgstr ""
+
+#: 85639aa8a8b94eb381f8ed3e6cbdabc8
+msgid "Signal Strength Testing"
+msgstr ""
+
+#: c4792dd34d564fd7a9212d93aab53313
+msgid "Test range and signal quality:"
+msgstr ""
+
+#: d2cf585c801747e0be16cf3c948a3a81
+msgid "Multiple Sensor Monitoring"
+msgstr ""
+
+#: 5408abb48720415797ddf02ebdd219c0
+msgid "Monitor several sensors at once:"
+msgstr ""
+
+#: 0f90c9e404fd44c0af62ab4dcee8a8cd
+msgid "Debugging"
+msgstr ""
+
+#: 948e5aeca5c041cfaba70f49b1f8721b
+msgid "Find issues with advertisements:"
+msgstr ""
+
+#: 1c79ce1e9e864830b80e780036f3b920
+msgid "Examples"
+msgstr ""
+
+#: 5a11f6e6615a46bf8ff5d198d2712af5
+msgid "Example 1: Basic Temperature Sensor"
+msgstr ""
+
+#: 48f3eea51bd34ab78e234847834a19a0 c8982a88073c416da3cbd29186aee590
+#: f86e6fec558f4935b3636842467498ea
+msgid "Output:"
+msgstr ""
+
+#: f88da25428b548f7bec3497d018b8c8c
+msgid "Example 2: Button Events"
+msgstr ""
+
+#: 1cf28aa2bcc8428d81b006be46be693d
+msgid "Example 3: Multiple Sensors"
+msgstr ""
+
+#: bcd8c44700db48099c6c00aec339fa9e
+msgid "Example 4: Verbose Mode"
+msgstr ""
+
+#: b54f7c733acc469fb37c77a845df00b9
+msgid "Output shows ALL BLE advertisements:"
+msgstr ""
+
+#: c06389ec955e4021a0aec4050f5d014e
+msgid "Troubleshooting"
+msgstr ""
+
+#: 1d1678591299464397fa9e0bedd94afa
+msgid "Tool doesn't start"
+msgstr ""
+
+#: da502107be58470081c49e4998516ccf
+msgid "**Problem:** Command not found"
+msgstr ""
+
+#: 3c5a03d42aab472fad65b5246639b856 ab09011ef70e4cdfbe6109ed82f3932a
+#: f3f410d34acc4a99b2b21e38c063541f
+msgid "**Solution:**"
+msgstr ""
+
+#: 9b8527f6883f43b5b0b3bed8e69c3d78
+msgid "No devices found"
+msgstr ""
+
+#: 35ea1c1b816c4eafbfaff5b206c5ce0a
+msgid "**Problem:** Scanner starts but no devices appear"
+msgstr ""
+
+#: 2269f9b677e94ff9b8fadb24ea174d82 b1417227b86b40069f1cf212c320f2ac
+#: f4a6166a5e2844a5957f674a66044441
+msgid "**Check:**"
+msgstr ""
+
+#: 66a4cdb6c7cf4bbcbcaf0887196da370
+msgid "Is Bluetooth enabled?"
+msgstr ""
+
+#: 2260173ce7ee47569a55ec16dc91a123
+msgid "Is device actually advertising?"
+msgstr ""
+
+#: 1b292049d718457997ca0d30a69ffbc9
+msgid "Check serial monitor for \"Advertising started!\""
+msgstr ""
+
+#: 6081989fcff54c8eaa32d4a23c22083c
+msgid "Is device in range?"
+msgstr ""
+
+#: 4c396afdcc644467b2c056a6eae45fea
+msgid "Move device closer (<5m for testing)"
+msgstr ""
+
+#: e9500dcb2e1d47d0a03cca62644df730
+msgid "Try verbose mode:"
+msgstr ""
+
+#: 55021a595bf245ff9512a78f5c8b1cf8
+msgid "Wrong device name filter"
+msgstr ""
+
+#: c60ec90641804bc3b7848ddb7d0b4e72
+msgid "**Problem:** Your device doesn't appear but others do"
+msgstr ""
+
+#: d25bc6ad840c42aa9f27e30e06f2cc5a
+msgid "Permission errors (Linux)"
+msgstr ""
+
+#: e52a716b1b5548b5a20fc8ce21c3d641
+msgid "**Problem:** Permission denied when scanning"
+msgstr ""
+
+#: ad2f6fea2aa0447f814dcc6d8a16dfb9
+msgid "Values not updating"
+msgstr ""
+
+#: 6e5df4efd7404db197dce486eaef4c6c
+msgid "**Problem:** Same values shown repeatedly"
+msgstr ""
+
+#: 9e7dc35be45a4086a35e8afa94f60a79
+msgid "Device is calling ``updateAdvertising()``"
+msgstr ""
+
+#: ebb66ac934bf442e9a5042652156edb9
+msgid "Update interval is reasonable (30+ seconds)"
+msgstr ""
+
+#: dfd32b4e6e3e4820a4da8a50e87b2e1a
+msgid "Device hasn't crashed (check serial monitor)"
+msgstr ""
+
+#: e568f80a49404301be6cfcb629bf9baf
+msgid "Incorrect values displayed"
+msgstr ""
+
+#: 4d3572fd95704b199f4afc803544058d
+msgid "**Problem:** Values don't match expected"
+msgstr ""
+
+#: f80e7c7b72a841868de3fa03a43f00f8
+msgid "Units in your code match sensor documentation"
+msgstr ""
+
+#: 8963e7fd8ef04b208288fc3e0a02a4e2
+msgid "Resolution is correct (e.g., temperature in °C not °F)"
+msgstr ""
+
+#: 738c89e9246543389d37e2f99b9123e7
+msgid "Data type is correct (float vs int)"
+msgstr ""
+
+#: 6d02f3990e0740a685ee78349f4f45cd
+msgid "Version Compatibility"
+msgstr ""
+
+#: 15a9a12b6c8b4fc8b467b1a3601548a8
+msgid "The tool and library share version numbers:"
+msgstr ""
+
+#: 5ff7a04ec9be4ca7b5968dc60c76f839
+msgid "Tool Version"
+msgstr ""
+
+#: db9757235b8e45f68af22eb68752d642
+msgid "Library Version"
+msgstr ""
+
+#: d54041b547e249afae29d97dbeff68c4
+msgid "Notes"
+msgstr ""
+
+#: 591b354b58c34e9cbb94b70edf539da5 a19fcb16c10241388356c0e36b68900d
+msgid "0.2.x"
+msgstr ""
+
+#: 4514b1a978294a049ca23e53e0555087
+msgid "Current, fully compatible"
+msgstr ""
+
+#: 3aa40a3dc4d240e0b4241cb949b91214 cc3510b372f247429eb382d69a9f39b3
+msgid "0.1.x"
+msgstr ""
+
+#: dd098c13e3d843e893a10a6d32a9bfa7
+msgid "Initial release"
+msgstr ""
+
+#: 9408eda016204e1aaf843bbc5c1326d0
+msgid "**Recommendation:** Always use matching versions."
+msgstr ""
+
+#: 73ae76fb021946e88fa97b51cee17c66
+msgid "System Requirements"
+msgstr ""
+
+#: 6a787963ac5947c5b0958bccc64373f3
+msgid "Operating Systems"
+msgstr ""
+
+#: d2f65373c26e4e4a8c26a50fee69c7de
+msgid "**Linux:** Ubuntu 20.04+, Debian 11+, other distributions with BlueZ"
+msgstr ""
+
+#: 90e14e1d49564e2493c7adae0198c900
+msgid "**macOS:** 10.15+ (Catalina or newer)"
+msgstr ""
+
+#: 2db9facf9ad34f0f9d35e468d2f19cd9
+msgid "**Windows:** 10+ with Bluetooth LE support"
+msgstr ""
+
+#: f50c4221c8ff4f0499b0636b35defe16
+msgid "Python"
+msgstr ""
+
+#: 3d7a29c5bf584f0391c6f11af5b203b4
+msgid "Python 3.8 or higher"
+msgstr ""
+
+#: bfc7400f666d4457b203f94d520e95c8
+msgid "pip or uv package manager"
+msgstr ""
+
+#: eb16b933f4c94bb2ba599db09f3e1c57
+msgid "Hardware"
+msgstr ""
+
+#: 82838860d3f04359a2913e2bd18217bd
+msgid "Bluetooth LE 4.0+ adapter (built-in or USB)"
+msgstr ""
+
+#: a9c657f4158e46ce8850bfbbf8afa663
+msgid "For USB adapters: Must support Bluetooth LE"
+msgstr ""
+
+#: 4e15a6d5416a46259c5fde33dc15d7c0
+msgid "Dependencies"
+msgstr ""
+
+#: 184032328be54aec99c90ecbe5f887a6
+msgid "Automatically installed:"
+msgstr ""
+
+#: 0f4b2a8ec11a4cb788847af48d624026
+msgid "``bleak`` - Bluetooth LE library"
+msgstr ""
+
+#: 2aa62123e59e447999dded372b96d0d8
+msgid "``colorama`` - Terminal colors (Windows)"
+msgstr ""
+
+#: 9bd7353b19aa4320ac45e16efc45b77c
+msgid "Advanced Usage"
+msgstr ""
+
+#: 64e3b927760148b693ea3f0c4dc2f860
+msgid "Integration with Scripts"
+msgstr ""
+
+#: 4c53080df2d24a8ea7e5357ea1c8ed6a
+msgid "Use in shell scripts:"
+msgstr ""
+
+#: f7eff75cdd414cbea31b07aec647c0f8
+msgid "Continuous Monitoring"
+msgstr ""
+
+#: d060f971bb8c4d248b38b305c79f97e8
+msgid "Run as a service or in background:"
+msgstr ""
+
+#: 840cd75d6bce492b989803d72350cb9d
+msgid "See Also"
+msgstr ""
+
+#: 9346e6fedf7d4fa99e1bd58c1226fb80
+msgid ":doc:`usage` - Extended usage examples"
+msgstr ""
+
+#: 68473fd35503446eb1d046cbb3ac3757
+msgid ":doc:`../library/api` - Library API reference"
+msgstr ""
+
+#: fa87840896f6431b91e91c7c439fb7f7
+msgid ":doc:`../library/sensors` - Supported sensor types"
+msgstr ""
+
+#: f7ea5a970df44ae69d88f05294a8bb9f
+msgid ":doc:`../quickstart` - Getting started guide"
+msgstr ""
+
+#: 8c6398daf4454c9d8e1ea6430cc08bd4
+msgid ":doc:`../development/workflow` - Development workflow"
+msgstr ""

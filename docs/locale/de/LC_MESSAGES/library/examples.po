@@ -1,0 +1,340 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ea460f31d4b04a7fa0d8ad961da034cb
+msgid "Examples"
+msgstr ""
+
+#: 4f2927e2e36841aea82b8d564206b479
+msgid ""
+"This page documents the example projects included with the BThomeV2 "
+"library."
+msgstr ""
+
+#: 4d86814ca2664ddabc354d9513ed1295
+msgid "Available Examples"
+msgstr ""
+
+#: cf5008b7569b4508a60c0e003db92d79
+msgid "The library includes several working examples for different use cases:"
+msgstr ""
+
+#: 5b61f350c2244807975ba0b90a4abda5
+msgid "Example"
+msgstr ""
+
+#: db352f25b0a54461a96c30ec2cdb2389
+msgid "Platform"
+msgstr ""
+
+#: 27c06ac02428492cbe3e02b8b61fa7a7
+msgid "Description"
+msgstr ""
+
+#: 8e1596724a0f4cb79ad9090a08447fd8 d17afa3e222245d4b15acc9f9c0e2188
+msgid "ESP32_Basic"
+msgstr ""
+
+#: 601803cdac1d4b0a90d80d8674d7443a e4737143c713465cabea0ccfd2a9c633
+#: f8fbea0e4d4a4f649a8c3274b0d31d06
+msgid "ESP32"
+msgstr ""
+
+#: e6772a8906be4270b56df48398a741f5
+msgid "✅ Basic temperature and humidity sensor"
+msgstr ""
+
+#: 39726143710b4525a97362792f36bd75 4ef07069d3624c6b978757316d18472b
+msgid "ESP32_Button"
+msgstr ""
+
+#: c67f7496b6f047be82dc7fc8c27e28b3
+msgid "✅ Button event handling"
+msgstr ""
+
+#: 377df638ee1649a2a104fa2964976760 83d160a32cc94ebba419d54933d2b835
+msgid "ESP32_MultipleSensors"
+msgstr ""
+
+#: 2407851a611a4b26b58605934576d516
+msgid "✅ Multiple sensors combined"
+msgstr ""
+
+#: 2cf5bbcd0db0478688a4f8d49b94b45d
+msgid "nRF52_Basic"
+msgstr ""
+
+#: cf3895788f0d4d0db4add1daa6d4405b
+msgid "nRF52"
+msgstr ""
+
+#: 653091a0f396430bab4465060f2c4686
+msgid "❌ **Not functional** - Basic example (currently broken)"
+msgstr ""
+
+#: 55e2681a96344115a1486a14b764baa3
+msgid ""
+"The nRF52 platform is currently not functional. Examples will not work. "
+"Only ESP32 examples are operational."
+msgstr ""
+
+#: 055d2fb9b38f4b3d9c2fb6a458a82d6e
+msgid "**Location:** ``examples/ESP32_Basic/``"
+msgstr ""
+
+#: afdafe270cad4f658c033aef470fbddc
+msgid "A minimal example showing temperature and humidity monitoring."
+msgstr ""
+
+#: 3967ada6e49a491e839ea28fed84f231 62538a43a1bf4e6f9d32e29c9f107c8c
+#: 9cd8da05f48e4c31b472e81fcd86d813
+msgid "Features"
+msgstr ""
+
+#: 2748152d320d4b4380471c13df209f5a
+msgid "Temperature sensor simulation"
+msgstr ""
+
+#: 3e3c58599db3483dab7174a33151f33c
+msgid "Humidity sensor simulation"
+msgstr ""
+
+#: 724e9820c6b548bb9cc89508b246cc01 7ccd7e7306744259975454506e7f037c
+msgid "Battery level reporting"
+msgstr ""
+
+#: 208354bad15b4c9985e1f3bb0b6511a2
+msgid "Regular updates every 10 seconds"
+msgstr ""
+
+#: a5de4ad22d61418fb0d5e1b69168c14e d214915d71044213b2a84df647f6d990
+#: f39957c6b3064586b4406a8dd6ad8041
+msgid "Code Overview"
+msgstr ""
+
+#: 9c17882212c640bd9aebb1c4a4d68896 c000ed9bbb6041b1b33e032ae1de7fc7
+#: fcdc2513d4a14a2c84ee818795b009a5
+msgid "Testing"
+msgstr ""
+
+#: 04136c3349404248ac18b58abbae6a32 4bad7a60a15243daacf0c641d2544c33
+#: a53bdb83b6fa4268bc720cb76af8e5a4
+msgid "Expected Output"
+msgstr ""
+
+#: 505485682b3e46a2a9cfada93dd27ac8
+msgid "**Serial Monitor:**"
+msgstr ""
+
+#: 1df4293cc0cd4c3e9a1a14c7b3f9933e
+msgid "**bthome-logger:**"
+msgstr ""
+
+#: e63194d09750446e8b8f259dff100396
+msgid "**Location:** ``examples/ESP32_Button/``"
+msgstr ""
+
+#: 31aae20db0a8425e865a99e1bd405ebd
+msgid "Demonstrates button event handling with BThome V2."
+msgstr ""
+
+#: 6d02f76e72c64deebb50665bf04a9401
+msgid "Button press detection"
+msgstr ""
+
+#: 3ee539c08275494cab2d01fda5e1047f
+msgid "Long press detection (>1 second)"
+msgstr ""
+
+#: 30019cc810de492795b82b3e1465880b
+msgid "Event-based advertising updates"
+msgstr ""
+
+#: 8aaf30735e3f4762b16288cd53a184e7
+msgid "Hardware Setup"
+msgstr ""
+
+#: f7476f97582e4ba1b52c3f8b5e04bd97
+msgid "ESP32 board"
+msgstr ""
+
+#: b1bdc4fd45714a0ab3342eadb45bc096
+msgid "Push button connected to GPIO 0"
+msgstr ""
+
+#: af5caf2bee934ec780d2ca8bc1207938
+msgid "Internal pull-up resistor used"
+msgstr ""
+
+#: 778be03f40f14d3b8c168711726b7064
+msgid "**Short Press:**"
+msgstr ""
+
+#: da7abb44b67946ef9b0932e60758fd78
+msgid "**Long Press:**"
+msgstr ""
+
+#: aeaba38d5faa45cea97014552570a8be
+msgid "**Location:** ``examples/ESP32_MultipleSensors/``"
+msgstr ""
+
+#: 1a8a5ecf122a46b5836d9a7a2c7a866e
+msgid "Advanced example showing multiple sensor types in one device."
+msgstr ""
+
+#: 43df3d337b0d48b094f0a69b68e6d4f8
+msgid "Temperature"
+msgstr ""
+
+#: a776342e30a24b9e9b5fb5838ca3516b
+msgid "Humidity"
+msgstr ""
+
+#: c8dae9fc20c84558b9e0ebb37b3b07a0
+msgid "Pressure"
+msgstr ""
+
+#: 2539b1b50ad3461db71d14ba01b2e60b
+msgid "Illuminance"
+msgstr ""
+
+#: 0690b091355c4681b5fbde6a916b1a33
+msgid "CO2"
+msgstr ""
+
+#: 4c4864c18b30485b804f6438dcbe2e29
+msgid "Battery level"
+msgstr ""
+
+#: 95fe7520e9c94e2fa4847004b8f29d78
+msgid "Updates every 60 seconds"
+msgstr ""
+
+#: 6fb4f12bb0284461aae8333815dcfb81
+msgid "nRF52_Basic (Not Functional)"
+msgstr ""
+
+#: 1680e16c58834754a3c45649c773e566
+msgid "**Location:** ``examples/nRF52_Basic/``"
+msgstr ""
+
+#: c15d8f7c4f344566ba45b7d2aa8a779a
+msgid "**This example is currently not functional!**"
+msgstr ""
+
+#: b7f9f978be8b4a58867bc53b7cd21792
+msgid ""
+"The nRF52 platform has runtime issues that cause the device to hang "
+"during advertising. Do not use this example until the platform support is"
+" fixed."
+msgstr ""
+
+#: 19383b8c5a314b90aa846441416627b6
+msgid "Known Issues"
+msgstr ""
+
+#: 2934f0bcc75c4de0a9776945b9ab7b8b
+msgid "Device hangs during ``startAdvertising()``"
+msgstr ""
+
+#: 8bb1dca7f6f9420b817fe11705c1f640
+msgid "BLE stack does not initialize properly on nRF52"
+msgstr ""
+
+#: 256839e9a8194a018eedbc556ff85f83
+msgid "Platform marked as broken in documentation"
+msgstr ""
+
+#: fac9cf99cfb84d66bba0cb1e6dfdf607
+msgid "See :doc:`platforms` for more information about nRF52 status."
+msgstr ""
+
+#: f230dbb894fa4e70a4b92135c622e44a
+msgid "Creating Your Own Example"
+msgstr ""
+
+#: 0bd619311b834829ac4afce0d0f17bd2
+msgid "Template"
+msgstr ""
+
+#: 4914b6fcc500488ebd56961be91b855c
+msgid "Use this template to create your own sensor:"
+msgstr ""
+
+#: 38a327a93e994be6a297bb02f2f3c967
+msgid "Best Practices"
+msgstr ""
+
+#: a9b90caed9f941e8a3e28251842999dd
+msgid "**Always check initialization:**"
+msgstr ""
+
+#: 4b488a7a2fed4e82bdd27fdda7b5eeb1
+msgid "**Clear before updating:**"
+msgstr ""
+
+#: 239a4e0915244e84a9cad61d1419a9f4
+msgid "**Include battery level:**"
+msgstr ""
+
+#: f7a812ea5707437fb8ae5ede44a2dc86
+msgid "**Use appropriate intervals:**"
+msgstr ""
+
+#: cdda063c89db4e22a98b4b6d91350096
+msgid "**Add serial debugging:**"
+msgstr ""
+
+#: 626c292ec217439ca5eb0d212a552fba
+msgid "Testing Your Example"
+msgstr ""
+
+#: 07b10edafc464d0ab00dc6e2d1d7c1d2
+msgid "Local Testing"
+msgstr ""
+
+#: ebf4155d528441379868fc11e0228520
+msgid "With bthome-logger"
+msgstr ""
+
+#: e807cf44754344e2a29c413bc26b723c
+msgid "See Also"
+msgstr ""
+
+#: 10c407a73c4f49a896897a46c3b36c4c
+msgid ":doc:`api` - Complete API reference"
+msgstr ""
+
+#: 040d3b12a0654ded8ba34705da86b1ab
+msgid ":doc:`sensors` - All available sensor types"
+msgstr ""
+
+#: 11c074ca9d014674a18b77d039d5aedc
+msgid ":doc:`platforms` - Platform-specific information"
+msgstr ""
+
+#: 91cdd4b70fcb476c887dbd1ba51be7f7
+msgid ":doc:`../tools/bthome-logger` - Testing tool documentation"
+msgstr ""
+
+#: 9c3b2552002948af95ef05822aa24bb7
+msgid ":doc:`../quickstart` - Getting started guide"
+msgstr ""

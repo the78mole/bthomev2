@@ -14,6 +14,12 @@ help:
 
 .PHONY: help Makefile
 
+# Internationalization
+gettext:
+	@$(SPHINXBUILD) -b gettext $(SOURCEDIR) $(BUILDDIR)/gettext
+	@echo
+	@echo "Build finished. The message catalogs are in $(BUILDDIR)/gettext."
+
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile

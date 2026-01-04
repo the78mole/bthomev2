@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: b6a6aa1c4d904f6f80c427a871f7b313
+msgid "Installation"
+msgstr ""
+
+#: 82f558af557b4c8b8bf0ec54a4735c9c
+msgid ""
+"The BThomeV2 solution consists of two components that can be installed "
+"depending on your use case."
+msgstr ""
+
+#: 1525e03771a34f95b86a4881e296bc00
+msgid "Arduino/PlatformIO Library"
+msgstr ""
+
+#: 6a7e2ccde65e4f0484232b80009c86d1
+msgid "PlatformIO (Recommended)"
+msgstr ""
+
+#: e55ad1a9b74c4b4d843ea97d54784825
+msgid "Add the library to your ``platformio.ini``:"
+msgstr ""
+
+#: a16586a883d14c10be12e8474bef0bf8
+msgid "For specific versions:"
+msgstr ""
+
+#: a08662dece2f4b4f9b4e545d25fb3d4f
+msgid "Arduino IDE"
+msgstr ""
+
+#: 1a43ddc5c25a409e850cd97b216d14fc
+msgid ""
+"Download the library from the `GitHub Releases page "
+"<https://github.com/the78mole/bthomev2/releases>`_"
+msgstr ""
+
+#: 683bc3919ff5459c94caa628ee600b33
+msgid "In Arduino IDE: **Sketch** → **Include Library** → **Add .ZIP Library**"
+msgstr ""
+
+#: 5de825d95dda48aab62be20872f0eb09
+msgid "Select the downloaded ZIP file"
+msgstr ""
+
+#: 5bc9fd2801594f8f862b5bc6a0afa648
+msgid "Arduino Library Manager"
+msgstr ""
+
+#: f3e89fb976c44132b7684339aae6d98a
+msgid "The library is also available through the Arduino Library Manager:"
+msgstr ""
+
+#: 29404290b4e3407886462ddcf62a617a
+msgid "Open Arduino IDE"
+msgstr ""
+
+#: 6cd7e37c89fc455cb6d4bc5d91de86fb
+msgid "Go to **Tools** → **Manage Libraries**"
+msgstr ""
+
+#: bdc9de483ac54b5c8da5c54f06b04d77
+msgid "Search for \"BThomeV2\""
+msgstr ""
+
+#: d8289942379d40b59eea9d0f8f5cbc27
+msgid "Click **Install**"
+msgstr ""
+
+#: 3d7583bf7f0f47cea8e8d26c8dda23e9
+msgid "Dependencies"
+msgstr ""
+
+#: 5ecae0bd5bb347f6a4930ed4ae57e36a
+msgid ""
+"The BThomeV2 library has the following dependencies that are "
+"automatically installed:"
+msgstr ""
+
+#: 1ec104681ddb40ba9de04534c7f628b2
+msgid "**ESP32:**"
+msgstr ""
+
+#: e4bc6d06ad724e7e89734bed10a4dfa0
+msgid "ArduinoBLE (^1.5.0)"
+msgstr ""
+
+#: c44fd998404240bb9e0cb80171f51f5b
+msgid "**nRF52:**"
+msgstr ""
+
+#: c70fc0ce1278420bbef16837746b0c09
+msgid "Adafruit nRF52 Libraries (via PlatformIO)"
+msgstr ""
+
+#: cabcee95aa044a628a0789fa8140d89f
+msgid "Python Testing Tool (bthome-logger)"
+msgstr ""
+
+#: 221b015a810742b0a36cd8e99a322573
+msgid "uv (Recommended)"
+msgstr ""
+
+#: fff41720fc764ca795c16e35b017f36a
+msgid ""
+"Installation with `uv <https://docs.astral.sh/uv/>`_ is the recommended "
+"method:"
+msgstr ""
+
+#: 07d2dcd912324cd8b94dfdfc17770951
+msgid "The tool is then globally available:"
+msgstr ""
+
+#: 878f4eba110a4fcfa012fe60c95d04d4
+msgid "pip"
+msgstr ""
+
+#: 199bbbc4a99d42bf8191e14e66db438a
+msgid "Alternatively, you can install with pip:"
+msgstr ""
+
+#: 61b890c61d21465887a5068457b89dc6
+msgid "pipx"
+msgstr ""
+
+#: 767bd714491d4400a0fae18795ae2ce7
+msgid "For isolated installation:"
+msgstr ""
+
+#: e7b02de4ae674933bc5342ac8677bf0c
+msgid "From GitHub"
+msgstr ""
+
+#: 833668d3dc8a4e81a33ae53073621b61
+msgid "For development versions:"
+msgstr ""
+
+#: 57f71f123b324b6086f02b5f083bffae
+msgid "System Requirements"
+msgstr ""
+
+#: 43c457c7d2374613a21764602dc63bd7
+msgid "Hardware"
+msgstr ""
+
+#: 3c3fa02ac90d4c93a14e86a96e3873ab
+msgid "**For Library Development:**"
+msgstr ""
+
+#: 222f4c2817994e189f838faf8e8e9e90
+msgid "ESP32-based boards (ESP32, ESP32-S3, ESP32-C3, etc.)"
+msgstr ""
+
+#: 3fea8c30f3594192938a793b8d7ae5ef
+msgid "nRF52-based boards (Adafruit Feather nRF52840, Seeed XIAO nRF52840)"
+msgstr ""
+
+#: 43ce27e531e44db28ecec1413c67e965
+msgid "nRF52 is currently not functional!"
+msgstr ""
+
+#: 41f0f01dcd414b1690e3c45f800b159d
+msgid "**For Testing with bthome-logger:**"
+msgstr ""
+
+#: 60043d39fb8045c6b45d8fbbf736aed5
+msgid "Bluetooth LE capable computer (built-in or USB adapter)"
+msgstr ""
+
+#: fca57981bfb24c699646166e8bf7d498
+msgid "Linux, macOS or Windows"
+msgstr ""
+
+#: 82fe1f405258469dae4f286bc652efa0
+msgid "Software"
+msgstr ""
+
+#: f90dd249b7794c689dcfb8c28ac723ae
+msgid "**Library Development:**"
+msgstr ""
+
+#: a15a8425ca774048a5160d58f4412e64
+msgid "PlatformIO Core or Arduino IDE"
+msgstr ""
+
+#: 1202c66efb52490c9eb3507e28cac1ec
+msgid "ESP32 Board Support (via Arduino Board Manager or PlatformIO)"
+msgstr ""
+
+#: 336f2894ba774aa598c144dcf04a6579
+msgid "nRF52 Board Support (via Adafruit Board Manager or PlatformIO)"
+msgstr ""
+
+#: e33b000dd02f4da9a70200189492127a
+msgid "**Testing Tool:**"
+msgstr ""
+
+#: 5566727df1384dc399333fb26017e152
+msgid "Python 3.8 or higher"
+msgstr ""
+
+#: 677a4bcf37a54e16b7d44470a72a9961
+msgid "Operating system Bluetooth drivers"
+msgstr ""
+
+#: 93e2bd40fdd8490ba049eecb27e237a6
+msgid "Version Compatibility"
+msgstr ""
+
+#: a474d88106494585b534547fb9589566
+msgid ""
+"The library and testing tool are versioned synchronously. It is "
+"recommended to use matching versions:"
+msgstr ""
+
+#: e3a93d0034c94ad0a7fc307b220fdaae
+msgid "Version"
+msgstr ""
+
+#: b16f710c4eff4ad383ea24cc87c840c5
+msgid "Library (PlatformIO)"
+msgstr ""
+
+#: 373b76b55c164f07929d27c6d113570d
+msgid "Tool (PyPI)"
+msgstr ""
+
+#: ce2f41e92bc3471888cc3c8c9bdc8190
+msgid "0.1.x"
+msgstr ""
+
+#: 1dacc655f72a439a907de10bd9bf06d8
+msgid "``the78mole/BThomeV2@^0.1.0``"
+msgstr ""
+
+#: 43de0ac90b5a498a81cb79981f1f932c
+msgid "``bthome-logger==0.1.*``"
+msgstr ""
+
+#: 7d1a9bb26dd54d378ca7eec40afbbc1a
+msgid "0.0.x (dev)"
+msgstr ""
+
+#: 552253cde7ab49ff8c0eeb1b500611af cccee16d598e4742a1db038f7a447a32
+msgid "Git Repository"
+msgstr ""
+
+#: a11124a0ff5b45b3a0e0faef2c6555e0
+msgid "Installation Verification"
+msgstr ""
+
+#: eb60bf917edc4e8da8b695ea3986c588
+msgid "Arduino Library"
+msgstr ""
+
+#: c84e7227880d4ba8bb75eab51632ab38
+msgid "Create a new project and test the import:"
+msgstr ""
+
+#: 3348e82ce81d4d8ab6af5353b546f795
+msgid "Python Tool"
+msgstr ""
+
+#: fe570797da014ff9b456e99eb7d5ce04
+msgid "Verify the installation:"
+msgstr ""
+
+#: c5619240827e49cfb2fc99659b89c0ae
+msgid "Start a test scan:"
+msgstr ""
+
+#: 4b13c77ea9654dd6a532c3d2ed957e61
+msgid "Next Steps"
+msgstr ""
+
+#: 52e51769e85647a8b83174c360f2e7e9
+msgid "After installation:"
+msgstr ""
+
+#: 91437bb56c834008ba1f2e0fd981392b
+msgid "Read the :doc:`quickstart` guide for a first example"
+msgstr ""
+
+#: 664b9ad623c141a486899e0e52bc538f
+msgid "Explore :doc:`library/examples` for advanced use cases"
+msgstr ""
+
+#: c9f0df8a742c4f59b4ec7d7b8fa666e3
+msgid "Learn about the :doc:`tools/bthome-logger` tool"
+msgstr ""
+
+#: a747742d66614d2bad312b1eec051d66
+msgid "Review the :doc:`development/workflow` for development contributions"
+msgstr ""

@@ -1,5 +1,5 @@
-Lizenz
-======
+License
+=======
 
 .. include:: ../LICENSE
    :literal:

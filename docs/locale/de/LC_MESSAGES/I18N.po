@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 1fb8a741cb404e34b8128e3099dd8b12
+msgid "Internationalization (i18n) Guide"
+msgstr ""
+
+#: f3d82573ceb441789459fb0960bd7c38
+msgid ""
+"This documentation uses Sphinx's i18n capabilities to support multiple "
+"languages."
+msgstr ""
+
+#: 1334c42d05534a0b817246fe316135d8
+msgid "Current Status"
+msgstr ""
+
+#: 146533a30e734ed48f84470484389188
+msgid "**English** (main language) - Complete"
+msgstr ""
+
+#: 4ea312ee176a4e6699ae0f7b181989c8
+msgid "**German** - To be translated"
+msgstr ""
+
+#: f7a28124dea3473ebcaaf5c962d791dd
+msgid "How Sphinx i18n Works"
+msgstr ""
+
+#: 2d042148a69a413e86be5f6e6939105e
+msgid "English RST files are the source (in `docs/`)"
+msgstr ""
+
+#: 86cfa3f75a79427aac30ddc9009d4f92
+msgid "`make gettext` extracts translatable strings to `.pot` files"
+msgstr ""
+
+#: 52fb36559f1c4139b82560f2c2def647
+msgid "`.pot` files are converted to `.po` files for each language"
+msgstr ""
+
+#: bfbadaf4e90b408bad536ce9757a0b21
+msgid "Translators fill in the `.po` files"
+msgstr ""
+
+#: a248217f668d4ed6b08c3ab400a389f8
+msgid "Building with `-D language=de` uses German translations"
+msgstr ""
+
+#: 849127346ad7456cac7e7646ccedf3aa
+msgid "Creating German Translation"
+msgstr ""
+
+#: a1e723928a2f499e88e9b19a9c846672
+msgid "Step 1: Extract Translatable Strings"
+msgstr ""
+
+#: d15c70759ff34efe8dadb00ba233e5d9
+msgid "This creates `.pot` (Portable Object Template) files in `_build/gettext/`."
+msgstr ""
+
+#: 7e669605652a4531ada520d05cc01ae8
+msgid "Step 2: Initialize German Locale"
+msgstr ""
+
+#: e1338ca2da204c6eae111eb6fa1d3adf
+msgid "This creates `locale/de/LC_MESSAGES/*.po` files."
+msgstr ""
+
+#: 4140876320824a5399d807dbbb5d36b7
+msgid "Step 3: Translate"
+msgstr ""
+
+#: 647ed1722dba475f92f15d8e01e263c4
+msgid "Edit the `.po` files in `locale/de/LC_MESSAGES/`:"
+msgstr ""
+
+#: 03984107273447a780b75342851b64ea
+msgid "Step 4: Build German Documentation"
+msgstr ""
+
+#: d9573c96a860462fb1786ddf91b9439f
+msgid "Step 5: View"
+msgstr ""
+
+#: e33e652ebd934cfc807b5e149f446746
+msgid "Translation Workflow"
+msgstr ""
+
+#: ac78683729274005ba7c7f05935ee815
+msgid "Update Translations After Documentation Changes"
+msgstr ""
+
+#: 2aa8d52b000a47569cf1666b467bb8db
+msgid "ReadTheDocs Integration"
+msgstr ""
+
+#: 43f09d70464d45c8a2a9fed9c5f51257
+msgid "To have ReadTheDocs build German documentation:"
+msgstr ""
+
+#: 6d30222f96624ffbbde1110d6a0cf830
+msgid "Option 1: Language Selector (Recommended)"
+msgstr ""
+
+#: 8f645bc6c52f4407abb0ddb9419467db
+msgid "Go to ReadTheDocs project settings"
+msgstr ""
+
+#: c969a066ea2e4346a12a3927305a519b
+msgid "Add \"de\" as a language"
+msgstr ""
+
+#: c43bbc9956a24abba38b223e2864d474
+msgid "ReadTheDocs will build both en and de versions"
+msgstr ""
+
+#: d7e8fc7448a84e0682648c000de1d9fe
+msgid "Users can switch between languages in the UI"
+msgstr ""
+
+#: 2d9e8387386b4da987ce8b46b76b29f4
+msgid "Option 2: Separate Project"
+msgstr ""
+
+#: c26d0313e46c44cf90241d148c71c57e
+msgid "Create a second ReadTheDocs project (e.g., \"bthomev2-de\")"
+msgstr ""
+
+#: e785efd0a130407db55b75da4bdd186f
+msgid "Point to same repository"
+msgstr ""
+
+#: e5041cd1fd594a00b27f8c1576b407dc
+msgid "In project settings, set:"
+msgstr ""
+
+#: 6869eff2025b49ab8de38d787ca8a888
+msgid "Configuration file: `.readthedocs.yaml`"
+msgstr ""
+
+#: e7f4ab4edeaf47a6a244caabad6722f0
+msgid "Environment variable: `READTHEDOCS_LANGUAGE=de`"
+msgstr ""
+
+#: 51e1f901b0a74d77865e5af0ac39bce3
+msgid "Modify conf.py to use this variable"
+msgstr ""
+
+#: 4e009295bc68442db261f7ba34047f62
+msgid "Tools"
+msgstr ""
+
+#: 4761cfb6f61c4d10a999a3d9ccf9c078
+msgid "sphinx-intl"
+msgstr ""
+
+#: d97ed76fb39d49dfba43fc16bab8f451
+msgid "Install: `pip install sphinx-intl`"
+msgstr ""
+
+#: 3e3bebcd66f24152b9219eec2742e33c
+msgid "Useful commands:"
+msgstr ""
+
+#: 6d8efa94c6e348879ad52c22299fd456
+msgid "Poedit"
+msgstr ""
+
+#: 84c7d427b64e42278fc9a1762250cc4f
+msgid "GUI tool for editing .po files: https://poedit.net/"
+msgstr ""
+
+#: 5e418dbcd2584223960aeea64b4c1202
+msgid "Translation Guidelines"
+msgstr ""
+
+#: 736858b98d4f4126abf10cd4ac35fcc3
+msgid "**Keep technical terms in English:**"
+msgstr ""
+
+#: 67fdece78a224846959222239bddb7a0
+msgid "API, BLE, RSSI, etc."
+msgstr ""
+
+#: 88119cb01a184910aa186063e1ee8bf9
+msgid "Code examples stay in English"
+msgstr ""
+
+#: 5a45902d6de349e395026a8f780be710
+msgid "**Translate user-facing content:**"
+msgstr ""
+
+#: fb182f594a0945399cdc02fca2f90177
+msgid "Headings, descriptions, instructions"
+msgstr ""
+
+#: 420305fc1f6246a18b5721fd8306aad7
+msgid "Error messages, warnings"
+msgstr ""
+
+#: b057adadeedb4950b1a4f660a9984208
+msgid "**Maintain formatting:**"
+msgstr ""
+
+#: 658a775c3274412392d264713466730e
+msgid "Keep RST formatting markers"
+msgstr ""
+
+#: 1108021c77144cb780f368c9f7774488
+msgid "Don't translate code blocks"
+msgstr ""
+
+#: d037dc5bb63d4beea6c33d06a0ba1545
+msgid "Preserve links and references"
+msgstr ""
+
+#: c7d0e2caf6654490963653c48394687f
+msgid "**Code examples:**"
+msgstr ""
+
+#: ff4df9a16a4d4e43bb29378f1f3534ad
+msgid "Keep code unchanged"
+msgstr ""
+
+#: 62c6ceb4d466430ca3f079961e565420
+msgid "Translate comments in code"
+msgstr ""
+
+#: 626dadb4972743ca8774fc4244a9f664
+msgid "Current Translation Priority"
+msgstr ""
+
+#: 7c61d469d23a4da68e9c956a4294f6a3
+msgid "High priority:"
+msgstr ""
+
+#: b54f669f4db143dd90e3a133349c2e59
+msgid "index.rst"
+msgstr ""
+
+#: 2f7b3183e15e48f2a84735fb2faacf86
+msgid "installation.rst"
+msgstr ""
+
+#: 58cafa2416e847709bb3befa2b5be40a
+msgid "quickstart.rst"
+msgstr ""
+
+#: 3c210df1a7484a8da43bf635c4a0cc5c
+msgid "Medium priority:"
+msgstr ""
+
+#: fc2f5ea12aa04d279fd9c8f9359a1814
+msgid "library/api.rst"
+msgstr ""
+
+#: 090ed5248d3a41fd81bc5358ae36e521
+msgid "tools/bthome-logger.rst"
+msgstr ""
+
+#: c08a7940da6c41399558d1e2c32b669e
+msgid "Low priority:"
+msgstr ""
+
+#: 23706541a5ec47beb3c1257faf0557a0
+msgid "development/ (developers can read English)"
+msgstr ""
+
+#: af02b98848b546919dec6f71ced58aab
+msgid "Automation"
+msgstr ""
+
+#: 720cc0a1f25a419c8472b78c39561c5c
+msgid ""
+"Consider using translation services or AI for initial translation, then "
+"manually review:"
+msgstr ""
+
+#: 8d990800c8a04a548d7a0626a2d82fbd
+msgid "Testing"
+msgstr ""
+
+#: 3c0f43adb9cc4f98a3fba24f3f70d7b8
+msgid "Before committing translations:"
+msgstr ""
+
+#: 6e6f734ddabb4acf81da88693fb755b6
+msgid "Contributing Translations"
+msgstr ""
+
+#: 7e591b753b774bfb89614570f4d4b7b4
+msgid "Fork repository"
+msgstr ""
+
+#: 7e688204fff441a7b30182e5304cabb6
+msgid "Create translation branch: `git checkout -b translation/german`"
+msgstr ""
+
+#: 1fc3991b4e9a4aeb9d9d37bc0ce68ce8
+msgid "Follow steps above to create/update translations"
+msgstr ""
+
+#: 7417b141bc39400c83c348458368d3e0
+msgid "Commit `.po` files: `git add locale/de/`"
+msgstr ""
+
+#: 5a49911e77564fcb8e81619dc6a03ea6
+msgid "Create pull request"
+msgstr ""
+
+#: 2adc5fc394f741d685083724a65989c3
+msgid "References"
+msgstr ""
+
+#: c37acf4fae0a4ce6b83df63463702441
+msgid ""
+"[Sphinx i18n documentation](https://www.sphinx-"
+"doc.org/en/master/usage/advanced/intl.html)"
+msgstr ""
+
+#: e06858f332cc4b2e8e9101e20c33d513
+msgid "[sphinx-intl](https://pypi.org/project/sphinx-intl/)"
+msgstr ""
+
+#: 7701047343f849dda2483dd5588d6748
+msgid "[GNU gettext](https://www.gnu.org/software/gettext/)"
+msgstr ""

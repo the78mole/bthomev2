@@ -1,26 +1,25 @@
-API Referenz
+API Reference
 =============
 
-Die BThomeV2 Library bietet eine einfache und einheitliche API für das Erstellen
-von BThome V2-kompatiblen BLE-Sensoren.
+The BThomeV2 library provides a simple and unified API for creating BThome V2-compatible BLE sensors.
 
-BThomeV2Device Klasse
-----------------------
+BThomeV2Device Class
+--------------------
 
-Die zentrale Klasse für die Arbeit mit BThome V2-Sensoren.
+The central class for working with BThome V2 sensors.
 
-Initialisierung
-~~~~~~~~~~~~~~~
+Initialization
+~~~~~~~~~~~~~~
 
 .. cpp:function:: bool begin(const char* deviceName)
 
-   Initialisiert den BLE-Stack mit einem Gerätenamen.
+   Initializes the BLE stack with a device name.
 
-   :param deviceName: Name des BLE-Geräts (max. 29 Zeichen)
-   :return: ``true`` bei Erfolg, ``false`` bei Fehler
+   :param deviceName: Name of the BLE device (max 29 characters)
+   :return: ``true`` on success, ``false`` on error
    :rtype: bool
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
@@ -31,25 +30,25 @@ Initialisierung
 
 .. cpp:function:: void end()
 
-   Stoppt BLE-Advertising und deinitialisiert den Stack.
+   Stops BLE advertising and deinitializes the stack.
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
       bthome.end();
 
-Advertising-Kontrolle
-~~~~~~~~~~~~~~~~~~~~~~
+Advertising Control
+~~~~~~~~~~~~~~~~~~~
 
 .. cpp:function:: bool startAdvertising()
 
-   Startet BLE-Advertising mit den aktuellen Messwerten.
+   Starts BLE advertising with current measurements.
 
-   :return: ``true`` bei Erfolg, ``false`` bei Fehler
+   :return: ``true`` on success, ``false`` on error
    :rtype: bool
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
@@ -58,9 +57,9 @@ Advertising-Kontrolle
 
 .. cpp:function:: void stopAdvertising()
 
-   Stoppt BLE-Advertising.
+   Stops BLE advertising.
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
@@ -68,13 +67,12 @@ Advertising-Kontrolle
 
 .. cpp:function:: bool updateAdvertising()
 
-   Aktualisiert die Advertising-Daten mit neuen Messwerten.
-   Stoppt und startet Advertising automatisch.
+   Updates advertising data with new measurements. Automatically stops and restarts advertising.
 
-   :return: ``true`` bei Erfolg, ``false`` bei Fehler
+   :return: ``true`` on success, ``false`` on error
    :rtype: bool
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
@@ -82,277 +80,414 @@ Advertising-Kontrolle
       bthome.addTemperature(23.0);
       bthome.updateAdvertising();
 
-Messwerte verwalten
-~~~~~~~~~~~~~~~~~~~
+Measurement Management
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. cpp:function:: void clearMeasurements()
 
-   Löscht alle Messwerte vor dem Hinzufügen neuer Werte.
+   Clears all measurements before adding new values.
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
       bthome.clearMeasurements();
       bthome.addTemperature(22.5);
 
-Sensoren hinzufügen
-~~~~~~~~~~~~~~~~~~~
+Adding Sensors
+~~~~~~~~~~~~~~
 
-Temperatur
-^^^^^^^^^^
+Temperature
+^^^^^^^^^^^
 
 .. cpp:function:: void addTemperature(float temperature)
 
-   Fügt einen Temperaturwert hinzu.
+   Adds a temperature measurement.
 
-   :param temperature: Temperatur in °C (Auflösung: 0.01°C)
+   :param temperature: Temperature in °C (resolution: 0.01°C)
    :type temperature: float
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
       bthome.addTemperature(22.5);  // 22.5°C
 
-Luftfeuchtigkeit
-^^^^^^^^^^^^^^^^
+Humidity
+^^^^^^^^
 
 .. cpp:function:: void addHumidity(float humidity)
 
-   Fügt einen Luftfeuchtigkeitswert hinzu.
+   Adds a humidity measurement.
 
-   :param humidity: Luftfeuchtigkeit in % (Auflösung: 0.01%, Bereich: 0-100)
+   :param humidity: Humidity in % (resolution: 0.01%, range: 0-100)
    :type humidity: float
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
       bthome.addHumidity(65.0);  // 65%
 
-Batterie
-^^^^^^^^
+Battery
+^^^^^^^
 
 .. cpp:function:: void addBattery(uint8_t battery)
 
-   Fügt einen Batteriestand hinzu.
+   Adds a battery level measurement.
 
-   :param battery: Batteriestand in % (Bereich: 0-100)
+   :param battery: Battery level in % (range: 0-100)
    :type battery: uint8_t
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
       bthome.addBattery(95);  // 95%
 
-Luftdruck
-^^^^^^^^^
+Pressure
+^^^^^^^^
 
 .. cpp:function:: void addPressure(float pressure)
 
-   Fügt einen Luftdruckwert hinzu.
+   Adds an air pressure measurement.
 
-   :param pressure: Luftdruck in hPa (Auflösung: 0.01 hPa)
+   :param pressure: Pressure in hPa (resolution: 0.01 hPa)
    :type pressure: float
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
       bthome.addPressure(1013.25);  // 1013.25 hPa
 
-Beleuchtungsstärke
-^^^^^^^^^^^^^^^^^^
+Illuminance
+^^^^^^^^^^^
 
 .. cpp:function:: void addIlluminance(float illuminance)
 
-   Fügt einen Beleuchtungsstärkewert hinzu.
+   Adds an illuminance measurement.
 
-   :param illuminance: Beleuchtungsstärke in lux (Auflösung: 0.01 lux)
+   :param illuminance: Illuminance in lux (resolution: 0.01 lux)
    :type illuminance: float
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
-      bthome.addIlluminance(500.0);  // 500 lux
+      bthome.addIlluminance(450.0);  // 450 lux
 
 CO2
 ^^^
 
 .. cpp:function:: void addCO2(uint16_t co2)
 
-   Fügt einen CO2-Wert hinzu.
+   Adds a CO2 concentration measurement.
 
-   :param co2: CO2-Konzentration in ppm
+   :param co2: CO2 concentration in ppm (parts per million)
    :type co2: uint16_t
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
-      bthome.addCO2(450);  // 450 ppm
+      bthome.addCO2(420);  // 420 ppm
 
-Binärsensoren
-^^^^^^^^^^^^^
+Binary Sensors
+~~~~~~~~~~~~~~
 
 .. cpp:function:: void addBinarySensor(BThomeObjectID objectId, bool state)
 
-   Fügt einen Binärsensor-Zustand hinzu.
+   Adds a binary sensor state.
 
-   :param objectId: Object ID des Binärsensors (z.B. ``MOTION``, ``DOOR``, ``WINDOW``)
+   :param objectId: Binary sensor object ID (see :doc:`sensors`)
+   :param state: Sensor state (true = on/detected, false = off/not detected)
    :type objectId: BThomeObjectID
-   :param state: Zustand (``true`` = aktiv/offen, ``false`` = inaktiv/geschlossen)
    :type state: bool
 
-   **Beispiele:**
+   **Example:**
 
    .. code-block:: cpp
 
-      bthome.addBinarySensor(MOTION, true);   // Bewegung erkannt
-      bthome.addBinarySensor(DOOR, false);    // Tür geschlossen
-      bthome.addBinarySensor(WINDOW, true);   // Fenster offen
+      // Door sensor
+      bthome.addBinarySensor(DOOR, true);  // Door open
 
-   **Verfügbare Binärsensor-IDs:**
+      // Motion sensor
+      bthome.addBinarySensor(MOTION, true);  // Motion detected
 
-   * ``BATTERY_LOW`` - Batterie schwach
-   * ``BATTERY_CHARGING`` - Batterie lädt
-   * ``CO`` - Kohlenmonoxid
-   * ``COLD`` - Kälte
-   * ``CONNECTIVITY`` - Verbindung
-   * ``DOOR`` - Tür
-   * ``GARAGE_DOOR`` - Garagentor
-   * ``GAS`` - Gas
-   * ``HEAT`` - Hitze
-   * ``LIGHT`` - Licht
-   * ``LOCK`` - Schloss
-   * ``MOISTURE_BINARY`` - Feuchtigkeit
-   * ``MOTION`` - Bewegung
-   * ``MOVING`` - Bewegung aktiv
-   * ``OCCUPANCY`` - Belegung
-   * ``OPENING`` - Öffnung
-   * ``PLUG`` - Stecker
-   * ``POWER_BINARY`` - Strom
-   * ``PRESENCE`` - Anwesenheit
-   * ``PROBLEM`` - Problem
-   * ``RUNNING`` - Laufend
-   * ``SAFETY`` - Sicherheit
-   * ``SMOKE`` - Rauch
-   * ``SOUND`` - Ton
-   * ``TAMPER`` - Manipulation
-   * ``VIBRATION`` - Vibration
-   * ``WINDOW`` - Fenster
+      // Window sensor
+      bthome.addBinarySensor(WINDOW, false);  // Window closed
+
+Available Binary Sensors
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``BATTERY_LOW`` - Low battery indicator
+* ``BATTERY_CHARGING`` - Charging indicator
+* ``CO`` - Carbon monoxide detected
+* ``COLD`` - Cold temperature detected
+* ``CONNECTIVITY`` - Network connectivity
+* ``DOOR`` - Door open/closed
+* ``GARAGE_DOOR`` - Garage door open/closed
+* ``GAS`` - Gas detected
+* ``HEAT`` - Heat detected
+* ``LIGHT`` - Light on/off
+* ``LOCK`` - Lock locked/unlocked
+* ``MOISTURE_BINARY`` - Moisture detected
+* ``MOTION`` - Motion detected
+* ``MOVING`` - Movement detected
+* ``OCCUPANCY`` - Room occupied
+* ``OPENING`` - Opening detected
+* ``PLUG`` - Plug on/off
+* ``POWER_BINARY`` - Power on/off
+* ``PRESENCE`` - Presence detected
+* ``PROBLEM`` - Problem detected
+* ``RUNNING`` - Running state
+* ``SAFETY`` - Safety state
+* ``SMOKE`` - Smoke detected
+* ``SOUND`` - Sound detected
+* ``TAMPER`` - Tamper detected
+* ``VIBRATION`` - Vibration detected
+* ``WINDOW`` - Window open/closed
+
+Events
+~~~~~~
 
 Button Events
 ^^^^^^^^^^^^^
 
 .. cpp:function:: void addButtonEvent(uint8_t event)
 
-   Fügt ein Button-Event hinzu.
+   Adds a button press event.
 
-   :param event: Event-Code
+   :param event: Event type
    :type event: uint8_t
 
-   **Event-Codes:**
+   **Event Types:**
 
-   * ``0x01`` - Einzelner Tastendruck
-   * ``0x02`` - Doppelklick
-   * ``0x03`` - Dreifachklick
-   * ``0x04`` - Langer Druck
+   * ``0x00`` - None (no event)
+   * ``0x01`` - Press (single press)
+   * ``0x02`` - Double press
+   * ``0x03`` - Triple press
+   * ``0x04`` - Long press
 
-   **Beispiele:**
+   **Example:**
 
    .. code-block:: cpp
 
-      bthome.addButtonEvent(0x01);  // Einzelner Tastendruck
-      bthome.addButtonEvent(0x02);  // Doppelklick
-      bthome.addButtonEvent(0x04);  // Langer Druck
+      // Single press
+      bthome.addButtonEvent(0x01);
 
-Erweiterte Funktionen
-~~~~~~~~~~~~~~~~~~~~~
+      // Long press
+      bthome.addButtonEvent(0x04);
+
+Advanced Functions
+~~~~~~~~~~~~~~~~~~
+
+Custom Measurements
+^^^^^^^^^^^^^^^^^^^
 
 .. cpp:function:: void addMeasurement(BThomeObjectID objectId, const std::vector<uint8_t>& data)
 
-   Fügt einen benutzerdefinierten Messwert mit rohen Datenbytes hinzu.
+   Adds a custom measurement with raw data.
 
-   :param objectId: BThome Object ID
+   :param objectId: Object ID from BThome specification
+   :param data: Raw data bytes for the measurement
    :type objectId: BThomeObjectID
-   :param data: Rohe Datenbytes
    :type data: const std::vector<uint8_t>&
 
-   **Beispiel:**
+   **Example:**
 
    .. code-block:: cpp
 
+      // Custom sensor with 2-byte data
       std::vector<uint8_t> customData = {0x12, 0x34};
       bthome.addMeasurement(CUSTOM_ID, customData);
 
-BThomeObjectID Enum
--------------------
+Encryption (Optional)
+^^^^^^^^^^^^^^^^^^^^^
 
-Alle unterstützten BThome V2 Object IDs:
+.. cpp:function:: bool setEncryptionKey(const uint8_t key[16])
+
+   Sets the encryption key for encrypted advertising.
+
+   :param key: 16-byte encryption key
+   :return: ``true`` if key was set, ``false`` otherwise
+   :rtype: bool
+
+.. cpp:function:: void setEncryption(bool enabled)
+
+   Enables or disables encryption.
+
+   :param enabled: true to enable, false to disable
+   :type enabled: bool
+
+.. cpp:function:: bool isEncryptionEnabled() const
+
+   Checks if encryption is enabled.
+
+   :return: ``true`` if encryption is enabled
+   :rtype: bool
+
+   **Example:**
+
+   .. code-block:: cpp
+
+      uint8_t key[16] = {0x01, 0x02, /* ... */};
+      bthome.setEncryptionKey(key);
+      bthome.setEncryption(true);
+
+MAC Address (Platform-Specific)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. cpp:function:: bool setMAC(const uint8_t mac[6])
+
+   Sets a custom MAC address for the device (if supported by platform).
+
+   :param mac: 6-byte MAC address
+   :return: ``true`` if MAC was set, ``false`` if not supported
+   :rtype: bool
+
+   **Example:**
+
+   .. code-block:: cpp
+
+      uint8_t mac[6] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
+      bthome.setMAC(mac);
+
+Complete Example
+----------------
+
+Here's a complete example using multiple API functions:
 
 .. code-block:: cpp
 
-   enum BThomeObjectID {
-       PACKET_ID = 0x00,
-       BATTERY = 0x01,
-       TEMPERATURE = 0x02,
-       HUMIDITY = 0x03,
-       PRESSURE = 0x04,
-       ILLUMINANCE = 0x05,
-       MASS_KG = 0x06,
-       MASS_LB = 0x07,
-       DEW_POINT = 0x08,
-       COUNT = 0x09,
-       ENERGY = 0x0A,
-       POWER = 0x0B,
-       VOLTAGE = 0x0C,
-       PM2_5 = 0x0D,
-       PM10 = 0x0E,
-       CO2 = 0x12,
-       TVOC = 0x13,
-       MOISTURE = 0x14,
-       // Binärsensoren (0x15 - 0x2D)
-       BATTERY_LOW = 0x15,
-       BATTERY_CHARGING = 0x16,
-       // ... (siehe vollständige Liste in BThomeV2.h)
-       BUTTON = 0x3A,
-       DIMMER = 0x3C
-   };
+   #include <Arduino.h>
+   #include <BThomeV2.h>
 
-Plattformspezifische Details
------------------------------
+   BThomeV2Device bthome;
+   unsigned long lastUpdate = 0;
+   const unsigned long UPDATE_INTERVAL = 60000;  // 60 seconds
 
-Die API ist auf beiden Plattformen identisch. Die plattformspezifischen
-Implementierungen werden automatisch ausgewählt:
+   void setup() {
+     Serial.begin(115200);
 
-* **ESP32**: Nutzt ``BThomeV2_ESP32.cpp`` mit ArduinoBLE
-* **nRF52**: Nutzt ``BThomeV2_nRF52.cpp`` mit Adafruit Bluefruit
+     // Initialize BLE
+     if (!bthome.begin("Climate-Sensor")) {
+       Serial.println("BLE init failed!");
+       while (1) delay(1000);
+     }
 
-.. note::
-   nRF52 ist derzeit nicht funktionsfähig aufgrund von Problemen mit
-   der Bluefruit-Bibliothek.
+     // Add initial measurements
+     bthome.addTemperature(22.5);
+     bthome.addHumidity(65.0);
+     bthome.addPressure(1013.25);
+     bthome.addBattery(100);
 
-Thread-Sicherheit
------------------
+     // Start advertising
+     bthome.startAdvertising();
+     Serial.println("Sensor started");
+   }
 
-Die Library ist **nicht** thread-safe. Alle Aufrufe sollten aus dem gleichen
-Thread erfolgen (typischerweise der Arduino ``loop()``).
+   void loop() {
+     // Update every minute
+     if (millis() - lastUpdate >= UPDATE_INTERVAL) {
+       lastUpdate = millis();
 
-Speicherverwaltung
-------------------
+       // Read sensors (simulated here)
+       float temp = readTemperature();
+       float humidity = readHumidity();
+       float pressure = readPressure();
+       uint8_t battery = readBatteryLevel();
 
-Die Library verwendet ``std::vector`` für die Verwaltung von Messwerten.
-Jeder Aufruf von ``clearMeasurements()`` gibt den Speicher frei.
+       // Update measurements
+       bthome.clearMeasurements();
+       bthome.addTemperature(temp);
+       bthome.addHumidity(humidity);
+       bthome.addPressure(pressure);
+       bthome.addBattery(battery);
 
-**Empfehlung:** Rufe ``clearMeasurements()`` vor dem Hinzufügen neuer Werte auf.
+       // Update advertising
+       bthome.updateAdvertising();
 
-Siehe auch
-----------
+       Serial.println("Measurements updated");
+     }
 
-* :doc:`sensors` - Alle unterstützten Sensortypen
-* :doc:`examples` - Vollständige Beispiele
-* :doc:`platforms` - Plattformspezifische Informationen
+     delay(1000);
+   }
+
+   // Simulated sensor reading functions
+   float readTemperature() { return 20.0 + random(0, 100) / 10.0; }
+   float readHumidity() { return 50.0 + random(0, 200) / 10.0; }
+   float readPressure() { return 1000.0 + random(0, 500) / 10.0; }
+   uint8_t readBatteryLevel() { return 80 + random(0, 21); }
+
+Best Practices
+--------------
+
+Update Frequency
+~~~~~~~~~~~~~~~~
+
+* **Don't update too frequently**: BLE advertising can drain battery
+* **Recommended intervals**: 30-300 seconds for most sensors
+* **Consider battery impact**: Longer intervals save power
+
+Memory Management
+~~~~~~~~~~~~~~~~~
+
+* **Clear before updating**: Always call ``clearMeasurements()`` before adding new values
+* **Limit measurements**: BLE payload is limited to 31 bytes
+* **Combine wisely**: Too many sensors in one advertisement may not fit
+
+Error Handling
+~~~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+   // Always check initialization
+   if (!bthome.begin("Device")) {
+     Serial.println("Failed to initialize!");
+     // Handle error appropriately
+   }
+
+   // Check advertising status
+   if (!bthome.startAdvertising()) {
+     Serial.println("Failed to start advertising!");
+   }
+
+Device Naming
+~~~~~~~~~~~~~
+
+* **Use descriptive names**: "Living-Room-Temp" not "Sensor1"
+* **Keep it short**: Max 29 characters
+* **Avoid special characters**: Stick to alphanumeric and hyphens
+* **Be consistent**: Use same naming scheme across devices
+
+Platform Differences
+--------------------
+
+The API is unified across platforms, but there are some differences:
+
+ESP32
+~~~~~
+
+* ✅ Fully functional
+* ✅ All features supported
+* ✅ Stable BLE stack (ArduinoBLE)
+* ✅ Custom MAC address supported
+
+nRF52
+~~~~~
+
+* ⚠️ Currently not functional
+* ❌ Runtime issues with advertising
+* ❌ Not recommended for production
+
+See :doc:`platforms` for detailed platform information.
+
+See Also
+--------
+
+* :doc:`sensors` - Complete list of all supported sensors
+* :doc:`examples` - Real-world code examples
+* :doc:`platforms` - Platform-specific information
+* :doc:`../tools/bthome-logger` - Testing tool documentation

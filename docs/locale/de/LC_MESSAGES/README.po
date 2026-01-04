@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: c8c6b0737d714e76824aeb69ea64018c
+msgid "BThomeV2 Documentation"
+msgstr ""
+
+#: 05e3bb3f68ca42269781aa5e6b338845
+msgid "This directory contains the Sphinx documentation for the BThomeV2 library."
+msgstr ""
+
+#: c80f28b8d9794fe7a5f6c41dcb551f83
+msgid "Languages"
+msgstr ""
+
+#: be64f8d84088439da16816436d41600d
+msgid "**English** (primary): Main documentation in English"
+msgstr ""
+
+#: 7a6a26b87db14419a1c7c2f81308c4a1
+msgid "**German**: Available via Sphinx internationalization (i18n)"
+msgstr ""
+
+#: 3857f1a4c5304dfbb3d38a825f96e3f7
+msgid "Building the Documentation"
+msgstr ""
+
+#: f08b868500734c7c9148e3428825e8cc
+msgid "Prerequisites"
+msgstr ""
+
+#: 981364af637c4970b14020ff0e130bdf
+msgid "Install uv if not already available:"
+msgstr ""
+
+#: e0ddf037b0e44dc48b88749270b7d520
+msgid "Quick Build (Recommended)"
+msgstr ""
+
+#: 6931118dfddd464a961d2075008c56e6
+msgid "Use the build script with uv:"
+msgstr ""
+
+#: 491f9bf858ef4994a863308717a4a303
+msgid "Manual Build with uv"
+msgstr ""
+
+#: 4b321501ccd84360a4c51e85a96447c2
+msgid "Traditional Build with Make"
+msgstr ""
+
+#: c1fb24cb8b47434aaf924cd505232d93
+msgid "If you prefer using make:"
+msgstr ""
+
+#: 1f09062128cb47608409d1380871325e
+msgid "Opening Documentation"
+msgstr ""
+
+#: e7bfc85ed7894d069874b36714d6c5b6
+msgid "After building:"
+msgstr ""
+
+#: 0e85af364337483eaf483e38c3bda625
+msgid "Structure"
+msgstr ""
+
+#: 0e5fcb1f236349feb8aae26898ba798c
+msgid "`conf.py` - Sphinx configuration"
+msgstr ""
+
+#: 78e9708ca2534728aadc18501544614b
+msgid "`index.rst` - Main page"
+msgstr ""
+
+#: 3df3a3a5e33c46bd94dc9ff6171b6307
+msgid "`installation.rst` - Installation guide"
+msgstr ""
+
+#: 29363015e3f14dc4b6f2705a0a1dd2e4
+msgid "`quickstart.rst` - Quick start guide"
+msgstr ""
+
+#: 2667c52953d44872a5519f96845c5b69
+msgid "`library/` - Library documentation"
+msgstr ""
+
+#: f55ed4359c884491ad7243f26c371804
+msgid "`tools/` - Tool documentation"
+msgstr ""
+
+#: fc86a220c3ff40d09792e0b98fd51332
+msgid "`development/` - Development documentation"
+msgstr ""
+
+#: 6d3e272f732a4ca397cd9c80f7fa5a29
+msgid "`locale/` - Translations (German, etc.)"
+msgstr ""
+
+#: 536c0bcf1ebe46dcb02c9387edd7beb7
+msgid "Translation"
+msgstr ""
+
+#: 83e3cec3d12945f8bfe970b24cf1eb81
+msgid ""
+"To contribute translations, see [I18N.md](I18N.md) for detailed "
+"instructions."
+msgstr ""
+
+#: c99fbd76eae344e4aa3e024a542d6a8a
+msgid "Quick start:"
+msgstr ""
+
+#: 58395da8f9ea4fe3ac0b845e3047fba2
+msgid "ReadTheDocs Integration"
+msgstr ""
+
+#: 0d3de384a7094ddfbdbe109b7764fe5f
+msgid ""
+"The documentation is automatically built on ReadTheDocs with each push. "
+"Configuration: `.readthedocs.yaml` in repository root."
+msgstr ""
+
+#: 1fcc1059c0ba48649dc4616ceede9468
+msgid "Language Versions"
+msgstr ""
+
+#: e3ee568324b54972b56040198d8268ff
+msgid "ReadTheDocs can build multiple language versions. To enable:"
+msgstr ""
+
+#: 079911c3b3874f43932bc4a4e4293fcc
+msgid "Go to project settings on ReadTheDocs"
+msgstr ""
+
+#: e989342179fd4f79857c49257b77a145
+msgid "Navigate to \"Translations\""
+msgstr ""
+
+#: 85953936d47247209f395f9e417130b0
+msgid "Add \"de\" as a language"
+msgstr ""
+
+#: 22de9571f38b47e9b927b80a5cbfa2c6
+msgid "Both English and German will be built automatically"
+msgstr ""
+
+#: 9306fbddf9934d18b69c870e5730ff2b
+msgid "Users can switch languages in the docs navigation"
+msgstr ""

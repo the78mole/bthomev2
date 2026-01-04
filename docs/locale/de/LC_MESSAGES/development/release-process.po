@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, the78mole
+# This file is distributed under the same license as the BThomeV2 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BThomeV2 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-04 18:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: 59dbce9168d442ff8296975ae440c474
+msgid "Release Process"
+msgstr ""
+
+#: f6f4e3d7e2ae443a92914adeb1f78e8d
+msgid "Detailed description of the automated release process."
+msgstr ""
+
+#: ac7721a1172d471abd098f9afef14b9e
+msgid "See :doc:`workflow` for the complete description of the release workflow."
+msgstr ""
+
+#: 7b8404cfa3df4ad2bca0ce43a39ee4a9
+msgid "Overview"
+msgstr ""
+
+#: 52f46bfa61ee4e21961deeeeea587419
+msgid "Push code changes to ``main``"
+msgstr ""
+
+#: 18b98575b0d14f6090d15496a4534a0c
+msgid "GitHub Actions calculates new version"
+msgstr ""
+
+#: 2c76ec4834974048aa928bda5e617909
+msgid "Release is created"
+msgstr ""
+
+#: 9e5fd1bf5a4a41ec814a4dee3c03a643
+msgid "PyPI and PlatformIO are updated"
+msgstr ""
+
+#: 1affd5e413a648aeaa28277edcde41d1
+msgid "Both have identical version"
+msgstr ""
+
+#: f5de63162d144f76b42a6031e91920f4
+msgid "Semantic Versioning"
+msgstr ""
+
+#: ed59d67998f340908bb8bf26e05d8de4
+msgid "``feat:`` → Minor Bump (0.X.0)"
+msgstr ""
+
+#: 3aeb9b95b04e4ed999dcde1d467ff623
+msgid "``fix:`` → Patch Bump (0.0.X)"
+msgstr ""
+
+#: 438736a161d445eba9786cdef2cedeba
+msgid "``BREAKING CHANGE:`` → Major Bump (X.0.0)"
+msgstr ""
+
+#: a58c88d883554c9888b8ed2fa7e26fd9
+msgid "See Also"
+msgstr ""
+
+#: e2193e7b6e77445592123d3066daaaeb
+msgid ":doc:`workflow` - Development workflow"
+msgstr ""
