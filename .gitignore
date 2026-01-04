@@ -17,6 +17,10 @@
 build/
 dist/
 
+# Sphinx documentation
+docs/_build/
+docs/_autosummary/
+
 # IDE
 .vscode/*
 !.vscode/extensions.json

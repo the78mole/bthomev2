@@ -1,0 +1,5 @@
+Lizenz
+======
+
+.. include:: ../LICENSE
+   :literal:
