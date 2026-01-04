@@ -20,6 +20,7 @@ dist/
 # Sphinx documentation
 docs/_build/
 docs/_autosummary/
+docs/locale/**/*.mo
 
 # IDE
 .vscode/*
