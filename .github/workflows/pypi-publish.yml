@@ -87,6 +87,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/bthome-logger
+
     steps:
     - name: Download distributions
       uses: actions/download-artifact@v4
@@ -107,6 +111,10 @@ jobs:
     if: inputs.environment == 'pypi'
     needs: [build]
     runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/bthome-logger
 
     steps:
     - name: Download distributions
