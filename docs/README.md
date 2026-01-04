@@ -104,10 +104,20 @@ Configuration: `.readthedocs.yaml` in repository root.
 
 ### Language Versions
 
-ReadTheDocs can build multiple language versions. To enable:
+Both English and German versions are built automatically:
 
-1. Go to project settings on ReadTheDocs
-2. Navigate to "Translations"
-3. Add "de" as a language
-4. Both English and German will be built automatically
-5. Users can switch languages in the docs navigation
+- **English** (default): `https://bthomev2.readthedocs.io/en/latest/`
+- **German**: `https://bthomev2.readthedocs.io/en/latest/de/` or via language switcher
+
+The `.readthedocs.yaml` is configured to:
+
+1. Build English documentation as the main version
+2. Build German documentation in a `post_build` step to `/de/` subdirectory
+3. Both versions are accessible from the same build
+
+**No manual configuration needed** - just push to GitHub and ReadTheDocs
+handles both languages automatically!
+
+1. Add "de" as a language
+2. Both English and German will be built automatically
+3. Users can switch languages in the docs navigation

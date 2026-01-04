@@ -1,0 +1,25 @@
+{# Language switcher for ReadTheDocs theme #}
+{% if current_language %}
+<div class="rst-other-versions">
+  <div class="injected">
+    <dl>
+      <dt>{{ _('Languages') }}</dt>
+      {% for lang_code, lang_name in languages %}
+        {% if lang_code == current_language %}
+          <dd class="rtd-current-item">
+            <strong>{{ lang_name }}</strong>
+          </dd>
+        {% else %}
+          <dd>
+            {% if lang_code == 'en' %}
+              <a href="{{ pathto('/', 1)|replace('/de/', '/') }}">{{ lang_name }}</a>
+            {% else %}
+              <a href="{{ pathto('/', 1)|replace('/', '/de/') }}">{{ lang_name }}</a>
+            {% endif %}
+          </dd>
+        {% endif %}
+      {% endfor %}
+    </dl>
+  </div>
+</div>
+{% endif %}
