@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "nRF52840-DK (J-Link)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "jlink",
+      "device": "nRF52840_xxAA",
+      "interface": "swd",
+      "runToEntryPoint": "setup",
+      "executable": "${workspaceFolder}/.pio/build/nrf52840dk/firmware.elf",
+      "svdFile": "/home/daniel/.platformio/platforms/nordicnrf52/misc/svd/nrf52840.svd",
+      "JLinkGDBServerPath": "/usr/bin/JLinkGDBServer",
+      "armToolchainPath": "/home/daniel/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+      "preLaunchTask": "PlatformIO: Build (nrf52840dk)"
+    }
+  ]
+}

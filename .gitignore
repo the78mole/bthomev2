@@ -42,3 +42,5 @@ Thumbs.db
 
 # Dependencies
 node_modules/
+
+__pycache__/

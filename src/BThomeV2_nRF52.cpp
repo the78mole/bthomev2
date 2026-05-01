@@ -34,8 +34,21 @@ bool BThomeV2Device::begin(const char* devName) {
     return false;
   }
 
+  // Check if SoftDevice S140 is present in flash BEFORE any SVC call.
+  // The SoftDevice FWID sits at a fixed flash address (no SVC needed).
+  // S140 v7.3.0 → FWID = 0x0123; 0xFFFF means no SoftDevice in flash.
+  uint16_t sd_fwid = *(volatile uint16_t*)0x3004U;
+  Serial.printf(
+      "[DBG] SoftDevice FWID @ 0x3004: 0x%04X  (expect 0x0123 for S140 "
+      "v7.3.0)\n",
+      sd_fwid);
+  Serial.flush();
+
   // Initialize Bluefruit - use default begin() without parameters
+  Serial.println("[DBG] calling Bluefruit.begin()...");
+  Serial.flush();
   Bluefruit.begin();
+  Serial.println("[DBG] Bluefruit.begin() returned");
 
   // Set TX power to maximum for better range
   Bluefruit.setTxPower(4);  // Max power
@@ -43,11 +56,15 @@ bool BThomeV2Device::begin(const char* devName) {
   Bluefruit.setName(deviceName);
 
   // Set up advertising parameters
-  Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
-  Bluefruit.Advertising.addTxPower();
   Bluefruit.Advertising.restartOnDisconnect(true);
   Bluefruit.Advertising.setInterval(32, 244);  // in unit of 0.625 ms
   Bluefruit.Advertising.setFastTimeout(30);    // seconds
+
+  // Put device name in scan response (saves space in advertising packet).
+  // The advertising packet budget is 31 bytes:
+  //   Flags(3) + TxPower(3) + ServiceData(~13) = ~19 bytes used.
+  // A 17-char name would need 19 bytes and cause overflow if put in adv packet.
+  Bluefruit.ScanResponse.addName();
 
   initialized = true;
   return true;
@@ -216,9 +233,18 @@ bool BThomeV2Device::updateAdvertising() {
   uint8_t advertisementData[MAX_ADVERTISEMENT_SIZE];
   size_t size = btHomeDevice->getAdvertisementData(advertisementData);
 
+  Serial.printf("[DBG] getAdvertisementData size=%u\n", (unsigned)size);
   if (size == 0) {
+    Serial.println("[DBG] ERROR: size==0, aborting");
     return false;
   }
+
+  // Print raw buffer
+  Serial.print("[DBG] raw buffer: ");
+  for (size_t i = 0; i < size; i++) {
+    Serial.printf("%02X ", advertisementData[i]);
+  }
+  Serial.println();
 
   // Stop current advertising if running
   if (advertising) {
@@ -228,16 +254,31 @@ bool BThomeV2Device::updateAdvertising() {
   // Clear advertising data
   Bluefruit.Advertising.clearData();
 
-  // Add flags and TX power
+  // Extract service data payload from the advertisement buffer.
+  // Buffer layout from getAdvertisementData():
+  //   [0]=FLAG1(0x02) [1]=FLAG2(0x01) [2]=FLAG3(0x06)
+  //   [3]=sd_length   [4]=0x16        [5]=UUID1(0xD2) [6]=UUID2(0xFC)
+  //   [7]=indicator   [8..]=measurement bytes
+  // addData(0x16, data, len) builds: [len+1][0x16][data...]
+  // So pass data = &advertisementData[5] (UUID+indicator+measurements),
+  // len = sd_length - 1 (sd_length counts the 0x16 type byte too).
+  uint8_t sd_length = advertisementData[3];
+  Serial.printf("[DBG] sd_length=%u, payload len=%u\n", sd_length,
+                sd_length - 1);
+  Serial.print("[DBG] svc payload: ");
+  for (uint8_t i = 0; i < sd_length - 1; i++) {
+    Serial.printf("%02X ", advertisementData[5 + i]);
+  }
+  Serial.println();
+
   Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
   Bluefruit.Advertising.addTxPower();
-
-  // Add service data (BTHomeV2-Arduino already includes the UUID in the data)
-  // Note: BLE_GAP_AD_TYPE_16BIT_SERVICE_UUID_COMPLETE = 0x03
-  Bluefruit.Advertising.addData(0x16, advertisementData, size);
+  Bluefruit.Advertising.addData(0x16, &advertisementData[5], sd_length - 1);
 
   // Start advertising (0 = Don't stop advertising)
-  if (Bluefruit.Advertising.start(0)) {
+  bool started = Bluefruit.Advertising.start(0);
+  Serial.printf("[DBG] Advertising.start(0) = %s\n", started ? "OK" : "FAILED");
+  if (started) {
     advertising = true;
     return true;
   }
