@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "PlatformIO",
+      "task": "Build",
+      "env": "nrf52840dk",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "PlatformIO: Build (nrf52840dk)"
+    }
+  ]
+}
