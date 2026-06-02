@@ -486,8 +486,13 @@ def _advertisement_callback_inner(
                 else:
                     obj_def = BTHOME_OBJECTS.get(val["object_id"], {})
                     sz = obj_def.get("size", 1)
+                    is_signed = obj_def.get("signed", False)
                     hex_str = (
-                        " [" + raw.to_bytes(sz, byteorder="little").hex().upper() + "]"
+                        " ["
+                        + raw.to_bytes(sz, byteorder="little", signed=is_signed)
+                        .hex()
+                        .upper()
+                        + "]"
                     )
 
                 print(
