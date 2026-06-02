@@ -6,7 +6,7 @@ Scans for BLE devices and displays BThome v2 advertisements
 
 import asyncio
 import struct
-from datetime import datetime
+from datetime import datetime, timezone
 from importlib.metadata import PackageNotFoundError, version
 
 import typer
@@ -43,8 +43,11 @@ class Colors:
 
 
 # BThome v2 Object IDs with factors and units
+# Keys: name, factor, unit, size (bytes), optional: signed, timestamp, firmware, variable
 BTHOME_OBJECTS = {
+    # --- Misc ---
     0x00: {"name": "Packet ID", "factor": 1, "unit": "", "size": 1},
+    # --- Sensor data ---
     0x01: {"name": "Battery", "factor": 1, "unit": "%", "size": 1},
     0x02: {
         "name": "Temperature",
@@ -55,15 +58,9 @@ BTHOME_OBJECTS = {
     },
     0x03: {"name": "Humidity", "factor": 0.01, "unit": "%", "size": 2},
     0x04: {"name": "Pressure", "factor": 0.01, "unit": "hPa", "size": 3},
-    0x05: {"name": "Illuminance", "factor": 0.01, "unit": "lux", "size": 3},
-    0x06: {"name": "Mass", "factor": 0.01, "unit": "kg", "signed": True, "size": 2},
-    0x07: {
-        "name": "Mass (lbs)",
-        "factor": 0.01,
-        "unit": "lbs",
-        "signed": True,
-        "size": 2,
-    },
+    0x05: {"name": "Illuminance", "factor": 0.01, "unit": "lx", "size": 3},
+    0x06: {"name": "Mass (kg)", "factor": 0.01, "unit": "kg", "size": 2},
+    0x07: {"name": "Mass (lb)", "factor": 0.01, "unit": "lb", "size": 2},
     0x08: {
         "name": "Dew Point",
         "factor": 0.01,
@@ -77,24 +74,27 @@ BTHOME_OBJECTS = {
     0x0C: {"name": "Voltage", "factor": 0.001, "unit": "V", "size": 2},
     0x0D: {"name": "PM2.5", "factor": 1, "unit": "µg/m³", "size": 2},
     0x0E: {"name": "PM10", "factor": 1, "unit": "µg/m³", "size": 2},
-    0x0F: {"name": "Boolean", "factor": 1, "unit": "", "size": 1},
-    0x10: {"name": "Power (On)", "factor": 1, "unit": "", "size": 1},
+    # --- Binary sensors ---
+    0x0F: {"name": "Generic Boolean", "factor": 1, "unit": "", "size": 1},
+    0x10: {"name": "Power", "factor": 1, "unit": "", "size": 1},
     0x11: {"name": "Opening", "factor": 1, "unit": "", "size": 1},
+    # --- Sensor data (continued) ---
     0x12: {"name": "CO2", "factor": 1, "unit": "ppm", "size": 2},
     0x13: {"name": "TVOC", "factor": 1, "unit": "µg/m³", "size": 2},
     0x14: {"name": "Moisture", "factor": 0.01, "unit": "%", "size": 2},
+    # --- Binary sensors (continued) ---
     0x15: {"name": "Battery Low", "factor": 1, "unit": "", "size": 1},
     0x16: {"name": "Battery Charging", "factor": 1, "unit": "", "size": 1},
-    0x17: {"name": "CO", "factor": 1, "unit": "", "size": 1},
+    0x17: {"name": "Carbon Monoxide", "factor": 1, "unit": "", "size": 1},
     0x18: {"name": "Cold", "factor": 1, "unit": "", "size": 1},
     0x19: {"name": "Connectivity", "factor": 1, "unit": "", "size": 1},
     0x1A: {"name": "Door", "factor": 1, "unit": "", "size": 1},
     0x1B: {"name": "Garage Door", "factor": 1, "unit": "", "size": 1},
-    0x1C: {"name": "Gas", "factor": 1, "unit": "", "size": 1},
+    0x1C: {"name": "Gas Detected", "factor": 1, "unit": "", "size": 1},
     0x1D: {"name": "Heat", "factor": 1, "unit": "", "size": 1},
-    0x1E: {"name": "Light", "factor": 1, "unit": "", "size": 1},
+    0x1E: {"name": "Light Detected", "factor": 1, "unit": "", "size": 1},
     0x1F: {"name": "Lock", "factor": 1, "unit": "", "size": 1},
-    0x20: {"name": "Moisture (Binary)", "factor": 1, "unit": "", "size": 1},
+    0x20: {"name": "Moisture Detected", "factor": 1, "unit": "", "size": 1},
     0x21: {"name": "Motion", "factor": 1, "unit": "", "size": 1},
     0x22: {"name": "Moving", "factor": 1, "unit": "", "size": 1},
     0x23: {"name": "Occupancy", "factor": 1, "unit": "", "size": 1},
@@ -108,11 +108,99 @@ BTHOME_OBJECTS = {
     0x2B: {"name": "Tamper", "factor": 1, "unit": "", "size": 1},
     0x2C: {"name": "Vibration", "factor": 1, "unit": "", "size": 1},
     0x2D: {"name": "Window", "factor": 1, "unit": "", "size": 1},
+    # --- Sensor data (0x2E+) ---
+    0x2E: {"name": "Humidity", "factor": 1, "unit": "%", "size": 1},
+    0x2F: {"name": "Moisture", "factor": 1, "unit": "%", "size": 1},
+    # --- Events ---
     0x3A: {"name": "Button", "factor": 1, "unit": "", "size": 1},
+    0x3B: {"name": "Command", "factor": 1, "unit": "", "size": -1, "variable": True},
     0x3C: {"name": "Dimmer", "factor": 1, "unit": "", "size": 2},
+    # --- Sensor data (0x3D+) ---
+    0x3D: {"name": "Count", "factor": 1, "unit": "", "size": 2},
+    0x3E: {"name": "Count", "factor": 1, "unit": "", "size": 4},
+    0x3F: {"name": "Rotation", "factor": 0.1, "unit": "°", "signed": True, "size": 2},
+    0x40: {"name": "Distance (mm)", "factor": 1, "unit": "mm", "size": 2},
+    0x41: {"name": "Distance (m)", "factor": 0.1, "unit": "m", "size": 2},
+    0x42: {"name": "Duration", "factor": 0.001, "unit": "s", "size": 3},
+    0x43: {"name": "Current", "factor": 0.001, "unit": "A", "size": 2},
+    0x44: {"name": "Speed", "factor": 0.01, "unit": "m/s", "size": 2},
+    0x45: {
+        "name": "Temperature",
+        "factor": 0.1,
+        "unit": "°C",
+        "signed": True,
+        "size": 2,
+    },
+    0x46: {"name": "UV Index", "factor": 0.1, "unit": "", "size": 1},
+    0x47: {"name": "Volume", "factor": 0.1, "unit": "L", "size": 2},
+    0x48: {"name": "Volume", "factor": 1, "unit": "mL", "size": 2},
+    0x49: {"name": "Volume Flow Rate", "factor": 0.001, "unit": "m³/hr", "size": 2},
+    0x4A: {"name": "Voltage", "factor": 0.1, "unit": "V", "size": 2},
+    0x4B: {"name": "Gas", "factor": 0.001, "unit": "m³", "size": 3},
+    0x4C: {"name": "Gas", "factor": 0.001, "unit": "m³", "size": 4},
+    0x4D: {"name": "Energy", "factor": 0.001, "unit": "kWh", "size": 4},
+    0x4E: {"name": "Volume", "factor": 0.001, "unit": "L", "size": 4},
+    0x4F: {"name": "Water", "factor": 0.001, "unit": "L", "size": 4},
+    0x50: {"name": "Timestamp", "factor": 1, "unit": "", "size": 4, "timestamp": True},
+    0x51: {"name": "Acceleration", "factor": 0.001, "unit": "m/s²", "size": 2},
+    0x52: {"name": "Gyroscope", "factor": 0.001, "unit": "°/s", "size": 2},
+    0x53: {"name": "Text", "factor": 1, "unit": "", "size": -1, "variable": True},
+    0x54: {"name": "Raw", "factor": 1, "unit": "", "size": -1, "variable": True},
+    0x55: {"name": "Volume Storage", "factor": 0.001, "unit": "L", "size": 4},
+    0x56: {"name": "Conductivity", "factor": 1, "unit": "µS/cm", "size": 2},
+    0x57: {"name": "Temperature", "factor": 1, "unit": "°C", "signed": True, "size": 1},
+    0x58: {
+        "name": "Temperature",
+        "factor": 0.35,
+        "unit": "°C",
+        "signed": True,
+        "size": 1,
+    },
+    0x59: {"name": "Count", "factor": 1, "unit": "", "signed": True, "size": 1},
+    0x5A: {"name": "Count", "factor": 1, "unit": "", "signed": True, "size": 2},
+    0x5B: {"name": "Count", "factor": 1, "unit": "", "signed": True, "size": 4},
+    0x5C: {"name": "Power", "factor": 0.01, "unit": "W", "signed": True, "size": 4},
+    0x5D: {"name": "Current", "factor": 0.001, "unit": "A", "signed": True, "size": 2},
+    0x5E: {"name": "Direction", "factor": 0.01, "unit": "°", "size": 2},
+    0x5F: {"name": "Precipitation", "factor": 0.1, "unit": "mm", "size": 2},
+    0x60: {"name": "Channel", "factor": 1, "unit": "", "size": 1},
+    0x61: {"name": "Rotational Speed", "factor": 1, "unit": "rpm", "size": 2},
+    0x62: {
+        "name": "Speed",
+        "factor": 0.000001,
+        "unit": "m/s",
+        "signed": True,
+        "size": 4,
+    },
+    0x63: {
+        "name": "Acceleration",
+        "factor": 0.000001,
+        "unit": "m/s²",
+        "signed": True,
+        "size": 4,
+    },
+    0x64: {"name": "Light Level", "factor": 1, "unit": "", "size": 1},
+    0x65: {"name": "Settings Revision", "factor": 1, "unit": "", "size": 1},
+    # --- Device information ---
+    0xF0: {"name": "Device Type ID", "factor": 1, "unit": "", "size": 2},
+    0xF1: {
+        "name": "Firmware Version",
+        "factor": 1,
+        "unit": "",
+        "size": 4,
+        "firmware": True,
+    },
+    0xF2: {
+        "name": "Firmware Version",
+        "factor": 1,
+        "unit": "",
+        "size": 3,
+        "firmware": True,
+    },
 }
 
-# BThome Service UUID (16-bit UUID: 0xFCD2)
+# BThome Company ID / Service Data UUID
+BTHOME_COMPANY_ID = 0xFCD2
 BTHOME_SERVICE_UUID = "0000fcd2-0000-1000-8000-00805f9b34fb"
 
 
@@ -147,9 +235,8 @@ def parse_bthome_packet(data: bytes) -> dict:
             # Unbekanntes Object ID - abbrechen
             result["values"].append(
                 {
-                    "name": f"Unbekannt (0x{object_id:02X})",
                     "object_id": object_id,
-                    "raw_bytes": bytes(),
+                    "name": f"Unbekannt (0x{object_id:02X})",
                     "raw_value": None,
                     "value": None,
                     "unit": "",
@@ -159,6 +246,43 @@ def parse_bthome_packet(data: bytes) -> dict:
 
         obj_def = BTHOME_OBJECTS[object_id]
         size = obj_def["size"]
+
+        # Sonderfälle: Variable Länge (Text, Raw, Command)
+        if obj_def.get("variable", False):
+            if index >= len(data):
+                break
+            if object_id in (0x53, 0x54):  # Text / Raw: volle Länge
+                var_len = data[index]
+                index += 1
+                if index + var_len > len(data):
+                    break
+                raw_bytes = data[index : index + var_len]
+                index += var_len
+                display = (
+                    raw_bytes.decode("utf-8", errors="replace")
+                    if object_id == 0x53
+                    else " ".join(f"{b:02x}" for b in raw_bytes)
+                )
+            else:  # Command (0x3B): low 5 bits = arg length, then opcode + args
+                arg_len = data[index] & 0x1F
+                cmd_total = 1 + arg_len  # opcode + args
+                index += 1
+                if index + cmd_total > len(data):
+                    break
+                raw_bytes = data[index : index + cmd_total]
+                index += cmd_total
+                display = " ".join(f"{b:02x}" for b in raw_bytes)
+            result["values"].append(
+                {
+                    "object_id": object_id,
+                    "name": obj_def["name"],
+                    "raw_value": None,
+                    "value": display,
+                    "unit": "",
+                    "formatted_value": display,
+                }
+            )
+            continue
 
         if index + size > len(data):
             # Nicht genug Daten
@@ -171,9 +295,10 @@ def parse_bthome_packet(data: bytes) -> dict:
         # Wert dekodieren (Little Endian)
         if size == 1:
             raw_value = raw_bytes[0]
+            if obj_def.get("signed", False) and raw_value >= 0x80:
+                raw_value = raw_value - 0x100
         elif size == 2:
             raw_value = struct.unpack("<H", raw_bytes)[0]
-            # Signed?
             if obj_def.get("signed", False) and raw_value >= 0x8000:
                 raw_value = raw_value - 0x10000
         elif size == 3:
@@ -181,22 +306,40 @@ def parse_bthome_packet(data: bytes) -> dict:
             raw_value = raw_bytes[0] | (raw_bytes[1] << 8) | (raw_bytes[2] << 16)
             if obj_def.get("signed", False) and raw_value >= 0x800000:
                 raw_value = raw_value - 0x1000000
+        elif size == 4:
+            raw_value = struct.unpack("<I", raw_bytes)[0]
+            if obj_def.get("signed", False) and raw_value >= 0x80000000:
+                raw_value = raw_value - 0x100000000
         else:
             raw_value = 0
 
         # Faktor anwenden
         value = raw_value * obj_def["factor"]
 
-        result["values"].append(
-            {
-                "name": obj_def["name"],
-                "object_id": object_id,
-                "raw_bytes": raw_bytes,
-                "raw_value": raw_value,
-                "value": value,
-                "unit": obj_def["unit"],
-            }
-        )
+        # Eintrag aufbauen; ggf. Sonderformatierung ergänzen
+        entry: dict = {
+            "object_id": object_id,
+            "name": obj_def["name"],
+            "raw_value": raw_value,
+            "value": value,
+            "unit": obj_def["unit"],
+        }
+        if obj_def.get("timestamp", False):
+            entry["formatted_value"] = datetime.fromtimestamp(
+                raw_value, tz=timezone.utc
+            ).strftime("%Y-%m-%d %H:%M:%S UTC")
+        elif obj_def.get("firmware", False):
+            if size == 4:
+                entry["formatted_value"] = (
+                    f"{(raw_value >> 24) & 0xFF}.{(raw_value >> 16) & 0xFF}"
+                    f".{(raw_value >> 8) & 0xFF}.{raw_value & 0xFF}"
+                )
+            else:  # size == 3
+                entry["formatted_value"] = (
+                    f"{(raw_value >> 16) & 0xFF}.{(raw_value >> 8) & 0xFF}"
+                    f".{raw_value & 0xFF}"
+                )
+        result["values"].append(entry)
 
     return result
 
@@ -225,32 +368,67 @@ def print_separator():
 
 def advertisement_callback(device: BLEDevice, advertisement_data: AdvertisementData):
     """Called when a BLE advertisement is received"""
+    try:
+        _advertisement_callback_inner(device, advertisement_data)
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"{Colors.RED}[{format_timestamp()}] Fehler im Callback für "
+            f"{device.name} ({device.address}): {exc}{Colors.RESET}"
+        )
+
+
+def _advertisement_callback_inner(
+    device: BLEDevice, advertisement_data: AdvertisementData
+) -> None:
+    """Inner callback – raises exceptions so the outer wrapper can display them."""
 
     # Apply device name filter
     if device.name and DEVICE_NAME_FILTER not in device.name:
         return
 
-    # Only show devices with service data
-    if not advertisement_data.service_data:
-        return
+    # --- BThome via Service Data (Standard-Format) ---
+    raw_data: bytes | None = None
+    data_source = ""
+    if advertisement_data.service_data:
+        for uuid_key, svc_bytes in advertisement_data.service_data.items():
+            if uuid_key.lower() == BTHOME_SERVICE_UUID:
+                raw_data = svc_bytes
+                data_source = "service_data"
+                break
 
-    # Check if it's BThome data (Service UUID 0xFCD2)
-    if BTHOME_SERVICE_UUID not in advertisement_data.service_data:
-        # Show other service data only in verbose mode
-        if VERBOSE:
-            for service_uuid, data in advertisement_data.service_data.items():
-                hex_data = " ".join(f"{b:02x}" for b in data)
+    # --- BThome via Manufacturer Data (nicht-standardisierte Implementierungen) ---
+    if raw_data is None:
+        if not advertisement_data.manufacturer_data:
+            if VERBOSE:
                 print(
-                    f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
-                    f"{Colors.BLUE}{device.name}{Colors.RESET} "
-                    f"({Colors.GRAY}{device.address}{Colors.RESET}) "
-                    f"| Service UUID: {service_uuid} | Data: {hex_data} | "
-                    f"RSSI: {advertisement_data.rssi} dBm"
+                    f"{Colors.GRAY}[{format_timestamp()}] "
+                    f"{device.name} ({device.address}) | no adv data | "
+                    f"RSSI: {advertisement_data.rssi} dBm{Colors.RESET}"
                 )
-        return
+            return
+        if BTHOME_COMPANY_ID in advertisement_data.manufacturer_data:
+            raw_data = advertisement_data.manufacturer_data[BTHOME_COMPANY_ID]
+            data_source = "manufacturer_data"
+        else:
+            # Kein BThome – im Verbose-Modus trotzdem anzeigen
+            if VERBOSE:
+                for (
+                    company_id,
+                    mfr_bytes,
+                ) in advertisement_data.manufacturer_data.items():
+                    hex_data = " ".join(f"{b:02x}" for b in mfr_bytes)
+                    print(
+                        f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
+                        f"{Colors.BLUE}{device.name}{Colors.RESET} "
+                        f"({Colors.GRAY}{device.address}{Colors.RESET}) "
+                        f"| Company ID: 0x{company_id:04X} | Data: {hex_data} | "
+                        f"RSSI: {advertisement_data.rssi} dBm"
+                    )
+            return
 
     # BThome data found!
-    raw_data = advertisement_data.service_data[BTHOME_SERVICE_UUID]
+    if raw_data is None:
+        return
     hex_data = " ".join(f"{b:02x}" for b in raw_data)
 
     # Header with device name and timestamp
@@ -273,7 +451,9 @@ def advertisement_callback(device: BLEDevice, advertisement_data: AdvertisementD
     print(f"  {Colors.GRAY}RSSI:{Colors.RESET} {rssi_text}")
 
     # Raw Data
-    print(f"  {Colors.GRAY}Raw:{Colors.RESET} {Colors.CYAN}{hex_data}{Colors.RESET}")
+    print(
+        f"  {Colors.GRAY}Raw ({data_source}):{Colors.RESET} {Colors.CYAN}{hex_data}{Colors.RESET}"
+    )
 
     # Parse BThome packet
     parsed = parse_bthome_packet(raw_data)
@@ -293,19 +473,27 @@ def advertisement_callback(device: BLEDevice, advertisement_data: AdvertisementD
         if parsed["values"]:
             print(f"  {Colors.GRAY}Values:{Colors.RESET}")
             for val in parsed["values"]:
-                # Format raw bytes as hex
-                raw_hex = " ".join(f"{b:02x}" for b in val["raw_bytes"])
-
-                if val["unit"]:
+                if "formatted_value" in val:
+                    value_str = val["formatted_value"]
+                elif val["unit"]:
                     value_str = f"{val['value']:.2f} {val['unit']}"
                 else:
                     value_str = f"{val['value']}"
 
+                raw = val["raw_value"]
+                if raw is None:
+                    hex_str = ""
+                else:
+                    obj_def = BTHOME_OBJECTS.get(val["object_id"], {})
+                    sz = obj_def.get("size", 1)
+                    hex_str = (
+                        " [" + raw.to_bytes(sz, byteorder="little").hex().upper() + "]"
+                    )
+
                 print(
-                    f"    {Colors.BOLD}{Colors.MAGENTA}• {val['name']}{Colors.RESET} "
-                    f"{Colors.GRAY}(0x{val['object_id']:02x}){Colors.RESET}: "
-                    f"{Colors.YELLOW}{value_str}{Colors.RESET} "
-                    f"{Colors.GRAY}[{raw_hex}]{Colors.RESET}"
+                    f"    {Colors.BOLD}{Colors.MAGENTA}• {val['name']} "
+                    f"(0x{val['object_id']:02X}){Colors.RESET}: "
+                    f"{Colors.YELLOW}{value_str}{Colors.GRAY}{hex_str}{Colors.RESET}"
                 )
         else:
             print(f"    {Colors.GRAY}(No decoded values){Colors.RESET}")
