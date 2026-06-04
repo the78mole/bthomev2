@@ -11,6 +11,8 @@ from importlib.metadata import PackageNotFoundError, version
 
 import typer
 from bleak import BleakScanner
+from bleak.args.bluez import BlueZScannerArgs, OrPattern
+from bleak.assigned_numbers import AdvertisementDataType
 from bleak.backends.device import BLEDevice
 from bleak.backends.scanner import AdvertisementData
 
@@ -366,6 +368,33 @@ def print_separator():
     print(f"{Colors.GRAY}{'-'*70}{Colors.RESET}")
 
 
+def format_adv_header(advertisement_data: AdvertisementData) -> str:
+    """Builds a compact header string from all available AdvertisementData fields."""
+    parts: list[str] = []
+    if advertisement_data.local_name:
+        parts.append(f"Name: {advertisement_data.local_name}")
+    if advertisement_data.tx_power is not None:
+        parts.append(f"TX: {advertisement_data.tx_power} dBm")
+    if advertisement_data.service_uuids:
+        svc_data_keys = {k.lower() for k in (advertisement_data.service_data or {})}
+        extra_uuids = [
+            u
+            for u in advertisement_data.service_uuids
+            if u.lower() not in svc_data_keys
+        ]
+        if extra_uuids:
+            parts.append(f"SvcUUIDs: {', '.join(extra_uuids)}")
+    if advertisement_data.service_data:
+        for uuid_key, svc_bytes in advertisement_data.service_data.items():
+            hex_str = " ".join(f"{b:02x}" for b in svc_bytes)
+            parts.append(f"SvcData[{uuid_key}]: {hex_str}")
+    if advertisement_data.manufacturer_data:
+        for company_id, mfr_bytes in advertisement_data.manufacturer_data.items():
+            hex_str = " ".join(f"{b:02x}" for b in mfr_bytes)
+            parts.append(f"MfrData[0x{company_id:04X}]: {hex_str}")
+    return (" | " + " | ".join(parts)) if parts else ""
+
+
 def advertisement_callback(device: BLEDevice, advertisement_data: AdvertisementData):
     """Called when a BLE advertisement is received"""
     try:
@@ -401,9 +430,10 @@ def _advertisement_callback_inner(
         if not advertisement_data.manufacturer_data:
             if VERBOSE:
                 print(
-                    f"{Colors.GRAY}[{format_timestamp()}] "
-                    f"{device.name} ({device.address}) | no adv data | "
-                    f"RSSI: {advertisement_data.rssi} dBm{Colors.RESET}"
+                    f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
+                    f"{device.name} ({device.address}) | no adv data"
+                    f"{format_adv_header(advertisement_data)} | "
+                    f"RSSI: {advertisement_data.rssi} dBm"
                 )
             return
         if BTHOME_COMPANY_ID in advertisement_data.manufacturer_data:
@@ -412,24 +442,29 @@ def _advertisement_callback_inner(
         else:
             # Kein BThome – im Verbose-Modus trotzdem anzeigen
             if VERBOSE:
-                for (
-                    company_id,
-                    mfr_bytes,
-                ) in advertisement_data.manufacturer_data.items():
-                    hex_data = " ".join(f"{b:02x}" for b in mfr_bytes)
-                    print(
-                        f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
-                        f"{Colors.BLUE}{device.name}{Colors.RESET} "
-                        f"({Colors.GRAY}{device.address}{Colors.RESET}) "
-                        f"| Company ID: 0x{company_id:04X} | Data: {hex_data} | "
-                        f"RSSI: {advertisement_data.rssi} dBm"
-                    )
+                print(
+                    f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
+                    f"{Colors.BLUE}{device.name}{Colors.RESET} "
+                    f"({Colors.GRAY}{device.address}{Colors.RESET})"
+                    f"{format_adv_header(advertisement_data)} | "
+                    f"RSSI: {advertisement_data.rssi} dBm"
+                )
             return
 
     # BThome data found!
     if raw_data is None:
         return
     hex_data = " ".join(f"{b:02x}" for b in raw_data)
+
+    # Im Verbose-Modus kompakte Einzeiler-Ausgabe (wie andere Geräte)
+    if VERBOSE:
+        print(
+            f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
+            f"{Colors.GREEN}{device.name}{Colors.RESET} "
+            f"({Colors.GRAY}{device.address}{Colors.RESET})"
+            f"{format_adv_header(advertisement_data)} | "
+            f"RSSI: {advertisement_data.rssi} dBm"
+        )
 
     # Header with device name and timestamp
     print_separator()
@@ -512,7 +547,20 @@ async def scan_forever():
     """Scans continuously for BLE devices"""
     print(f"{Colors.GREEN}✓ Scanner started...{Colors.RESET}\n")
 
-    scanner = BleakScanner(detection_callback=advertisement_callback)
+    scanner = BleakScanner(
+        detection_callback=advertisement_callback,
+        bluez=BlueZScannerArgs(
+            or_patterns=[
+                # Match BThome v2 Service Data UUID 0xFCD2 (little-endian)
+                # Using advertisement monitor forces BlueZ to report duplicates
+                OrPattern(
+                    0,
+                    AdvertisementDataType.SERVICE_DATA_UUID16,
+                    b"\xd2\xfc",
+                )
+            ]
+        ),
+    )
 
     try:
         await scanner.start()
