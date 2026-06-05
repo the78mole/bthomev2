@@ -5,9 +5,14 @@ Scans for BLE devices and displays BThome v2 advertisements
 """
 
 import asyncio
+import ctypes
+import os
+import socket
 import struct
+import sys
 from datetime import datetime, timezone
 from importlib.metadata import PackageNotFoundError, version
+from typing import Optional
 
 import typer
 from bleak import BleakScanner
@@ -15,6 +20,7 @@ from bleak.args.bluez import BlueZScannerArgs, OrPattern
 from bleak.assigned_numbers import AdvertisementDataType
 from bleak.backends.device import BLEDevice
 from bleak.backends.scanner import AdvertisementData
+from typer.completion import install_callback, show_callback
 
 # Global variable for device name filter
 DEVICE_NAME_FILTER = "MAKE"
@@ -454,6 +460,17 @@ def _advertisement_callback_inner(
     # BThome data found!
     if raw_data is None:
         return
+
+    # Reconstruct full AD value including UUID/company-ID prefix (like nRF Connect shows)
+    if data_source == "service_data":
+        prefix_bytes = bytes(
+            [BTHOME_COMPANY_ID & 0xFF, (BTHOME_COMPANY_ID >> 8) & 0xFF]
+        )
+    else:
+        prefix_bytes = bytes(
+            [BTHOME_COMPANY_ID & 0xFF, (BTHOME_COMPANY_ID >> 8) & 0xFF]
+        )
+    hex_data_full = " ".join(f"{b:02x}" for b in (prefix_bytes + raw_data))
     hex_data = " ".join(f"{b:02x}" for b in raw_data)
 
     # Im Verbose-Modus kompakte Einzeiler-Ausgabe (wie andere Geräte)
@@ -485,9 +502,16 @@ def _advertisement_callback_inner(
     rssi_text = f"{rssi_color}{advertisement_data.rssi} dBm{Colors.RESET}"
     print(f"  {Colors.GRAY}RSSI:{Colors.RESET} {rssi_text}")
 
-    # Raw Data
+    # Local Name (explicit, wie nRF Connect)
+    local_name = advertisement_data.local_name or device.name
+    if local_name:
+        print(f"  {Colors.GRAY}Local Name:{Colors.RESET} {local_name}")
+
+    # Raw Data – mit UUID/Company-ID-Präfix (wie nRF Connect Type 0x16)
     print(
-        f"  {Colors.GRAY}Raw ({data_source}):{Colors.RESET} {Colors.CYAN}{hex_data}{Colors.RESET}"
+        f"  {Colors.GRAY}Raw ({data_source}):{Colors.RESET} "
+        f"{Colors.CYAN}{hex_data_full}{Colors.RESET}"
+        f"  {Colors.GRAY}({hex_data}){Colors.RESET}"
     )
 
     # Parse BThome packet
@@ -576,8 +600,508 @@ async def scan_forever():
         print(f"{Colors.GREEN}✓ Scanner stopped{Colors.RESET}\n")
 
 
+# ── Raw HCI scanning ──────────────────────────────────────────────────────────
+# Uses a raw AF_BLUETOOTH/BTPROTO_HCI socket to capture every advertisement
+# with all AD structures intact (LEN / TYPE / VALUE), just like nRF Connect.
+# Requires root or CAP_NET_RAW on the process.
+
+_AF_BLUETOOTH = getattr(socket, "AF_BLUETOOTH", 31)
+_BTPROTO_HCI = getattr(socket, "BTPROTO_HCI", 1)
+_SOL_HCI = 0
+_HCI_FILTER = 2
+_HCI_EVENT_PKT = 0x04
+_HCI_LE_META = 0x3E
+_LE_ADV_REPORT = 0x02
+_LE_EXT_ADV_REPORT = 0x0D
+_OGF_LE_CTL = 0x08
+_OCF_LE_SET_SCAN_PARAMS = 0x000B
+_OCF_LE_SET_SCAN_ENABLE = 0x000C
+_HCI_CHANNEL_RAW = 0
+_HCI_CHANNEL_MONITOR = 2
+_HCI_DEV_NONE = 0xFFFF  # used with HCI_CHANNEL_MONITOR
+
+
+def _hci_bind(
+    sock: socket.socket, dev_id: int, channel: int = _HCI_CHANNEL_RAW
+) -> None:
+    """Bind an HCI socket to a device and channel.
+
+    Use channel=_HCI_CHANNEL_MONITOR (4) to receive a copy of all HCI traffic
+    without interfering with BlueZ (like btmon).  This works even when BlueZ
+    manages the adapter and requires only CAP_NET_RAW.
+
+    Python's socket.bind() raises 'bad family' when AF_BLUETOOTH is not
+    compiled into the Python build (e.g. uv standalone Pythons).  Fall back
+    to calling libc.bind() directly via ctypes.
+    """
+    # sockaddr_hci: sa_family_t (u16) + hci_dev (u16) + hci_channel (u16)
+    sockaddr = struct.pack("HHH", 31, dev_id, channel)
+    if hasattr(socket, "AF_BLUETOOTH") and channel == _HCI_CHANNEL_RAW:
+        sock.bind((dev_id,))
+        return
+    libc = ctypes.CDLL("libc.so.6", use_errno=True)
+    ret = libc.bind(sock.fileno(), ctypes.c_char_p(sockaddr), len(sockaddr))
+    if ret != 0:
+        errno = ctypes.get_errno()
+        raise OSError(errno, os.strerror(errno))
+
+
+_AD_TYPE_NAMES: dict[int, str] = {
+    0x01: "Flags",
+    0x02: "Incomplete 16-bit Service UUIDs",
+    0x03: "Complete 16-bit Service UUIDs",
+    0x06: "Incomplete 128-bit Service UUIDs",
+    0x07: "Complete 128-bit Service UUIDs",
+    0x08: "Shortened Local Name",
+    0x09: "Complete Local Name",
+    0x0A: "TX Power Level",
+    0x16: "Service Data – 16-bit UUID",
+    0xFF: "Manufacturer Specific Data",
+}
+
+
+class _HciFilter(ctypes.Structure):
+    """Platform-correct hci_filter struct (unsigned long = 4 or 8 bytes depending on arch)."""
+
+    _fields_ = [
+        ("type_mask", ctypes.c_ulong),
+        ("event_mask", ctypes.c_ulong * 2),
+        ("opcode", ctypes.c_uint16),
+    ]
+
+
+def _hci_filter_le_adv() -> bytes:
+    """HCI socket filter: only LE Meta events (struct hci_filter)."""
+    f = _HciFilter()
+    f.type_mask = 1 << _HCI_EVENT_PKT  # bit 4
+    f.event_mask[0] = 1 << _HCI_LE_META  # bit 62
+    f.event_mask[1] = 0
+    f.opcode = 0
+    return bytes(f)
+
+
+def _hci_cmd(sock: socket.socket, ogf: int, ocf: int, params: bytes = b"") -> None:
+    opcode = (ogf << 10) | ocf
+    sock.send(struct.pack("<BHB", 0x01, opcode, len(params)) + params)
+
+
+def _ad_parse(data: bytes) -> list[tuple[int, int, bytes]]:
+    """Parse BLE AD structures. Returns list of (length, type, value)."""
+    result: list[tuple[int, int, bytes]] = []
+    i = 0
+    while i < len(data):
+        length = data[i]
+        if length == 0:
+            break
+        if i + 1 + length > len(data):
+            break
+        result.append((length, data[i + 1], data[i + 2 : i + 1 + length]))
+        i += 1 + length
+    return result
+
+
+def _ad_decode(ad_type: int, value: bytes) -> str:
+    """Human-readable inline decode of an AD value."""
+    if ad_type in (0x08, 0x09) and value:
+        return f'"{value.decode("utf-8", errors="replace")}"'
+    if ad_type == 0x01 and value:
+        f = value[0]
+        parts = []
+        if f & 0x01:
+            parts.append("LE Ltd Discoverable")
+        if f & 0x02:
+            parts.append("LE Gen Discoverable")
+        if f & 0x04:
+            parts.append("BR/EDR Not Supported")
+        return f"0x{f:02X}" + (f" ({', '.join(parts)})" if parts else "")
+    if ad_type in (0x02, 0x03) and len(value) >= 2:
+        uuids = [
+            f"0x{value[j] | value[j + 1] << 8:04X}" for j in range(0, len(value) - 1, 2)
+        ]
+        return ", ".join(uuids)
+    if ad_type == 0x16 and len(value) >= 2:
+        uuid = value[0] | (value[1] << 8)
+        payload_hex = " ".join(f"{b:02X}" for b in value[2:])
+        return f"UUID=0x{uuid:04X}" + (f"  payload={payload_hex}" if value[2:] else "")
+    if ad_type == 0xFF and len(value) >= 2:
+        cid = value[0] | (value[1] << 8)
+        return f"Company=0x{cid:04X}"
+    if ad_type == 0x0A and value:
+        return f"{struct.unpack('b', bytes([value[0]]))[0]} dBm"
+    return ""
+
+
+def _hci_parse_ext_adv_reports(data: bytes) -> list[dict]:
+    """Parse LE Extended Advertising Report payload (BT 5.0, subevent 0x0D)."""
+    # Per report: event_type(2) addr_type(1) addr(6) primary_phy(1) secondary_phy(1)
+    #             sid(1) tx_power(1) rssi(1) periodic_interval(2)
+    #             direct_addr_type(1) direct_addr(6) data_len(1) = 24 bytes fixed
+    reports: list[dict] = []
+    if not data:
+        return reports
+    num = data[0]
+    pos = 1
+    for _ in range(num):
+        if pos + 24 > len(data):
+            break
+        addr = ":".join(f"{b:02X}" for b in reversed(data[pos + 3 : pos + 9]))
+        rssi = struct.unpack("b", bytes([data[pos + 13]]))[0]
+        ad_len = data[pos + 23]
+        pos += 24
+        if pos + ad_len > len(data):
+            break
+        ad_data = data[pos : pos + ad_len]
+        pos += ad_len
+        reports.append({"address": addr, "ad_data": ad_data, "rssi": rssi})
+    return reports
+
+
+def _hci_parse_adv_reports(data: bytes) -> list[dict]:
+    """Parse LE Advertising Report payload (starting at num_reports byte)."""
+    reports: list[dict] = []
+    if not data:
+        return reports
+    num = data[0]
+    offset = 1
+    for _ in range(num):
+        if offset + 9 > len(data):
+            break
+        addr = ":".join(f"{b:02X}" for b in reversed(data[offset + 2 : offset + 8]))
+        data_len = data[offset + 8]
+        offset += 9
+        if offset + data_len + 1 > len(data):
+            break
+        ad_data = data[offset : offset + data_len]
+        rssi = struct.unpack("b", bytes([data[offset + data_len]]))[0]
+        offset += data_len + 1
+        reports.append({"address": addr, "ad_data": ad_data, "rssi": rssi})
+    return reports
+
+
+def _print_raw_adv_report(report: dict) -> None:
+    """Display a raw advertising report with all AD structures and BThome decode."""
+    ad_structs = _ad_parse(report["ad_data"])
+
+    local_name: str | None = None
+    for _, t, v in ad_structs:
+        if t in (0x08, 0x09) and v:
+            local_name = v.decode("utf-8", errors="replace")
+            break
+
+    if DEVICE_NAME_FILTER and (
+        local_name is None or DEVICE_NAME_FILTER not in local_name
+    ):
+        return
+
+    rssi = report["rssi"]
+    rssi_color = (
+        Colors.GREEN if rssi > -70 else (Colors.YELLOW if rssi > -85 else Colors.RED)
+    )
+
+    print_separator()
+    print(
+        f"{Colors.GRAY}[{format_timestamp()}]{Colors.RESET} "
+        f"{Colors.BOLD}{Colors.GREEN}📱 {local_name or report['address']}{Colors.RESET} "
+        f"({Colors.GRAY}{report['address']}{Colors.RESET})"
+    )
+    print(f"  {Colors.GRAY}RSSI:{Colors.RESET} {rssi_color}{rssi} dBm{Colors.RESET}")
+
+    print(f"  {Colors.GRAY}AD Structures:{Colors.RESET}")
+    for length, ad_type, value in ad_structs:
+        type_name = _AD_TYPE_NAMES.get(ad_type, f"Unknown (0x{ad_type:02X})")
+        hex_val = " ".join(f"{b:02X}" for b in value)
+        decoded = _ad_decode(ad_type, value)
+        decoded_part = f"  {Colors.GRAY}→ {decoded}{Colors.RESET}" if decoded else ""
+        print(
+            f"    {Colors.CYAN}LEN=0x{length:02X}  TYPE=0x{ad_type:02X}  "
+            f"{Colors.GRAY}[{type_name}]{Colors.RESET}\n"
+            f"      VALUE= {Colors.YELLOW}{hex_val}{Colors.RESET}{decoded_part}"
+        )
+
+    # BThome decode from Service Data
+    for _, ad_type, value in ad_structs:
+        if ad_type != 0x16 or len(value) < 3:
+            continue
+        uuid = value[0] | (value[1] << 8)
+        if uuid != BTHOME_COMPANY_ID:
+            continue
+        parsed = parse_bthome_packet(value[2:])
+        if not parsed:
+            continue
+        enc_str = (
+            f"{Colors.RED}encrypted{Colors.RESET}"
+            if parsed["encrypted"]
+            else f"{Colors.GREEN}unencrypted{Colors.RESET}"
+        )
+        print(f"  {Colors.GRAY}BThome:{Colors.RESET} {parsed['version']} ({enc_str})")
+        if parsed["values"]:
+            print(f"  {Colors.GRAY}Values:{Colors.RESET}")
+            for val in parsed["values"]:
+                if "formatted_value" in val:
+                    value_str = val["formatted_value"]
+                elif val["unit"]:
+                    value_str = f"{val['value']:.2f} {val['unit']}"
+                else:
+                    value_str = f"{val['value']}"
+                raw_val = val["raw_value"]
+                if raw_val is None:
+                    hex_str = ""
+                else:
+                    od = BTHOME_OBJECTS.get(val["object_id"], {})
+                    sz = od.get("size", 1)
+                    signed = od.get("signed", False)
+                    hex_str = (
+                        " ["
+                        + raw_val.to_bytes(sz, byteorder="little", signed=signed)
+                        .hex()
+                        .upper()
+                        + "]"
+                    )
+                print(
+                    f"    {Colors.BOLD}{Colors.MAGENTA}• {val['name']} "
+                    f"(0x{val['object_id']:02X}){Colors.RESET}: "
+                    f"{Colors.YELLOW}{value_str}{Colors.GRAY}{hex_str}{Colors.RESET}"
+                )
+        break
+
+    print()
+
+
+def list_hci_adapters() -> None:
+    """Print all available HCI adapters via HCIGETDEVLIST/HCIGETDEVINFO ioctls."""
+    import fcntl
+
+    # ioctl numbers (Linux/amd64 & arm; same values everywhere)
+    HCIGETDEVLIST = 0x800448D2
+    HCIGETDEVINFO = 0x800448D3
+    HCI_MAX_DEV = 16
+
+    # struct hci_dev_list_req: u16 dev_num + HCI_MAX_DEV * hci_dev_req (u16+u32)
+    req = bytearray(2 + HCI_MAX_DEV * 6)
+    struct.pack_into("<H", req, 0, HCI_MAX_DEV)
+
+    try:
+        sock = socket.socket(_AF_BLUETOOTH, socket.SOCK_RAW, _BTPROTO_HCI)
+    except OSError as exc:
+        print(f"{Colors.RED}✗ Cannot open HCI socket: {exc}{Colors.RESET}")
+        return
+
+    try:
+        fcntl.ioctl(sock.fileno(), HCIGETDEVLIST, req)
+    except OSError as exc:
+        print(f"{Colors.RED}✗ HCIGETDEVLIST failed: {exc}{Colors.RESET}")
+        sock.close()
+        return
+
+    num_devs = struct.unpack_from("<H", req, 0)[0]
+    if num_devs == 0:
+        print(f"{Colors.YELLOW}No HCI adapters found.{Colors.RESET}")
+        sock.close()
+        return
+
+    print(f"{Colors.BOLD}Available HCI adapters:{Colors.RESET}")
+    for i in range(num_devs):
+        dev_id = struct.unpack_from("<H", req, 2 + i * 6)[0]
+
+        # struct hci_dev_info (272 bytes):
+        #   u16 dev_id, char name[8], bdaddr[6], flags u32, type u8, ...
+        info = bytearray(272)
+        struct.pack_into("<H", info, 0, dev_id)
+        try:
+            fcntl.ioctl(sock.fileno(), HCIGETDEVINFO, info)
+        except OSError:
+            continue
+
+        name_bytes = info[2:10]
+        dev_name = name_bytes.split(b"\x00")[0].decode("ascii", errors="replace")
+        addr_bytes = info[10:16]
+        address = ":".join(f"{b:02X}" for b in reversed(addr_bytes))
+        flags = struct.unpack_from("<I", info, 16)[0]
+        dev_type_raw = info[20]
+        bus = dev_type_raw & 0x0F
+        _BUS = {
+            0: "VIRTUAL",
+            1: "USB",
+            2: "PCCARD",
+            3: "UART",
+            4: "RS232",
+            5: "PCI",
+            6: "SDIO",
+            7: "SPI",
+            8: "I2C",
+            9: "SMD",
+            10: "VIRTIO",
+        }
+        bus_str = _BUS.get(bus, f"0x{bus:02X}")
+        up = bool(flags & (1 << 1))
+        state = (
+            f"{Colors.GREEN}UP{Colors.RESET}"
+            if up
+            else f"{Colors.GRAY}DOWN{Colors.RESET}"
+        )
+
+        print(
+            f"  {Colors.BOLD}{Colors.GREEN}{dev_name}{Colors.RESET}"
+            f"  index={Colors.CYAN}{dev_id}{Colors.RESET}"
+            f"  addr={Colors.YELLOW}{address}{Colors.RESET}"
+            f"  bus={bus_str}"
+            f"  state={state}"
+        )
+
+    sock.close()
+
+
+def _build_caps_hint() -> str:
+    """Return a user-friendly setcap hint with the correct interpreter path and install context."""
+    import pathlib
+
+    exe = pathlib.Path(sys.executable)
+    real = exe.resolve()
+    real_str = str(real)
+    exe_str = str(exe)
+
+    # Detect install method.
+    # Use the RESOLVED path for uv/pipx (their tool envs survive resolve()),
+    # but check the ORIGINAL exe path for .venv (uv run resolves to the bare
+    # uv Python binary, losing the .venv component).
+    if "/uv/tools/" in real_str:
+        parts = real.parts
+        tool_name = (
+            parts[parts.index("tools") + 1] if "tools" in parts else "bthome-logger"
+        )
+        context = f"uv tool install   (tool: {tool_name})"
+        upgrade_note = (
+            f"  Re-run after: {Colors.GRAY}uv tool upgrade {tool_name}{Colors.RESET}"
+        )
+    elif "/pipx/venvs/" in real_str:
+        parts = real.parts
+        tool_name = (
+            parts[parts.index("venvs") + 1] if "venvs" in parts else "bthome-logger"
+        )
+        context = f"pipx              (tool: {tool_name})"
+        upgrade_note = (
+            f"  Re-run after: {Colors.GRAY}pipx upgrade {tool_name}{Colors.RESET}"
+        )
+    elif "/.venv/" in exe_str or "/venv/" in exe_str:
+        context = "uv run / venv     (development)"
+        upgrade_note = (
+            f"  Re-run after: {Colors.GRAY}"
+            f"uv python install / venv recreation{Colors.RESET}"
+        )
+    elif "/uv/python/" in real_str:
+        # uv run with project – sys.executable already points at the uv Python
+        context = "uv run            (project venv)"
+        upgrade_note = f"  Re-run after: {Colors.GRAY}uv python install{Colors.RESET}"
+    else:
+        context = "system / pip"
+        upgrade_note = (
+            f"  Re-run after: {Colors.GRAY}Python interpreter upgrades{Colors.RESET}"
+        )
+
+    return (
+        f"\n  Install context: {Colors.GRAY}{context}{Colors.RESET}\n"
+        f"  Fix (run once):\n"
+        f"    {Colors.YELLOW}sudo setcap cap_net_raw,cap_net_admin+eip {real_str}{Colors.RESET}\n"
+        f"{upgrade_note}\n"
+        f"  Afterwards run without sudo as usual."
+    )
+
+
+async def scan_hci_raw(hci_index: int = 0) -> None:
+    """Scan via raw HCI socket – shows every AD structure (requires root / CAP_NET_RAW)."""
+    _caps_hint = _build_caps_hint()
+    try:
+        sock = socket.socket(_AF_BLUETOOTH, socket.SOCK_RAW, _BTPROTO_HCI)
+    except (PermissionError, OSError) as exc:
+        print(
+            f"{Colors.RED}✗ Cannot open raw HCI socket: {exc}{Colors.RESET}"
+            + _caps_hint
+        )
+        return
+
+    # Use HCI_CHANNEL_MONITOR (4): receives a copy of all HCI traffic without
+    # interfering with BlueZ.  No setsockopt(HCI_FILTER) needed – the monitor
+    # channel delivers everything and we filter in Python.
+    try:
+        _hci_bind(sock, _HCI_DEV_NONE, channel=_HCI_CHANNEL_MONITOR)
+    except OSError as exc:
+        sock.close()
+        print(
+            f"{Colors.RED}✗ Raw HCI monitor bind failed "
+            f"(errno {exc.errno}): {exc.strerror}{Colors.RESET}" + _caps_hint
+        )
+        return
+
+    # Start a BleakScanner in the background to keep BlueZ's LE discovery
+    # session alive.  The raw monitor socket receives a copy of all HCI
+    # events that BlueZ processes, including LE advertising reports.
+    bleak_scanner = BleakScanner()
+    await bleak_scanner.start()
+
+    print(
+        f"{Colors.GREEN}✓ Raw HCI monitor started on hci{hci_index}"
+        f" (via HCI_CHANNEL_MONITOR)...{Colors.RESET}\n"
+    )
+
+    sock.setblocking(False)
+    loop = asyncio.get_event_loop()
+    queue: asyncio.Queue[bytes] = asyncio.Queue()
+
+    def _reader() -> None:
+        try:
+            data = sock.recv(512)
+            loop.call_soon_threadsafe(queue.put_nowait, data)
+        except OSError:
+            pass
+
+    loop.add_reader(sock.fileno(), _reader)
+
+    try:
+        while True:
+            try:
+                data = await asyncio.wait_for(queue.get(), timeout=1.0)
+            except asyncio.TimeoutError:
+                continue
+
+            if VERBOSE:
+                print(f"{Colors.GRAY}[raw] {data.hex()}{Colors.RESET}")
+
+            # HCI monitor frame (hci_mon_hdr, 6 bytes, little-endian):
+            # opcode(2) + index(2) + len(2)  → payload starts at byte 6
+            # opcode 0x0003 = HCI Event packet
+            if len(data) < 7:
+                continue
+            opcode = data[0] | (data[1] << 8)
+            if opcode != 0x0003:  # only HCI Event packets
+                continue
+            payload = data[6:]  # skip 6-byte monitor header
+
+            # HCI Event: event_code(1) + param_len(1) + params...
+            if len(payload) < 3:
+                continue
+            if payload[0] != _HCI_LE_META:
+                continue
+            subevent = payload[2] if len(payload) >= 3 else 0
+            if subevent == _LE_ADV_REPORT:
+                for report in _hci_parse_adv_reports(payload[3:]):
+                    _print_raw_adv_report(report)
+            elif subevent == _LE_EXT_ADV_REPORT:
+                for report in _hci_parse_ext_adv_reports(payload[3:]):
+                    _print_raw_adv_report(report)
+
+    except KeyboardInterrupt:
+        print(f"\n\n{Colors.YELLOW}Stopping scanner...{Colors.RESET}")
+    finally:
+        loop.remove_reader(sock.fileno())
+        sock.close()
+        await bleak_scanner.stop()
+        print(f"{Colors.GREEN}✓ Scanner stopped{Colors.RESET}\n")
+
+
 app = typer.Typer(
-    help="BThome v2 BLE Advertisement Logger - Scans and displays BThome devices"
+    help="BThome v2 BLE Advertisement Logger - Scans and displays BThome devices",
+    add_completion=False,
+    context_settings={"help_option_names": ["-h", "--help"]},
 )
 
 
@@ -595,12 +1119,49 @@ def main(
         "-v",
         help="Show all BLE advertisements, not just BThome devices",
     ),
+    raw: bool = typer.Option(
+        False,
+        "--raw",
+        "-r",
+        help="Raw HCI mode: show all AD structures (LEN/TYPE/VALUE). Requires root / CAP_NET_RAW.",
+    ),
+    hci_index: int = typer.Option(
+        0,
+        "--hci",
+        "-a",
+        help="HCI adapter index to use in raw mode (default: 0 → hci0)",
+    ),
+    list_hci: bool = typer.Option(
+        False,
+        "--list-hci",
+        "-l",
+        is_flag=True,
+        help="List all available HCI adapters and exit.",
+    ),
     version: bool = typer.Option(
         False,
         "--version",
         "-V",
         is_flag=True,
         help="Show version and exit",
+    ),
+    install_completion: Optional[str] = typer.Option(
+        None,
+        "--install-completion",
+        "-i",
+        is_eager=True,
+        callback=install_callback,
+        expose_value=False,
+        help="Install shell completion (bash/zsh/fish/powershell). Auto-detects shell if omitted.",
+    ),
+    show_completion: Optional[str] = typer.Option(
+        None,
+        "--show-completion",
+        "-s",
+        is_eager=True,
+        callback=show_callback,
+        expose_value=False,
+        help="Show shell completion script for the current (or given) shell.",
     ),
 ):
     """
@@ -613,6 +1174,10 @@ def main(
         print(f"bthome-logger {get_version()}")
         return
 
+    if list_hci:
+        list_hci_adapters()
+        return
+
     global DEVICE_NAME_FILTER, VERBOSE
     DEVICE_NAME_FILTER = device_filter
     VERBOSE = verbose
@@ -621,7 +1186,10 @@ def main(
     print_header()
 
     try:
-        asyncio.run(scan_forever())
+        if raw:
+            asyncio.run(scan_hci_raw(hci_index))
+        else:
+            asyncio.run(scan_forever())
     except KeyboardInterrupt:
         pass
 
